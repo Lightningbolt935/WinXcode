@@ -10,7 +10,10 @@
     "view:ContentView"
   ],
   "selectedTarget": "preview:0",
-  "notes": [],
+  "notes": [
+    "@ignored:swipeActions",
+    "@ignored:toolbar"
+  ],
   "unsupportedNodes": [],
   "stats": {
     "views": 17,

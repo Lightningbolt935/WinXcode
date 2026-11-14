@@ -19,7 +19,9 @@
     "corpus2/02_simple_news/SimpleNewsApp.swift:app:SimpleNewsApp"
   ],
   "selectedTarget": "corpus2/02_simple_news/ContentView.swift:provider:ContentView_Previews",
-  "notes": [],
+  "notes": [
+    "@ignored:task"
+  ],
   "unsupportedNodes": [],
   "stats": {
     "views": 5,

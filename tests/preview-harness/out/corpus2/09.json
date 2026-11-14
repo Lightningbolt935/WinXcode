@@ -12,7 +12,10 @@
     "corpus2/09_countries/CountryCell.swift:view:CountryCell"
   ],
   "selectedTarget": "corpus2/09_countries/CountriesListView.swift:view:CountriesList",
-  "notes": [],
+  "notes": [
+    "@ignored:onReceive",
+    "@ignored:flipsForRightToLeftLayoutDirection"
+  ],
   "unsupportedNodes": [],
   "stats": {
     "views": 1,

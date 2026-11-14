@@ -17,7 +17,12 @@
   "selectedTarget": "corpus2/04_simple_scores/ContentView.swift:provider:ContentView_Previews",
   "notes": [
     "~FileManager",
-    ".onDelete()"
+    ".onDelete()",
+    "@ignored:contentShape",
+    "@ignored:listRowSeparator",
+    "@ignored:toolbar",
+    "@ignored:alert",
+    "@ignored:environment"
   ],
   "unsupportedNodes": [],
   "stats": {

@@ -21,7 +21,9 @@
   "selectedTarget": "corpus2/05_simple_todo/ContentView.swift:provider:ContentView_Previews",
   "notes": [
     "~FileManager",
-    ".onDelete()"
+    ".onDelete()",
+    "@ignored:toolbar",
+    "@ignored:environment"
   ],
   "unsupportedNodes": [],
   "stats": {

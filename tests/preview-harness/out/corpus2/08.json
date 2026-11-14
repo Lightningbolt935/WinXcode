@@ -16,7 +16,9 @@
     "corpus2/08_make_it_so/RemindersListView.swift:view:RemindersListView"
   ],
   "selectedTarget": "corpus2/08_make_it_so/ReminderDetailsView.swift:provider:ReminderDetailsView_Previews",
-  "notes": [],
+  "notes": [
+    "@ignored:sheet"
+  ],
   "unsupportedNodes": [],
   "stats": {
     "views": 2,

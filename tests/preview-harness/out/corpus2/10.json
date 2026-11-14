@@ -13,7 +13,11 @@
   ],
   "selectedTarget": "corpus2/10_control_room/ContentView.swift:provider:SidebarView_Previews",
   "notes": [
-    "?onChange"
+    "@ignored:contextMenu",
+    "@ignored:help",
+    "?onChange",
+    "@ignored:sheet",
+    "@ignored:environmentObject"
   ],
   "unsupportedNodes": [],
   "stats": {

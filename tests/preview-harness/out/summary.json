@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-14T19:47:43.216Z",
+  "timestamp": "2026-11-14T19:57:10.545Z",
   "results": [
     {
       "id": "01",
@@ -42,7 +42,10 @@
       "parseErrorCount": 0,
       "renderOk": true,
       "targetCount": 2,
-      "notes": [],
+      "notes": [
+        "@ignored:swipeActions",
+        "@ignored:toolbar"
+      ],
       "unsupportedNodes": [],
       "viewNodeCount": 17,
       "treeDepth": 6,
@@ -59,7 +62,11 @@
       "parseErrorCount": 0,
       "renderOk": true,
       "targetCount": 5,
-      "notes": [],
+      "notes": [
+        "@ignored:symbolEffect",
+        "@ignored:tabViewStyle",
+        "@ignored:indexViewStyle"
+      ],
       "unsupportedNodes": [],
       "viewNodeCount": 32,
       "treeDepth": 4,
@@ -94,7 +101,10 @@
       "renderOk": true,
       "targetCount": 2,
       "notes": [
-        "Canvas"
+        "Canvas",
+        "@ignored:gesture",
+        "@ignored:toolbar",
+        "@ignored:alert"
       ],
       "unsupportedNodes": [
         "Canvas"
@@ -136,7 +146,8 @@
       "renderOk": true,
       "targetCount": 2,
       "notes": [
-        "Canvas"
+        "Canvas",
+        "@ignored:gesture"
       ],
       "unsupportedNodes": [
         "Canvas"
@@ -156,7 +167,10 @@
       "parseErrorCount": 0,
       "renderOk": true,
       "targetCount": 5,
-      "notes": [],
+      "notes": [
+        "@ignored:toolbar",
+        "@ignored:environment"
+      ],
       "unsupportedNodes": [],
       "viewNodeCount": 42,
       "treeDepth": 5,
@@ -174,7 +188,14 @@
       "renderOk": true,
       "targetCount": 6,
       "notes": [
-        ".accessibilityAdjustableAction()"
+        "@ignored:accessibilityLabel",
+        "@ignored:minimumScaleFactor",
+        "@ignored:accessibilityHidden",
+        "@ignored:gesture",
+        "@ignored:accessibilityValue",
+        "@ignored:accessibilityHint",
+        "@ignored:accessibilityAdjustableAction",
+        "@ignored:accessibilityElement"
       ],
       "unsupportedNodes": [],
       "viewNodeCount": 72,

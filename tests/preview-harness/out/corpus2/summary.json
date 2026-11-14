@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-14T19:45:18.934Z",
+  "timestamp": "2026-11-14T19:57:10.616Z",
   "results": [
     {
       "id": "01",
@@ -11,7 +11,10 @@
       "parseErrorCount": 0,
       "renderOk": true,
       "selectedTarget": "corpus2/01_food_truck/ContentView.swift:provider:ContentView_Previews",
-      "notes": [],
+      "notes": [
+        "@ignored:onChange",
+        "@ignored:environmentObject"
+      ],
       "unsupportedNodes": [],
       "viewNodeCount": 21,
       "treeDepth": 6,
@@ -31,7 +34,9 @@
       "parseErrorCount": 0,
       "renderOk": true,
       "selectedTarget": "corpus2/02_simple_news/ContentView.swift:provider:ContentView_Previews",
-      "notes": [],
+      "notes": [
+        "@ignored:task"
+      ],
       "unsupportedNodes": [],
       "viewNodeCount": 5,
       "treeDepth": 4,
@@ -51,7 +56,10 @@
       "parseErrorCount": 0,
       "renderOk": true,
       "selectedTarget": "corpus2/03_simple_notes/ContentView.swift:provider:ContentView_Previews",
-      "notes": [],
+      "notes": [
+        "@ignored:onAppear",
+        "@ignored:onChange"
+      ],
       "unsupportedNodes": [],
       "viewNodeCount": 16,
       "treeDepth": 5,
@@ -73,7 +81,12 @@
       "selectedTarget": "corpus2/04_simple_scores/ContentView.swift:provider:ContentView_Previews",
       "notes": [
         "~FileManager",
-        ".onDelete()"
+        ".onDelete()",
+        "@ignored:contentShape",
+        "@ignored:listRowSeparator",
+        "@ignored:toolbar",
+        "@ignored:alert",
+        "@ignored:environment"
       ],
       "unsupportedNodes": [],
       "viewNodeCount": 9,
@@ -96,7 +109,9 @@
       "selectedTarget": "corpus2/05_simple_todo/ContentView.swift:provider:ContentView_Previews",
       "notes": [
         "~FileManager",
-        ".onDelete()"
+        ".onDelete()",
+        "@ignored:toolbar",
+        "@ignored:environment"
       ],
       "unsupportedNodes": [],
       "viewNodeCount": 1,
@@ -162,7 +177,9 @@
       "parseErrorCount": 0,
       "renderOk": true,
       "selectedTarget": "corpus2/08_make_it_so/ReminderDetailsView.swift:provider:ReminderDetailsView_Previews",
-      "notes": [],
+      "notes": [
+        "@ignored:sheet"
+      ],
       "unsupportedNodes": [],
       "viewNodeCount": 2,
       "treeDepth": 2,
@@ -182,7 +199,10 @@
       "parseErrorCount": 0,
       "renderOk": true,
       "selectedTarget": "corpus2/09_countries/CountriesListView.swift:view:CountriesList",
-      "notes": [],
+      "notes": [
+        "@ignored:onReceive",
+        "@ignored:flipsForRightToLeftLayoutDirection"
+      ],
       "unsupportedNodes": [],
       "viewNodeCount": 1,
       "treeDepth": 1,
@@ -203,7 +223,11 @@
       "renderOk": true,
       "selectedTarget": "corpus2/10_control_room/ContentView.swift:provider:SidebarView_Previews",
       "notes": [
-        "?onChange"
+        "@ignored:contextMenu",
+        "@ignored:help",
+        "?onChange",
+        "@ignored:sheet",
+        "@ignored:environmentObject"
       ],
       "unsupportedNodes": [],
       "viewNodeCount": 6,

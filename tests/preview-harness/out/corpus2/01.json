@@ -16,7 +16,10 @@
     "corpus2/01_food_truck/Sidebar.swift:view:Preview"
   ],
   "selectedTarget": "corpus2/01_food_truck/ContentView.swift:provider:ContentView_Previews",
-  "notes": [],
+  "notes": [
+    "@ignored:onChange",
+    "@ignored:environmentObject"
+  ],
   "unsupportedNodes": [],
   "stats": {
     "views": 21,

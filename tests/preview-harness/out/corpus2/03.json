@@ -13,7 +13,10 @@
     "corpus2/03_simple_notes/SimpleNotesApp.swift:app:SimpleNotesApp"
   ],
   "selectedTarget": "corpus2/03_simple_notes/ContentView.swift:provider:ContentView_Previews",
-  "notes": [],
+  "notes": [
+    "@ignored:onAppear",
+    "@ignored:onChange"
+  ],
   "unsupportedNodes": [],
   "stats": {
     "views": 16,

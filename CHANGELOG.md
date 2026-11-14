@@ -5,6 +5,12 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
 ## [Unreleased]
 
+### Added
+- Phase 1a Item 2: Unsupported callout panel & ignored modifier classification in Canvas and PreviewRender:
+  - Visual callouts in Canvas (`.canvas-unsupported-banner`, `.canvas-ignored-banner`) with "Check on iPhone" quick-action button
+  - Distinct classification between Level 1 UNSUPPORTED (renders wrong or device-only) and Level 2 IGNORED (safe no-op layout/a11y modifiers)
+  - Added `.accessibilityAdjustableAction`, `.accessibilityAction`, `.accessibilityHeading`, `.accessibilitySortPriority`, `.accessibilityRotor`, `.accessibilityRespondsToUserInteraction`, `.accessibilityChildren`, `.accessibilityInputLabels`, `.accessibilityShowsLargeContentViewer`, `.accessibilityZoomAction`, `.accessibilityScrollAction` to `IGNORED` set
+  - Unit tests in `XWinCode/src/lib/preview/swiftui.test.ts`
 ### Fixed
 - Phase 1a Item 1: Parser `;` terminator bug in `parser.ts:551` and `parser.ts:561` where `typeText` did not stop at semicolons on same-line declarations
 ### Added

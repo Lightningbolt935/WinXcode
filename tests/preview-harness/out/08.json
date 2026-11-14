@@ -11,7 +11,8 @@
   ],
   "selectedTarget": "preview:0",
   "notes": [
-    "Canvas"
+    "Canvas",
+    "@ignored:gesture"
   ],
   "unsupportedNodes": [
     "Canvas"

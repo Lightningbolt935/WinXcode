@@ -15,7 +15,14 @@
   ],
   "selectedTarget": "preview:0",
   "notes": [
-    ".accessibilityAdjustableAction()"
+    "@ignored:accessibilityLabel",
+    "@ignored:minimumScaleFactor",
+    "@ignored:accessibilityHidden",
+    "@ignored:gesture",
+    "@ignored:accessibilityValue",
+    "@ignored:accessibilityHint",
+    "@ignored:accessibilityAdjustableAction",
+    "@ignored:accessibilityElement"
   ],
   "unsupportedNodes": [],
   "stats": {

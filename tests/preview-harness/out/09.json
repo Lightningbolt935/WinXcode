@@ -13,7 +13,10 @@
     "view:ThemeEditorView"
   ],
   "selectedTarget": "preview:0",
-  "notes": [],
+  "notes": [
+    "@ignored:toolbar",
+    "@ignored:environment"
+  ],
   "unsupportedNodes": [],
   "stats": {
     "views": 42,

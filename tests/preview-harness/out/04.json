@@ -13,7 +13,11 @@
     "view:HomeView"
   ],
   "selectedTarget": "preview:0",
-  "notes": [],
+  "notes": [
+    "@ignored:symbolEffect",
+    "@ignored:tabViewStyle",
+    "@ignored:indexViewStyle"
+  ],
   "unsupportedNodes": [],
   "stats": {
     "views": 32,
