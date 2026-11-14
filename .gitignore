@@ -1,0 +1,22 @@
+node_modules/
+dist/
+target/
+*.exe
+*.msi
+*.dmg
+*.AppImage
+src-tauri/gen/
+.DS_Store
+*.log
+
+# Apple SDK — NEVER commit
+*.sdk/
+*.ipa
+*.mobileprovision
+Xcode*.app/
+
+# Secrets
+*.pem
+*.p12
+*.p8
+secrets/
