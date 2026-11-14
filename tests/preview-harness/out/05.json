@@ -2,6 +2,7 @@
   "id": "05",
   "name": "Settings",
   "fileCount": 1,
+  "level": "CLEAN",
   "parseOk": true,
   "parseErrors": [],
   "renderOk": true,
@@ -12,6 +13,9 @@
   "selectedTarget": "preview:0",
   "notes": [],
   "unsupportedNodes": [],
+  "diagnosticCount": 0,
+  "degradedCount": 0,
+  "ignoredCount": 0,
   "stats": {
     "views": 36,
     "depth": 4,

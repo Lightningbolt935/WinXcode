@@ -2,6 +2,7 @@
   "id": "04",
   "name": "Onboarding",
   "fileCount": 1,
+  "level": "DEGRADED",
   "parseOk": true,
   "parseErrors": [],
   "renderOk": true,
@@ -14,11 +15,14 @@
   ],
   "selectedTarget": "preview:0",
   "notes": [
-    "@ignored:symbolEffect",
-    "@ignored:tabViewStyle",
-    "@ignored:indexViewStyle"
+    "@degraded:symbolEffect",
+    "@degraded:tabViewStyle",
+    "@degraded:indexViewStyle"
   ],
   "unsupportedNodes": [],
+  "diagnosticCount": 3,
+  "degradedCount": 3,
+  "ignoredCount": 0,
   "stats": {
     "views": 32,
     "depth": 3,

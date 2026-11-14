@@ -4,6 +4,7 @@
   "source": "Paul Hudson (ControlRoom)",
   "license": "MIT",
   "fileCount": 1,
+  "level": "DEGRADED",
   "parseOk": true,
   "parseErrors": [],
   "renderOk": true,
@@ -13,13 +14,16 @@
   ],
   "selectedTarget": "corpus2/10_control_room/ContentView.swift:provider:SidebarView_Previews",
   "notes": [
-    "@ignored:contextMenu",
+    "@degraded:contextMenu",
     "@ignored:help",
     "?onChange",
-    "@ignored:sheet",
+    "@degraded:sheet",
     "@ignored:environmentObject"
   ],
   "unsupportedNodes": [],
+  "diagnosticCount": 5,
+  "degradedCount": 2,
+  "ignoredCount": 2,
   "stats": {
     "views": 6,
     "depth": 3,

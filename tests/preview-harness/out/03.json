@@ -2,6 +2,7 @@
   "id": "03",
   "name": "Todo",
   "fileCount": 1,
+  "level": "DEGRADED",
   "parseOk": true,
   "parseErrors": [],
   "renderOk": true,
@@ -11,10 +12,13 @@
   ],
   "selectedTarget": "preview:0",
   "notes": [
-    "@ignored:swipeActions",
-    "@ignored:toolbar"
+    "@degraded:swipeActions",
+    "@degraded:toolbar"
   ],
   "unsupportedNodes": [],
+  "diagnosticCount": 2,
+  "degradedCount": 2,
+  "ignoredCount": 0,
   "stats": {
     "views": 17,
     "depth": 5,

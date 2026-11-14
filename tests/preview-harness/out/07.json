@@ -2,6 +2,7 @@
   "id": "07",
   "name": "Charts",
   "fileCount": 1,
+  "level": "FAILED",
   "parseOk": true,
   "parseErrors": [],
   "renderOk": true,
@@ -16,6 +17,9 @@
   "unsupportedNodes": [
     "Chart"
   ],
+  "diagnosticCount": 2,
+  "degradedCount": 0,
+  "ignoredCount": 0,
   "stats": {
     "views": 42,
     "depth": 4,

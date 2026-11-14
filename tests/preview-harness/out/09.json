@@ -2,6 +2,7 @@
   "id": "09",
   "name": "@Observable",
   "fileCount": 1,
+  "level": "DEGRADED",
   "parseOk": true,
   "parseErrors": [],
   "renderOk": true,
@@ -14,10 +15,13 @@
   ],
   "selectedTarget": "preview:0",
   "notes": [
-    "@ignored:toolbar",
+    "@degraded:toolbar",
     "@ignored:environment"
   ],
   "unsupportedNodes": [],
+  "diagnosticCount": 2,
+  "degradedCount": 1,
+  "ignoredCount": 1,
   "stats": {
     "views": 42,
     "depth": 4,

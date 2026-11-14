@@ -42,6 +42,7 @@ const passthrough = extractSet(swiftuiSrc, "PASSTHROUGH");
 const unsupported = extractSet(swiftuiSrc, "UNSUPPORTED");
 const viewNames = extractSet(swiftuiSrc, "VIEW_NAMES");
 const ignored = extractExportedSet(swiftuiSrc, "IGNORED");
+const degraded = extractExportedSet(swiftuiSrc, "DEGRADED");
 
 // 2. Extract supported modifiers from applyMod switch cases
 const applyModRegex = /export\s+function\s+applyMod[\s\S]*?switch\s*\(name\)\s*\{([\s\S]*?)\n\s*\}\s*return\s+null;/;
@@ -89,6 +90,7 @@ const categorizedViews = {
 const allSupportedViews = Array.from(new Set([...viewNames, ...shapes, ...passthrough])).sort();
 modifiers.sort();
 ignored.sort();
+degraded.sort();
 unsupported.sort();
 
 const doc = `# WinXcode SwiftUI Interpreter & Preview Coverage
@@ -103,12 +105,12 @@ This document is the authoritative coverage specification for the WinXcode headl
 
 ## 1. Executive Summary
 
-| Construct Category | Total Supported | Ignored (Safe No-Op) | Explicitly Unsupported |
-|:-------------------|:----------------|:---------------------|:-----------------------|
-| **Views & Containers** | **${allSupportedViews.length}** | 0 | **${unsupported.length}** (visible callout) |
-| **View Modifiers** | **${modifiers.length}** | **${ignored.length}** | Fall-through emits diagnostic |
-| **Property Wrappers** | **${propertyWrappers.length}** | 0 | 0 |
-| **Runtime Shims** | **2** (\`DispatchQueue.asyncAfter\`, \`@AppStorage\`) | — | — |
+| Construct Category | Total Supported | Degraded (Visual Dropped) | Ignored (Safe No-Op) | Explicitly Unsupported |
+|:-------------------|:----------------|:--------------------------|:---------------------|:-----------------------|
+| **Views & Containers** | **${allSupportedViews.length}** | — | 0 | **${unsupported.length}** (visible callout) |
+| **View Modifiers** | **${modifiers.length}** | **${degraded.length}** (amber banner) | **${ignored.length}** (safe no-op) | Fall-through emits diagnostic |
+| **Property Wrappers** | **${propertyWrappers.length}** | — | 0 | 0 |
+| **Runtime Shims** | **2** (\`DispatchQueue.asyncAfter\`, \`@AppStorage\`) | — | — | — |
 
 ---
 
@@ -145,7 +147,20 @@ ${propertyWrappers.map(p => `| \`${p.name}\` | **${p.status}** | ${p.notes} |`).
 
 ---
 
-## 5. Ignored Modifiers (${ignored.length} — Safe No-Ops)
+## 5. Degraded Modifiers (${degraded.length} — Visual Effects Dropped)
+
+When encountered, these modifiers have real visual presentation, styling, layout, or modal consequences that the preview engine does not currently render.
+
+**Honesty guarantee**: Rather than silently ignoring them, the engine tags them with \`@degraded:<name>\` and the Canvas displays a prominent amber warning banner:  
+*"Visual effects dropped · Check on iPhone"*.
+
+\`\`\`
+${degraded.map(m => `.${m}()`).join(", ")}
+\`\`\`
+
+---
+
+## 6. Ignored Modifiers (${ignored.length} — Safe No-Ops)
 
 When encountered, these modifiers are acknowledged, classified as **IGNORED**, recorded in diagnostics (\`@ignored:<name>\`), and return the view tree unmodified. They do **not** break layout or crash the preview.
 
@@ -158,7 +173,7 @@ Accessibility modifiers (\`.accessibilityLabel\`, \`.accessibilityHint\`, \`.acc
 
 ---
 
-## 6. Explicitly Unsupported Views (${unsupported.length})
+## 7. Explicitly Unsupported Views (${unsupported.length})
 
 When the preview interpreter encounters any of these constructs, it creates an \`Unsupported\` node and emits a Level 1 **UNSUPPORTED** diagnostic. 
 
@@ -184,7 +199,7 @@ When the preview interpreter encounters any of these constructs, it creates an \
 
 ---
 
-## 7. Shims & Runtime Systems
+## 8. Shims & Runtime Systems
 
 ### 7.1 @AppStorage Persistence
 

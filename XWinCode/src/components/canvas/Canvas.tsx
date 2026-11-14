@@ -972,8 +972,9 @@ export default function Canvas({ path, onClose }: { path: string; onClose: () =>
   };
   const perf = result ? estimatePerf(device, result.stats) : null;
   const simulated = (result?.notes ?? []).filter((n) => n.startsWith("~")).map((n) => n.slice(1));
-  const unsupported = (result?.notes ?? []).filter((n) => !n.startsWith("~") && !n.startsWith("?") && !n.startsWith("@ignored:"));
+  const unsupported = (result?.notes ?? []).filter((n) => !n.startsWith("~") && !n.startsWith("?") && !n.startsWith("@ignored:") && !n.startsWith("@degraded:"));
   const ignoredMods = Array.from(new Set((result?.notes ?? []).filter((n) => n.startsWith("@ignored:")).map((n) => n.slice("@ignored:".length))));
+  const degradedMods = Array.from(new Set((result?.notes ?? []).filter((n) => n.startsWith("@degraded:")).map((n) => n.slice("@degraded:".length))));
 
   const unsupportedTreeNodes = useMemo(() => {
     const list: string[] = [];
@@ -1151,6 +1152,22 @@ export default function Canvas({ path, onClose }: { path: string; onClose: () =>
           </button>
         </div>
       )}
+      {degradedMods.length > 0 && (
+        <div className="canvas-callout canvas-degraded-banner">
+          <div className="canvas-callout-badge degraded">DEGRADED</div>
+          <div className="canvas-callout-body">
+            <span className="canvas-callout-title">Visual effects dropped:</span>
+            <span className="canvas-callout-items">{degradedMods.map((m) => `.${m}()`).join(", ")}</span>
+          </div>
+          <button
+            className="canvas-check-iphone-btn"
+            title="Preview live on connected iPhone"
+            onClick={() => void connect()}
+          >
+            Check on iPhone →
+          </button>
+        </div>
+      )}
       {ignoredMods.length > 0 && (
         <div className="canvas-callout canvas-ignored-banner">
           <div className="canvas-callout-badge ignored">IGNORED</div>
@@ -1213,6 +1230,11 @@ export default function Canvas({ path, onClose }: { path: string; onClose: () =>
         {allUnsupported.length > 0 && (
           <span className="canvas-note" title={allUnsupported.join(", ")}>
             ⚠️ Unsupported: {allUnsupported.slice(0, 3).join(", ")}{allUnsupported.length > 3 ? "..." : ""}
+          </span>
+        )}
+        {degradedMods.length > 0 && (
+          <span className="canvas-note" title={degradedMods.join(", ")}>
+            ⚠️ Degraded: {degradedMods.slice(0, 3).join(", ")}{degradedMods.length > 3 ? "..." : ""}
           </span>
         )}
         {ignoredMods.length > 0 && (

@@ -2,6 +2,7 @@
   "id": "08",
   "name": "Game",
   "fileCount": 1,
+  "level": "FAILED",
   "parseOk": true,
   "parseErrors": [],
   "renderOk": true,
@@ -17,6 +18,9 @@
   "unsupportedNodes": [
     "Canvas"
   ],
+  "diagnosticCount": 3,
+  "degradedCount": 0,
+  "ignoredCount": 1,
   "stats": {
     "views": 15,
     "depth": 5,

@@ -10,12 +10,12 @@ This document is the authoritative coverage specification for the WinXcode headl
 
 ## 1. Executive Summary
 
-| Construct Category | Total Supported | Ignored (Safe No-Op) | Explicitly Unsupported |
-|:-------------------|:----------------|:---------------------|:-----------------------|
-| **Views & Containers** | **62** | 0 | **15** (visible callout) |
-| **View Modifiers** | **57** | **181** | Fall-through emits diagnostic |
-| **Property Wrappers** | **14** | 0 | 0 |
-| **Runtime Shims** | **2** (`DispatchQueue.asyncAfter`, `@AppStorage`) | — | — |
+| Construct Category | Total Supported | Degraded (Visual Dropped) | Ignored (Safe No-Op) | Explicitly Unsupported |
+|:-------------------|:----------------|:--------------------------|:---------------------|:-----------------------|
+| **Views & Containers** | **62** | — | 0 | **15** (visible callout) |
+| **View Modifiers** | **57** | **114** (amber banner) | **72** (safe no-op) | Fall-through emits diagnostic |
+| **Property Wrappers** | **14** | — | 0 | 0 |
+| **Runtime Shims** | **2** (`DispatchQueue.asyncAfter`, `@AppStorage`) | — | — | — |
 
 ---
 
@@ -147,12 +147,43 @@ These modifiers alter the layout, styling, text presentation, or behavior of vie
 
 ---
 
-## 5. Ignored Modifiers (181 — Safe No-Ops)
+## 5. Degraded Modifiers (114 — Visual Effects Dropped)
+
+When encountered, these modifiers have real visual presentation, styling, layout, or modal consequences that the preview engine does not currently render.
+
+**Honesty guarantee**: Rather than silently ignoring them, the engine tags them with `@degraded:<name>` and the Canvas displays a prominent amber warning banner:  
+*"Visual effects dropped · Check on iPhone"*.
+
+```
+.// Animations (4)
+  "contentTransition(), .// Charts (11)
+  "chartXAxis(), .// Colors(), .// Component Styles (8)
+  "labelStyle(), .// Graphics(), .// Layout Sizing & Padding (12)
+  "safeAreaInset(), .// List & Scroll Layout/Styling (15)
+  "listRowSeparator(), .// Navigation & Toolbars (8)
+  "toolbar(), .// Presentation & Modal Overlays (11)
+  "sheet(), .// Symbols & Badges (5)
+  "symbolRenderingMode(), .// Typography & Text Layout (11)
+  "monospacedDigit(), .Compositing & Masking (7)
+  "compositingGroup(), .Filters & Shaders (12)
+  "brightness(), .alert(), .allowsTightening(), .annotation(), .badge(), .baselineOffset(), .blendMode(), .blur(), .buttonBorderShape(), .chartForegroundStyleScale(), .chartLegend(), .chartPlotStyle(), .chartXScale(), .chartYAxis(), .chartYScale(), .colorInvert(), .colorMultiply(), .confirmationDialog(), .containerRelativeFrame(), .contentMargins(), .contextMenu(), .contrast(), .datePickerStyle(), .defaultScrollAnchor(), .dynamicTypeSize(), .dynamicTypeSizeIfAvailable(), .fileExporter(), .fileImporter(), .fixedSize(), .focusEffectDisabled(), .foregroundStyleBy(), .foregroundStyleIfAvailable(), .frameIfAvailable(), .fullScreenCover(), .gaugeStyle(), .grayscale(), .headerProminence(), .hoverEffect(), .hueRotation(), .imageScaleIfAvailable(), .indexViewStyle(), .inspector(), .interpolationMethod(), .kerning(), .keyframeAnimator(), .layoutPriority(), .lineHeight(), .listItemTint(), .listRowBackground(), .listRowInsets(), .listRowSpacing(), .listSectionSeparator(), .listSectionSpacing(), .luminanceToAlpha(), .mask(), .matchedGeometryEffect(), .menuStyle(), .minimumScaleFactor(), .multilineTextAlignmentIfAvailable(), .navigationBarBackButtonHidden(), .navigationBarHidden(), .navigationDestination(), .navigationSplitViewColumnWidth(), .navigationSplitViewStyle(), .persistentSystemOverlays(), .phaseAnimator(), .photosPicker(), .popover(), .presentationBackground(), .presentationCornerRadius(), .presentationDetents(), .presentationDragIndicator(), .progressViewStyle(), .redacted(), .refreshable(), .safeAreaPadding(), .safeAreaPaddingIfAvailable(), .saturation(), .scenePadding(), .scrollClipDisabled(), .scrollContentBackground(), .scrollIndicators(), .scrollTransition(), .searchable(), .statusBarHidden(), .swipeActions(), .symbolEffect(), .symbolSize(), .symbolVariant(), .tabItemBadge(), .tabViewStyle(), .tableStyle(), .toggleStyle(), .toolbarBackground(), .toolbarColorScheme(), .toolbarRole(), .toolbarTitleDisplayMode(), .tracking(), .truncationMode(), .unredacted(), .visualEffect(), .zIndex()
+```
+
+---
+
+## 6. Ignored Modifiers (72 — Safe No-Ops)
 
 When encountered, these modifiers are acknowledged, classified as **IGNORED**, recorded in diagnostics (`@ignored:<name>`), and return the view tree unmodified. They do **not** break layout or crash the preview.
 
 ```
-.accessibilityAction(), .accessibilityAddTraits(), .accessibilityAdjustableAction(), .accessibilityChildren(), .accessibilityElement(), .accessibilityHeading(), .accessibilityHidden(), .accessibilityHint(), .accessibilityIdentifier(), .accessibilityInputLabels(), .accessibilityLabel(), .accessibilityRespondsToUserInteraction(), .accessibilityRotor(), .accessibilityScrollAction(), .accessibilityShowsLargeContentViewer(), .accessibilitySortPriority(), .accessibilityValue(), .accessibilityZoomAction(), .alert(), .allowsHitTesting(), .allowsTightening(), .annotation(), .autocapitalization(), .autocorrectionDisabled(), .badge(), .baselineOffset(), .blendMode(), .blur(), .brightness(), .buttonBorderShape(), .chartForegroundStyleScale(), .chartLegend(), .chartPlotStyle(), .chartXAxis(), .chartXScale(), .chartYAxis(), .chartYScale(), .colorInvert(), .colorMultiply(), .compositingGroup(), .confirmationDialog(), .containerRelativeFrame(), .contentMargins(), .contentShape(), .contentTransition(), .contextMenu(), .contrast(), .coordinateSpace(), .datePickerStyle(), .defaultScrollAnchor(), .defersSystemGestures(), .disableAutocorrection(), .draggable(), .drawingGroup(), .dropDestination(), .dynamicTypeSize(), .dynamicTypeSizeIfAvailable(), .environment(), .environmentObject(), .fileExporter(), .fileImporter(), .fixedSize(), .flipsForRightToLeftLayoutDirection(), .focusEffectDisabled(), .focusable(), .focused(), .foregroundStyleBy(), .foregroundStyleIfAvailable(), .frameIfAvailable(), .fullScreenCover(), .gaugeStyle(), .geometryGroup(), .gesture(), .grayscale(), .headerProminence(), .help(), .highPriorityGesture(), .hoverEffect(), .hueRotation(), .id(), .imageScaleIfAvailable(), .indexViewStyle(), .inspector(), .interactiveDismissDisabled(), .interpolationMethod(), .kerning(), .keyboardType(), .keyframeAnimator(), .labelStyle(), .layoutPriority(), .lineHeight(), .listItemTint(), .listRowBackground(), .listRowInsets(), .listRowSeparator(), .listRowSpacing(), .listSectionSeparator(), .listSectionSpacing(), .luminanceToAlpha(), .mask(), .matchedGeometryEffect(), .menuStyle(), .minimumScaleFactor(), .modelContainer(), .monospacedDigit(), .multilineTextAlignmentIfAvailable(), .navigationBarBackButtonHidden(), .navigationBarHidden(), .navigationDestination(), .navigationSplitViewColumnWidth(), .navigationSplitViewStyle(), .onAppear(), .onChange(), .onContinuousHover(), .onDisappear(), .onDrag(), .onDrop(), .onGeometryChange(), .onHover(), .onKeyPress(), .onLongPressGesture(), .onReceive(), .onScrollGeometryChange(), .onSubmit(), .persistentSystemOverlays(), .phaseAnimator(), .photosPicker(), .popover(), .preferredColorSchemeIfAvailable(), .presentationBackground(), .presentationCornerRadius(), .presentationDetents(), .presentationDragIndicator(), .privacySensitive(), .privacySensitiveIfAvailable(), .progressViewStyle(), .redacted(), .refreshable(), .safeAreaInset(), .safeAreaPadding(), .safeAreaPaddingIfAvailable(), .saturation(), .scenePadding(), .scrollBounceBehavior(), .scrollClipDisabled(), .scrollContentBackground(), .scrollDismissesKeyboard(), .scrollIndicators(), .scrollPosition(), .scrollTargetBehavior(), .scrollTargetLayout(), .scrollTransition(), .searchable(), .sensoryFeedback(), .sheet(), .simultaneousGesture(), .springLoadingBehavior(), .statusBarHidden(), .submitLabel(), .swipeActions(), .symbolEffect(), .symbolRenderingMode(), .symbolSize(), .symbolVariant(), .tabItemBadge(), .tabViewStyle(), .tableStyle(), .task(), .textInputAutocapitalization(), .textSelection(), .toggleStyle(), .toolbar(), .toolbarBackground(), .toolbarColorScheme(), .toolbarRole(), .toolbarTitleDisplayMode(), .tracking(), .truncationMode(), .unredacted(), .visualEffect(), .zIndex()
+.// Accessibility (18)
+  "accessibilityLabel(), .// Data & State Injection (3)
+  "environment(), .// Gestures & Interaction Listeners (14)
+  "onLongPressGesture(), .// Identity(), .// Input & Keyboard Hints (10)
+  "keyboardType(), .// Lifecycle & Event Callbacks (7)
+  "onAppear(), .// System(), .Metadata(), .Privacy (5)
+  "id(), .Scroll & Performance Hints without static visual disruption (12)
+  "flipsForRightToLeftLayoutDirection(), .accessibilityAction(), .accessibilityAddTraits(), .accessibilityAdjustableAction(), .accessibilityChildren(), .accessibilityElement(), .accessibilityHeading(), .accessibilityHidden(), .accessibilityHint(), .accessibilityIdentifier(), .accessibilityInputLabels(), .accessibilityRespondsToUserInteraction(), .accessibilityRotor(), .accessibilityScrollAction(), .accessibilityShowsLargeContentViewer(), .accessibilitySortPriority(), .accessibilityValue(), .accessibilityZoomAction(), .allowsHitTesting(), .autocapitalization(), .autocorrectionDisabled(), .contentShape(), .coordinateSpace(), .defersSystemGestures(), .disableAutocorrection(), .draggable(), .drawingGroup(), .dropDestination(), .environmentObject(), .focusable(), .focused(), .geometryGroup(), .gesture(), .help(), .highPriorityGesture(), .interactiveDismissDisabled(), .modelContainer(), .onChange(), .onContinuousHover(), .onDisappear(), .onDrag(), .onDrop(), .onGeometryChange(), .onHover(), .onKeyPress(), .onReceive(), .onScrollGeometryChange(), .onSubmit(), .preferredColorSchemeIfAvailable(), .privacySensitive(), .privacySensitiveIfAvailable(), .scrollBounceBehavior(), .scrollDismissesKeyboard(), .scrollPosition(), .scrollTargetBehavior(), .scrollTargetLayout(), .sensoryFeedback(), .simultaneousGesture(), .springLoadingBehavior(), .submitLabel(), .task(), .textInputAutocapitalization(), .textSelection()
 ```
 
 ### Accessibility Classification
@@ -160,7 +191,7 @@ Accessibility modifiers (`.accessibilityLabel`, `.accessibilityHint`, `.accessib
 
 ---
 
-## 6. Explicitly Unsupported Views (15)
+## 7. Explicitly Unsupported Views (15)
 
 When the preview interpreter encounters any of these constructs, it creates an `Unsupported` node and emits a Level 1 **UNSUPPORTED** diagnostic. 
 
@@ -186,7 +217,7 @@ When the preview interpreter encounters any of these constructs, it creates an `
 
 ---
 
-## 7. Shims & Runtime Systems
+## 8. Shims & Runtime Systems
 
 ### 7.1 @AppStorage Persistence
 

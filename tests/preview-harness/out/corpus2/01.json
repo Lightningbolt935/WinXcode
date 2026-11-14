@@ -4,6 +4,7 @@
   "source": "Apple Inc. (sample-food-truck)",
   "license": "Apple Sample Code (MIT-style)",
   "fileCount": 2,
+  "level": "DEGRADED",
   "parseOk": true,
   "parseErrors": [],
   "renderOk": true,
@@ -21,6 +22,9 @@
     "@ignored:environmentObject"
   ],
   "unsupportedNodes": [],
+  "diagnosticCount": 2,
+  "degradedCount": 0,
+  "ignoredCount": 2,
   "stats": {
     "views": 21,
     "depth": 5,

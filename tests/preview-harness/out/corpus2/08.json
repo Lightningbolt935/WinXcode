@@ -4,6 +4,7 @@
   "source": "Peter Friese (MakeItSo)",
   "license": "Apache-2.0",
   "fileCount": 3,
+  "level": "DEGRADED",
   "parseOk": true,
   "parseErrors": [],
   "renderOk": true,
@@ -17,9 +18,12 @@
   ],
   "selectedTarget": "corpus2/08_make_it_so/ReminderDetailsView.swift:provider:ReminderDetailsView_Previews",
   "notes": [
-    "@ignored:sheet"
+    "@degraded:sheet"
   ],
   "unsupportedNodes": [],
+  "diagnosticCount": 1,
+  "degradedCount": 1,
+  "ignoredCount": 0,
   "stats": {
     "views": 2,
     "depth": 1,

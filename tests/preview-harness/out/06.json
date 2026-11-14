@@ -2,6 +2,7 @@
   "id": "06",
   "name": "Drawing",
   "fileCount": 1,
+  "level": "FAILED",
   "parseOk": true,
   "parseErrors": [],
   "renderOk": true,
@@ -13,12 +14,15 @@
   "notes": [
     "Canvas",
     "@ignored:gesture",
-    "@ignored:toolbar",
-    "@ignored:alert"
+    "@degraded:toolbar",
+    "@degraded:alert"
   ],
   "unsupportedNodes": [
     "Canvas"
   ],
+  "diagnosticCount": 5,
+  "degradedCount": 2,
+  "ignoredCount": 1,
   "stats": {
     "views": 23,
     "depth": 4,

@@ -2,6 +2,7 @@
   "id": "10",
   "name": "A11y",
   "fileCount": 1,
+  "level": "DEGRADED",
   "parseOk": true,
   "parseErrors": [],
   "renderOk": true,
@@ -16,7 +17,7 @@
   "selectedTarget": "preview:0",
   "notes": [
     "@ignored:accessibilityLabel",
-    "@ignored:minimumScaleFactor",
+    "@degraded:minimumScaleFactor",
     "@ignored:accessibilityHidden",
     "@ignored:gesture",
     "@ignored:accessibilityValue",
@@ -25,6 +26,9 @@
     "@ignored:accessibilityElement"
   ],
   "unsupportedNodes": [],
+  "diagnosticCount": 8,
+  "degradedCount": 1,
+  "ignoredCount": 7,
   "stats": {
     "views": 72,
     "depth": 8,

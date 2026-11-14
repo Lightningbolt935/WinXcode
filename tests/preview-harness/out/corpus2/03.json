@@ -4,6 +4,7 @@
   "source": "Paul Hudson (twostraws/simple-swiftui)",
   "license": "MIT",
   "fileCount": 3,
+  "level": "DEGRADED",
   "parseOk": true,
   "parseErrors": [],
   "renderOk": true,
@@ -18,6 +19,9 @@
     "@ignored:onChange"
   ],
   "unsupportedNodes": [],
+  "diagnosticCount": 2,
+  "degradedCount": 0,
+  "ignoredCount": 2,
   "stats": {
     "views": 16,
     "depth": 4,

@@ -1,17 +1,25 @@
 import { describe, it, expect } from "vitest";
 import { Runtime } from "./runtime";
-import { IGNORED } from "./swiftui";
+import { IGNORED, DEGRADED } from "./swiftui";
 
 describe("swiftui unsupported and ignored modifiers", () => {
-  it("includes accessibility modifiers in IGNORED set", () => {
+  it("includes accessibility modifiers in IGNORED set and visual modifiers in DEGRADED", () => {
     expect(IGNORED.has("accessibilityAdjustableAction")).toBe(true);
     expect(IGNORED.has("accessibilityAction")).toBe(true);
     expect(IGNORED.has("accessibilityHeading")).toBe(true);
     expect(IGNORED.has("accessibilitySortPriority")).toBe(true);
     expect(IGNORED.has("accessibilityRotor")).toBe(true);
+    expect(IGNORED.has("task")).toBe(true);
+    expect(IGNORED.has("onAppear")).toBe(true);
+
+    expect(DEGRADED.has("toolbar")).toBe(true);
+    expect(DEGRADED.has("sheet")).toBe(true);
+    expect(DEGRADED.has("swipeActions")).toBe(true);
+    expect(DEGRADED.has("listRowBackground")).toBe(true);
+    expect(DEGRADED.has("blur")).toBe(true);
   });
 
-  it("classifies ignored modifiers with @ignored note in runtime", () => {
+  it("classifies ignored modifiers with @ignored note and degraded modifiers with @degraded note", () => {
     const src = `
     import SwiftUI
 
@@ -19,6 +27,9 @@ describe("swiftui unsupported and ignored modifiers", () => {
         var body: some View {
             Text("Adjustable")
                 .accessibilityAdjustableAction { direction in
+                }
+                .toolbar {
+                    Text("Action")
                 }
         }
     }
@@ -33,6 +44,7 @@ describe("swiftui unsupported and ignored modifiers", () => {
     expect(result.tree).not.toBeNull();
     expect(result.tree?.type).toBe("Text");
     expect(result.notes).toContain("@ignored:accessibilityAdjustableAction");
+    expect(result.notes).toContain("@degraded:toolbar");
   });
 
   it("emits Unsupported node for unhandled views like Canvas", () => {

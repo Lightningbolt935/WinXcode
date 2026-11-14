@@ -1,15 +1,19 @@
 {
-  "timestamp": "2026-11-14T20:12:10.918Z",
+  "timestamp": "2026-11-14T20:41:08.042Z",
   "results": [
     {
       "id": "01",
       "name": "Counter",
+      "level": "CLEAN",
       "parseOk": true,
       "parseErrorCount": 0,
       "renderOk": true,
       "targetCount": 2,
       "notes": [],
       "unsupportedNodes": [],
+      "diagnosticCount": 0,
+      "degradedCount": 0,
+      "ignoredCount": 0,
       "viewNodeCount": 11,
       "treeDepth": 4,
       "stats": {
@@ -21,12 +25,16 @@
     {
       "id": "02",
       "name": "Quiz",
+      "level": "CLEAN",
       "parseOk": true,
       "parseErrorCount": 0,
       "renderOk": true,
       "targetCount": 4,
       "notes": [],
       "unsupportedNodes": [],
+      "diagnosticCount": 0,
+      "degradedCount": 0,
+      "ignoredCount": 0,
       "viewNodeCount": 27,
       "treeDepth": 7,
       "stats": {
@@ -38,15 +46,19 @@
     {
       "id": "03",
       "name": "Todo",
+      "level": "DEGRADED",
       "parseOk": true,
       "parseErrorCount": 0,
       "renderOk": true,
       "targetCount": 2,
       "notes": [
-        "@ignored:swipeActions",
-        "@ignored:toolbar"
+        "@degraded:swipeActions",
+        "@degraded:toolbar"
       ],
       "unsupportedNodes": [],
+      "diagnosticCount": 2,
+      "degradedCount": 2,
+      "ignoredCount": 0,
       "viewNodeCount": 17,
       "treeDepth": 6,
       "stats": {
@@ -58,16 +70,20 @@
     {
       "id": "04",
       "name": "Onboarding",
+      "level": "DEGRADED",
       "parseOk": true,
       "parseErrorCount": 0,
       "renderOk": true,
       "targetCount": 5,
       "notes": [
-        "@ignored:symbolEffect",
-        "@ignored:tabViewStyle",
-        "@ignored:indexViewStyle"
+        "@degraded:symbolEffect",
+        "@degraded:tabViewStyle",
+        "@degraded:indexViewStyle"
       ],
       "unsupportedNodes": [],
+      "diagnosticCount": 3,
+      "degradedCount": 3,
+      "ignoredCount": 0,
       "viewNodeCount": 32,
       "treeDepth": 4,
       "stats": {
@@ -79,12 +95,16 @@
     {
       "id": "05",
       "name": "Settings",
+      "level": "CLEAN",
       "parseOk": true,
       "parseErrorCount": 0,
       "renderOk": true,
       "targetCount": 2,
       "notes": [],
       "unsupportedNodes": [],
+      "diagnosticCount": 0,
+      "degradedCount": 0,
+      "ignoredCount": 0,
       "viewNodeCount": 27,
       "treeDepth": 5,
       "stats": {
@@ -96,6 +116,7 @@
     {
       "id": "06",
       "name": "Drawing",
+      "level": "FAILED",
       "parseOk": true,
       "parseErrorCount": 0,
       "renderOk": true,
@@ -103,12 +124,15 @@
       "notes": [
         "Canvas",
         "@ignored:gesture",
-        "@ignored:toolbar",
-        "@ignored:alert"
+        "@degraded:toolbar",
+        "@degraded:alert"
       ],
       "unsupportedNodes": [
         "Canvas"
       ],
+      "diagnosticCount": 5,
+      "degradedCount": 2,
+      "ignoredCount": 1,
       "viewNodeCount": 16,
       "treeDepth": 5,
       "stats": {
@@ -120,6 +144,7 @@
     {
       "id": "07",
       "name": "Charts",
+      "level": "FAILED",
       "parseOk": true,
       "parseErrorCount": 0,
       "renderOk": true,
@@ -130,6 +155,9 @@
       "unsupportedNodes": [
         "Chart"
       ],
+      "diagnosticCount": 2,
+      "degradedCount": 0,
+      "ignoredCount": 0,
       "viewNodeCount": 37,
       "treeDepth": 5,
       "stats": {
@@ -141,6 +169,7 @@
     {
       "id": "08",
       "name": "Game",
+      "level": "FAILED",
       "parseOk": true,
       "parseErrorCount": 0,
       "renderOk": true,
@@ -152,6 +181,9 @@
       "unsupportedNodes": [
         "Canvas"
       ],
+      "diagnosticCount": 3,
+      "degradedCount": 0,
+      "ignoredCount": 1,
       "viewNodeCount": 15,
       "treeDepth": 6,
       "stats": {
@@ -163,15 +195,19 @@
     {
       "id": "09",
       "name": "@Observable",
+      "level": "DEGRADED",
       "parseOk": true,
       "parseErrorCount": 0,
       "renderOk": true,
       "targetCount": 5,
       "notes": [
-        "@ignored:toolbar",
+        "@degraded:toolbar",
         "@ignored:environment"
       ],
       "unsupportedNodes": [],
+      "diagnosticCount": 2,
+      "degradedCount": 1,
+      "ignoredCount": 1,
       "viewNodeCount": 42,
       "treeDepth": 5,
       "stats": {
@@ -183,13 +219,14 @@
     {
       "id": "10",
       "name": "A11y",
+      "level": "DEGRADED",
       "parseOk": true,
       "parseErrorCount": 0,
       "renderOk": true,
       "targetCount": 6,
       "notes": [
         "@ignored:accessibilityLabel",
-        "@ignored:minimumScaleFactor",
+        "@degraded:minimumScaleFactor",
         "@ignored:accessibilityHidden",
         "@ignored:gesture",
         "@ignored:accessibilityValue",
@@ -198,6 +235,9 @@
         "@ignored:accessibilityElement"
       ],
       "unsupportedNodes": [],
+      "diagnosticCount": 8,
+      "degradedCount": 1,
+      "ignoredCount": 7,
       "viewNodeCount": 72,
       "treeDepth": 9,
       "stats": {

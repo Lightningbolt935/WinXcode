@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-14T20:12:10.991Z",
+  "timestamp": "2026-11-14T20:41:08.156Z",
   "results": [
     {
       "id": "01",
@@ -7,6 +7,7 @@
       "source": "Apple Inc. (sample-food-truck)",
       "license": "Apple Sample Code (MIT-style)",
       "fileCount": 2,
+      "level": "DEGRADED",
       "parseOk": true,
       "parseErrorCount": 0,
       "renderOk": true,
@@ -16,6 +17,9 @@
         "@ignored:environmentObject"
       ],
       "unsupportedNodes": [],
+      "diagnosticCount": 2,
+      "degradedCount": 0,
+      "ignoredCount": 2,
       "viewNodeCount": 21,
       "treeDepth": 6,
       "stats": {
@@ -30,6 +34,7 @@
       "source": "Paul Hudson (twostraws/simple-swiftui)",
       "license": "MIT",
       "fileCount": 6,
+      "level": "DEGRADED",
       "parseOk": true,
       "parseErrorCount": 0,
       "renderOk": true,
@@ -38,6 +43,9 @@
         "@ignored:task"
       ],
       "unsupportedNodes": [],
+      "diagnosticCount": 1,
+      "degradedCount": 0,
+      "ignoredCount": 1,
       "viewNodeCount": 5,
       "treeDepth": 4,
       "stats": {
@@ -52,6 +60,7 @@
       "source": "Paul Hudson (twostraws/simple-swiftui)",
       "license": "MIT",
       "fileCount": 3,
+      "level": "DEGRADED",
       "parseOk": true,
       "parseErrorCount": 0,
       "renderOk": true,
@@ -61,6 +70,9 @@
         "@ignored:onChange"
       ],
       "unsupportedNodes": [],
+      "diagnosticCount": 2,
+      "degradedCount": 0,
+      "ignoredCount": 2,
       "viewNodeCount": 16,
       "treeDepth": 5,
       "stats": {
@@ -75,6 +87,7 @@
       "source": "Paul Hudson (twostraws/simple-swiftui)",
       "license": "MIT",
       "fileCount": 7,
+      "level": "DEGRADED",
       "parseOk": true,
       "parseErrorCount": 0,
       "renderOk": true,
@@ -83,12 +96,15 @@
         "~FileManager",
         ".onDelete()",
         "@ignored:contentShape",
-        "@ignored:listRowSeparator",
-        "@ignored:toolbar",
-        "@ignored:alert",
+        "@degraded:listRowSeparator",
+        "@degraded:toolbar",
+        "@degraded:alert",
         "@ignored:environment"
       ],
       "unsupportedNodes": [],
+      "diagnosticCount": 7,
+      "degradedCount": 3,
+      "ignoredCount": 2,
       "viewNodeCount": 9,
       "treeDepth": 5,
       "stats": {
@@ -103,6 +119,7 @@
       "source": "Paul Hudson (twostraws/simple-swiftui)",
       "license": "MIT",
       "fileCount": 8,
+      "level": "DEGRADED",
       "parseOk": true,
       "parseErrorCount": 0,
       "renderOk": true,
@@ -110,10 +127,13 @@
       "notes": [
         "~FileManager",
         ".onDelete()",
-        "@ignored:toolbar",
+        "@degraded:toolbar",
         "@ignored:environment"
       ],
       "unsupportedNodes": [],
+      "diagnosticCount": 4,
+      "degradedCount": 1,
+      "ignoredCount": 1,
       "viewNodeCount": 1,
       "treeDepth": 1,
       "stats": {
@@ -128,6 +148,7 @@
       "source": "Swiftify (Calculator-SwiftUI)",
       "license": "MIT",
       "fileCount": 7,
+      "level": "FAILED",
       "parseOk": false,
       "parseErrorCount": 3,
       "renderOk": true,
@@ -139,6 +160,9 @@
       "unsupportedNodes": [
         "ContentView: Unknown name '*'"
       ],
+      "diagnosticCount": 6,
+      "degradedCount": 0,
+      "ignoredCount": 0,
       "viewNodeCount": 1,
       "treeDepth": 1,
       "stats": {
@@ -152,18 +176,25 @@
       "name": "CapyTimer",
       "source": "andev0x (CapyTimer)",
       "license": "MIT",
-      "fileCount": 5,
+      "fileCount": 6,
+      "level": "DEGRADED",
       "parseOk": true,
       "parseErrorCount": 0,
       "renderOk": true,
       "selectedTarget": "corpus2/07_capy_timer/ContentView.swift:view:ContentView",
-      "notes": [],
+      "notes": [
+        "@ignored:onAppear",
+        "@degraded:sheet"
+      ],
       "unsupportedNodes": [],
-      "viewNodeCount": 2,
-      "treeDepth": 2,
+      "diagnosticCount": 2,
+      "degradedCount": 1,
+      "ignoredCount": 1,
+      "viewNodeCount": 44,
+      "treeDepth": 7,
       "stats": {
-        "views": 2,
-        "depth": 1,
+        "views": 56,
+        "depth": 6,
         "heavy": 0
       }
     },
@@ -173,14 +204,18 @@
       "source": "Peter Friese (MakeItSo)",
       "license": "Apache-2.0",
       "fileCount": 3,
+      "level": "DEGRADED",
       "parseOk": true,
       "parseErrorCount": 0,
       "renderOk": true,
       "selectedTarget": "corpus2/08_make_it_so/ReminderDetailsView.swift:provider:ReminderDetailsView_Previews",
       "notes": [
-        "@ignored:sheet"
+        "@degraded:sheet"
       ],
       "unsupportedNodes": [],
+      "diagnosticCount": 1,
+      "degradedCount": 1,
+      "ignoredCount": 0,
       "viewNodeCount": 2,
       "treeDepth": 2,
       "stats": {
@@ -195,6 +230,7 @@
       "source": "Alexey Naumov (clean-architecture-swiftui)",
       "license": "MIT",
       "fileCount": 3,
+      "level": "DEGRADED",
       "parseOk": true,
       "parseErrorCount": 0,
       "renderOk": true,
@@ -204,6 +240,9 @@
         "@ignored:flipsForRightToLeftLayoutDirection"
       ],
       "unsupportedNodes": [],
+      "diagnosticCount": 2,
+      "degradedCount": 0,
+      "ignoredCount": 2,
       "viewNodeCount": 1,
       "treeDepth": 1,
       "stats": {
@@ -218,18 +257,22 @@
       "source": "Paul Hudson (ControlRoom)",
       "license": "MIT",
       "fileCount": 1,
+      "level": "DEGRADED",
       "parseOk": true,
       "parseErrorCount": 0,
       "renderOk": true,
       "selectedTarget": "corpus2/10_control_room/ContentView.swift:provider:SidebarView_Previews",
       "notes": [
-        "@ignored:contextMenu",
+        "@degraded:contextMenu",
         "@ignored:help",
         "?onChange",
-        "@ignored:sheet",
+        "@degraded:sheet",
         "@ignored:environmentObject"
       ],
       "unsupportedNodes": [],
+      "diagnosticCount": 5,
+      "degradedCount": 2,
+      "ignoredCount": 2,
       "viewNodeCount": 6,
       "treeDepth": 4,
       "stats": {

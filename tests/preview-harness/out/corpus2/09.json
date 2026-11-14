@@ -4,6 +4,7 @@
   "source": "Alexey Naumov (clean-architecture-swiftui)",
   "license": "MIT",
   "fileCount": 3,
+  "level": "DEGRADED",
   "parseOk": true,
   "parseErrors": [],
   "renderOk": true,
@@ -17,6 +18,9 @@
     "@ignored:flipsForRightToLeftLayoutDirection"
   ],
   "unsupportedNodes": [],
+  "diagnosticCount": 2,
+  "degradedCount": 0,
+  "ignoredCount": 2,
   "stats": {
     "views": 1,
     "depth": 0,

@@ -4,6 +4,7 @@
   "source": "Swiftify (Calculator-SwiftUI)",
   "license": "MIT",
   "fileCount": 7,
+  "level": "FAILED",
   "parseOk": false,
   "parseErrors": [
     {
@@ -37,6 +38,9 @@
   "unsupportedNodes": [
     "ContentView: Unknown name '*'"
   ],
+  "diagnosticCount": 6,
+  "degradedCount": 0,
+  "ignoredCount": 0,
   "stats": {
     "views": 1,
     "depth": 0,

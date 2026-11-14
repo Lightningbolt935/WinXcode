@@ -31,6 +31,7 @@ interface HarnessResult {
   source?: string;
   license?: string;
   fileCount: number;
+  level: "CLEAN" | "DEGRADED" | "FAILED";
   parseOk: boolean;
   parseErrors: { file: string; message: string; line: number }[];
   renderOk: boolean;
@@ -39,6 +40,9 @@ interface HarnessResult {
   selectedTarget?: string;
   notes: string[];
   unsupportedNodes: string[];
+  diagnosticCount: number;
+  degradedCount: number;
+  ignoredCount: number;
   stats: RenderResult["stats"] | null;
   treeDepth: number;
   viewNodeCount: number;
@@ -163,12 +167,23 @@ describe("Preview Harness — Corpus 1 (Student-style apps)", () => {
 
       const unsupportedNodes = collectUnsupported(renderResult?.tree ?? null);
       const notes = renderResult ? [...renderResult.notes] : [];
+      const degradedCount = notes.filter(n => n.startsWith("@degraded:")).length;
+      const ignoredCount = notes.filter(n => n.startsWith("@ignored:")).length;
+      const parseOk = parseErrors.length === 0;
+      const diagnosticCount = parseErrors.length + (renderOk ? 0 : 1) + unsupportedNodes.length + notes.length;
+      let level: "CLEAN" | "DEGRADED" | "FAILED" = "CLEAN";
+      if (!parseOk || !renderOk || unsupportedNodes.length > 0) {
+        level = "FAILED";
+      } else if (diagnosticCount > 0) {
+        level = "DEGRADED";
+      }
 
       const hResult: HarnessResult = {
         id: app.id,
         name: app.name,
         fileCount: 1,
-        parseOk: parseErrors.length === 0,
+        level,
+        parseOk,
         parseErrors,
         renderOk,
         renderError,
@@ -176,6 +191,9 @@ describe("Preview Harness — Corpus 1 (Student-style apps)", () => {
         selectedTarget: targets[0]?.key,
         notes,
         unsupportedNodes,
+        diagnosticCount,
+        degradedCount,
+        ignoredCount,
         stats: renderResult?.stats ?? null,
         treeDepth: treeDepth(renderResult?.tree ?? null),
         viewNodeCount: countNodes(renderResult?.tree ?? null),
@@ -198,6 +216,7 @@ describe("Preview Harness — Corpus 1 (Student-style apps)", () => {
       results: HARNESS_RESULTS.map(r => ({
         id: r.id,
         name: r.name,
+        level: r.level,
         parseOk: r.parseOk,
         parseErrorCount: r.parseErrors.length,
         renderOk: r.renderOk,
@@ -205,6 +224,9 @@ describe("Preview Harness — Corpus 1 (Student-style apps)", () => {
         targetCount: r.targets.length,
         notes: r.notes,
         unsupportedNodes: r.unsupportedNodes,
+        diagnosticCount: r.diagnosticCount,
+        degradedCount: r.degradedCount,
+        ignoredCount: r.ignoredCount,
         viewNodeCount: r.viewNodeCount,
         treeDepth: r.treeDepth,
         stats: r.stats,
@@ -296,6 +318,16 @@ describe("Preview Harness — Corpus 2 (External open-source apps)", () => {
 
       const unsupportedNodes = collectUnsupported(renderResult?.tree ?? null);
       const notes = renderResult ? [...renderResult.notes] : [];
+      const degradedCount = notes.filter(n => n.startsWith("@degraded:")).length;
+      const ignoredCount = notes.filter(n => n.startsWith("@ignored:")).length;
+      const parseOk = allParseErrors.length === 0;
+      const diagnosticCount = allParseErrors.length + (renderOk ? 0 : 1) + unsupportedNodes.length + notes.length;
+      let level: "CLEAN" | "DEGRADED" | "FAILED" = "CLEAN";
+      if (!parseOk || !renderOk || unsupportedNodes.length > 0) {
+        level = "FAILED";
+      } else if (diagnosticCount > 0) {
+        level = "DEGRADED";
+      }
 
       const hResult: HarnessResult = {
         id: app.id,
@@ -303,7 +335,8 @@ describe("Preview Harness — Corpus 2 (External open-source apps)", () => {
         source: app.source,
         license: app.license,
         fileCount: files.length,
-        parseOk: allParseErrors.length === 0,
+        level,
+        parseOk,
         parseErrors: allParseErrors,
         renderOk,
         renderError,
@@ -311,6 +344,9 @@ describe("Preview Harness — Corpus 2 (External open-source apps)", () => {
         selectedTarget: primaryTarget ? `${primaryTarget.file}:${primaryTarget.key}` : undefined,
         notes,
         unsupportedNodes,
+        diagnosticCount,
+        degradedCount,
+        ignoredCount,
         stats: renderResult?.stats ?? null,
         treeDepth: treeDepth(renderResult?.tree ?? null),
         viewNodeCount: countNodes(renderResult?.tree ?? null),
@@ -334,6 +370,7 @@ describe("Preview Harness — Corpus 2 (External open-source apps)", () => {
         source: r.source,
         license: r.license,
         fileCount: r.fileCount,
+        level: r.level,
         parseOk: r.parseOk,
         parseErrorCount: r.parseErrors.length,
         renderOk: r.renderOk,
@@ -341,6 +378,9 @@ describe("Preview Harness — Corpus 2 (External open-source apps)", () => {
         selectedTarget: r.selectedTarget,
         notes: r.notes,
         unsupportedNodes: r.unsupportedNodes,
+        diagnosticCount: r.diagnosticCount,
+        degradedCount: r.degradedCount,
+        ignoredCount: r.ignoredCount,
         viewNodeCount: r.viewNodeCount,
         treeDepth: r.treeDepth,
         stats: r.stats,

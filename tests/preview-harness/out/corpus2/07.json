@@ -3,11 +3,15 @@
   "name": "CapyTimer",
   "source": "andev0x (CapyTimer)",
   "license": "MIT",
-  "fileCount": 5,
+  "fileCount": 6,
+  "level": "DEGRADED",
   "parseOk": true,
   "parseErrors": [],
   "renderOk": true,
   "targets": [
+    "corpus2/07_capy_timer/CapyTheme.swift:view:Card",
+    "corpus2/07_capy_timer/CapyTheme.swift:view:SectionHeader",
+    "corpus2/07_capy_timer/CapyTheme.swift:view:ProgressRing",
     "corpus2/07_capy_timer/ContentView.swift:preview:0",
     "corpus2/07_capy_timer/ContentView.swift:view:ContentView",
     "corpus2/07_capy_timer/NotesView.swift:view:NotesView",
@@ -17,15 +21,21 @@
     "corpus2/07_capy_timer/UpdateSettingsView.swift:view:UpdateSettingsView"
   ],
   "selectedTarget": "corpus2/07_capy_timer/ContentView.swift:view:ContentView",
-  "notes": [],
+  "notes": [
+    "@ignored:onAppear",
+    "@degraded:sheet"
+  ],
   "unsupportedNodes": [],
+  "diagnosticCount": 2,
+  "degradedCount": 1,
+  "ignoredCount": 1,
   "stats": {
-    "views": 2,
-    "depth": 1,
+    "views": 56,
+    "depth": 6,
     "heavy": 0
   },
-  "treeDepth": 2,
-  "viewNodeCount": 2,
+  "treeDepth": 7,
+  "viewNodeCount": 44,
   "tree": {
     "id": "r",
     "type": "ScrollView",
@@ -40,7 +50,1286 @@
           "alignment": "leading",
           "spacing": 12
         },
-        "children": [],
+        "children": [
+          {
+            "id": "r.0.0",
+            "type": "VStack",
+            "props": {
+              "alignment": "leading",
+              "spacing": 8
+            },
+            "children": [
+              {
+                "id": "r.0.0.0",
+                "type": "VStack",
+                "props": {
+                  "alignment": "center",
+                  "spacing": 10
+                },
+                "children": [
+                  {
+                    "id": "r.0.0.0.0",
+                    "type": "HStack",
+                    "props": {
+                      "alignment": "center",
+                      "spacing": 12
+                    },
+                    "children": [
+                      {
+                        "id": "r.0.0.0.0.0",
+                        "type": "ZStack",
+                        "props": {
+                          "alignment": "center"
+                        },
+                        "children": [
+                          {
+                            "id": "r.0.0.0.0.0.0",
+                            "type": "Circle",
+                            "props": {},
+                            "mods": [
+                              {
+                                "m": "stroke",
+                                "color": {
+                                  "name": "gray",
+                                  "opacity": 0.25
+                                },
+                                "width": 8
+                              }
+                            ],
+                            "src": [
+                              {
+                                "f": "corpus2/07_capy_timer/CapyTheme.swift",
+                                "a": 1303,
+                                "b": 1377
+                              }
+                            ]
+                          },
+                          {
+                            "id": "r.0.0.0.0.0.1",
+                            "type": "Circle",
+                            "props": {},
+                            "mods": [
+                              {
+                                "m": "trim",
+                                "from": 0,
+                                "to": 1
+                              },
+                              {
+                                "m": "stroke",
+                                "color": {
+                                  "name": "accentColor"
+                                },
+                                "width": 8
+                              },
+                              {
+                                "m": "rotation",
+                                "degrees": -90
+                              }
+                            ],
+                            "src": [
+                              {
+                                "f": "corpus2/07_capy_timer/CapyTheme.swift",
+                                "a": 1391,
+                                "b": 1596
+                              }
+                            ]
+                          }
+                        ],
+                        "mods": [
+                          {
+                            "m": "animation",
+                            "curve": {
+                              "kind": "easeInOut",
+                              "duration": 0.3
+                            },
+                            "value": "1.0"
+                          },
+                          {
+                            "m": "frame",
+                            "width": 54,
+                            "height": 54
+                          }
+                        ],
+                        "src": [
+                          {
+                            "f": "corpus2/07_capy_timer/CapyTheme.swift",
+                            "a": 1281,
+                            "b": 1671
+                          },
+                          {
+                            "f": "corpus2/07_capy_timer/ContentView.swift",
+                            "a": 1146,
+                            "b": 1257
+                          }
+                        ]
+                      },
+                      {
+                        "id": "r.0.0.0.0.1",
+                        "type": "VStack",
+                        "props": {
+                          "alignment": "leading",
+                          "spacing": 2
+                        },
+                        "children": [
+                          {
+                            "id": "r.0.0.0.0.1.0",
+                            "type": "Text",
+                            "props": {
+                              "text": "00:00"
+                            },
+                            "mods": [
+                              {
+                                "m": "font",
+                                "font": {
+                                  "size": 28,
+                                  "weight": "bold"
+                                }
+                              }
+                            ],
+                            "src": [
+                              {
+                                "f": "corpus2/07_capy_timer/ContentView.swift",
+                                "a": 1362,
+                                "b": 1483
+                              }
+                            ]
+                          },
+                          {
+                            "id": "r.0.0.0.0.1.1",
+                            "type": "Text",
+                            "props": {
+                              "text": "Paused"
+                            },
+                            "mods": [
+                              {
+                                "m": "font",
+                                "font": {
+                                  "style": "caption"
+                                }
+                              },
+                              {
+                                "m": "foreground",
+                                "color": {
+                                  "name": "secondary"
+                                }
+                              }
+                            ],
+                            "src": [
+                              {
+                                "f": "corpus2/07_capy_timer/ContentView.swift",
+                                "a": 1517,
+                                "b": 1687
+                              }
+                            ]
+                          }
+                        ],
+                        "src": [
+                          {
+                            "f": "corpus2/07_capy_timer/ContentView.swift",
+                            "a": 1287,
+                            "b": 1718
+                          }
+                        ]
+                      },
+                      {
+                        "id": "r.0.0.0.0.2",
+                        "type": "Spacer",
+                        "props": {},
+                        "src": [
+                          {
+                            "f": "corpus2/07_capy_timer/ContentView.swift",
+                            "a": 1748,
+                            "b": 1756
+                          }
+                        ]
+                      }
+                    ],
+                    "src": [
+                      {
+                        "f": "corpus2/07_capy_timer/ContentView.swift",
+                        "a": 1095,
+                        "b": 1783
+                      }
+                    ]
+                  },
+                  {
+                    "id": "r.0.0.0.1",
+                    "type": "HStack",
+                    "props": {
+                      "alignment": "center"
+                    },
+                    "children": [
+                      {
+                        "id": "r.0.0.0.1.0",
+                        "type": "Button",
+                        "props": {
+                          "title": "Start"
+                        },
+                        "mods": [
+                          {
+                            "m": "buttonStyle",
+                            "value": "borderedProminent"
+                          }
+                        ],
+                        "src": [
+                          {
+                            "f": "corpus2/07_capy_timer/ContentView.swift",
+                            "a": 1847,
+                            "b": 2093
+                          }
+                        ],
+                        "event": "r.0.0.0.1.0"
+                      },
+                      {
+                        "id": "r.0.0.0.1.1",
+                        "type": "Button",
+                        "props": {
+                          "title": "Reset"
+                        },
+                        "mods": [
+                          {
+                            "m": "buttonStyle",
+                            "value": "bordered"
+                          }
+                        ],
+                        "src": [
+                          {
+                            "f": "corpus2/07_capy_timer/ContentView.swift",
+                            "a": 2123,
+                            "b": 2278
+                          }
+                        ],
+                        "event": "r.0.0.0.1.1"
+                      }
+                    ],
+                    "src": [
+                      {
+                        "f": "corpus2/07_capy_timer/ContentView.swift",
+                        "a": 1809,
+                        "b": 2305
+                      }
+                    ]
+                  }
+                ],
+                "src": [
+                  {
+                    "f": "corpus2/07_capy_timer/ContentView.swift",
+                    "a": 691,
+                    "b": 2328
+                  },
+                  {
+                    "f": "corpus2/07_capy_timer/CapyTheme.swift",
+                    "a": 622,
+                    "b": 629
+                  }
+                ]
+              }
+            ],
+            "mods": [
+              {
+                "m": "padding",
+                "top": 12,
+                "leading": 12,
+                "bottom": 12,
+                "trailing": 12
+              },
+              {
+                "m": "background",
+                "view": [
+                  {
+                    "id": "r.0.0.b1.0",
+                    "type": "RoundedRectangle",
+                    "props": {
+                      "radius": 12
+                    },
+                    "mods": [
+                      {
+                        "m": "fill",
+                        "color": {
+                          "name": "gray"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "m": "overlay",
+                "view": [
+                  {
+                    "id": "r.0.0.v2.0",
+                    "type": "RoundedRectangle",
+                    "props": {
+                      "radius": 12
+                    },
+                    "mods": [
+                      {
+                        "m": "stroke",
+                        "color": {
+                          "name": "gray",
+                          "opacity": 0.25
+                        },
+                        "width": 1
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "src": [
+              {
+                "f": "corpus2/07_capy_timer/CapyTheme.swift",
+                "a": 567,
+                "b": 959
+              },
+              {
+                "f": "corpus2/07_capy_timer/ContentView.swift",
+                "a": 663,
+                "b": 2347
+              }
+            ]
+          },
+          {
+            "id": "r.0.1",
+            "type": "VStack",
+            "props": {
+              "alignment": "leading",
+              "spacing": 8
+            },
+            "children": [
+              {
+                "id": "r.0.1.0",
+                "type": "Text",
+                "props": {
+                  "text": "Todo List"
+                },
+                "mods": [
+                  {
+                    "m": "font",
+                    "font": {
+                      "style": "headline"
+                    }
+                  }
+                ],
+                "src": [
+                  {
+                    "f": "corpus2/07_capy_timer/CapyTheme.swift",
+                    "a": 1061,
+                    "b": 1102
+                  },
+                  {
+                    "f": "corpus2/07_capy_timer/ContentView.swift",
+                    "a": 2411,
+                    "b": 2444
+                  },
+                  {
+                    "f": "corpus2/07_capy_timer/CapyTheme.swift",
+                    "a": 622,
+                    "b": 629
+                  }
+                ]
+              },
+              {
+                "id": "r.0.1.1",
+                "type": "VStack",
+                "props": {
+                  "alignment": "leading",
+                  "spacing": 8
+                },
+                "children": [
+                  {
+                    "id": "r.0.1.1.0",
+                    "type": "HStack",
+                    "props": {
+                      "alignment": "center",
+                      "spacing": 8
+                    },
+                    "children": [
+                      {
+                        "id": "r.0.1.1.0.0",
+                        "type": "TextField",
+                        "props": {
+                          "text": "",
+                          "placeholder": "New task..."
+                        },
+                        "mods": [
+                          {
+                            "m": "textFieldStyle",
+                            "value": "automatic"
+                          }
+                        ],
+                        "src": [
+                          {
+                            "f": "corpus2/07_capy_timer/TodoView.swift",
+                            "a": 1399,
+                            "b": 1520
+                          }
+                        ],
+                        "event": "r.0.1.1.0.0"
+                      },
+                      {
+                        "id": "r.0.1.1.0.1",
+                        "type": "Button",
+                        "props": {
+                          "title": "Add"
+                        },
+                        "mods": [
+                          {
+                            "m": "buttonStyle",
+                            "value": "bordered"
+                          }
+                        ],
+                        "src": [
+                          {
+                            "f": "corpus2/07_capy_timer/TodoView.swift",
+                            "a": 1538,
+                            "b": 1613
+                          }
+                        ],
+                        "event": "r.0.1.1.0.1"
+                      }
+                    ],
+                    "src": [
+                      {
+                        "f": "corpus2/07_capy_timer/TodoView.swift",
+                        "a": 1361,
+                        "b": 1628
+                      }
+                    ]
+                  }
+                ],
+                "mods": [
+                  {
+                    "m": "padding",
+                    "top": 2,
+                    "leading": 0,
+                    "bottom": 0,
+                    "trailing": 0
+                  }
+                ],
+                "src": [
+                  {
+                    "f": "corpus2/07_capy_timer/TodoView.swift",
+                    "a": 265,
+                    "b": 1666
+                  },
+                  {
+                    "f": "corpus2/07_capy_timer/ContentView.swift",
+                    "a": 2466,
+                    "b": 2476
+                  },
+                  {
+                    "f": "corpus2/07_capy_timer/CapyTheme.swift",
+                    "a": 622,
+                    "b": 629
+                  }
+                ]
+              }
+            ],
+            "mods": [
+              {
+                "m": "padding",
+                "top": 12,
+                "leading": 12,
+                "bottom": 12,
+                "trailing": 12
+              },
+              {
+                "m": "background",
+                "view": [
+                  {
+                    "id": "r.0.1.b1.0",
+                    "type": "RoundedRectangle",
+                    "props": {
+                      "radius": 12
+                    },
+                    "mods": [
+                      {
+                        "m": "fill",
+                        "color": {
+                          "name": "gray"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "m": "overlay",
+                "view": [
+                  {
+                    "id": "r.0.1.v2.0",
+                    "type": "RoundedRectangle",
+                    "props": {
+                      "radius": 12
+                    },
+                    "mods": [
+                      {
+                        "m": "stroke",
+                        "color": {
+                          "name": "gray",
+                          "opacity": 0.25
+                        },
+                        "width": 1
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "src": [
+              {
+                "f": "corpus2/07_capy_timer/CapyTheme.swift",
+                "a": 567,
+                "b": 959
+              },
+              {
+                "f": "corpus2/07_capy_timer/ContentView.swift",
+                "a": 2383,
+                "b": 2495
+              }
+            ]
+          },
+          {
+            "id": "r.0.2",
+            "type": "VStack",
+            "props": {
+              "alignment": "leading",
+              "spacing": 8
+            },
+            "children": [
+              {
+                "id": "r.0.2.0",
+                "type": "Text",
+                "props": {
+                  "text": "Notes"
+                },
+                "mods": [
+                  {
+                    "m": "font",
+                    "font": {
+                      "style": "headline"
+                    }
+                  }
+                ],
+                "src": [
+                  {
+                    "f": "corpus2/07_capy_timer/CapyTheme.swift",
+                    "a": 1061,
+                    "b": 1102
+                  },
+                  {
+                    "f": "corpus2/07_capy_timer/ContentView.swift",
+                    "a": 2559,
+                    "b": 2588
+                  },
+                  {
+                    "f": "corpus2/07_capy_timer/CapyTheme.swift",
+                    "a": 622,
+                    "b": 629
+                  }
+                ]
+              },
+              {
+                "id": "r.0.2.1",
+                "type": "VStack",
+                "props": {
+                  "alignment": "leading",
+                  "spacing": 8
+                },
+                "children": [
+                  {
+                    "id": "r.0.2.1.0",
+                    "type": "TextField",
+                    "props": {
+                      "text": "nil",
+                      "placeholder": ""
+                    },
+                    "mods": [
+                      {
+                        "m": "frame",
+                        "height": 100
+                      },
+                      {
+                        "m": "padding",
+                        "top": 6,
+                        "leading": 6,
+                        "bottom": 6,
+                        "trailing": 6
+                      },
+                      {
+                        "m": "background",
+                        "view": [
+                          {
+                            "id": "r.0.2.1.0.b2.0",
+                            "type": "RoundedRectangle",
+                            "props": {
+                              "radius": 8
+                            },
+                            "mods": [
+                              {
+                                "m": "fill",
+                                "color": {
+                                  "name": "gray"
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "m": "overlay",
+                        "view": [
+                          {
+                            "id": "r.0.2.1.0.v3.0",
+                            "type": "RoundedRectangle",
+                            "props": {
+                              "radius": 8
+                            },
+                            "mods": [
+                              {
+                                "m": "stroke",
+                                "color": {
+                                  "name": "gray",
+                                  "opacity": 0.25
+                                },
+                                "width": 1
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ],
+                    "src": [
+                      {
+                        "f": "corpus2/07_capy_timer/NotesView.swift",
+                        "a": 287,
+                        "b": 749
+                      }
+                    ],
+                    "event": "r.0.2.1.0"
+                  }
+                ],
+                "mods": [
+                  {
+                    "m": "padding",
+                    "top": 2,
+                    "leading": 0,
+                    "bottom": 0,
+                    "trailing": 0
+                  }
+                ],
+                "src": [
+                  {
+                    "f": "corpus2/07_capy_timer/NotesView.swift",
+                    "a": 232,
+                    "b": 787
+                  },
+                  {
+                    "f": "corpus2/07_capy_timer/ContentView.swift",
+                    "a": 2610,
+                    "b": 2621
+                  },
+                  {
+                    "f": "corpus2/07_capy_timer/CapyTheme.swift",
+                    "a": 622,
+                    "b": 629
+                  }
+                ]
+              }
+            ],
+            "mods": [
+              {
+                "m": "padding",
+                "top": 12,
+                "leading": 12,
+                "bottom": 12,
+                "trailing": 12
+              },
+              {
+                "m": "background",
+                "view": [
+                  {
+                    "id": "r.0.2.b1.0",
+                    "type": "RoundedRectangle",
+                    "props": {
+                      "radius": 12
+                    },
+                    "mods": [
+                      {
+                        "m": "fill",
+                        "color": {
+                          "name": "gray"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "m": "overlay",
+                "view": [
+                  {
+                    "id": "r.0.2.v2.0",
+                    "type": "RoundedRectangle",
+                    "props": {
+                      "radius": 12
+                    },
+                    "mods": [
+                      {
+                        "m": "stroke",
+                        "color": {
+                          "name": "gray",
+                          "opacity": 0.25
+                        },
+                        "width": 1
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "src": [
+              {
+                "f": "corpus2/07_capy_timer/CapyTheme.swift",
+                "a": 567,
+                "b": 959
+              },
+              {
+                "f": "corpus2/07_capy_timer/ContentView.swift",
+                "a": 2531,
+                "b": 2640
+              }
+            ]
+          },
+          {
+            "id": "r.0.3",
+            "type": "VStack",
+            "props": {
+              "alignment": "leading",
+              "spacing": 8
+            },
+            "children": [
+              {
+                "id": "r.0.3.0",
+                "type": "Text",
+                "props": {
+                  "text": "Settings"
+                },
+                "mods": [
+                  {
+                    "m": "font",
+                    "font": {
+                      "style": "headline"
+                    }
+                  }
+                ],
+                "src": [
+                  {
+                    "f": "corpus2/07_capy_timer/CapyTheme.swift",
+                    "a": 1061,
+                    "b": 1102
+                  },
+                  {
+                    "f": "corpus2/07_capy_timer/ContentView.swift",
+                    "a": 2704,
+                    "b": 2736
+                  },
+                  {
+                    "f": "corpus2/07_capy_timer/CapyTheme.swift",
+                    "a": 622,
+                    "b": 629
+                  }
+                ]
+              },
+              {
+                "id": "r.0.3.1",
+                "type": "VStack",
+                "props": {
+                  "alignment": "leading",
+                  "spacing": 8
+                },
+                "children": [
+                  {
+                    "id": "r.0.3.1.0",
+                    "type": "HStack",
+                    "props": {
+                      "alignment": "center"
+                    },
+                    "children": [
+                      {
+                        "id": "r.0.3.1.0.0",
+                        "type": "Text",
+                        "props": {
+                          "text": "Focus (min)"
+                        },
+                        "mods": [
+                          {
+                            "m": "frame",
+                            "width": 90,
+                            "alignment": "leading"
+                          }
+                        ],
+                        "src": [
+                          {
+                            "f": "corpus2/07_capy_timer/SettingsView.swift",
+                            "a": 527,
+                            "b": 606
+                          }
+                        ]
+                      },
+                      {
+                        "id": "r.0.3.1.0.1",
+                        "type": "TextField",
+                        "props": {
+                          "text": "",
+                          "placeholder": "25"
+                        },
+                        "mods": [
+                          {
+                            "m": "frame",
+                            "width": 60
+                          },
+                          {
+                            "m": "textFieldStyle",
+                            "value": "automatic"
+                          }
+                        ],
+                        "src": [
+                          {
+                            "f": "corpus2/07_capy_timer/SettingsView.swift",
+                            "a": 624,
+                            "b": 761
+                          }
+                        ],
+                        "event": "r.0.3.1.0.1"
+                      }
+                    ],
+                    "src": [
+                      {
+                        "f": "corpus2/07_capy_timer/SettingsView.swift",
+                        "a": 501,
+                        "b": 776
+                      }
+                    ]
+                  },
+                  {
+                    "id": "r.0.3.1.1",
+                    "type": "HStack",
+                    "props": {
+                      "alignment": "center"
+                    },
+                    "children": [
+                      {
+                        "id": "r.0.3.1.1.0",
+                        "type": "Text",
+                        "props": {
+                          "text": "Break (min)"
+                        },
+                        "mods": [
+                          {
+                            "m": "frame",
+                            "width": 90,
+                            "alignment": "leading"
+                          }
+                        ],
+                        "src": [
+                          {
+                            "f": "corpus2/07_capy_timer/SettingsView.swift",
+                            "a": 816,
+                            "b": 895
+                          }
+                        ]
+                      },
+                      {
+                        "id": "r.0.3.1.1.1",
+                        "type": "TextField",
+                        "props": {
+                          "text": "",
+                          "placeholder": "5"
+                        },
+                        "mods": [
+                          {
+                            "m": "frame",
+                            "width": 60
+                          },
+                          {
+                            "m": "textFieldStyle",
+                            "value": "automatic"
+                          }
+                        ],
+                        "src": [
+                          {
+                            "f": "corpus2/07_capy_timer/SettingsView.swift",
+                            "a": 913,
+                            "b": 1049
+                          }
+                        ],
+                        "event": "r.0.3.1.1.1"
+                      }
+                    ],
+                    "src": [
+                      {
+                        "f": "corpus2/07_capy_timer/SettingsView.swift",
+                        "a": 790,
+                        "b": 1064
+                      }
+                    ]
+                  },
+                  {
+                    "id": "r.0.3.1.2",
+                    "type": "HStack",
+                    "props": {
+                      "alignment": "center",
+                      "spacing": 8
+                    },
+                    "children": [
+                      {
+                        "id": "r.0.3.1.2.0",
+                        "type": "Button",
+                        "props": {
+                          "title": "Save"
+                        },
+                        "mods": [
+                          {
+                            "m": "buttonStyle",
+                            "value": "borderedProminent"
+                          }
+                        ],
+                        "src": [
+                          {
+                            "f": "corpus2/07_capy_timer/SettingsView.swift",
+                            "a": 1116,
+                            "b": 1195
+                          }
+                        ],
+                        "event": "r.0.3.1.2.0"
+                      },
+                      {
+                        "id": "r.0.3.1.2.1",
+                        "type": "Button",
+                        "props": {
+                          "title": "Reset Defaults"
+                        },
+                        "mods": [
+                          {
+                            "m": "buttonStyle",
+                            "value": "bordered"
+                          }
+                        ],
+                        "src": [
+                          {
+                            "f": "corpus2/07_capy_timer/SettingsView.swift",
+                            "a": 1213,
+                            "b": 1302
+                          }
+                        ],
+                        "event": "r.0.3.1.2.1"
+                      }
+                    ],
+                    "mods": [
+                      {
+                        "m": "padding",
+                        "top": 4,
+                        "leading": 0,
+                        "bottom": 0,
+                        "trailing": 0
+                      }
+                    ],
+                    "src": [
+                      {
+                        "f": "corpus2/07_capy_timer/SettingsView.swift",
+                        "a": 1078,
+                        "b": 1348
+                      }
+                    ]
+                  },
+                  {
+                    "id": "r.0.3.1.3",
+                    "type": "Divider",
+                    "props": {},
+                    "mods": [
+                      {
+                        "m": "padding",
+                        "top": 8,
+                        "leading": 0,
+                        "bottom": 8,
+                        "trailing": 0
+                      }
+                    ],
+                    "src": [
+                      {
+                        "f": "corpus2/07_capy_timer/SettingsView.swift",
+                        "a": 1376,
+                        "b": 1425
+                      }
+                    ]
+                  },
+                  {
+                    "id": "r.0.3.1.4",
+                    "type": "HStack",
+                    "props": {
+                      "alignment": "center"
+                    },
+                    "children": [
+                      {
+                        "id": "r.0.3.1.4.0",
+                        "type": "Text",
+                        "props": {
+                          "text": "Update Settings"
+                        },
+                        "mods": [
+                          {
+                            "m": "font",
+                            "font": {
+                              "style": "subheadline"
+                            }
+                          },
+                          {
+                            "m": "fontWeight",
+                            "weight": "medium"
+                          }
+                        ],
+                        "src": [
+                          {
+                            "f": "corpus2/07_capy_timer/SettingsView.swift",
+                            "a": 1479,
+                            "b": 1585
+                          }
+                        ]
+                      },
+                      {
+                        "id": "r.0.3.1.4.1",
+                        "type": "Spacer",
+                        "props": {},
+                        "src": [
+                          {
+                            "f": "corpus2/07_capy_timer/SettingsView.swift",
+                            "a": 1603,
+                            "b": 1611
+                          }
+                        ]
+                      },
+                      {
+                        "id": "r.0.3.1.4.2",
+                        "type": "Button",
+                        "props": {
+                          "title": "Configure"
+                        },
+                        "mods": [
+                          {
+                            "m": "buttonStyle",
+                            "value": "bordered"
+                          }
+                        ],
+                        "src": [
+                          {
+                            "f": "corpus2/07_capy_timer/SettingsView.swift",
+                            "a": 1629,
+                            "b": 1757
+                          }
+                        ],
+                        "event": "r.0.3.1.4.2"
+                      }
+                    ],
+                    "src": [
+                      {
+                        "f": "corpus2/07_capy_timer/SettingsView.swift",
+                        "a": 1453,
+                        "b": 1772
+                      }
+                    ]
+                  }
+                ],
+                "src": [
+                  {
+                    "f": "corpus2/07_capy_timer/SettingsView.swift",
+                    "a": 446,
+                    "b": 1965
+                  },
+                  {
+                    "f": "corpus2/07_capy_timer/ContentView.swift",
+                    "a": 2758,
+                    "b": 2772
+                  },
+                  {
+                    "f": "corpus2/07_capy_timer/CapyTheme.swift",
+                    "a": 622,
+                    "b": 629
+                  }
+                ]
+              }
+            ],
+            "mods": [
+              {
+                "m": "padding",
+                "top": 12,
+                "leading": 12,
+                "bottom": 12,
+                "trailing": 12
+              },
+              {
+                "m": "background",
+                "view": [
+                  {
+                    "id": "r.0.3.b1.0",
+                    "type": "RoundedRectangle",
+                    "props": {
+                      "radius": 12
+                    },
+                    "mods": [
+                      {
+                        "m": "fill",
+                        "color": {
+                          "name": "gray"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "m": "overlay",
+                "view": [
+                  {
+                    "id": "r.0.3.v2.0",
+                    "type": "RoundedRectangle",
+                    "props": {
+                      "radius": 12
+                    },
+                    "mods": [
+                      {
+                        "m": "stroke",
+                        "color": {
+                          "name": "gray",
+                          "opacity": 0.25
+                        },
+                        "width": 1
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "src": [
+              {
+                "f": "corpus2/07_capy_timer/CapyTheme.swift",
+                "a": 567,
+                "b": 959
+              },
+              {
+                "f": "corpus2/07_capy_timer/ContentView.swift",
+                "a": 2676,
+                "b": 2791
+              }
+            ]
+          },
+          {
+            "id": "r.0.4",
+            "type": "VStack",
+            "props": {
+              "alignment": "leading",
+              "spacing": 8
+            },
+            "children": [
+              {
+                "id": "r.0.4.0",
+                "type": "Text",
+                "props": {
+                  "text": "Updates"
+                },
+                "mods": [
+                  {
+                    "m": "font",
+                    "font": {
+                      "style": "headline"
+                    }
+                  }
+                ],
+                "src": [
+                  {
+                    "f": "corpus2/07_capy_timer/CapyTheme.swift",
+                    "a": 1061,
+                    "b": 1102
+                  },
+                  {
+                    "f": "corpus2/07_capy_timer/ContentView.swift",
+                    "a": 2855,
+                    "b": 2886
+                  },
+                  {
+                    "f": "corpus2/07_capy_timer/CapyTheme.swift",
+                    "a": 622,
+                    "b": 629
+                  }
+                ]
+              }
+            ],
+            "mods": [
+              {
+                "m": "padding",
+                "top": 12,
+                "leading": 12,
+                "bottom": 12,
+                "trailing": 12
+              },
+              {
+                "m": "background",
+                "view": [
+                  {
+                    "id": "r.0.4.b1.0",
+                    "type": "RoundedRectangle",
+                    "props": {
+                      "radius": 12
+                    },
+                    "mods": [
+                      {
+                        "m": "fill",
+                        "color": {
+                          "name": "gray"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "m": "overlay",
+                "view": [
+                  {
+                    "id": "r.0.4.v2.0",
+                    "type": "RoundedRectangle",
+                    "props": {
+                      "radius": 12
+                    },
+                    "mods": [
+                      {
+                        "m": "stroke",
+                        "color": {
+                          "name": "gray",
+                          "opacity": 0.25
+                        },
+                        "width": 1
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "src": [
+              {
+                "f": "corpus2/07_capy_timer/CapyTheme.swift",
+                "a": 567,
+                "b": 959
+              },
+              {
+                "f": "corpus2/07_capy_timer/ContentView.swift",
+                "a": 2827,
+                "b": 2939
+              }
+            ]
+          }
+        ],
         "mods": [
           {
             "m": "padding",
