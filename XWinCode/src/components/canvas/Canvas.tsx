@@ -621,6 +621,13 @@ export default function Canvas({ path, onClose }: { path: string; onClose: () =>
   );
 
   useEffect(() => {
+    rt.onUpdate = () => rerenderNow(rt.takeAnimation());
+    return () => {
+      rt.onUpdate = undefined;
+    };
+  }, [rt, rerenderNow]);
+
+  useEffect(() => {
     if (!motion) return;
     const { duration } = curveCss(motion.curve);
     const timer = window.setTimeout(() => setMotion(null), duration * 1000 + 120);

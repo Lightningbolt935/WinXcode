@@ -29,6 +29,7 @@ import {
   equals,
   isNum,
   isT,
+  jsonOf,
   keyOf,
   nodesOf,
   num,
@@ -100,6 +101,59 @@ class Implicit {
 
 export class Fault extends Error {}
 
+export const APP_STORAGE = new Map<string, V>();
+
+export function getAppStorage(key: string): V | null {
+  try {
+    if (typeof localStorage !== "undefined") {
+      const raw = localStorage.getItem(`winxcode:appstorage:${key}`);
+      if (raw !== null) {
+        try {
+          const parsed = JSON.parse(raw);
+          if (typeof parsed === "number") return new Dbl(parsed);
+          return parsed as V;
+        } catch {
+          return raw;
+        }
+      }
+    }
+  } catch {}
+  return APP_STORAGE.get(key) ?? null;
+}
+
+export function setAppStorage(key: string, val: V): void {
+  APP_STORAGE.set(key, val);
+  try {
+    if (typeof localStorage !== "undefined") {
+      const json = jsonOf(val);
+      localStorage.setItem(`winxcode:appstorage:${key}`, JSON.stringify(json ?? val));
+    }
+  } catch {}
+}
+
+export function clearAppStorage(): void {
+  APP_STORAGE.clear();
+  try {
+    if (typeof localStorage !== "undefined") {
+      const keysToRemove: string[] = [];
+      for (let i = 0; i < localStorage.length; i++) {
+        const k = localStorage.key(i);
+        if (k?.startsWith("winxcode:appstorage:")) keysToRemove.push(k);
+      }
+      for (const k of keysToRemove) localStorage.removeItem(k);
+    }
+  } catch {}
+}
+
+export interface ScheduledTimer {
+  id: number;
+  seq: number;
+  dueMs: number;
+  delayMs: number;
+  fn: () => void;
+  handle?: ReturnType<typeof setTimeout>;
+}
+
 const STATE_ATTRS = ["State", "StateObject", "AppStorage", "SceneStorage", "FocusState", "GestureState", "SceneStorage", "Query"];
 
 const BUILTIN_TYPES = new Set([
@@ -132,6 +186,7 @@ const BUILTIN_TYPES = new Set([
   "NSColor",
   "UIFont",
   "DispatchQueue",
+  "DispatchTime",
   "Task",
   "Animation",
   "Edge",
@@ -224,6 +279,11 @@ export class Runtime {
   private stack: Inst[] = [];
   private steps = 0;
   private uid = 1;
+  private virtualTime = Date.now();
+  private nextTimerId = 0;
+  private timerSeq = 0;
+  private timerQueue: ScheduledTimer[] = [];
+  public onUpdate?: () => void;
   scheme: "light" | "dark" = "light";
   size = { width: 393, height: 852 };
   typeSize = "large";
@@ -235,6 +295,93 @@ export class Runtime {
     return a;
   }
   sizeClass: { h: "compact" | "regular"; v: "compact" | "regular" } = { h: "compact", v: "regular" };
+
+  public scheduleTimer(delayMs: number, fn: () => void): number {
+    const id = ++this.nextTimerId;
+    const seq = ++this.timerSeq;
+    const now = Math.max(Date.now(), this.virtualTime);
+    const dueMs = now + Math.max(0, delayMs);
+    const item: ScheduledTimer = { id, seq, dueMs, delayMs, fn };
+    this.timerQueue.push(item);
+    this.sortTimerQueue();
+
+    item.handle = setTimeout(() => {
+      this.fireTimer(id);
+    }, Math.max(0, delayMs));
+
+    return id;
+  }
+
+  private sortTimerQueue() {
+    this.timerQueue.sort((a, b) => a.dueMs - b.dueMs || a.seq - b.seq);
+  }
+
+  private fireTimer(id: number) {
+    const idx = this.timerQueue.findIndex((t) => t.id === id);
+    if (idx === -1) return;
+    const [target] = this.timerQueue.splice(idx, 1);
+    if (target.handle) clearTimeout(target.handle);
+
+    const dueNow = this.timerQueue.filter((t) => t.dueMs <= target.dueMs && t.seq < target.seq);
+    for (const d of dueNow) {
+      const dIdx = this.timerQueue.indexOf(d);
+      if (dIdx !== -1) {
+        this.timerQueue.splice(dIdx, 1);
+        if (d.handle) clearTimeout(d.handle);
+        try {
+          d.fn();
+        } catch (e) {
+          this.notes.add(e instanceof Error ? e.message : String(e));
+        }
+      }
+    }
+
+    try {
+      target.fn();
+    } catch (e) {
+      this.notes.add(e instanceof Error ? e.message : String(e));
+    }
+    this.onUpdate?.();
+  }
+
+  public flushTimers(): void {
+    this.sortTimerQueue();
+    const pending = [...this.timerQueue];
+    this.timerQueue = [];
+    for (const t of pending) {
+      if (t.handle) clearTimeout(t.handle);
+      try {
+        t.fn();
+      } catch (e) {
+        this.notes.add(e instanceof Error ? e.message : String(e));
+      }
+    }
+    if (pending.length > 0) this.onUpdate?.();
+  }
+
+  public advanceTimers(ms: number): void {
+    this.virtualTime = Math.max(Date.now(), this.virtualTime) + ms;
+    this.sortTimerQueue();
+    let fired = false;
+    while (this.timerQueue.length > 0 && this.timerQueue[0].dueMs <= this.virtualTime) {
+      const item = this.timerQueue.shift()!;
+      if (item.handle) clearTimeout(item.handle);
+      try {
+        item.fn();
+        fired = true;
+      } catch (e) {
+        this.notes.add(e instanceof Error ? e.message : String(e));
+      }
+    }
+    if (fired) this.onUpdate?.();
+  }
+
+  public clearTimers(): void {
+    for (const t of this.timerQueue) {
+      if (t.handle) clearTimeout(t.handle);
+    }
+    this.timerQueue = [];
+  }
 
   sourceOf(path: string): string | undefined {
     return this.files.get(path)?.src;
@@ -269,6 +416,7 @@ export class Runtime {
   resetState() {
     this.state.clear();
     this.shared.clear();
+    this.clearTimers();
   }
 
   targets(path: string): PreviewTarget[] {
@@ -502,6 +650,33 @@ export class Runtime {
   private fieldSlot(inst: Inst, p: Property, provided: V | undefined, env: Env): Slot {
     const attr = p.attrs.find((a) => /^[A-Z]/.test(a)) ?? "";
     const attrName = attr.replace(/\(.*$/, "");
+    if (attrName === "AppStorage") {
+      const match = /AppStorage\(\s*"([^"]+)"/.exec(attr);
+      const storeKey = match ? match[1] : p.name;
+      const stored = getAppStorage(storeKey);
+      let initialVal: V;
+      if (stored !== null && stored !== undefined) {
+        initialVal = coerce(stored, p.type);
+      } else {
+        const v = provided !== undefined ? provided : p.init ? this.evalExpr(p.init, env) : this.placeholder(p.type);
+        initialVal = coerce(copyValue(v), p.type);
+        setAppStorage(storeKey, initialVal);
+      }
+      const k = `@AppStorage#${storeKey}`;
+      this.state.set(k, initialVal);
+      return {
+        get: () => {
+          const fromStore = getAppStorage(storeKey);
+          if (fromStore !== null && fromStore !== undefined) return coerce(fromStore, p.type);
+          return this.state.get(k) ?? initialVal;
+        },
+        set: (v) => {
+          const coerced = coerce(v, p.type);
+          setAppStorage(storeKey, coerced);
+          this.state.set(k, coerced);
+        },
+      };
+    }
     if (STATE_ATTRS.includes(attrName)) {
       const k = `${inst.key}#${p.name}`;
       if (!this.state.has(k)) {
@@ -935,7 +1110,10 @@ export class Runtime {
       case "id":
         return this.lookup(e.name, env);
       case "member":
-        if (e.base === null) return { t: "sym", name: e.name };
+        if (e.base === null) {
+          if (e.name === "now") return { t: "dispatch_time", ms: Date.now() };
+          return { t: "sym", name: e.name };
+        }
         return this.member(this.evalExpr(e.base, env), e.name, env);
       case "call":
         return this.evalCall(e, env);
@@ -1182,6 +1360,10 @@ export class Runtime {
     }
     const callee = e.callee;
     if (callee.k === "member" && callee.base === null) {
+      if (callee.name === "now") return { t: "dispatch_time", ms: Date.now() };
+      if (callee.name === "seconds" || callee.name === "milliseconds" || callee.name === "microseconds" || callee.name === "nanoseconds") {
+        return { t: "sym", name: callee.name, args };
+      }
       if (callee.name === "constant") {
         const v = args[0]?.value ?? null;
         return { t: "binding", get: () => v, set: () => {} };
@@ -1377,6 +1559,32 @@ export class Runtime {
     if (name === "init") return null;
     if (isT(base, "opaque")) return this.opaque(`${base.name}.${name}`);
     if (isT(base, "type")) return this.staticCall(base.name, name, args, trailing, env);
+    if (isT(base, "dispatch_queue")) {
+      const fn = trailing[0] ?? arg(args, "execute") ?? arg(args, null);
+      if (name === "asyncAfter") {
+        const deadline = arg(args, "deadline") ?? arg(args, null) ?? null;
+        let delayMs = 0;
+        if (isT(deadline, "dispatch_time")) {
+          delayMs = Math.max(0, deadline.ms - Date.now());
+        } else if (isNum(deadline)) {
+          delayMs = Math.max(0, num(deadline) * 1000);
+        } else if (isT(deadline, "sym")) {
+          const val = deadline.args?.[0]?.value ?? 0;
+          if (deadline.name === "seconds") delayMs = num(val) * 1000;
+          else if (deadline.name === "milliseconds") delayMs = num(val);
+        }
+        this.scheduleTimer(delayMs, () => {
+          if (fn) void this.callValue(fn, [], []);
+        });
+        return null;
+      }
+      if (name === "async") {
+        this.scheduleTimer(0, () => {
+          if (fn) void this.callValue(fn, [], []);
+        });
+        return null;
+      }
+    }
     if (!nodesOf(base)) {
       const ext = this.extMember(base, name, "method");
       if (ext?.m) return this.callMethod(ext.m, args, trailing, new Env(this.globals, { value: base, decl: null }));
@@ -1481,6 +1689,12 @@ export class Runtime {
       case "Date":
         if (name === "now") return { t: "date", ms: Date.now() };
         break;
+      case "DispatchTime":
+        if (name === "now") return { t: "dispatch_time", ms: Date.now() };
+        break;
+      case "DispatchQueue":
+        if (name === "main") return { t: "dispatch_queue", name: "main" };
+        break;
       case "CGSize":
       case "CGPoint":
       case "CGRect":
@@ -1515,6 +1729,12 @@ export class Runtime {
         return { t: "font", spec: fontCall(name, args) };
       case "Binding.constant":
         return { t: "binding", get: () => first ?? null, set: () => {} };
+      case "DispatchTime.now":
+        return { t: "dispatch_time", ms: Date.now() };
+      case "DispatchQueue.main":
+        return { t: "dispatch_queue", name: "main" };
+      case "DispatchQueue.global":
+        return { t: "dispatch_queue", name: "global" };
       case "Color.init":
         return { t: "color", spec: makeColor("", args, this.scheme) ?? { name: "gray" } };
     }
@@ -1567,6 +1787,21 @@ export class Runtime {
         return { t: "range", lo: num(a), hi: num(b) + 1 };
     }
     if (op === "+") {
+      if (isT(a, "dispatch_time") || isT(b, "dispatch_time")) {
+        const baseMs = isT(a, "dispatch_time") ? a.ms : (b as { ms: number }).ms;
+        const other = isT(a, "dispatch_time") ? b : a;
+        let deltaMs = 0;
+        if (isNum(other)) {
+          deltaMs = num(other) * 1000;
+        } else if (isT(other, "sym")) {
+          const val = other.args?.[0]?.value ?? 0;
+          if (other.name === "seconds") deltaMs = num(val) * 1000;
+          else if (other.name === "milliseconds") deltaMs = num(val);
+          else if (other.name === "microseconds") deltaMs = num(val) / 1000;
+          else if (other.name === "nanoseconds") deltaMs = num(val) / 1000000;
+        }
+        return { t: "dispatch_time", ms: baseMs + deltaMs };
+      }
       if (typeof a === "string" || typeof b === "string") return describe(a) + describe(b);
       if (Array.isArray(a) && Array.isArray(b)) return [...a, ...b];
       const na = nodesOf(a);
@@ -1585,6 +1820,17 @@ export class Runtime {
         return wrap(x + y);
       case "-":
       case "&-":
+        if (isT(a, "dispatch_time")) {
+          if (isT(b, "dispatch_time")) return new Dbl((a.ms - b.ms) / 1000);
+          let deltaMs = 0;
+          if (isNum(b)) deltaMs = num(b) * 1000;
+          else if (isT(b, "sym")) {
+            const val = b.args?.[0]?.value ?? 0;
+            if (b.name === "seconds") deltaMs = num(val) * 1000;
+            else if (b.name === "milliseconds") deltaMs = num(val);
+          }
+          return { t: "dispatch_time", ms: a.ms - deltaMs };
+        }
         return wrap(x - y);
       case "*":
       case "&*":

@@ -36,6 +36,8 @@ export type V =
   | { t: "obj"; type: TypeDecl; fields: Map<string, V>; uid: number }
   | { t: "type"; name: string }
   | { t: "date"; ms: number }
+  | { t: "dispatch_queue"; name: string }
+  | { t: "dispatch_time"; ms: number }
   | { t: "keypath"; path: string[] }
   | { t: "opaque"; name: string };
 
@@ -90,6 +92,10 @@ export function describe(v: V, nested = false): string {
       return `${v.type.name}(${[...v.fields].map(([k, x]) => `${k}: ${describe(x, true)}`).join(", ")})`;
     case "date":
       return new Date(v.ms).toLocaleString();
+    case "dispatch_queue":
+      return `DispatchQueue.${v.name}`;
+    case "dispatch_time":
+      return `DispatchTime(${v.ms})`;
     case "dict":
       return `[${[...v.m.values()].map(([k, x]) => `${describe(k, true)}: ${describe(x, true)}`).join(", ")}]`;
     case "color":
@@ -123,6 +129,10 @@ export function keyOf(v: V): string {
       return `g:${v.lo}..<${v.hi}`;
     case "date":
       return `d:${v.ms}`;
+    case "dispatch_queue":
+      return `dq:${v.name}`;
+    case "dispatch_time":
+      return `dt:${v.ms}`;
     default:
       return `x:${v.t}`;
   }

@@ -6,6 +6,13 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 ## [Unreleased]
 
 ### Added
+- Phase 1a Item 3: Shims for `DispatchQueue.main.asyncAfter` and `@AppStorage` persistence:
+  - `DispatchQueue.main.asyncAfter` and `DispatchQueue.main.async` support with timer queue maintaining strict deadline + sequence FIFO ordering
+  - `DispatchTime.now()`, `.now() + seconds`, `.seconds(n)`, and `.milliseconds(n)` deadline offset arithmetic
+  - Virtual time clock advancement (`advanceTimers`, `flushTimers`, `clearTimers`) for deterministic testing
+  - Canvas preview integration: `rt.onUpdate` automatically triggers canvas re-render when timers fire
+  - `@AppStorage` persistence shim: persistent key-value store backed by memory and `localStorage` (`winxcode:appstorage:*`), enabling persistence across re-renders and separate `Runtime` instances
+  - Unit tests in `XWinCode/src/lib/preview/runtime.test.ts` (7 comprehensive tests passing)
 - Phase 1a Item 2: Unsupported callout panel & ignored modifier classification in Canvas and PreviewRender:
   - Visual callouts in Canvas (`.canvas-unsupported-banner`, `.canvas-ignored-banner`) with "Check on iPhone" quick-action button
   - Distinct classification between Level 1 UNSUPPORTED (renders wrong or device-only) and Level 2 IGNORED (safe no-op layout/a11y modifiers)
