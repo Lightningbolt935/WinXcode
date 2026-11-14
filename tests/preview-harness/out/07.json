@@ -1,0 +1,881 @@
+{
+  "id": "07",
+  "name": "Charts",
+  "parseOk": true,
+  "parseErrors": [],
+  "renderOk": true,
+  "targets": [
+    "preview:0",
+    "view:ContentView"
+  ],
+  "notes": [
+    "Chart"
+  ],
+  "unsupportedNodes": [
+    "Chart"
+  ],
+  "stats": {
+    "views": 42,
+    "depth": 4,
+    "heavy": 1
+  },
+  "treeDepth": 5,
+  "viewNodeCount": 37,
+  "tree": {
+    "id": "r",
+    "type": "NavigationStack",
+    "props": {},
+    "children": [
+      {
+        "id": "r.0",
+        "type": "VStack",
+        "props": {
+          "alignment": "leading",
+          "spacing": 16
+        },
+        "children": [
+          {
+            "id": "r.0.0",
+            "type": "Picker",
+            "props": {
+              "title": "Dataset",
+              "selection": 0,
+              "options": [
+                {
+                  "tag": 0,
+                  "label": [
+                    {
+                      "id": "r.0.0.o0.0",
+                      "type": "Text",
+                      "props": {
+                        "text": "Steps"
+                      },
+                      "mods": [],
+                      "src": [
+                        {
+                          "f": "corpus/07_charts/ContentView.swift",
+                          "a": 1701,
+                          "b": 1721
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "tag": 1,
+                  "label": [
+                    {
+                      "id": "r.0.0.o1.0",
+                      "type": "Text",
+                      "props": {
+                        "text": "Calories"
+                      },
+                      "mods": [],
+                      "src": [
+                        {
+                          "f": "corpus/07_charts/ContentView.swift",
+                          "a": 1742,
+                          "b": 1765
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            "mods": [
+              {
+                "m": "pickerStyle",
+                "value": "segmented"
+              },
+              {
+                "m": "padding",
+                "top": 0,
+                "leading": 16,
+                "bottom": 0,
+                "trailing": 16
+              }
+            ],
+            "src": [
+              {
+                "f": "corpus/07_charts/ContentView.swift",
+                "a": 1632,
+                "b": 1862
+              }
+            ],
+            "event": "r.0.0"
+          },
+          {
+            "id": "r.0.1",
+            "type": "VStack",
+            "props": {
+              "alignment": "leading"
+            },
+            "children": [
+              {
+                "id": "r.0.1.0",
+                "type": "Text",
+                "props": {
+                  "text": "Daily Steps"
+                },
+                "mods": [
+                  {
+                    "m": "font",
+                    "font": {
+                      "style": "headline"
+                    }
+                  }
+                ],
+                "src": [
+                  {
+                    "f": "corpus/07_charts/ContentView.swift",
+                    "a": 1930,
+                    "b": 1986
+                  }
+                ]
+              },
+              {
+                "id": "r.0.1.1",
+                "type": "Text",
+                "props": {
+                  "text": "Total: 53000"
+                },
+                "mods": [
+                  {
+                    "m": "font",
+                    "font": {
+                      "style": "caption"
+                    }
+                  },
+                  {
+                    "m": "foreground",
+                    "color": {
+                      "name": "secondary"
+                    }
+                  }
+                ],
+                "src": [
+                  {
+                    "f": "corpus/07_charts/ContentView.swift",
+                    "a": 2007,
+                    "b": 2175
+                  }
+                ]
+              }
+            ],
+            "mods": [
+              {
+                "m": "padding",
+                "top": 0,
+                "leading": 16,
+                "bottom": 0,
+                "trailing": 16
+              }
+            ],
+            "src": [
+              {
+                "f": "corpus/07_charts/ContentView.swift",
+                "a": 1880,
+                "b": 2231
+              }
+            ]
+          },
+          {
+            "id": "r.0.2",
+            "type": "Unsupported",
+            "props": {
+              "name": "Chart"
+            },
+            "mods": [
+              {
+                "m": "frame",
+                "height": 240
+              },
+              {
+                "m": "padding",
+                "top": 16,
+                "leading": 16,
+                "bottom": 16,
+                "trailing": 16
+              },
+              {
+                "m": "background",
+                "material": "regular",
+                "shape": {
+                  "shape": "roundedRect",
+                  "radius": 16
+                }
+              },
+              {
+                "m": "padding",
+                "top": 0,
+                "leading": 16,
+                "bottom": 0,
+                "trailing": 16
+              }
+            ],
+            "src": [
+              {
+                "f": "corpus/07_charts/ContentView.swift",
+                "a": 2249,
+                "b": 3741
+              }
+            ]
+          },
+          {
+            "id": "r.0.3",
+            "type": "Picker",
+            "props": {
+              "title": "Chart Type",
+              "selection": "bar",
+              "options": [
+                {
+                  "tag": "bar",
+                  "label": [
+                    {
+                      "id": "r.0.3.o0.0",
+                      "type": "Text",
+                      "props": {
+                        "text": "Bar"
+                      },
+                      "mods": [],
+                      "src": [
+                        {
+                          "f": "corpus/07_charts/ContentView.swift",
+                          "a": 3899,
+                          "b": 3928
+                        },
+                        {
+                          "f": "corpus/07_charts/ContentView.swift",
+                          "a": 3825,
+                          "b": 3950
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "tag": "line",
+                  "label": [
+                    {
+                      "id": "r.0.3.o1.0",
+                      "type": "Text",
+                      "props": {
+                        "text": "Line"
+                      },
+                      "mods": [],
+                      "src": [
+                        {
+                          "f": "corpus/07_charts/ContentView.swift",
+                          "a": 3899,
+                          "b": 3928
+                        },
+                        {
+                          "f": "corpus/07_charts/ContentView.swift",
+                          "a": 3825,
+                          "b": 3950
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "tag": "area",
+                  "label": [
+                    {
+                      "id": "r.0.3.o2.0",
+                      "type": "Text",
+                      "props": {
+                        "text": "Area"
+                      },
+                      "mods": [],
+                      "src": [
+                        {
+                          "f": "corpus/07_charts/ContentView.swift",
+                          "a": 3899,
+                          "b": 3928
+                        },
+                        {
+                          "f": "corpus/07_charts/ContentView.swift",
+                          "a": 3825,
+                          "b": 3950
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            "mods": [
+              {
+                "m": "pickerStyle",
+                "value": "segmented"
+              },
+              {
+                "m": "padding",
+                "top": 0,
+                "leading": 16,
+                "bottom": 0,
+                "trailing": 16
+              }
+            ],
+            "src": [
+              {
+                "f": "corpus/07_charts/ContentView.swift",
+                "a": 3759,
+                "b": 4047
+              }
+            ],
+            "event": "r.0.3"
+          },
+          {
+            "id": "r.0.4",
+            "type": "List",
+            "props": {},
+            "children": [
+              {
+                "id": "r.0.4.0",
+                "type": "HStack",
+                "props": {
+                  "alignment": "center"
+                },
+                "children": [
+                  {
+                    "id": "r.0.4.0.0",
+                    "type": "Text",
+                    "props": {
+                      "text": "Mon"
+                    },
+                    "mods": [
+                      {
+                        "m": "fontWeight",
+                        "weight": "medium"
+                      }
+                    ],
+                    "src": [
+                      {
+                        "f": "corpus/07_charts/ContentView.swift",
+                        "a": 4143,
+                        "b": 4180
+                      }
+                    ]
+                  },
+                  {
+                    "id": "r.0.4.0.1",
+                    "type": "Spacer",
+                    "props": {},
+                    "src": [
+                      {
+                        "f": "corpus/07_charts/ContentView.swift",
+                        "a": 4205,
+                        "b": 4213
+                      }
+                    ]
+                  },
+                  {
+                    "id": "r.0.4.0.2",
+                    "type": "Text",
+                    "props": {
+                      "text": "6200"
+                    },
+                    "mods": [
+                      {
+                        "m": "foreground",
+                        "color": {
+                          "name": "secondary"
+                        }
+                      }
+                    ],
+                    "src": [
+                      {
+                        "f": "corpus/07_charts/ContentView.swift",
+                        "a": 4238,
+                        "b": 4339
+                      }
+                    ]
+                  }
+                ],
+                "src": [
+                  {
+                    "f": "corpus/07_charts/ContentView.swift",
+                    "a": 4110,
+                    "b": 4361
+                  }
+                ]
+              },
+              {
+                "id": "r.0.4.1",
+                "type": "HStack",
+                "props": {
+                  "alignment": "center"
+                },
+                "children": [
+                  {
+                    "id": "r.0.4.1.0",
+                    "type": "Text",
+                    "props": {
+                      "text": "Tue"
+                    },
+                    "mods": [
+                      {
+                        "m": "fontWeight",
+                        "weight": "medium"
+                      }
+                    ],
+                    "src": [
+                      {
+                        "f": "corpus/07_charts/ContentView.swift",
+                        "a": 4143,
+                        "b": 4180
+                      }
+                    ]
+                  },
+                  {
+                    "id": "r.0.4.1.1",
+                    "type": "Spacer",
+                    "props": {},
+                    "src": [
+                      {
+                        "f": "corpus/07_charts/ContentView.swift",
+                        "a": 4205,
+                        "b": 4213
+                      }
+                    ]
+                  },
+                  {
+                    "id": "r.0.4.1.2",
+                    "type": "Text",
+                    "props": {
+                      "text": "8100"
+                    },
+                    "mods": [
+                      {
+                        "m": "foreground",
+                        "color": {
+                          "name": "secondary"
+                        }
+                      }
+                    ],
+                    "src": [
+                      {
+                        "f": "corpus/07_charts/ContentView.swift",
+                        "a": 4238,
+                        "b": 4339
+                      }
+                    ]
+                  }
+                ],
+                "src": [
+                  {
+                    "f": "corpus/07_charts/ContentView.swift",
+                    "a": 4110,
+                    "b": 4361
+                  }
+                ]
+              },
+              {
+                "id": "r.0.4.2",
+                "type": "HStack",
+                "props": {
+                  "alignment": "center"
+                },
+                "children": [
+                  {
+                    "id": "r.0.4.2.0",
+                    "type": "Text",
+                    "props": {
+                      "text": "Wed"
+                    },
+                    "mods": [
+                      {
+                        "m": "fontWeight",
+                        "weight": "medium"
+                      }
+                    ],
+                    "src": [
+                      {
+                        "f": "corpus/07_charts/ContentView.swift",
+                        "a": 4143,
+                        "b": 4180
+                      }
+                    ]
+                  },
+                  {
+                    "id": "r.0.4.2.1",
+                    "type": "Spacer",
+                    "props": {},
+                    "src": [
+                      {
+                        "f": "corpus/07_charts/ContentView.swift",
+                        "a": 4205,
+                        "b": 4213
+                      }
+                    ]
+                  },
+                  {
+                    "id": "r.0.4.2.2",
+                    "type": "Text",
+                    "props": {
+                      "text": "4300"
+                    },
+                    "mods": [
+                      {
+                        "m": "foreground",
+                        "color": {
+                          "name": "secondary"
+                        }
+                      }
+                    ],
+                    "src": [
+                      {
+                        "f": "corpus/07_charts/ContentView.swift",
+                        "a": 4238,
+                        "b": 4339
+                      }
+                    ]
+                  }
+                ],
+                "src": [
+                  {
+                    "f": "corpus/07_charts/ContentView.swift",
+                    "a": 4110,
+                    "b": 4361
+                  }
+                ]
+              },
+              {
+                "id": "r.0.4.3",
+                "type": "HStack",
+                "props": {
+                  "alignment": "center"
+                },
+                "children": [
+                  {
+                    "id": "r.0.4.3.0",
+                    "type": "Text",
+                    "props": {
+                      "text": "Thu"
+                    },
+                    "mods": [
+                      {
+                        "m": "fontWeight",
+                        "weight": "medium"
+                      }
+                    ],
+                    "src": [
+                      {
+                        "f": "corpus/07_charts/ContentView.swift",
+                        "a": 4143,
+                        "b": 4180
+                      }
+                    ]
+                  },
+                  {
+                    "id": "r.0.4.3.1",
+                    "type": "Spacer",
+                    "props": {},
+                    "src": [
+                      {
+                        "f": "corpus/07_charts/ContentView.swift",
+                        "a": 4205,
+                        "b": 4213
+                      }
+                    ]
+                  },
+                  {
+                    "id": "r.0.4.3.2",
+                    "type": "Text",
+                    "props": {
+                      "text": "9500"
+                    },
+                    "mods": [
+                      {
+                        "m": "foreground",
+                        "color": {
+                          "name": "secondary"
+                        }
+                      }
+                    ],
+                    "src": [
+                      {
+                        "f": "corpus/07_charts/ContentView.swift",
+                        "a": 4238,
+                        "b": 4339
+                      }
+                    ]
+                  }
+                ],
+                "src": [
+                  {
+                    "f": "corpus/07_charts/ContentView.swift",
+                    "a": 4110,
+                    "b": 4361
+                  }
+                ]
+              },
+              {
+                "id": "r.0.4.4",
+                "type": "HStack",
+                "props": {
+                  "alignment": "center"
+                },
+                "children": [
+                  {
+                    "id": "r.0.4.4.0",
+                    "type": "Text",
+                    "props": {
+                      "text": "Fri"
+                    },
+                    "mods": [
+                      {
+                        "m": "fontWeight",
+                        "weight": "medium"
+                      }
+                    ],
+                    "src": [
+                      {
+                        "f": "corpus/07_charts/ContentView.swift",
+                        "a": 4143,
+                        "b": 4180
+                      }
+                    ]
+                  },
+                  {
+                    "id": "r.0.4.4.1",
+                    "type": "Spacer",
+                    "props": {},
+                    "src": [
+                      {
+                        "f": "corpus/07_charts/ContentView.swift",
+                        "a": 4205,
+                        "b": 4213
+                      }
+                    ]
+                  },
+                  {
+                    "id": "r.0.4.4.2",
+                    "type": "Text",
+                    "props": {
+                      "text": "7800"
+                    },
+                    "mods": [
+                      {
+                        "m": "foreground",
+                        "color": {
+                          "name": "secondary"
+                        }
+                      }
+                    ],
+                    "src": [
+                      {
+                        "f": "corpus/07_charts/ContentView.swift",
+                        "a": 4238,
+                        "b": 4339
+                      }
+                    ]
+                  }
+                ],
+                "src": [
+                  {
+                    "f": "corpus/07_charts/ContentView.swift",
+                    "a": 4110,
+                    "b": 4361
+                  }
+                ]
+              },
+              {
+                "id": "r.0.4.5",
+                "type": "HStack",
+                "props": {
+                  "alignment": "center"
+                },
+                "children": [
+                  {
+                    "id": "r.0.4.5.0",
+                    "type": "Text",
+                    "props": {
+                      "text": "Sat"
+                    },
+                    "mods": [
+                      {
+                        "m": "fontWeight",
+                        "weight": "medium"
+                      }
+                    ],
+                    "src": [
+                      {
+                        "f": "corpus/07_charts/ContentView.swift",
+                        "a": 4143,
+                        "b": 4180
+                      }
+                    ]
+                  },
+                  {
+                    "id": "r.0.4.5.1",
+                    "type": "Spacer",
+                    "props": {},
+                    "src": [
+                      {
+                        "f": "corpus/07_charts/ContentView.swift",
+                        "a": 4205,
+                        "b": 4213
+                      }
+                    ]
+                  },
+                  {
+                    "id": "r.0.4.5.2",
+                    "type": "Text",
+                    "props": {
+                      "text": "11200"
+                    },
+                    "mods": [
+                      {
+                        "m": "foreground",
+                        "color": {
+                          "name": "secondary"
+                        }
+                      }
+                    ],
+                    "src": [
+                      {
+                        "f": "corpus/07_charts/ContentView.swift",
+                        "a": 4238,
+                        "b": 4339
+                      }
+                    ]
+                  }
+                ],
+                "src": [
+                  {
+                    "f": "corpus/07_charts/ContentView.swift",
+                    "a": 4110,
+                    "b": 4361
+                  }
+                ]
+              },
+              {
+                "id": "r.0.4.6",
+                "type": "HStack",
+                "props": {
+                  "alignment": "center"
+                },
+                "children": [
+                  {
+                    "id": "r.0.4.6.0",
+                    "type": "Text",
+                    "props": {
+                      "text": "Sun"
+                    },
+                    "mods": [
+                      {
+                        "m": "fontWeight",
+                        "weight": "medium"
+                      }
+                    ],
+                    "src": [
+                      {
+                        "f": "corpus/07_charts/ContentView.swift",
+                        "a": 4143,
+                        "b": 4180
+                      }
+                    ]
+                  },
+                  {
+                    "id": "r.0.4.6.1",
+                    "type": "Spacer",
+                    "props": {},
+                    "src": [
+                      {
+                        "f": "corpus/07_charts/ContentView.swift",
+                        "a": 4205,
+                        "b": 4213
+                      }
+                    ]
+                  },
+                  {
+                    "id": "r.0.4.6.2",
+                    "type": "Text",
+                    "props": {
+                      "text": "5900"
+                    },
+                    "mods": [
+                      {
+                        "m": "foreground",
+                        "color": {
+                          "name": "secondary"
+                        }
+                      }
+                    ],
+                    "src": [
+                      {
+                        "f": "corpus/07_charts/ContentView.swift",
+                        "a": 4238,
+                        "b": 4339
+                      }
+                    ]
+                  }
+                ],
+                "src": [
+                  {
+                    "f": "corpus/07_charts/ContentView.swift",
+                    "a": 4110,
+                    "b": 4361
+                  }
+                ]
+              }
+            ],
+            "mods": [
+              {
+                "m": "clip",
+                "shape": {
+                  "shape": "roundedRect",
+                  "radius": 12
+                }
+              },
+              {
+                "m": "padding",
+                "top": 0,
+                "leading": 16,
+                "bottom": 0,
+                "trailing": 16
+              }
+            ],
+            "src": [
+              {
+                "f": "corpus/07_charts/ContentView.swift",
+                "a": 4065,
+                "b": 4480
+              }
+            ]
+          }
+        ],
+        "mods": [
+          {
+            "m": "navTitle",
+            "title": "Health Charts"
+          }
+        ],
+        "src": [
+          {
+            "f": "corpus/07_charts/ContentView.swift",
+            "a": 1573,
+            "b": 4540
+          }
+        ]
+      }
+    ],
+    "src": [
+      {
+        "f": "corpus/07_charts/ContentView.swift",
+        "a": 1543,
+        "b": 4550
+      },
+      {
+        "f": "corpus/07_charts/ContentView.swift",
+        "a": 4575,
+        "b": 4588
+      }
+    ]
+  },
+  "allParseErrors": []
+}

@@ -1,0 +1,688 @@
+{
+  "id": "06",
+  "name": "Drawing",
+  "parseOk": true,
+  "parseErrors": [],
+  "renderOk": true,
+  "targets": [
+    "preview:0",
+    "view:ContentView"
+  ],
+  "notes": [
+    "Canvas"
+  ],
+  "unsupportedNodes": [
+    "Canvas"
+  ],
+  "stats": {
+    "views": 23,
+    "depth": 4,
+    "heavy": 8
+  },
+  "treeDepth": 5,
+  "viewNodeCount": 16,
+  "tree": {
+    "id": "r",
+    "type": "NavigationStack",
+    "props": {},
+    "children": [
+      {
+        "id": "r.0",
+        "type": "VStack",
+        "props": {
+          "alignment": "center",
+          "spacing": 0
+        },
+        "children": [
+          {
+            "id": "r.0.0",
+            "type": "HStack",
+            "props": {
+              "alignment": "center",
+              "spacing": 12
+            },
+            "children": [
+              {
+                "id": "r.0.0.0",
+                "type": "Circle",
+                "props": {},
+                "mods": [
+                  {
+                    "m": "fill",
+                    "color": {
+                      "name": "black"
+                    }
+                  },
+                  {
+                    "m": "frame",
+                    "width": 32,
+                    "height": 32
+                  },
+                  {
+                    "m": "overlay",
+                    "view": [
+                      {
+                        "id": "r.0.0.0.v2.0",
+                        "type": "Circle",
+                        "props": {},
+                        "mods": [
+                          {
+                            "m": "stroke",
+                            "color": {
+                              "name": "white"
+                            },
+                            "width": 3
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "m": "shadow",
+                    "radius": 2,
+                    "x": 0,
+                    "y": 0
+                  },
+                  {
+                    "m": "onTap",
+                    "event": "r.0.0.0.tap4"
+                  },
+                  {
+                    "m": "animation",
+                    "curve": {
+                      "kind": "spring",
+                      "duration": 0.3
+                    },
+                    "value": "black"
+                  }
+                ],
+                "src": [
+                  {
+                    "f": "corpus/06_drawing/ContentView.swift",
+                    "a": 815,
+                    "b": 1351
+                  },
+                  {
+                    "f": "corpus/06_drawing/ContentView.swift",
+                    "a": 751,
+                    "b": 1373
+                  }
+                ]
+              },
+              {
+                "id": "r.0.0.1",
+                "type": "Circle",
+                "props": {},
+                "mods": [
+                  {
+                    "m": "fill",
+                    "color": {
+                      "name": "red"
+                    }
+                  },
+                  {
+                    "m": "frame",
+                    "width": 24,
+                    "height": 24
+                  },
+                  {
+                    "m": "overlay",
+                    "view": [
+                      {
+                        "id": "r.0.0.1.v2.0",
+                        "type": "Circle",
+                        "props": {},
+                        "mods": [
+                          {
+                            "m": "stroke",
+                            "color": {
+                              "name": "white"
+                            },
+                            "width": 0
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "m": "shadow",
+                    "radius": 0,
+                    "x": 0,
+                    "y": 0
+                  },
+                  {
+                    "m": "onTap",
+                    "event": "r.0.0.1.tap4"
+                  },
+                  {
+                    "m": "animation",
+                    "curve": {
+                      "kind": "spring",
+                      "duration": 0.3
+                    },
+                    "value": "black"
+                  }
+                ],
+                "src": [
+                  {
+                    "f": "corpus/06_drawing/ContentView.swift",
+                    "a": 815,
+                    "b": 1351
+                  },
+                  {
+                    "f": "corpus/06_drawing/ContentView.swift",
+                    "a": 751,
+                    "b": 1373
+                  }
+                ]
+              },
+              {
+                "id": "r.0.0.2",
+                "type": "Circle",
+                "props": {},
+                "mods": [
+                  {
+                    "m": "fill",
+                    "color": {
+                      "name": "blue"
+                    }
+                  },
+                  {
+                    "m": "frame",
+                    "width": 24,
+                    "height": 24
+                  },
+                  {
+                    "m": "overlay",
+                    "view": [
+                      {
+                        "id": "r.0.0.2.v2.0",
+                        "type": "Circle",
+                        "props": {},
+                        "mods": [
+                          {
+                            "m": "stroke",
+                            "color": {
+                              "name": "white"
+                            },
+                            "width": 0
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "m": "shadow",
+                    "radius": 0,
+                    "x": 0,
+                    "y": 0
+                  },
+                  {
+                    "m": "onTap",
+                    "event": "r.0.0.2.tap4"
+                  },
+                  {
+                    "m": "animation",
+                    "curve": {
+                      "kind": "spring",
+                      "duration": 0.3
+                    },
+                    "value": "black"
+                  }
+                ],
+                "src": [
+                  {
+                    "f": "corpus/06_drawing/ContentView.swift",
+                    "a": 815,
+                    "b": 1351
+                  },
+                  {
+                    "f": "corpus/06_drawing/ContentView.swift",
+                    "a": 751,
+                    "b": 1373
+                  }
+                ]
+              },
+              {
+                "id": "r.0.0.3",
+                "type": "Circle",
+                "props": {},
+                "mods": [
+                  {
+                    "m": "fill",
+                    "color": {
+                      "name": "green"
+                    }
+                  },
+                  {
+                    "m": "frame",
+                    "width": 24,
+                    "height": 24
+                  },
+                  {
+                    "m": "overlay",
+                    "view": [
+                      {
+                        "id": "r.0.0.3.v2.0",
+                        "type": "Circle",
+                        "props": {},
+                        "mods": [
+                          {
+                            "m": "stroke",
+                            "color": {
+                              "name": "white"
+                            },
+                            "width": 0
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "m": "shadow",
+                    "radius": 0,
+                    "x": 0,
+                    "y": 0
+                  },
+                  {
+                    "m": "onTap",
+                    "event": "r.0.0.3.tap4"
+                  },
+                  {
+                    "m": "animation",
+                    "curve": {
+                      "kind": "spring",
+                      "duration": 0.3
+                    },
+                    "value": "black"
+                  }
+                ],
+                "src": [
+                  {
+                    "f": "corpus/06_drawing/ContentView.swift",
+                    "a": 815,
+                    "b": 1351
+                  },
+                  {
+                    "f": "corpus/06_drawing/ContentView.swift",
+                    "a": 751,
+                    "b": 1373
+                  }
+                ]
+              },
+              {
+                "id": "r.0.0.4",
+                "type": "Circle",
+                "props": {},
+                "mods": [
+                  {
+                    "m": "fill",
+                    "color": {
+                      "name": "orange"
+                    }
+                  },
+                  {
+                    "m": "frame",
+                    "width": 24,
+                    "height": 24
+                  },
+                  {
+                    "m": "overlay",
+                    "view": [
+                      {
+                        "id": "r.0.0.4.v2.0",
+                        "type": "Circle",
+                        "props": {},
+                        "mods": [
+                          {
+                            "m": "stroke",
+                            "color": {
+                              "name": "white"
+                            },
+                            "width": 0
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "m": "shadow",
+                    "radius": 0,
+                    "x": 0,
+                    "y": 0
+                  },
+                  {
+                    "m": "onTap",
+                    "event": "r.0.0.4.tap4"
+                  },
+                  {
+                    "m": "animation",
+                    "curve": {
+                      "kind": "spring",
+                      "duration": 0.3
+                    },
+                    "value": "black"
+                  }
+                ],
+                "src": [
+                  {
+                    "f": "corpus/06_drawing/ContentView.swift",
+                    "a": 815,
+                    "b": 1351
+                  },
+                  {
+                    "f": "corpus/06_drawing/ContentView.swift",
+                    "a": 751,
+                    "b": 1373
+                  }
+                ]
+              },
+              {
+                "id": "r.0.0.5",
+                "type": "Circle",
+                "props": {},
+                "mods": [
+                  {
+                    "m": "fill",
+                    "color": {
+                      "name": "purple"
+                    }
+                  },
+                  {
+                    "m": "frame",
+                    "width": 24,
+                    "height": 24
+                  },
+                  {
+                    "m": "overlay",
+                    "view": [
+                      {
+                        "id": "r.0.0.5.v2.0",
+                        "type": "Circle",
+                        "props": {},
+                        "mods": [
+                          {
+                            "m": "stroke",
+                            "color": {
+                              "name": "white"
+                            },
+                            "width": 0
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "m": "shadow",
+                    "radius": 0,
+                    "x": 0,
+                    "y": 0
+                  },
+                  {
+                    "m": "onTap",
+                    "event": "r.0.0.5.tap4"
+                  },
+                  {
+                    "m": "animation",
+                    "curve": {
+                      "kind": "spring",
+                      "duration": 0.3
+                    },
+                    "value": "black"
+                  }
+                ],
+                "src": [
+                  {
+                    "f": "corpus/06_drawing/ContentView.swift",
+                    "a": 815,
+                    "b": 1351
+                  },
+                  {
+                    "f": "corpus/06_drawing/ContentView.swift",
+                    "a": 751,
+                    "b": 1373
+                  }
+                ]
+              },
+              {
+                "id": "r.0.0.6",
+                "type": "Circle",
+                "props": {},
+                "mods": [
+                  {
+                    "m": "fill",
+                    "color": {
+                      "name": "pink"
+                    }
+                  },
+                  {
+                    "m": "frame",
+                    "width": 24,
+                    "height": 24
+                  },
+                  {
+                    "m": "overlay",
+                    "view": [
+                      {
+                        "id": "r.0.0.6.v2.0",
+                        "type": "Circle",
+                        "props": {},
+                        "mods": [
+                          {
+                            "m": "stroke",
+                            "color": {
+                              "name": "white"
+                            },
+                            "width": 0
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "m": "shadow",
+                    "radius": 0,
+                    "x": 0,
+                    "y": 0
+                  },
+                  {
+                    "m": "onTap",
+                    "event": "r.0.0.6.tap4"
+                  },
+                  {
+                    "m": "animation",
+                    "curve": {
+                      "kind": "spring",
+                      "duration": 0.3
+                    },
+                    "value": "black"
+                  }
+                ],
+                "src": [
+                  {
+                    "f": "corpus/06_drawing/ContentView.swift",
+                    "a": 815,
+                    "b": 1351
+                  },
+                  {
+                    "f": "corpus/06_drawing/ContentView.swift",
+                    "a": 751,
+                    "b": 1373
+                  }
+                ]
+              },
+              {
+                "id": "r.0.0.7",
+                "type": "Divider",
+                "props": {},
+                "mods": [
+                  {
+                    "m": "frame",
+                    "height": 32
+                  }
+                ],
+                "src": [
+                  {
+                    "f": "corpus/06_drawing/ContentView.swift",
+                    "a": 1394,
+                    "b": 1421
+                  }
+                ]
+              },
+              {
+                "id": "r.0.0.8",
+                "type": "HStack",
+                "props": {
+                  "alignment": "center"
+                },
+                "children": [
+                  {
+                    "id": "r.0.0.8.0",
+                    "type": "Image",
+                    "props": {
+                      "system": "pencil.tip"
+                    },
+                    "src": [
+                      {
+                        "f": "corpus/06_drawing/ContentView.swift",
+                        "a": 1475,
+                        "b": 1506
+                      }
+                    ]
+                  },
+                  {
+                    "id": "r.0.0.8.1",
+                    "type": "Slider",
+                    "props": {
+                      "value": 4,
+                      "min": 1,
+                      "max": 20
+                    },
+                    "mods": [
+                      {
+                        "m": "frame",
+                        "width": 80
+                      }
+                    ],
+                    "src": [
+                      {
+                        "f": "corpus/06_drawing/ContentView.swift",
+                        "a": 1531,
+                        "b": 1614
+                      }
+                    ],
+                    "event": "r.0.0.8.1"
+                  },
+                  {
+                    "id": "r.0.0.8.2",
+                    "type": "Image",
+                    "props": {
+                      "system": "pencil.tip"
+                    },
+                    "mods": [
+                      {
+                        "m": "font",
+                        "font": {
+                          "style": "title2"
+                        }
+                      }
+                    ],
+                    "src": [
+                      {
+                        "f": "corpus/06_drawing/ContentView.swift",
+                        "a": 1639,
+                        "b": 1713
+                      }
+                    ]
+                  }
+                ],
+                "src": [
+                  {
+                    "f": "corpus/06_drawing/ContentView.swift",
+                    "a": 1442,
+                    "b": 1735
+                  }
+                ]
+              }
+            ],
+            "mods": [
+              {
+                "m": "padding",
+                "top": 0,
+                "leading": 16,
+                "bottom": 0,
+                "trailing": 16
+              },
+              {
+                "m": "padding",
+                "top": 8,
+                "leading": 0,
+                "bottom": 8,
+                "trailing": 0
+              },
+              {
+                "m": "background",
+                "material": "regular"
+              }
+            ],
+            "src": [
+              {
+                "f": "corpus/06_drawing/ContentView.swift",
+                "a": 709,
+                "b": 1876
+              }
+            ]
+          },
+          {
+            "id": "r.0.1",
+            "type": "Unsupported",
+            "props": {
+              "name": "Canvas"
+            },
+            "mods": [
+              {
+                "m": "background",
+                "color": {
+                  "name": "white"
+                }
+              }
+            ],
+            "src": [
+              {
+                "f": "corpus/06_drawing/ContentView.swift",
+                "a": 1920,
+                "b": 3124
+              }
+            ]
+          }
+        ],
+        "mods": [
+          {
+            "m": "navTitle",
+            "title": "Drawing Pad"
+          }
+        ],
+        "src": [
+          {
+            "f": "corpus/06_drawing/ContentView.swift",
+            "a": 645,
+            "b": 4048
+          }
+        ]
+      }
+    ],
+    "src": [
+      {
+        "f": "corpus/06_drawing/ContentView.swift",
+        "a": 615,
+        "b": 4058
+      },
+      {
+        "f": "corpus/06_drawing/ContentView.swift",
+        "a": 4567,
+        "b": 4580
+      }
+    ]
+  },
+  "allParseErrors": []
+}

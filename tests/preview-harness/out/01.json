@@ -1,0 +1,282 @@
+{
+  "id": "01",
+  "name": "Counter",
+  "parseOk": true,
+  "parseErrors": [],
+  "renderOk": true,
+  "targets": [
+    "preview:0",
+    "view:ContentView"
+  ],
+  "notes": [],
+  "unsupportedNodes": [],
+  "stats": {
+    "views": 11,
+    "depth": 3,
+    "heavy": 0
+  },
+  "treeDepth": 4,
+  "viewNodeCount": 11,
+  "tree": {
+    "id": "r",
+    "type": "VStack",
+    "props": {
+      "alignment": "center",
+      "spacing": 24
+    },
+    "children": [
+      {
+        "id": "r.0",
+        "type": "Text",
+        "props": {
+          "text": "Counter"
+        },
+        "mods": [
+          {
+            "m": "font",
+            "font": {
+              "style": "largeTitle"
+            }
+          },
+          {
+            "m": "fontWeight",
+            "weight": "bold"
+          }
+        ],
+        "src": [
+          {
+            "f": "corpus/01_counter/ContentView.swift",
+            "a": 253,
+            "b": 338
+          }
+        ]
+      },
+      {
+        "id": "r.1",
+        "type": "Text",
+        "props": {
+          "text": "0"
+        },
+        "mods": [
+          {
+            "m": "font",
+            "font": {
+              "size": 72,
+              "weight": "thin",
+              "design": "rounded"
+            }
+          },
+          {
+            "m": "foreground",
+            "color": {
+              "name": "primary"
+            }
+          }
+        ],
+        "src": [
+          {
+            "f": "corpus/01_counter/ContentView.swift",
+            "a": 352,
+            "b": 505
+          }
+        ]
+      },
+      {
+        "id": "r.2",
+        "type": "HStack",
+        "props": {
+          "alignment": "center",
+          "spacing": 32
+        },
+        "children": [
+          {
+            "id": "r.2.0",
+            "type": "Button",
+            "props": {},
+            "label": [
+              {
+                "id": "r.2.0.l0",
+                "type": "Image",
+                "props": {
+                  "system": "minus.circle.fill"
+                },
+                "mods": [
+                  {
+                    "m": "font",
+                    "font": {
+                      "size": 48
+                    }
+                  },
+                  {
+                    "m": "foreground",
+                    "color": {
+                      "name": "red"
+                    }
+                  }
+                ],
+                "src": [
+                  {
+                    "f": "corpus/01_counter/ContentView.swift",
+                    "a": 644,
+                    "b": 778
+                  }
+                ]
+              }
+            ],
+            "src": [
+              {
+                "f": "corpus/01_counter/ContentView.swift",
+                "a": 557,
+                "b": 796
+              }
+            ],
+            "event": "r.2.0"
+          },
+          {
+            "id": "r.2.1",
+            "type": "Button",
+            "props": {},
+            "label": [
+              {
+                "id": "r.2.1.l0",
+                "type": "Image",
+                "props": {
+                  "system": "arrow.counterclockwise.circle.fill"
+                },
+                "mods": [
+                  {
+                    "m": "font",
+                    "font": {
+                      "size": 48
+                    }
+                  },
+                  {
+                    "m": "foreground",
+                    "color": {
+                      "name": "gray"
+                    }
+                  }
+                ],
+                "src": [
+                  {
+                    "f": "corpus/01_counter/ContentView.swift",
+                    "a": 900,
+                    "b": 1052
+                  }
+                ]
+              }
+            ],
+            "src": [
+              {
+                "f": "corpus/01_counter/ContentView.swift",
+                "a": 814,
+                "b": 1070
+              }
+            ],
+            "event": "r.2.1"
+          },
+          {
+            "id": "r.2.2",
+            "type": "Button",
+            "props": {},
+            "label": [
+              {
+                "id": "r.2.2.l0",
+                "type": "Image",
+                "props": {
+                  "system": "plus.circle.fill"
+                },
+                "mods": [
+                  {
+                    "m": "font",
+                    "font": {
+                      "size": 48
+                    }
+                  },
+                  {
+                    "m": "foreground",
+                    "color": {
+                      "name": "green"
+                    }
+                  }
+                ],
+                "src": [
+                  {
+                    "f": "corpus/01_counter/ContentView.swift",
+                    "a": 1175,
+                    "b": 1310
+                  }
+                ]
+              }
+            ],
+            "src": [
+              {
+                "f": "corpus/01_counter/ContentView.swift",
+                "a": 1088,
+                "b": 1328
+              }
+            ],
+            "event": "r.2.2"
+          }
+        ],
+        "src": [
+          {
+            "f": "corpus/01_counter/ContentView.swift",
+            "a": 519,
+            "b": 1342
+          }
+        ]
+      },
+      {
+        "id": "r.3",
+        "type": "Text",
+        "props": {
+          "text": "Start counting!"
+        },
+        "mods": [
+          {
+            "m": "font",
+            "font": {
+              "style": "caption"
+            }
+          },
+          {
+            "m": "foreground",
+            "color": {
+              "name": "secondary"
+            }
+          }
+        ],
+        "src": [
+          {
+            "f": "corpus/01_counter/ContentView.swift",
+            "a": 1356,
+            "b": 1515
+          }
+        ]
+      }
+    ],
+    "mods": [
+      {
+        "m": "padding",
+        "top": 16,
+        "leading": 16,
+        "bottom": 16,
+        "trailing": 16
+      }
+    ],
+    "src": [
+      {
+        "f": "corpus/01_counter/ContentView.swift",
+        "a": 219,
+        "b": 1544
+      },
+      {
+        "f": "corpus/01_counter/ContentView.swift",
+        "a": 1569,
+        "b": 1582
+      }
+    ]
+  },
+  "allParseErrors": []
+}

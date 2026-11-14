@@ -1,0 +1,201 @@
+{
+  "timestamp": "2026-11-14T19:25:26.449Z",
+  "results": [
+    {
+      "id": "01",
+      "name": "Counter",
+      "parseOk": true,
+      "parseErrorCount": 0,
+      "renderOk": true,
+      "targetCount": 2,
+      "noteCount": 0,
+      "notes": [],
+      "unsupportedNodes": [],
+      "viewNodeCount": 11,
+      "treeDepth": 4,
+      "stats": {
+        "views": 11,
+        "depth": 3,
+        "heavy": 0
+      }
+    },
+    {
+      "id": "02",
+      "name": "Quiz",
+      "parseOk": true,
+      "parseErrorCount": 0,
+      "renderOk": true,
+      "targetCount": 4,
+      "noteCount": 0,
+      "notes": [],
+      "unsupportedNodes": [],
+      "viewNodeCount": 27,
+      "treeDepth": 7,
+      "stats": {
+        "views": 27,
+        "depth": 6,
+        "heavy": 0
+      }
+    },
+    {
+      "id": "03",
+      "name": "Todo",
+      "parseOk": true,
+      "parseErrorCount": 0,
+      "renderOk": true,
+      "targetCount": 2,
+      "noteCount": 0,
+      "notes": [],
+      "unsupportedNodes": [],
+      "viewNodeCount": 17,
+      "treeDepth": 6,
+      "stats": {
+        "views": 17,
+        "depth": 5,
+        "heavy": 0
+      }
+    },
+    {
+      "id": "04",
+      "name": "Onboarding",
+      "parseOk": true,
+      "parseErrorCount": 0,
+      "renderOk": true,
+      "targetCount": 5,
+      "noteCount": 0,
+      "notes": [],
+      "unsupportedNodes": [],
+      "viewNodeCount": 32,
+      "treeDepth": 4,
+      "stats": {
+        "views": 32,
+        "depth": 3,
+        "heavy": 0
+      }
+    },
+    {
+      "id": "05",
+      "name": "Settings",
+      "parseOk": true,
+      "parseErrorCount": 0,
+      "renderOk": true,
+      "targetCount": 2,
+      "noteCount": 0,
+      "notes": [],
+      "unsupportedNodes": [],
+      "viewNodeCount": 27,
+      "treeDepth": 5,
+      "stats": {
+        "views": 36,
+        "depth": 4,
+        "heavy": 0
+      }
+    },
+    {
+      "id": "06",
+      "name": "Drawing",
+      "parseOk": true,
+      "parseErrorCount": 0,
+      "renderOk": true,
+      "targetCount": 2,
+      "noteCount": 1,
+      "notes": [
+        "Canvas"
+      ],
+      "unsupportedNodes": [
+        "Canvas"
+      ],
+      "viewNodeCount": 16,
+      "treeDepth": 5,
+      "stats": {
+        "views": 23,
+        "depth": 4,
+        "heavy": 8
+      }
+    },
+    {
+      "id": "07",
+      "name": "Charts",
+      "parseOk": true,
+      "parseErrorCount": 0,
+      "renderOk": true,
+      "targetCount": 2,
+      "noteCount": 1,
+      "notes": [
+        "Chart"
+      ],
+      "unsupportedNodes": [
+        "Chart"
+      ],
+      "viewNodeCount": 37,
+      "treeDepth": 5,
+      "stats": {
+        "views": 42,
+        "depth": 4,
+        "heavy": 1
+      }
+    },
+    {
+      "id": "08",
+      "name": "Game",
+      "parseOk": true,
+      "parseErrorCount": 0,
+      "renderOk": true,
+      "targetCount": 2,
+      "noteCount": 1,
+      "notes": [
+        "Canvas"
+      ],
+      "unsupportedNodes": [
+        "Canvas"
+      ],
+      "viewNodeCount": 15,
+      "treeDepth": 6,
+      "stats": {
+        "views": 15,
+        "depth": 5,
+        "heavy": 0
+      }
+    },
+    {
+      "id": "09",
+      "name": "@Observable",
+      "parseOk": true,
+      "parseErrorCount": 0,
+      "renderOk": true,
+      "targetCount": 5,
+      "noteCount": 0,
+      "notes": [],
+      "unsupportedNodes": [],
+      "viewNodeCount": 42,
+      "treeDepth": 5,
+      "stats": {
+        "views": 42,
+        "depth": 4,
+        "heavy": 0
+      }
+    },
+    {
+      "id": "10",
+      "name": "A11y",
+      "parseOk": true,
+      "parseErrorCount": 0,
+      "renderOk": true,
+      "targetCount": 6,
+      "noteCount": 3,
+      "notes": [
+        ".accessibilityAdjustableAction()",
+        "?stat",
+        "?subtitle"
+      ],
+      "unsupportedNodes": [],
+      "viewNodeCount": 72,
+      "treeDepth": 9,
+      "stats": {
+        "views": 72,
+        "depth": 8,
+        "heavy": 8
+      }
+    }
+  ]
+}

@@ -1,0 +1,1690 @@
+{
+  "id": "10",
+  "name": "A11y",
+  "parseOk": true,
+  "parseErrors": [],
+  "renderOk": true,
+  "targets": [
+    "preview:0",
+    "view:ContentView",
+    "view:DynamicTypeDemo",
+    "view:AccessibleSliderDemo",
+    "view:ImageDescriptionDemo",
+    "view:GroupedElementsDemo"
+  ],
+  "notes": [
+    ".accessibilityAdjustableAction()",
+    "?stat",
+    "?subtitle"
+  ],
+  "unsupportedNodes": [],
+  "stats": {
+    "views": 72,
+    "depth": 8,
+    "heavy": 8
+  },
+  "treeDepth": 9,
+  "viewNodeCount": 72,
+  "tree": {
+    "id": "r",
+    "type": "NavigationStack",
+    "props": {},
+    "children": [
+      {
+        "id": "r.0",
+        "type": "List",
+        "props": {},
+        "children": [
+          {
+            "id": "r.0.0",
+            "type": "Section",
+            "props": {
+              "header": "Demos"
+            },
+            "children": [
+              {
+                "id": "r.0.0.0",
+                "type": "NavigationLink",
+                "props": {
+                  "title": "Dynamic Type"
+                },
+                "children": [
+                  {
+                    "id": "r.0.0.0.0",
+                    "type": "ScrollView",
+                    "props": {
+                      "axis": "vertical"
+                    },
+                    "children": [
+                      {
+                        "id": "r.0.0.0.0.0",
+                        "type": "VStack",
+                        "props": {
+                          "alignment": "leading",
+                          "spacing": 16
+                        },
+                        "children": [
+                          {
+                            "id": "r.0.0.0.0.0.0",
+                            "type": "Text",
+                            "props": {
+                              "text": "Dynamic Type: large"
+                            },
+                            "mods": [
+                              {
+                                "m": "font",
+                                "font": {
+                                  "style": "caption"
+                                }
+                              },
+                              {
+                                "m": "foreground",
+                                "color": {
+                                  "name": "secondary"
+                                }
+                              }
+                            ],
+                            "src": [
+                              {
+                                "f": "corpus/10_accessibility/ContentView.swift",
+                                "a": 1375,
+                                "b": 1570
+                              }
+                            ]
+                          },
+                          {
+                            "id": "r.0.0.0.0.0.1",
+                            "type": "HStack",
+                            "props": {
+                              "alignment": "center",
+                              "spacing": 16
+                            },
+                            "children": [
+                              {
+                                "id": "r.0.0.0.0.0.1.0",
+                                "type": "RoundedRectangle",
+                                "props": {
+                                  "radius": 8
+                                },
+                                "mods": [
+                                  {
+                                    "m": "fill",
+                                    "color": {
+                                      "name": "blue",
+                                      "opacity": 0.15
+                                    }
+                                  },
+                                  {
+                                    "m": "frame",
+                                    "width": 32,
+                                    "height": 32
+                                  }
+                                ],
+                                "src": [
+                                  {
+                                    "f": "corpus/10_accessibility/ContentView.swift",
+                                    "a": 1696,
+                                    "b": 1854
+                                  }
+                                ]
+                              },
+                              {
+                                "id": "r.0.0.0.0.0.1.1",
+                                "type": "Text",
+                                "props": {
+                                  "text": "Read a book 📖"
+                                },
+                                "mods": [
+                                  {
+                                    "m": "font",
+                                    "font": {
+                                      "style": "body"
+                                    }
+                                  }
+                                ],
+                                "src": [
+                                  {
+                                    "f": "corpus/10_accessibility/ContentView.swift",
+                                    "a": 1879,
+                                    "b": 1983
+                                  }
+                                ]
+                              }
+                            ],
+                            "mods": [
+                              {
+                                "m": "padding",
+                                "top": 16,
+                                "leading": 16,
+                                "bottom": 16,
+                                "trailing": 16
+                              },
+                              {
+                                "m": "background",
+                                "material": "regular",
+                                "shape": {
+                                  "shape": "roundedRect",
+                                  "radius": 12
+                                }
+                              }
+                            ],
+                            "src": [
+                              {
+                                "f": "corpus/10_accessibility/ContentView.swift",
+                                "a": 1645,
+                                "b": 2133
+                              },
+                              {
+                                "f": "corpus/10_accessibility/ContentView.swift",
+                                "a": 1588,
+                                "b": 2151
+                              }
+                            ]
+                          },
+                          {
+                            "id": "r.0.0.0.0.0.2",
+                            "type": "HStack",
+                            "props": {
+                              "alignment": "center",
+                              "spacing": 16
+                            },
+                            "children": [
+                              {
+                                "id": "r.0.0.0.0.0.2.0",
+                                "type": "RoundedRectangle",
+                                "props": {
+                                  "radius": 8
+                                },
+                                "mods": [
+                                  {
+                                    "m": "fill",
+                                    "color": {
+                                      "name": "blue",
+                                      "opacity": 0.15
+                                    }
+                                  },
+                                  {
+                                    "m": "frame",
+                                    "width": 32,
+                                    "height": 32
+                                  }
+                                ],
+                                "src": [
+                                  {
+                                    "f": "corpus/10_accessibility/ContentView.swift",
+                                    "a": 1696,
+                                    "b": 1854
+                                  }
+                                ]
+                              },
+                              {
+                                "id": "r.0.0.0.0.0.2.1",
+                                "type": "Text",
+                                "props": {
+                                  "text": "Call a friend 📞"
+                                },
+                                "mods": [
+                                  {
+                                    "m": "font",
+                                    "font": {
+                                      "style": "body"
+                                    }
+                                  }
+                                ],
+                                "src": [
+                                  {
+                                    "f": "corpus/10_accessibility/ContentView.swift",
+                                    "a": 1879,
+                                    "b": 1983
+                                  }
+                                ]
+                              }
+                            ],
+                            "mods": [
+                              {
+                                "m": "padding",
+                                "top": 16,
+                                "leading": 16,
+                                "bottom": 16,
+                                "trailing": 16
+                              },
+                              {
+                                "m": "background",
+                                "material": "regular",
+                                "shape": {
+                                  "shape": "roundedRect",
+                                  "radius": 12
+                                }
+                              }
+                            ],
+                            "src": [
+                              {
+                                "f": "corpus/10_accessibility/ContentView.swift",
+                                "a": 1645,
+                                "b": 2133
+                              },
+                              {
+                                "f": "corpus/10_accessibility/ContentView.swift",
+                                "a": 1588,
+                                "b": 2151
+                              }
+                            ]
+                          },
+                          {
+                            "id": "r.0.0.0.0.0.3",
+                            "type": "HStack",
+                            "props": {
+                              "alignment": "center",
+                              "spacing": 16
+                            },
+                            "children": [
+                              {
+                                "id": "r.0.0.0.0.0.3.0",
+                                "type": "RoundedRectangle",
+                                "props": {
+                                  "radius": 8
+                                },
+                                "mods": [
+                                  {
+                                    "m": "fill",
+                                    "color": {
+                                      "name": "blue",
+                                      "opacity": 0.15
+                                    }
+                                  },
+                                  {
+                                    "m": "frame",
+                                    "width": 32,
+                                    "height": 32
+                                  }
+                                ],
+                                "src": [
+                                  {
+                                    "f": "corpus/10_accessibility/ContentView.swift",
+                                    "a": 1696,
+                                    "b": 1854
+                                  }
+                                ]
+                              },
+                              {
+                                "id": "r.0.0.0.0.0.3.1",
+                                "type": "Text",
+                                "props": {
+                                  "text": "Go for a walk 🚶"
+                                },
+                                "mods": [
+                                  {
+                                    "m": "font",
+                                    "font": {
+                                      "style": "body"
+                                    }
+                                  }
+                                ],
+                                "src": [
+                                  {
+                                    "f": "corpus/10_accessibility/ContentView.swift",
+                                    "a": 1879,
+                                    "b": 1983
+                                  }
+                                ]
+                              }
+                            ],
+                            "mods": [
+                              {
+                                "m": "padding",
+                                "top": 16,
+                                "leading": 16,
+                                "bottom": 16,
+                                "trailing": 16
+                              },
+                              {
+                                "m": "background",
+                                "material": "regular",
+                                "shape": {
+                                  "shape": "roundedRect",
+                                  "radius": 12
+                                }
+                              }
+                            ],
+                            "src": [
+                              {
+                                "f": "corpus/10_accessibility/ContentView.swift",
+                                "a": 1645,
+                                "b": 2133
+                              },
+                              {
+                                "f": "corpus/10_accessibility/ContentView.swift",
+                                "a": 1588,
+                                "b": 2151
+                              }
+                            ]
+                          },
+                          {
+                            "id": "r.0.0.0.0.0.4",
+                            "type": "HStack",
+                            "props": {
+                              "alignment": "center",
+                              "spacing": 16
+                            },
+                            "children": [
+                              {
+                                "id": "r.0.0.0.0.0.4.0",
+                                "type": "RoundedRectangle",
+                                "props": {
+                                  "radius": 8
+                                },
+                                "mods": [
+                                  {
+                                    "m": "fill",
+                                    "color": {
+                                      "name": "blue",
+                                      "opacity": 0.15
+                                    }
+                                  },
+                                  {
+                                    "m": "frame",
+                                    "width": 32,
+                                    "height": 32
+                                  }
+                                ],
+                                "src": [
+                                  {
+                                    "f": "corpus/10_accessibility/ContentView.swift",
+                                    "a": 1696,
+                                    "b": 1854
+                                  }
+                                ]
+                              },
+                              {
+                                "id": "r.0.0.0.0.0.4.1",
+                                "type": "Text",
+                                "props": {
+                                  "text": "Drink water 💧"
+                                },
+                                "mods": [
+                                  {
+                                    "m": "font",
+                                    "font": {
+                                      "style": "body"
+                                    }
+                                  }
+                                ],
+                                "src": [
+                                  {
+                                    "f": "corpus/10_accessibility/ContentView.swift",
+                                    "a": 1879,
+                                    "b": 1983
+                                  }
+                                ]
+                              }
+                            ],
+                            "mods": [
+                              {
+                                "m": "padding",
+                                "top": 16,
+                                "leading": 16,
+                                "bottom": 16,
+                                "trailing": 16
+                              },
+                              {
+                                "m": "background",
+                                "material": "regular",
+                                "shape": {
+                                  "shape": "roundedRect",
+                                  "radius": 12
+                                }
+                              }
+                            ],
+                            "src": [
+                              {
+                                "f": "corpus/10_accessibility/ContentView.swift",
+                                "a": 1645,
+                                "b": 2133
+                              },
+                              {
+                                "f": "corpus/10_accessibility/ContentView.swift",
+                                "a": 1588,
+                                "b": 2151
+                              }
+                            ]
+                          }
+                        ],
+                        "mods": [
+                          {
+                            "m": "padding",
+                            "top": 16,
+                            "leading": 16,
+                            "bottom": 16,
+                            "trailing": 16
+                          }
+                        ],
+                        "src": [
+                          {
+                            "f": "corpus/10_accessibility/ContentView.swift",
+                            "a": 1311,
+                            "b": 2188
+                          }
+                        ]
+                      }
+                    ],
+                    "mods": [
+                      {
+                        "m": "navTitle",
+                        "title": "Dynamic Type"
+                      }
+                    ],
+                    "src": [
+                      {
+                        "f": "corpus/10_accessibility/ContentView.swift",
+                        "a": 1286,
+                        "b": 2239
+                      },
+                      {
+                        "f": "corpus/10_accessibility/ContentView.swift",
+                        "a": 524,
+                        "b": 541
+                      }
+                    ]
+                  }
+                ],
+                "src": [
+                  {
+                    "f": "corpus/10_accessibility/ContentView.swift",
+                    "a": 491,
+                    "b": 543
+                  }
+                ]
+              },
+              {
+                "id": "r.0.0.1",
+                "type": "NavigationLink",
+                "props": {
+                  "title": "Custom Accessible Control"
+                },
+                "children": [
+                  {
+                    "id": "r.0.0.1.0",
+                    "type": "VStack",
+                    "props": {
+                      "alignment": "center",
+                      "spacing": 32
+                    },
+                    "children": [
+                      {
+                        "id": "r.0.0.1.0.0",
+                        "type": "Image",
+                        "props": {
+                          "system": "speaker.wave.2.fill"
+                        },
+                        "mods": [
+                          {
+                            "m": "font",
+                            "font": {
+                              "size": 64
+                            }
+                          },
+                          {
+                            "m": "foreground",
+                            "color": {
+                              "name": "blue"
+                            }
+                          }
+                        ],
+                        "src": [
+                          {
+                            "f": "corpus/10_accessibility/ContentView.swift",
+                            "a": 2430,
+                            "b": 2583
+                          }
+                        ]
+                      },
+                      {
+                        "id": "r.0.0.1.0.1",
+                        "type": "Text",
+                        "props": {
+                          "text": "Volume: 50%"
+                        },
+                        "mods": [
+                          {
+                            "m": "font",
+                            "font": {
+                              "style": "title2"
+                            }
+                          }
+                        ],
+                        "src": [
+                          {
+                            "f": "corpus/10_accessibility/ContentView.swift",
+                            "a": 2597,
+                            "b": 2654
+                          }
+                        ]
+                      },
+                      {
+                        "id": "r.0.0.1.0.2",
+                        "type": "ZStack",
+                        "props": {
+                          "alignment": "topLeading"
+                        },
+                        "children": [
+                          {
+                            "id": "r.0.0.1.0.2.0",
+                            "type": "ZStack",
+                            "props": {
+                              "alignment": "leading"
+                            },
+                            "children": [
+                              {
+                                "id": "r.0.0.1.0.2.0.0",
+                                "type": "Capsule",
+                                "props": {},
+                                "mods": [
+                                  {
+                                    "m": "fill",
+                                    "color": {
+                                      "rgba": [
+                                        0.8980392156862745,
+                                        0.8980392156862745,
+                                        0.9176470588235294,
+                                        1
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "m": "frame",
+                                    "height": 12
+                                  }
+                                ],
+                                "src": [
+                                  {
+                                    "f": "corpus/10_accessibility/ContentView.swift",
+                                    "a": 2794,
+                                    "b": 2847
+                                  }
+                                ]
+                              },
+                              {
+                                "id": "r.0.0.1.0.2.0.1",
+                                "type": "Capsule",
+                                "props": {},
+                                "mods": [
+                                  {
+                                    "m": "fill",
+                                    "color": {
+                                      "name": "blue"
+                                    }
+                                  },
+                                  {
+                                    "m": "frame",
+                                    "width": 196.5,
+                                    "height": 12
+                                  }
+                                ],
+                                "src": [
+                                  {
+                                    "f": "corpus/10_accessibility/ContentView.swift",
+                                    "a": 2868,
+                                    "b": 2954
+                                  }
+                                ]
+                              },
+                              {
+                                "id": "r.0.0.1.0.2.0.2",
+                                "type": "Circle",
+                                "props": {},
+                                "mods": [
+                                  {
+                                    "m": "fill",
+                                    "color": {
+                                      "name": "white"
+                                    }
+                                  },
+                                  {
+                                    "m": "shadow",
+                                    "radius": 4,
+                                    "x": 0,
+                                    "y": 0
+                                  },
+                                  {
+                                    "m": "frame",
+                                    "width": 28,
+                                    "height": 28
+                                  },
+                                  {
+                                    "m": "offset",
+                                    "x": 182.5,
+                                    "y": 0
+                                  }
+                                ],
+                                "src": [
+                                  {
+                                    "f": "corpus/10_accessibility/ContentView.swift",
+                                    "a": 2975,
+                                    "b": 3198
+                                  }
+                                ]
+                              }
+                            ],
+                            "src": [
+                              {
+                                "f": "corpus/10_accessibility/ContentView.swift",
+                                "a": 2744,
+                                "b": 3405
+                              }
+                            ]
+                          }
+                        ],
+                        "mods": [
+                          {
+                            "m": "frame",
+                            "maxWidth": "inf",
+                            "maxHeight": "inf",
+                            "alignment": "topLeading"
+                          },
+                          {
+                            "m": "frame",
+                            "height": 32
+                          }
+                        ],
+                        "src": [
+                          {
+                            "f": "corpus/10_accessibility/ContentView.swift",
+                            "a": 2704,
+                            "b": 3895
+                          }
+                        ]
+                      },
+                      {
+                        "id": "r.0.0.1.0.3",
+                        "type": "HStack",
+                        "props": {
+                          "alignment": "center"
+                        },
+                        "children": [
+                          {
+                            "id": "r.0.0.1.0.3.0",
+                            "type": "Button",
+                            "props": {},
+                            "label": [
+                              {
+                                "id": "r.0.0.1.0.3.0.l0",
+                                "type": "Image",
+                                "props": {
+                                  "system": "speaker.minus.fill"
+                                },
+                                "mods": [
+                                  {
+                                    "m": "font",
+                                    "font": {
+                                      "style": "title2"
+                                    }
+                                  }
+                                ],
+                                "src": [
+                                  {
+                                    "f": "corpus/10_accessibility/ContentView.swift",
+                                    "a": 4003,
+                                    "b": 4056
+                                  }
+                                ]
+                              }
+                            ],
+                            "src": [
+                              {
+                                "f": "corpus/10_accessibility/ContentView.swift",
+                                "a": 3934,
+                                "b": 4135
+                              }
+                            ],
+                            "event": "r.0.0.1.0.3.0"
+                          },
+                          {
+                            "id": "r.0.0.1.0.3.1",
+                            "type": "Spacer",
+                            "props": {},
+                            "src": [
+                              {
+                                "f": "corpus/10_accessibility/ContentView.swift",
+                                "a": 4152,
+                                "b": 4160
+                              }
+                            ]
+                          },
+                          {
+                            "id": "r.0.0.1.0.3.2",
+                            "type": "Button",
+                            "props": {},
+                            "label": [
+                              {
+                                "id": "r.0.0.1.0.3.2.l0",
+                                "type": "Image",
+                                "props": {
+                                  "system": "speaker.fill"
+                                },
+                                "mods": [
+                                  {
+                                    "m": "font",
+                                    "font": {
+                                      "style": "title2"
+                                    }
+                                  }
+                                ],
+                                "src": [
+                                  {
+                                    "f": "corpus/10_accessibility/ContentView.swift",
+                                    "a": 4265,
+                                    "b": 4374
+                                  }
+                                ]
+                              }
+                            ],
+                            "src": [
+                              {
+                                "f": "corpus/10_accessibility/ContentView.swift",
+                                "a": 4177,
+                                "b": 4461
+                              }
+                            ],
+                            "event": "r.0.0.1.0.3.2"
+                          },
+                          {
+                            "id": "r.0.0.1.0.3.3",
+                            "type": "Spacer",
+                            "props": {},
+                            "src": [
+                              {
+                                "f": "corpus/10_accessibility/ContentView.swift",
+                                "a": 4478,
+                                "b": 4486
+                              }
+                            ]
+                          },
+                          {
+                            "id": "r.0.0.1.0.3.4",
+                            "type": "Button",
+                            "props": {},
+                            "label": [
+                              {
+                                "id": "r.0.0.1.0.3.4.l0",
+                                "type": "Image",
+                                "props": {
+                                  "system": "speaker.plus.fill"
+                                },
+                                "mods": [
+                                  {
+                                    "m": "font",
+                                    "font": {
+                                      "style": "title2"
+                                    }
+                                  }
+                                ],
+                                "src": [
+                                  {
+                                    "f": "corpus/10_accessibility/ContentView.swift",
+                                    "a": 4574,
+                                    "b": 4626
+                                  }
+                                ]
+                              }
+                            ],
+                            "src": [
+                              {
+                                "f": "corpus/10_accessibility/ContentView.swift",
+                                "a": 4503,
+                                "b": 4705
+                              }
+                            ],
+                            "event": "r.0.0.1.0.3.4"
+                          }
+                        ],
+                        "mods": [
+                          {
+                            "m": "padding",
+                            "top": 0,
+                            "leading": 32,
+                            "bottom": 0,
+                            "trailing": 32
+                          }
+                        ],
+                        "src": [
+                          {
+                            "f": "corpus/10_accessibility/ContentView.swift",
+                            "a": 3909,
+                            "b": 4757
+                          }
+                        ]
+                      }
+                    ],
+                    "mods": [
+                      {
+                        "m": "padding",
+                        "top": 16,
+                        "leading": 16,
+                        "bottom": 16,
+                        "trailing": 16
+                      },
+                      {
+                        "m": "navTitle",
+                        "title": "Accessible Control"
+                      }
+                    ],
+                    "src": [
+                      {
+                        "f": "corpus/10_accessibility/ContentView.swift",
+                        "a": 2396,
+                        "b": 4833
+                      },
+                      {
+                        "f": "corpus/10_accessibility/ContentView.swift",
+                        "a": 610,
+                        "b": 632
+                      }
+                    ]
+                  }
+                ],
+                "src": [
+                  {
+                    "f": "corpus/10_accessibility/ContentView.swift",
+                    "a": 564,
+                    "b": 634
+                  }
+                ]
+              },
+              {
+                "id": "r.0.0.2",
+                "type": "NavigationLink",
+                "props": {
+                  "title": "Image Descriptions"
+                },
+                "children": [
+                  {
+                    "id": "r.0.0.2.0",
+                    "type": "List",
+                    "props": {},
+                    "children": [
+                      {
+                        "id": "r.0.0.2.0.0",
+                        "type": "HStack",
+                        "props": {
+                          "alignment": "center"
+                        },
+                        "children": [
+                          {
+                            "id": "r.0.0.2.0.0.0",
+                            "type": "Image",
+                            "props": {
+                              "system": "sun.max.fill"
+                            },
+                            "mods": [
+                              {
+                                "m": "foreground",
+                                "color": {
+                                  "name": "orange"
+                                }
+                              }
+                            ],
+                            "src": [
+                              {
+                                "f": "corpus/10_accessibility/ContentView.swift",
+                                "a": 6159,
+                                "b": 6299
+                              }
+                            ]
+                          },
+                          {
+                            "id": "r.0.0.2.0.0.1",
+                            "type": "Text",
+                            "props": {
+                              "text": "Bright sunny day with clear sky"
+                            },
+                            "src": [
+                              {
+                                "f": "corpus/10_accessibility/ContentView.swift",
+                                "a": 6320,
+                                "b": 6342
+                              }
+                            ]
+                          }
+                        ],
+                        "src": [
+                          {
+                            "f": "corpus/10_accessibility/ContentView.swift",
+                            "a": 5781,
+                            "b": 6374
+                          }
+                        ]
+                      },
+                      {
+                        "id": "r.0.0.2.0.1",
+                        "type": "HStack",
+                        "props": {
+                          "alignment": "center"
+                        },
+                        "children": [
+                          {
+                            "id": "r.0.0.2.0.1.0",
+                            "type": "Image",
+                            "props": {
+                              "system": "cloud.rain.fill"
+                            },
+                            "mods": [
+                              {
+                                "m": "foreground",
+                                "color": {
+                                  "name": "orange"
+                                }
+                              }
+                            ],
+                            "src": [
+                              {
+                                "f": "corpus/10_accessibility/ContentView.swift",
+                                "a": 6159,
+                                "b": 6299
+                              }
+                            ]
+                          },
+                          {
+                            "id": "r.0.0.2.0.1.1",
+                            "type": "Text",
+                            "props": {
+                              "text": "Rainy weather"
+                            },
+                            "src": [
+                              {
+                                "f": "corpus/10_accessibility/ContentView.swift",
+                                "a": 6320,
+                                "b": 6342
+                              }
+                            ]
+                          }
+                        ],
+                        "src": [
+                          {
+                            "f": "corpus/10_accessibility/ContentView.swift",
+                            "a": 5781,
+                            "b": 6374
+                          }
+                        ]
+                      },
+                      {
+                        "id": "r.0.0.2.0.2",
+                        "type": "HStack",
+                        "props": {
+                          "alignment": "center"
+                        },
+                        "children": [
+                          {
+                            "id": "r.0.0.2.0.2.0",
+                            "type": "Image",
+                            "props": {
+                              "system": "checkmark.seal.fill"
+                            },
+                            "mods": [
+                              {
+                                "m": "foreground",
+                                "color": {
+                                  "name": "green"
+                                }
+                              }
+                            ],
+                            "src": [
+                              {
+                                "f": "corpus/10_accessibility/ContentView.swift",
+                                "a": 5849,
+                                "b": 5977
+                              }
+                            ]
+                          },
+                          {
+                            "id": "r.0.0.2.0.2.1",
+                            "type": "Text",
+                            "props": {
+                              "text": "Decorative icon (hidden from VoiceOver)"
+                            },
+                            "mods": [
+                              {
+                                "m": "font",
+                                "font": {
+                                  "style": "caption"
+                                }
+                              },
+                              {
+                                "m": "foreground",
+                                "color": {
+                                  "name": "secondary"
+                                }
+                              }
+                            ],
+                            "src": [
+                              {
+                                "f": "corpus/10_accessibility/ContentView.swift",
+                                "a": 5998,
+                                "b": 6113
+                              }
+                            ]
+                          }
+                        ],
+                        "src": [
+                          {
+                            "f": "corpus/10_accessibility/ContentView.swift",
+                            "a": 5781,
+                            "b": 6374
+                          }
+                        ]
+                      },
+                      {
+                        "id": "r.0.0.2.0.3",
+                        "type": "HStack",
+                        "props": {
+                          "alignment": "center"
+                        },
+                        "children": [
+                          {
+                            "id": "r.0.0.2.0.3.0",
+                            "type": "Image",
+                            "props": {
+                              "system": "star.fill"
+                            },
+                            "mods": [
+                              {
+                                "m": "foreground",
+                                "color": {
+                                  "name": "orange"
+                                }
+                              }
+                            ],
+                            "src": [
+                              {
+                                "f": "corpus/10_accessibility/ContentView.swift",
+                                "a": 6159,
+                                "b": 6299
+                              }
+                            ]
+                          },
+                          {
+                            "id": "r.0.0.2.0.3.1",
+                            "type": "Text",
+                            "props": {
+                              "text": "5-star rating"
+                            },
+                            "src": [
+                              {
+                                "f": "corpus/10_accessibility/ContentView.swift",
+                                "a": 6320,
+                                "b": 6342
+                              }
+                            ]
+                          }
+                        ],
+                        "src": [
+                          {
+                            "f": "corpus/10_accessibility/ContentView.swift",
+                            "a": 5781,
+                            "b": 6374
+                          }
+                        ]
+                      }
+                    ],
+                    "mods": [
+                      {
+                        "m": "navTitle",
+                        "title": "Image Labels"
+                      }
+                    ],
+                    "src": [
+                      {
+                        "f": "corpus/10_accessibility/ContentView.swift",
+                        "a": 5747,
+                        "b": 6425
+                      },
+                      {
+                        "f": "corpus/10_accessibility/ContentView.swift",
+                        "a": 694,
+                        "b": 716
+                      }
+                    ]
+                  }
+                ],
+                "src": [
+                  {
+                    "f": "corpus/10_accessibility/ContentView.swift",
+                    "a": 655,
+                    "b": 718
+                  }
+                ]
+              },
+              {
+                "id": "r.0.0.3",
+                "type": "NavigationLink",
+                "props": {
+                  "title": "Grouped Elements"
+                },
+                "children": [
+                  {
+                    "id": "r.0.0.3.0",
+                    "type": "ScrollView",
+                    "props": {
+                      "axis": "vertical"
+                    },
+                    "children": [
+                      {
+                        "id": "r.0.0.3.0.0",
+                        "type": "VStack",
+                        "props": {
+                          "alignment": "center",
+                          "spacing": 16
+                        },
+                        "children": [
+                          {
+                            "id": "r.0.0.3.0.0.0",
+                            "type": "HStack",
+                            "props": {
+                              "alignment": "center"
+                            },
+                            "children": [
+                              {
+                                "id": "r.0.0.3.0.0.0.0",
+                                "type": "VStack",
+                                "props": {
+                                  "alignment": "leading"
+                                },
+                                "children": [
+                                  {
+                                    "id": "r.0.0.3.0.0.0.0.0",
+                                    "type": "Text",
+                                    "props": {
+                                      "text": "Steps Today"
+                                    },
+                                    "mods": [
+                                      {
+                                        "m": "font",
+                                        "font": {
+                                          "style": "headline"
+                                        }
+                                      }
+                                    ],
+                                    "src": [
+                                      {
+                                        "f": "corpus/10_accessibility/ContentView.swift",
+                                        "a": 7136,
+                                        "b": 7168
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "id": "r.0.0.3.0.0.0.0.1",
+                                    "type": "Text",
+                                    "props": {
+                                      "text": ""
+                                    },
+                                    "mods": [
+                                      {
+                                        "m": "font",
+                                        "font": {
+                                          "style": "caption"
+                                        }
+                                      },
+                                      {
+                                        "m": "foreground",
+                                        "color": {
+                                          "name": "secondary"
+                                        }
+                                      }
+                                    ],
+                                    "src": [
+                                      {
+                                        "f": "corpus/10_accessibility/ContentView.swift",
+                                        "a": 7197,
+                                        "b": 7259
+                                      }
+                                    ]
+                                  }
+                                ],
+                                "src": [
+                                  {
+                                    "f": "corpus/10_accessibility/ContentView.swift",
+                                    "a": 7078,
+                                    "b": 7285
+                                  }
+                                ]
+                              },
+                              {
+                                "id": "r.0.0.3.0.0.0.1",
+                                "type": "Spacer",
+                                "props": {},
+                                "src": [
+                                  {
+                                    "f": "corpus/10_accessibility/ContentView.swift",
+                                    "a": 7310,
+                                    "b": 7318
+                                  }
+                                ]
+                              },
+                              {
+                                "id": "r.0.0.3.0.0.0.2",
+                                "type": "Text",
+                                "props": {
+                                  "text": ""
+                                },
+                                "mods": [
+                                  {
+                                    "m": "font",
+                                    "font": {
+                                      "style": "title2"
+                                    }
+                                  },
+                                  {
+                                    "m": "fontWeight",
+                                    "weight": "bold"
+                                  }
+                                ],
+                                "src": [
+                                  {
+                                    "f": "corpus/10_accessibility/ContentView.swift",
+                                    "a": 7343,
+                                    "b": 7390
+                                  }
+                                ]
+                              }
+                            ],
+                            "mods": [
+                              {
+                                "m": "padding",
+                                "top": 16,
+                                "leading": 16,
+                                "bottom": 16,
+                                "trailing": 16
+                              },
+                              {
+                                "m": "background",
+                                "material": "regular",
+                                "shape": {
+                                  "shape": "roundedRect",
+                                  "radius": 12
+                                }
+                              }
+                            ],
+                            "src": [
+                              {
+                                "f": "corpus/10_accessibility/ContentView.swift",
+                                "a": 7045,
+                                "b": 7755
+                              },
+                              {
+                                "f": "corpus/10_accessibility/ContentView.swift",
+                                "a": 7000,
+                                "b": 7773
+                              }
+                            ]
+                          },
+                          {
+                            "id": "r.0.0.3.0.0.1",
+                            "type": "HStack",
+                            "props": {
+                              "alignment": "center"
+                            },
+                            "children": [
+                              {
+                                "id": "r.0.0.3.0.0.1.0",
+                                "type": "VStack",
+                                "props": {
+                                  "alignment": "leading"
+                                },
+                                "children": [
+                                  {
+                                    "id": "r.0.0.3.0.0.1.0.0",
+                                    "type": "Text",
+                                    "props": {
+                                      "text": "Active Minutes"
+                                    },
+                                    "mods": [
+                                      {
+                                        "m": "font",
+                                        "font": {
+                                          "style": "headline"
+                                        }
+                                      }
+                                    ],
+                                    "src": [
+                                      {
+                                        "f": "corpus/10_accessibility/ContentView.swift",
+                                        "a": 7136,
+                                        "b": 7168
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "id": "r.0.0.3.0.0.1.0.1",
+                                    "type": "Text",
+                                    "props": {
+                                      "text": ""
+                                    },
+                                    "mods": [
+                                      {
+                                        "m": "font",
+                                        "font": {
+                                          "style": "caption"
+                                        }
+                                      },
+                                      {
+                                        "m": "foreground",
+                                        "color": {
+                                          "name": "secondary"
+                                        }
+                                      }
+                                    ],
+                                    "src": [
+                                      {
+                                        "f": "corpus/10_accessibility/ContentView.swift",
+                                        "a": 7197,
+                                        "b": 7259
+                                      }
+                                    ]
+                                  }
+                                ],
+                                "src": [
+                                  {
+                                    "f": "corpus/10_accessibility/ContentView.swift",
+                                    "a": 7078,
+                                    "b": 7285
+                                  }
+                                ]
+                              },
+                              {
+                                "id": "r.0.0.3.0.0.1.1",
+                                "type": "Spacer",
+                                "props": {},
+                                "src": [
+                                  {
+                                    "f": "corpus/10_accessibility/ContentView.swift",
+                                    "a": 7310,
+                                    "b": 7318
+                                  }
+                                ]
+                              },
+                              {
+                                "id": "r.0.0.3.0.0.1.2",
+                                "type": "Text",
+                                "props": {
+                                  "text": ""
+                                },
+                                "mods": [
+                                  {
+                                    "m": "font",
+                                    "font": {
+                                      "style": "title2"
+                                    }
+                                  },
+                                  {
+                                    "m": "fontWeight",
+                                    "weight": "bold"
+                                  }
+                                ],
+                                "src": [
+                                  {
+                                    "f": "corpus/10_accessibility/ContentView.swift",
+                                    "a": 7343,
+                                    "b": 7390
+                                  }
+                                ]
+                              }
+                            ],
+                            "mods": [
+                              {
+                                "m": "padding",
+                                "top": 16,
+                                "leading": 16,
+                                "bottom": 16,
+                                "trailing": 16
+                              },
+                              {
+                                "m": "background",
+                                "material": "regular",
+                                "shape": {
+                                  "shape": "roundedRect",
+                                  "radius": 12
+                                }
+                              }
+                            ],
+                            "src": [
+                              {
+                                "f": "corpus/10_accessibility/ContentView.swift",
+                                "a": 7045,
+                                "b": 7755
+                              },
+                              {
+                                "f": "corpus/10_accessibility/ContentView.swift",
+                                "a": 7000,
+                                "b": 7773
+                              }
+                            ]
+                          },
+                          {
+                            "id": "r.0.0.3.0.0.2",
+                            "type": "HStack",
+                            "props": {
+                              "alignment": "center"
+                            },
+                            "children": [
+                              {
+                                "id": "r.0.0.3.0.0.2.0",
+                                "type": "VStack",
+                                "props": {
+                                  "alignment": "leading"
+                                },
+                                "children": [
+                                  {
+                                    "id": "r.0.0.3.0.0.2.0.0",
+                                    "type": "Text",
+                                    "props": {
+                                      "text": "Calories"
+                                    },
+                                    "mods": [
+                                      {
+                                        "m": "font",
+                                        "font": {
+                                          "style": "headline"
+                                        }
+                                      }
+                                    ],
+                                    "src": [
+                                      {
+                                        "f": "corpus/10_accessibility/ContentView.swift",
+                                        "a": 7136,
+                                        "b": 7168
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "id": "r.0.0.3.0.0.2.0.1",
+                                    "type": "Text",
+                                    "props": {
+                                      "text": ""
+                                    },
+                                    "mods": [
+                                      {
+                                        "m": "font",
+                                        "font": {
+                                          "style": "caption"
+                                        }
+                                      },
+                                      {
+                                        "m": "foreground",
+                                        "color": {
+                                          "name": "secondary"
+                                        }
+                                      }
+                                    ],
+                                    "src": [
+                                      {
+                                        "f": "corpus/10_accessibility/ContentView.swift",
+                                        "a": 7197,
+                                        "b": 7259
+                                      }
+                                    ]
+                                  }
+                                ],
+                                "src": [
+                                  {
+                                    "f": "corpus/10_accessibility/ContentView.swift",
+                                    "a": 7078,
+                                    "b": 7285
+                                  }
+                                ]
+                              },
+                              {
+                                "id": "r.0.0.3.0.0.2.1",
+                                "type": "Spacer",
+                                "props": {},
+                                "src": [
+                                  {
+                                    "f": "corpus/10_accessibility/ContentView.swift",
+                                    "a": 7310,
+                                    "b": 7318
+                                  }
+                                ]
+                              },
+                              {
+                                "id": "r.0.0.3.0.0.2.2",
+                                "type": "Text",
+                                "props": {
+                                  "text": ""
+                                },
+                                "mods": [
+                                  {
+                                    "m": "font",
+                                    "font": {
+                                      "style": "title2"
+                                    }
+                                  },
+                                  {
+                                    "m": "fontWeight",
+                                    "weight": "bold"
+                                  }
+                                ],
+                                "src": [
+                                  {
+                                    "f": "corpus/10_accessibility/ContentView.swift",
+                                    "a": 7343,
+                                    "b": 7390
+                                  }
+                                ]
+                              }
+                            ],
+                            "mods": [
+                              {
+                                "m": "padding",
+                                "top": 16,
+                                "leading": 16,
+                                "bottom": 16,
+                                "trailing": 16
+                              },
+                              {
+                                "m": "background",
+                                "material": "regular",
+                                "shape": {
+                                  "shape": "roundedRect",
+                                  "radius": 12
+                                }
+                              }
+                            ],
+                            "src": [
+                              {
+                                "f": "corpus/10_accessibility/ContentView.swift",
+                                "a": 7045,
+                                "b": 7755
+                              },
+                              {
+                                "f": "corpus/10_accessibility/ContentView.swift",
+                                "a": 7000,
+                                "b": 7773
+                              }
+                            ]
+                          }
+                        ],
+                        "mods": [
+                          {
+                            "m": "padding",
+                            "top": 16,
+                            "leading": 16,
+                            "bottom": 16,
+                            "trailing": 16
+                          }
+                        ],
+                        "src": [
+                          {
+                            "f": "corpus/10_accessibility/ContentView.swift",
+                            "a": 6962,
+                            "b": 7810
+                          }
+                        ]
+                      }
+                    ],
+                    "mods": [
+                      {
+                        "m": "navTitle",
+                        "title": "Grouped Elements"
+                      }
+                    ],
+                    "src": [
+                      {
+                        "f": "corpus/10_accessibility/ContentView.swift",
+                        "a": 6937,
+                        "b": 7865
+                      },
+                      {
+                        "f": "corpus/10_accessibility/ContentView.swift",
+                        "a": 776,
+                        "b": 797
+                      }
+                    ]
+                  }
+                ],
+                "src": [
+                  {
+                    "f": "corpus/10_accessibility/ContentView.swift",
+                    "a": 739,
+                    "b": 799
+                  }
+                ]
+              }
+            ],
+            "src": [
+              {
+                "f": "corpus/10_accessibility/ContentView.swift",
+                "a": 452,
+                "b": 817
+              }
+            ]
+          }
+        ],
+        "mods": [
+          {
+            "m": "navTitle",
+            "title": "Accessibility"
+          }
+        ],
+        "src": [
+          {
+            "f": "corpus/10_accessibility/ContentView.swift",
+            "a": 429,
+            "b": 877
+          }
+        ]
+      }
+    ],
+    "src": [
+      {
+        "f": "corpus/10_accessibility/ContentView.swift",
+        "a": 399,
+        "b": 887
+      },
+      {
+        "f": "corpus/10_accessibility/ContentView.swift",
+        "a": 8630,
+        "b": 8643
+      }
+    ]
+  },
+  "allParseErrors": []
+}

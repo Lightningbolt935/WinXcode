@@ -1,0 +1,366 @@
+{
+  "id": "08",
+  "name": "Game",
+  "parseOk": true,
+  "parseErrors": [],
+  "renderOk": true,
+  "targets": [
+    "preview:0",
+    "view:ContentView"
+  ],
+  "notes": [
+    "Canvas"
+  ],
+  "unsupportedNodes": [
+    "Canvas"
+  ],
+  "stats": {
+    "views": 15,
+    "depth": 5,
+    "heavy": 0
+  },
+  "treeDepth": 6,
+  "viewNodeCount": 15,
+  "tree": {
+    "id": "r",
+    "type": "ZStack",
+    "props": {
+      "alignment": "topLeading"
+    },
+    "children": [
+      {
+        "id": "r.0",
+        "type": "ZStack",
+        "props": {
+          "alignment": "center"
+        },
+        "children": [
+          {
+            "id": "r.0.0",
+            "type": "Color",
+            "props": {
+              "color": {
+                "name": "black"
+              },
+              "colors": [
+                {
+                  "name": "black"
+                },
+                {
+                  "rgba": [
+                    0.05,
+                    0.05,
+                    0.2,
+                    1
+                  ]
+                }
+              ]
+            },
+            "mods": [
+              {
+                "m": "ignoresSafeArea"
+              }
+            ],
+            "src": [
+              {
+                "f": "corpus/08_game/ContentView.swift",
+                "a": 822,
+                "b": 1003
+              }
+            ]
+          },
+          {
+            "id": "r.0.1",
+            "type": "Unsupported",
+            "props": {
+              "name": "Canvas"
+            },
+            "src": [
+              {
+                "f": "corpus/08_game/ContentView.swift",
+                "a": 1179,
+                "b": 1366
+              },
+              {
+                "f": "corpus/08_game/ContentView.swift",
+                "a": 1116,
+                "b": 1388
+              }
+            ]
+          },
+          {
+            "id": "r.0.2",
+            "type": "VStack",
+            "props": {
+              "alignment": "center"
+            },
+            "children": [
+              {
+                "id": "r.0.2.0",
+                "type": "HStack",
+                "props": {
+                  "alignment": "center"
+                },
+                "children": [
+                  {
+                    "id": "r.0.2.0.0",
+                    "type": "Text",
+                    "props": {
+                      "text": "Score: 0"
+                    },
+                    "mods": [
+                      {
+                        "m": "font",
+                        "font": {
+                          "style": "headline"
+                        }
+                      },
+                      {
+                        "m": "foreground",
+                        "color": {
+                          "name": "white"
+                        }
+                      }
+                    ],
+                    "src": [
+                      {
+                        "f": "corpus/08_game/ContentView.swift",
+                        "a": 1507,
+                        "b": 1603
+                      }
+                    ]
+                  },
+                  {
+                    "id": "r.0.2.0.1",
+                    "type": "Spacer",
+                    "props": {},
+                    "src": [
+                      {
+                        "f": "corpus/08_game/ContentView.swift",
+                        "a": 1632,
+                        "b": 1640
+                      }
+                    ]
+                  },
+                  {
+                    "id": "r.0.2.0.2",
+                    "type": "HStack",
+                    "props": {
+                      "alignment": "center",
+                      "spacing": 4
+                    },
+                    "children": [
+                      {
+                        "id": "r.0.2.0.2.0",
+                        "type": "Image",
+                        "props": {
+                          "system": "heart.fill"
+                        },
+                        "mods": [
+                          {
+                            "m": "foreground",
+                            "color": {
+                              "name": "red"
+                            }
+                          }
+                        ],
+                        "src": [
+                          {
+                            "f": "corpus/08_game/ContentView.swift",
+                            "a": 1780,
+                            "b": 1896
+                          },
+                          {
+                            "f": "corpus/08_game/ContentView.swift",
+                            "a": 1722,
+                            "b": 1930
+                          }
+                        ]
+                      },
+                      {
+                        "id": "r.0.2.0.2.1",
+                        "type": "Image",
+                        "props": {
+                          "system": "heart.fill"
+                        },
+                        "mods": [
+                          {
+                            "m": "foreground",
+                            "color": {
+                              "name": "red"
+                            }
+                          }
+                        ],
+                        "src": [
+                          {
+                            "f": "corpus/08_game/ContentView.swift",
+                            "a": 1780,
+                            "b": 1896
+                          },
+                          {
+                            "f": "corpus/08_game/ContentView.swift",
+                            "a": 1722,
+                            "b": 1930
+                          }
+                        ]
+                      },
+                      {
+                        "id": "r.0.2.0.2.2",
+                        "type": "Image",
+                        "props": {
+                          "system": "heart.fill"
+                        },
+                        "mods": [
+                          {
+                            "m": "foreground",
+                            "color": {
+                              "name": "red"
+                            }
+                          }
+                        ],
+                        "src": [
+                          {
+                            "f": "corpus/08_game/ContentView.swift",
+                            "a": 1780,
+                            "b": 1896
+                          },
+                          {
+                            "f": "corpus/08_game/ContentView.swift",
+                            "a": 1722,
+                            "b": 1930
+                          }
+                        ]
+                      }
+                    ],
+                    "src": [
+                      {
+                        "f": "corpus/08_game/ContentView.swift",
+                        "a": 1669,
+                        "b": 1960
+                      }
+                    ]
+                  }
+                ],
+                "mods": [
+                  {
+                    "m": "padding",
+                    "top": 16,
+                    "leading": 16,
+                    "bottom": 16,
+                    "trailing": 16
+                  }
+                ],
+                "src": [
+                  {
+                    "f": "corpus/08_game/ContentView.swift",
+                    "a": 1470,
+                    "b": 2021
+                  }
+                ]
+              },
+              {
+                "id": "r.0.2.1",
+                "type": "Spacer",
+                "props": {},
+                "src": [
+                  {
+                    "f": "corpus/08_game/ContentView.swift",
+                    "a": 2046,
+                    "b": 2054
+                  }
+                ]
+              },
+              {
+                "id": "r.0.2.2",
+                "type": "Color",
+                "props": {
+                  "color": {
+                    "name": "clear"
+                  }
+                },
+                "src": [
+                  {
+                    "f": "corpus/08_game/ContentView.swift",
+                    "a": 2124,
+                    "b": 2366
+                  }
+                ]
+              },
+              {
+                "id": "r.0.2.3",
+                "type": "Text",
+                "props": {
+                  "text": "← Drag to steer →"
+                },
+                "mods": [
+                  {
+                    "m": "font",
+                    "font": {
+                      "style": "caption2"
+                    }
+                  },
+                  {
+                    "m": "foreground",
+                    "color": {
+                      "name": "white",
+                      "opacity": 0.5
+                    }
+                  },
+                  {
+                    "m": "padding",
+                    "top": 0,
+                    "leading": 0,
+                    "bottom": 32,
+                    "trailing": 0
+                  }
+                ],
+                "src": [
+                  {
+                    "f": "corpus/08_game/ContentView.swift",
+                    "a": 2391,
+                    "b": 2548
+                  }
+                ]
+              }
+            ],
+            "src": [
+              {
+                "f": "corpus/08_game/ContentView.swift",
+                "a": 1437,
+                "b": 2570
+              }
+            ]
+          }
+        ],
+        "src": [
+          {
+            "f": "corpus/08_game/ContentView.swift",
+            "a": 767,
+            "b": 2602
+          }
+        ]
+      }
+    ],
+    "mods": [
+      {
+        "m": "frame",
+        "maxWidth": "inf",
+        "maxHeight": "inf",
+        "alignment": "topLeading"
+      }
+    ],
+    "src": [
+      {
+        "f": "corpus/08_game/ContentView.swift",
+        "a": 659,
+        "b": 2612
+      },
+      {
+        "f": "corpus/08_game/ContentView.swift",
+        "a": 5256,
+        "b": 5269
+      }
+    ]
+  },
+  "allParseErrors": []
+}

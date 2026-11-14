@@ -1,0 +1,366 @@
+{
+  "id": "03",
+  "name": "Todo",
+  "parseOk": true,
+  "parseErrors": [],
+  "renderOk": true,
+  "targets": [
+    "preview:0",
+    "view:ContentView"
+  ],
+  "notes": [],
+  "unsupportedNodes": [],
+  "stats": {
+    "views": 17,
+    "depth": 5,
+    "heavy": 0
+  },
+  "treeDepth": 6,
+  "viewNodeCount": 17,
+  "tree": {
+    "id": "r",
+    "type": "NavigationStack",
+    "props": {},
+    "children": [
+      {
+        "id": "r.0",
+        "type": "List",
+        "props": {},
+        "children": [
+          {
+            "id": "r.0.0",
+            "type": "Section",
+            "props": {},
+            "children": [
+              {
+                "id": "r.0.0.0",
+                "type": "HStack",
+                "props": {
+                  "alignment": "center"
+                },
+                "children": [
+                  {
+                    "id": "r.0.0.0.0",
+                    "type": "TextField",
+                    "props": {
+                      "text": "",
+                      "placeholder": "New task…"
+                    },
+                    "src": [
+                      {
+                        "f": "corpus/03_todo/ContentView.swift",
+                        "a": 805,
+                        "b": 844
+                      }
+                    ],
+                    "event": "r.0.0.0.0"
+                  },
+                  {
+                    "id": "r.0.0.0.1",
+                    "type": "Button",
+                    "props": {},
+                    "label": [
+                      {
+                        "id": "r.0.0.0.1.l0",
+                        "type": "Image",
+                        "props": {
+                          "system": "plus.circle.fill"
+                        },
+                        "mods": [
+                          {
+                            "m": "foreground",
+                            "color": {
+                              "name": "blue"
+                            }
+                          }
+                        ],
+                        "src": [
+                          {
+                            "f": "corpus/03_todo/ContentView.swift",
+                            "a": 1163,
+                            "b": 1256
+                          }
+                        ]
+                      }
+                    ],
+                    "src": [
+                      {
+                        "f": "corpus/03_todo/ContentView.swift",
+                        "a": 869,
+                        "b": 1282
+                      }
+                    ],
+                    "event": "r.0.0.0.1"
+                  }
+                ],
+                "src": [
+                  {
+                    "f": "corpus/03_todo/ContentView.swift",
+                    "a": 772,
+                    "b": 1304
+                  }
+                ]
+              }
+            ],
+            "src": [
+              {
+                "f": "corpus/03_todo/ContentView.swift",
+                "a": 742,
+                "b": 1322
+              }
+            ]
+          },
+          {
+            "id": "r.0.1",
+            "type": "Section",
+            "props": {
+              "header": "3 remaining"
+            },
+            "children": [
+              {
+                "id": "r.0.1.0",
+                "type": "HStack",
+                "props": {
+                  "alignment": "center"
+                },
+                "children": [
+                  {
+                    "id": "r.0.1.0.0",
+                    "type": "Image",
+                    "props": {
+                      "system": "circle"
+                    },
+                    "mods": [
+                      {
+                        "m": "foreground",
+                        "color": {
+                          "name": "secondary"
+                        }
+                      },
+                      {
+                        "m": "onTap",
+                        "event": "r.0.1.0.0.tap1"
+                      }
+                    ],
+                    "src": [
+                      {
+                        "f": "corpus/03_todo/ContentView.swift",
+                        "a": 1573,
+                        "b": 1803
+                      }
+                    ]
+                  },
+                  {
+                    "id": "r.0.1.0.1",
+                    "type": "Text",
+                    "props": {
+                      "text": "Buy groceries"
+                    },
+                    "mods": [
+                      {
+                        "m": "foreground",
+                        "color": {
+                          "name": "primary"
+                        }
+                      }
+                    ],
+                    "src": [
+                      {
+                        "f": "corpus/03_todo/ContentView.swift",
+                        "a": 1837,
+                        "b": 2007
+                      }
+                    ]
+                  }
+                ],
+                "src": [
+                  {
+                    "f": "corpus/03_todo/ContentView.swift",
+                    "a": 1532,
+                    "b": 2904
+                  },
+                  {
+                    "f": "corpus/03_todo/ContentView.swift",
+                    "a": 1423,
+                    "b": 2952
+                  }
+                ]
+              },
+              {
+                "id": "r.0.1.1",
+                "type": "HStack",
+                "props": {
+                  "alignment": "center"
+                },
+                "children": [
+                  {
+                    "id": "r.0.1.1.0",
+                    "type": "Image",
+                    "props": {
+                      "system": "circle"
+                    },
+                    "mods": [
+                      {
+                        "m": "foreground",
+                        "color": {
+                          "name": "secondary"
+                        }
+                      },
+                      {
+                        "m": "onTap",
+                        "event": "r.0.1.1.0.tap1"
+                      }
+                    ],
+                    "src": [
+                      {
+                        "f": "corpus/03_todo/ContentView.swift",
+                        "a": 1573,
+                        "b": 1803
+                      }
+                    ]
+                  },
+                  {
+                    "id": "r.0.1.1.1",
+                    "type": "Text",
+                    "props": {
+                      "text": "Read a chapter"
+                    },
+                    "mods": [
+                      {
+                        "m": "foreground",
+                        "color": {
+                          "name": "primary"
+                        }
+                      }
+                    ],
+                    "src": [
+                      {
+                        "f": "corpus/03_todo/ContentView.swift",
+                        "a": 1837,
+                        "b": 2007
+                      }
+                    ]
+                  }
+                ],
+                "src": [
+                  {
+                    "f": "corpus/03_todo/ContentView.swift",
+                    "a": 1532,
+                    "b": 2904
+                  },
+                  {
+                    "f": "corpus/03_todo/ContentView.swift",
+                    "a": 1423,
+                    "b": 2952
+                  }
+                ]
+              },
+              {
+                "id": "r.0.1.2",
+                "type": "HStack",
+                "props": {
+                  "alignment": "center"
+                },
+                "children": [
+                  {
+                    "id": "r.0.1.2.0",
+                    "type": "Image",
+                    "props": {
+                      "system": "circle"
+                    },
+                    "mods": [
+                      {
+                        "m": "foreground",
+                        "color": {
+                          "name": "secondary"
+                        }
+                      },
+                      {
+                        "m": "onTap",
+                        "event": "r.0.1.2.0.tap1"
+                      }
+                    ],
+                    "src": [
+                      {
+                        "f": "corpus/03_todo/ContentView.swift",
+                        "a": 1573,
+                        "b": 1803
+                      }
+                    ]
+                  },
+                  {
+                    "id": "r.0.1.2.1",
+                    "type": "Text",
+                    "props": {
+                      "text": "Go for a walk"
+                    },
+                    "mods": [
+                      {
+                        "m": "foreground",
+                        "color": {
+                          "name": "primary"
+                        }
+                      }
+                    ],
+                    "src": [
+                      {
+                        "f": "corpus/03_todo/ContentView.swift",
+                        "a": 1837,
+                        "b": 2007
+                      }
+                    ]
+                  }
+                ],
+                "src": [
+                  {
+                    "f": "corpus/03_todo/ContentView.swift",
+                    "a": 1532,
+                    "b": 2904
+                  },
+                  {
+                    "f": "corpus/03_todo/ContentView.swift",
+                    "a": 1423,
+                    "b": 2952
+                  }
+                ]
+              }
+            ],
+            "src": [
+              {
+                "f": "corpus/03_todo/ContentView.swift",
+                "a": 1340,
+                "b": 2970
+              }
+            ]
+          }
+        ],
+        "mods": [
+          {
+            "m": "navTitle",
+            "title": "My Todos"
+          }
+        ],
+        "src": [
+          {
+            "f": "corpus/03_todo/ContentView.swift",
+            "a": 719,
+            "b": 3547
+          }
+        ]
+      }
+    ],
+    "src": [
+      {
+        "f": "corpus/03_todo/ContentView.swift",
+        "a": 689,
+        "b": 3557
+      },
+      {
+        "f": "corpus/03_todo/ContentView.swift",
+        "a": 3582,
+        "b": 3595
+      }
+    ]
+  },
+  "allParseErrors": []
+}

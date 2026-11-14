@@ -1,0 +1,671 @@
+{
+  "id": "02",
+  "name": "Quiz",
+  "parseOk": true,
+  "parseErrors": [],
+  "renderOk": true,
+  "targets": [
+    "preview:0",
+    "view:ContentView",
+    "view:QuizView",
+    "view:ResultView"
+  ],
+  "notes": [],
+  "unsupportedNodes": [],
+  "stats": {
+    "views": 27,
+    "depth": 6,
+    "heavy": 0
+  },
+  "treeDepth": 7,
+  "viewNodeCount": 27,
+  "tree": {
+    "id": "r",
+    "type": "NavigationStack",
+    "props": {},
+    "children": [
+      {
+        "id": "r.0",
+        "type": "VStack",
+        "props": {
+          "alignment": "center",
+          "spacing": 32
+        },
+        "children": [
+          {
+            "id": "r.0.0",
+            "type": "Image",
+            "props": {
+              "system": "questionmark.circle.fill"
+            },
+            "mods": [
+              {
+                "m": "font",
+                "font": {
+                  "size": 80
+                }
+              },
+              {
+                "m": "foreground",
+                "color": {
+                  "name": "blue"
+                }
+              }
+            ],
+            "src": [
+              {
+                "f": "corpus/02_quiz/ContentView.swift",
+                "a": 1044,
+                "b": 1178
+              }
+            ]
+          },
+          {
+            "id": "r.0.1",
+            "type": "Text",
+            "props": {
+              "text": "Quick Quiz"
+            },
+            "mods": [
+              {
+                "m": "font",
+                "font": {
+                  "style": "largeTitle"
+                }
+              },
+              {
+                "m": "fontWeight",
+                "weight": "bold"
+              }
+            ],
+            "src": [
+              {
+                "f": "corpus/02_quiz/ContentView.swift",
+                "a": 1196,
+                "b": 1292
+              }
+            ]
+          },
+          {
+            "id": "r.0.2",
+            "type": "Text",
+            "props": {
+              "text": "4 questions • Test your knowledge"
+            },
+            "mods": [
+              {
+                "m": "font",
+                "font": {
+                  "style": "subheadline"
+                }
+              },
+              {
+                "m": "foreground",
+                "color": {
+                  "name": "secondary"
+                }
+              }
+            ],
+            "src": [
+              {
+                "f": "corpus/02_quiz/ContentView.swift",
+                "a": 1310,
+                "b": 1463
+              }
+            ]
+          },
+          {
+            "id": "r.0.3",
+            "type": "NavigationLink",
+            "props": {
+              "title": "Start Quiz"
+            },
+            "children": [
+              {
+                "id": "r.0.3.0",
+                "type": "VStack",
+                "props": {
+                  "alignment": "leading",
+                  "spacing": 20
+                },
+                "children": [
+                  {
+                    "id": "r.0.3.0.0",
+                    "type": "ProgressView",
+                    "props": {
+                      "value": 0,
+                      "total": 4
+                    },
+                    "mods": [
+                      {
+                        "m": "tint",
+                        "color": {
+                          "name": "blue"
+                        }
+                      }
+                    ],
+                    "src": [
+                      {
+                        "f": "corpus/02_quiz/ContentView.swift",
+                        "a": 2200,
+                        "b": 2312
+                      }
+                    ]
+                  },
+                  {
+                    "id": "r.0.3.0.1",
+                    "type": "Text",
+                    "props": {
+                      "text": "Question 1 of 4"
+                    },
+                    "mods": [
+                      {
+                        "m": "font",
+                        "font": {
+                          "style": "caption"
+                        }
+                      },
+                      {
+                        "m": "foreground",
+                        "color": {
+                          "name": "secondary"
+                        }
+                      }
+                    ],
+                    "src": [
+                      {
+                        "f": "corpus/02_quiz/ContentView.swift",
+                        "a": 2330,
+                        "b": 2479
+                      }
+                    ]
+                  },
+                  {
+                    "id": "r.0.3.0.2",
+                    "type": "Text",
+                    "props": {
+                      "text": "What is the capital of France?"
+                    },
+                    "mods": [
+                      {
+                        "m": "font",
+                        "font": {
+                          "style": "title2"
+                        }
+                      },
+                      {
+                        "m": "fontWeight",
+                        "weight": "semibold"
+                      },
+                      {
+                        "m": "padding",
+                        "top": 16,
+                        "leading": 0,
+                        "bottom": 16,
+                        "trailing": 0
+                      }
+                    ],
+                    "src": [
+                      {
+                        "f": "corpus/02_quiz/ContentView.swift",
+                        "a": 2497,
+                        "b": 2633
+                      }
+                    ]
+                  },
+                  {
+                    "id": "r.0.3.0.3",
+                    "type": "Button",
+                    "props": {},
+                    "label": [
+                      {
+                        "id": "r.0.3.0.3.l0",
+                        "type": "HStack",
+                        "props": {
+                          "alignment": "center"
+                        },
+                        "children": [
+                          {
+                            "id": "r.0.3.0.3.l0.0",
+                            "type": "Text",
+                            "props": {
+                              "text": "Berlin"
+                            },
+                            "src": [
+                              {
+                                "f": "corpus/02_quiz/ContentView.swift",
+                                "a": 3431,
+                                "b": 3443
+                              }
+                            ]
+                          },
+                          {
+                            "id": "r.0.3.0.3.l0.1",
+                            "type": "Spacer",
+                            "props": {},
+                            "src": [
+                              {
+                                "f": "corpus/02_quiz/ContentView.swift",
+                                "a": 3472,
+                                "b": 3480
+                              }
+                            ]
+                          }
+                        ],
+                        "mods": [
+                          {
+                            "m": "padding",
+                            "top": 16,
+                            "leading": 16,
+                            "bottom": 16,
+                            "trailing": 16
+                          },
+                          {
+                            "m": "background",
+                            "color": {
+                              "name": "secondarySystemBackground"
+                            }
+                          },
+                          {
+                            "m": "foreground",
+                            "color": {
+                              "name": "primary"
+                            }
+                          },
+                          {
+                            "m": "clip",
+                            "shape": {
+                              "shape": "roundedRect",
+                              "radius": 12
+                            }
+                          }
+                        ],
+                        "src": [
+                          {
+                            "f": "corpus/02_quiz/ContentView.swift",
+                            "a": 3394,
+                            "b": 4232
+                          }
+                        ]
+                      }
+                    ],
+                    "src": [
+                      {
+                        "f": "corpus/02_quiz/ContentView.swift",
+                        "a": 2747,
+                        "b": 4254
+                      },
+                      {
+                        "f": "corpus/02_quiz/ContentView.swift",
+                        "a": 2651,
+                        "b": 4272
+                      }
+                    ],
+                    "event": "r.0.3.0.3"
+                  },
+                  {
+                    "id": "r.0.3.0.4",
+                    "type": "Button",
+                    "props": {},
+                    "label": [
+                      {
+                        "id": "r.0.3.0.4.l0",
+                        "type": "HStack",
+                        "props": {
+                          "alignment": "center"
+                        },
+                        "children": [
+                          {
+                            "id": "r.0.3.0.4.l0.0",
+                            "type": "Text",
+                            "props": {
+                              "text": "Madrid"
+                            },
+                            "src": [
+                              {
+                                "f": "corpus/02_quiz/ContentView.swift",
+                                "a": 3431,
+                                "b": 3443
+                              }
+                            ]
+                          },
+                          {
+                            "id": "r.0.3.0.4.l0.1",
+                            "type": "Spacer",
+                            "props": {},
+                            "src": [
+                              {
+                                "f": "corpus/02_quiz/ContentView.swift",
+                                "a": 3472,
+                                "b": 3480
+                              }
+                            ]
+                          }
+                        ],
+                        "mods": [
+                          {
+                            "m": "padding",
+                            "top": 16,
+                            "leading": 16,
+                            "bottom": 16,
+                            "trailing": 16
+                          },
+                          {
+                            "m": "background",
+                            "color": {
+                              "name": "secondarySystemBackground"
+                            }
+                          },
+                          {
+                            "m": "foreground",
+                            "color": {
+                              "name": "primary"
+                            }
+                          },
+                          {
+                            "m": "clip",
+                            "shape": {
+                              "shape": "roundedRect",
+                              "radius": 12
+                            }
+                          }
+                        ],
+                        "src": [
+                          {
+                            "f": "corpus/02_quiz/ContentView.swift",
+                            "a": 3394,
+                            "b": 4232
+                          }
+                        ]
+                      }
+                    ],
+                    "src": [
+                      {
+                        "f": "corpus/02_quiz/ContentView.swift",
+                        "a": 2747,
+                        "b": 4254
+                      },
+                      {
+                        "f": "corpus/02_quiz/ContentView.swift",
+                        "a": 2651,
+                        "b": 4272
+                      }
+                    ],
+                    "event": "r.0.3.0.4"
+                  },
+                  {
+                    "id": "r.0.3.0.5",
+                    "type": "Button",
+                    "props": {},
+                    "label": [
+                      {
+                        "id": "r.0.3.0.5.l0",
+                        "type": "HStack",
+                        "props": {
+                          "alignment": "center"
+                        },
+                        "children": [
+                          {
+                            "id": "r.0.3.0.5.l0.0",
+                            "type": "Text",
+                            "props": {
+                              "text": "Paris"
+                            },
+                            "src": [
+                              {
+                                "f": "corpus/02_quiz/ContentView.swift",
+                                "a": 3431,
+                                "b": 3443
+                              }
+                            ]
+                          },
+                          {
+                            "id": "r.0.3.0.5.l0.1",
+                            "type": "Spacer",
+                            "props": {},
+                            "src": [
+                              {
+                                "f": "corpus/02_quiz/ContentView.swift",
+                                "a": 3472,
+                                "b": 3480
+                              }
+                            ]
+                          }
+                        ],
+                        "mods": [
+                          {
+                            "m": "padding",
+                            "top": 16,
+                            "leading": 16,
+                            "bottom": 16,
+                            "trailing": 16
+                          },
+                          {
+                            "m": "background",
+                            "color": {
+                              "name": "secondarySystemBackground"
+                            }
+                          },
+                          {
+                            "m": "foreground",
+                            "color": {
+                              "name": "primary"
+                            }
+                          },
+                          {
+                            "m": "clip",
+                            "shape": {
+                              "shape": "roundedRect",
+                              "radius": 12
+                            }
+                          }
+                        ],
+                        "src": [
+                          {
+                            "f": "corpus/02_quiz/ContentView.swift",
+                            "a": 3394,
+                            "b": 4232
+                          }
+                        ]
+                      }
+                    ],
+                    "src": [
+                      {
+                        "f": "corpus/02_quiz/ContentView.swift",
+                        "a": 2747,
+                        "b": 4254
+                      },
+                      {
+                        "f": "corpus/02_quiz/ContentView.swift",
+                        "a": 2651,
+                        "b": 4272
+                      }
+                    ],
+                    "event": "r.0.3.0.5"
+                  },
+                  {
+                    "id": "r.0.3.0.6",
+                    "type": "Button",
+                    "props": {},
+                    "label": [
+                      {
+                        "id": "r.0.3.0.6.l0",
+                        "type": "HStack",
+                        "props": {
+                          "alignment": "center"
+                        },
+                        "children": [
+                          {
+                            "id": "r.0.3.0.6.l0.0",
+                            "type": "Text",
+                            "props": {
+                              "text": "Rome"
+                            },
+                            "src": [
+                              {
+                                "f": "corpus/02_quiz/ContentView.swift",
+                                "a": 3431,
+                                "b": 3443
+                              }
+                            ]
+                          },
+                          {
+                            "id": "r.0.3.0.6.l0.1",
+                            "type": "Spacer",
+                            "props": {},
+                            "src": [
+                              {
+                                "f": "corpus/02_quiz/ContentView.swift",
+                                "a": 3472,
+                                "b": 3480
+                              }
+                            ]
+                          }
+                        ],
+                        "mods": [
+                          {
+                            "m": "padding",
+                            "top": 16,
+                            "leading": 16,
+                            "bottom": 16,
+                            "trailing": 16
+                          },
+                          {
+                            "m": "background",
+                            "color": {
+                              "name": "secondarySystemBackground"
+                            }
+                          },
+                          {
+                            "m": "foreground",
+                            "color": {
+                              "name": "primary"
+                            }
+                          },
+                          {
+                            "m": "clip",
+                            "shape": {
+                              "shape": "roundedRect",
+                              "radius": 12
+                            }
+                          }
+                        ],
+                        "src": [
+                          {
+                            "f": "corpus/02_quiz/ContentView.swift",
+                            "a": 3394,
+                            "b": 4232
+                          }
+                        ]
+                      }
+                    ],
+                    "src": [
+                      {
+                        "f": "corpus/02_quiz/ContentView.swift",
+                        "a": 2747,
+                        "b": 4254
+                      },
+                      {
+                        "f": "corpus/02_quiz/ContentView.swift",
+                        "a": 2651,
+                        "b": 4272
+                      }
+                    ],
+                    "event": "r.0.3.0.6"
+                  },
+                  {
+                    "id": "r.0.3.0.7",
+                    "type": "Spacer",
+                    "props": {},
+                    "src": [
+                      {
+                        "f": "corpus/02_quiz/ContentView.swift",
+                        "a": 4289,
+                        "b": 4297
+                      }
+                    ]
+                  }
+                ],
+                "mods": [
+                  {
+                    "m": "padding",
+                    "top": 16,
+                    "leading": 16,
+                    "bottom": 16,
+                    "trailing": 16
+                  },
+                  {
+                    "m": "navTitle",
+                    "title": "Quiz"
+                  }
+                ],
+                "src": [
+                  {
+                    "f": "corpus/02_quiz/ContentView.swift",
+                    "a": 2141,
+                    "b": 4371
+                  },
+                  {
+                    "f": "corpus/02_quiz/ContentView.swift",
+                    "a": 1532,
+                    "b": 1542
+                  }
+                ]
+              }
+            ],
+            "mods": [
+              {
+                "m": "buttonStyle",
+                "value": "borderedProminent"
+              },
+              {
+                "m": "controlSize",
+                "value": "large"
+              }
+            ],
+            "src": [
+              {
+                "f": "corpus/02_quiz/ContentView.swift",
+                "a": 1481,
+                "b": 1646
+              }
+            ]
+          }
+        ],
+        "mods": [
+          {
+            "m": "padding",
+            "top": 16,
+            "leading": 16,
+            "bottom": 16,
+            "trailing": 16
+          },
+          {
+            "m": "navTitle",
+            "title": "Quiz App"
+          }
+        ],
+        "src": [
+          {
+            "f": "corpus/02_quiz/ContentView.swift",
+            "a": 1006,
+            "b": 1724
+          }
+        ]
+      }
+    ],
+    "src": [
+      {
+        "f": "corpus/02_quiz/ContentView.swift",
+        "a": 976,
+        "b": 1734
+      },
+      {
+        "f": "corpus/02_quiz/ContentView.swift",
+        "a": 5765,
+        "b": 5778
+      }
+    ]
+  },
+  "allParseErrors": []
+}

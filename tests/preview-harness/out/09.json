@@ -1,0 +1,843 @@
+{
+  "id": "09",
+  "name": "@Observable",
+  "parseOk": true,
+  "parseErrors": [],
+  "renderOk": true,
+  "targets": [
+    "preview:0",
+    "view:ContentView",
+    "view:ProductListView",
+    "view:CartView",
+    "view:ThemeEditorView"
+  ],
+  "notes": [],
+  "unsupportedNodes": [],
+  "stats": {
+    "views": 42,
+    "depth": 4,
+    "heavy": 0
+  },
+  "treeDepth": 5,
+  "viewNodeCount": 42,
+  "tree": {
+    "id": "r",
+    "type": "NavigationStack",
+    "props": {},
+    "children": [
+      {
+        "id": "r.0",
+        "type": "List",
+        "props": {},
+        "children": [
+          {
+            "id": "r.0.0",
+            "type": "HStack",
+            "props": {
+              "alignment": "center"
+            },
+            "children": [
+              {
+                "id": "r.0.0.0",
+                "type": "Text",
+                "props": {
+                  "text": "📗"
+                },
+                "mods": [
+                  {
+                    "m": "font",
+                    "font": {
+                      "style": "largeTitle"
+                    }
+                  }
+                ],
+                "src": [
+                  {
+                    "f": "corpus/09_observable/ContentView.swift",
+                    "a": 2282,
+                    "b": 2319
+                  }
+                ]
+              },
+              {
+                "id": "r.0.0.1",
+                "type": "VStack",
+                "props": {
+                  "alignment": "leading"
+                },
+                "children": [
+                  {
+                    "id": "r.0.0.1.0",
+                    "type": "Text",
+                    "props": {
+                      "text": "Swift Book"
+                    },
+                    "mods": [
+                      {
+                        "m": "font",
+                        "font": {
+                          "style": "headline"
+                        }
+                      }
+                    ],
+                    "src": [
+                      {
+                        "f": "corpus/09_observable/ContentView.swift",
+                        "a": 2386,
+                        "b": 2420
+                      }
+                    ]
+                  },
+                  {
+                    "id": "r.0.0.1.1",
+                    "type": "Text",
+                    "props": {
+                      "text": "29.99"
+                    },
+                    "mods": [
+                      {
+                        "m": "font",
+                        "font": {
+                          "style": "subheadline"
+                        }
+                      },
+                      {
+                        "m": "foreground",
+                        "color": {
+                          "name": "secondary"
+                        }
+                      }
+                    ],
+                    "src": [
+                      {
+                        "f": "corpus/09_observable/ContentView.swift",
+                        "a": 2441,
+                        "b": 2569
+                      }
+                    ]
+                  }
+                ],
+                "src": [
+                  {
+                    "f": "corpus/09_observable/ContentView.swift",
+                    "a": 2336,
+                    "b": 2587
+                  }
+                ]
+              },
+              {
+                "id": "r.0.0.2",
+                "type": "Spacer",
+                "props": {},
+                "src": [
+                  {
+                    "f": "corpus/09_observable/ContentView.swift",
+                    "a": 2604,
+                    "b": 2612
+                  }
+                ]
+              },
+              {
+                "id": "r.0.0.3",
+                "type": "Button",
+                "props": {},
+                "label": [
+                  {
+                    "id": "r.0.0.3.l0",
+                    "type": "Image",
+                    "props": {
+                      "system": "plus.circle.fill"
+                    },
+                    "mods": [
+                      {
+                        "m": "font",
+                        "font": {
+                          "style": "title2"
+                        }
+                      }
+                    ],
+                    "src": [
+                      {
+                        "f": "corpus/09_observable/ContentView.swift",
+                        "a": 2723,
+                        "b": 2799
+                      }
+                    ]
+                  }
+                ],
+                "src": [
+                  {
+                    "f": "corpus/09_observable/ContentView.swift",
+                    "a": 2629,
+                    "b": 2817
+                  }
+                ],
+                "event": "r.0.0.3"
+              }
+            ],
+            "src": [
+              {
+                "f": "corpus/09_observable/ContentView.swift",
+                "a": 2257,
+                "b": 2831
+              }
+            ]
+          },
+          {
+            "id": "r.0.1",
+            "type": "HStack",
+            "props": {
+              "alignment": "center"
+            },
+            "children": [
+              {
+                "id": "r.0.1.0",
+                "type": "Text",
+                "props": {
+                  "text": "🎨"
+                },
+                "mods": [
+                  {
+                    "m": "font",
+                    "font": {
+                      "style": "largeTitle"
+                    }
+                  }
+                ],
+                "src": [
+                  {
+                    "f": "corpus/09_observable/ContentView.swift",
+                    "a": 2282,
+                    "b": 2319
+                  }
+                ]
+              },
+              {
+                "id": "r.0.1.1",
+                "type": "VStack",
+                "props": {
+                  "alignment": "leading"
+                },
+                "children": [
+                  {
+                    "id": "r.0.1.1.0",
+                    "type": "Text",
+                    "props": {
+                      "text": "Dev Stickers"
+                    },
+                    "mods": [
+                      {
+                        "m": "font",
+                        "font": {
+                          "style": "headline"
+                        }
+                      }
+                    ],
+                    "src": [
+                      {
+                        "f": "corpus/09_observable/ContentView.swift",
+                        "a": 2386,
+                        "b": 2420
+                      }
+                    ]
+                  },
+                  {
+                    "id": "r.0.1.1.1",
+                    "type": "Text",
+                    "props": {
+                      "text": "9.99"
+                    },
+                    "mods": [
+                      {
+                        "m": "font",
+                        "font": {
+                          "style": "subheadline"
+                        }
+                      },
+                      {
+                        "m": "foreground",
+                        "color": {
+                          "name": "secondary"
+                        }
+                      }
+                    ],
+                    "src": [
+                      {
+                        "f": "corpus/09_observable/ContentView.swift",
+                        "a": 2441,
+                        "b": 2569
+                      }
+                    ]
+                  }
+                ],
+                "src": [
+                  {
+                    "f": "corpus/09_observable/ContentView.swift",
+                    "a": 2336,
+                    "b": 2587
+                  }
+                ]
+              },
+              {
+                "id": "r.0.1.2",
+                "type": "Spacer",
+                "props": {},
+                "src": [
+                  {
+                    "f": "corpus/09_observable/ContentView.swift",
+                    "a": 2604,
+                    "b": 2612
+                  }
+                ]
+              },
+              {
+                "id": "r.0.1.3",
+                "type": "Button",
+                "props": {},
+                "label": [
+                  {
+                    "id": "r.0.1.3.l0",
+                    "type": "Image",
+                    "props": {
+                      "system": "plus.circle.fill"
+                    },
+                    "mods": [
+                      {
+                        "m": "font",
+                        "font": {
+                          "style": "title2"
+                        }
+                      }
+                    ],
+                    "src": [
+                      {
+                        "f": "corpus/09_observable/ContentView.swift",
+                        "a": 2723,
+                        "b": 2799
+                      }
+                    ]
+                  }
+                ],
+                "src": [
+                  {
+                    "f": "corpus/09_observable/ContentView.swift",
+                    "a": 2629,
+                    "b": 2817
+                  }
+                ],
+                "event": "r.0.1.3"
+              }
+            ],
+            "src": [
+              {
+                "f": "corpus/09_observable/ContentView.swift",
+                "a": 2257,
+                "b": 2831
+              }
+            ]
+          },
+          {
+            "id": "r.0.2",
+            "type": "HStack",
+            "props": {
+              "alignment": "center"
+            },
+            "children": [
+              {
+                "id": "r.0.2.0",
+                "type": "Text",
+                "props": {
+                  "text": "⌨️"
+                },
+                "mods": [
+                  {
+                    "m": "font",
+                    "font": {
+                      "style": "largeTitle"
+                    }
+                  }
+                ],
+                "src": [
+                  {
+                    "f": "corpus/09_observable/ContentView.swift",
+                    "a": 2282,
+                    "b": 2319
+                  }
+                ]
+              },
+              {
+                "id": "r.0.2.1",
+                "type": "VStack",
+                "props": {
+                  "alignment": "leading"
+                },
+                "children": [
+                  {
+                    "id": "r.0.2.1.0",
+                    "type": "Text",
+                    "props": {
+                      "text": "Keyboard"
+                    },
+                    "mods": [
+                      {
+                        "m": "font",
+                        "font": {
+                          "style": "headline"
+                        }
+                      }
+                    ],
+                    "src": [
+                      {
+                        "f": "corpus/09_observable/ContentView.swift",
+                        "a": 2386,
+                        "b": 2420
+                      }
+                    ]
+                  },
+                  {
+                    "id": "r.0.2.1.1",
+                    "type": "Text",
+                    "props": {
+                      "text": "149.0"
+                    },
+                    "mods": [
+                      {
+                        "m": "font",
+                        "font": {
+                          "style": "subheadline"
+                        }
+                      },
+                      {
+                        "m": "foreground",
+                        "color": {
+                          "name": "secondary"
+                        }
+                      }
+                    ],
+                    "src": [
+                      {
+                        "f": "corpus/09_observable/ContentView.swift",
+                        "a": 2441,
+                        "b": 2569
+                      }
+                    ]
+                  }
+                ],
+                "src": [
+                  {
+                    "f": "corpus/09_observable/ContentView.swift",
+                    "a": 2336,
+                    "b": 2587
+                  }
+                ]
+              },
+              {
+                "id": "r.0.2.2",
+                "type": "Spacer",
+                "props": {},
+                "src": [
+                  {
+                    "f": "corpus/09_observable/ContentView.swift",
+                    "a": 2604,
+                    "b": 2612
+                  }
+                ]
+              },
+              {
+                "id": "r.0.2.3",
+                "type": "Button",
+                "props": {},
+                "label": [
+                  {
+                    "id": "r.0.2.3.l0",
+                    "type": "Image",
+                    "props": {
+                      "system": "plus.circle.fill"
+                    },
+                    "mods": [
+                      {
+                        "m": "font",
+                        "font": {
+                          "style": "title2"
+                        }
+                      }
+                    ],
+                    "src": [
+                      {
+                        "f": "corpus/09_observable/ContentView.swift",
+                        "a": 2723,
+                        "b": 2799
+                      }
+                    ]
+                  }
+                ],
+                "src": [
+                  {
+                    "f": "corpus/09_observable/ContentView.swift",
+                    "a": 2629,
+                    "b": 2817
+                  }
+                ],
+                "event": "r.0.2.3"
+              }
+            ],
+            "src": [
+              {
+                "f": "corpus/09_observable/ContentView.swift",
+                "a": 2257,
+                "b": 2831
+              }
+            ]
+          },
+          {
+            "id": "r.0.3",
+            "type": "HStack",
+            "props": {
+              "alignment": "center"
+            },
+            "children": [
+              {
+                "id": "r.0.3.0",
+                "type": "Text",
+                "props": {
+                  "text": "🔌"
+                },
+                "mods": [
+                  {
+                    "m": "font",
+                    "font": {
+                      "style": "largeTitle"
+                    }
+                  }
+                ],
+                "src": [
+                  {
+                    "f": "corpus/09_observable/ContentView.swift",
+                    "a": 2282,
+                    "b": 2319
+                  }
+                ]
+              },
+              {
+                "id": "r.0.3.1",
+                "type": "VStack",
+                "props": {
+                  "alignment": "leading"
+                },
+                "children": [
+                  {
+                    "id": "r.0.3.1.0",
+                    "type": "Text",
+                    "props": {
+                      "text": "USB-C Hub"
+                    },
+                    "mods": [
+                      {
+                        "m": "font",
+                        "font": {
+                          "style": "headline"
+                        }
+                      }
+                    ],
+                    "src": [
+                      {
+                        "f": "corpus/09_observable/ContentView.swift",
+                        "a": 2386,
+                        "b": 2420
+                      }
+                    ]
+                  },
+                  {
+                    "id": "r.0.3.1.1",
+                    "type": "Text",
+                    "props": {
+                      "text": "59.99"
+                    },
+                    "mods": [
+                      {
+                        "m": "font",
+                        "font": {
+                          "style": "subheadline"
+                        }
+                      },
+                      {
+                        "m": "foreground",
+                        "color": {
+                          "name": "secondary"
+                        }
+                      }
+                    ],
+                    "src": [
+                      {
+                        "f": "corpus/09_observable/ContentView.swift",
+                        "a": 2441,
+                        "b": 2569
+                      }
+                    ]
+                  }
+                ],
+                "src": [
+                  {
+                    "f": "corpus/09_observable/ContentView.swift",
+                    "a": 2336,
+                    "b": 2587
+                  }
+                ]
+              },
+              {
+                "id": "r.0.3.2",
+                "type": "Spacer",
+                "props": {},
+                "src": [
+                  {
+                    "f": "corpus/09_observable/ContentView.swift",
+                    "a": 2604,
+                    "b": 2612
+                  }
+                ]
+              },
+              {
+                "id": "r.0.3.3",
+                "type": "Button",
+                "props": {},
+                "label": [
+                  {
+                    "id": "r.0.3.3.l0",
+                    "type": "Image",
+                    "props": {
+                      "system": "plus.circle.fill"
+                    },
+                    "mods": [
+                      {
+                        "m": "font",
+                        "font": {
+                          "style": "title2"
+                        }
+                      }
+                    ],
+                    "src": [
+                      {
+                        "f": "corpus/09_observable/ContentView.swift",
+                        "a": 2723,
+                        "b": 2799
+                      }
+                    ]
+                  }
+                ],
+                "src": [
+                  {
+                    "f": "corpus/09_observable/ContentView.swift",
+                    "a": 2629,
+                    "b": 2817
+                  }
+                ],
+                "event": "r.0.3.3"
+              }
+            ],
+            "src": [
+              {
+                "f": "corpus/09_observable/ContentView.swift",
+                "a": 2257,
+                "b": 2831
+              }
+            ]
+          },
+          {
+            "id": "r.0.4",
+            "type": "HStack",
+            "props": {
+              "alignment": "center"
+            },
+            "children": [
+              {
+                "id": "r.0.4.0",
+                "type": "Text",
+                "props": {
+                  "text": "💡"
+                },
+                "mods": [
+                  {
+                    "m": "font",
+                    "font": {
+                      "style": "largeTitle"
+                    }
+                  }
+                ],
+                "src": [
+                  {
+                    "f": "corpus/09_observable/ContentView.swift",
+                    "a": 2282,
+                    "b": 2319
+                  }
+                ]
+              },
+              {
+                "id": "r.0.4.1",
+                "type": "VStack",
+                "props": {
+                  "alignment": "leading"
+                },
+                "children": [
+                  {
+                    "id": "r.0.4.1.0",
+                    "type": "Text",
+                    "props": {
+                      "text": "Desk Lamp"
+                    },
+                    "mods": [
+                      {
+                        "m": "font",
+                        "font": {
+                          "style": "headline"
+                        }
+                      }
+                    ],
+                    "src": [
+                      {
+                        "f": "corpus/09_observable/ContentView.swift",
+                        "a": 2386,
+                        "b": 2420
+                      }
+                    ]
+                  },
+                  {
+                    "id": "r.0.4.1.1",
+                    "type": "Text",
+                    "props": {
+                      "text": "39.99"
+                    },
+                    "mods": [
+                      {
+                        "m": "font",
+                        "font": {
+                          "style": "subheadline"
+                        }
+                      },
+                      {
+                        "m": "foreground",
+                        "color": {
+                          "name": "secondary"
+                        }
+                      }
+                    ],
+                    "src": [
+                      {
+                        "f": "corpus/09_observable/ContentView.swift",
+                        "a": 2441,
+                        "b": 2569
+                      }
+                    ]
+                  }
+                ],
+                "src": [
+                  {
+                    "f": "corpus/09_observable/ContentView.swift",
+                    "a": 2336,
+                    "b": 2587
+                  }
+                ]
+              },
+              {
+                "id": "r.0.4.2",
+                "type": "Spacer",
+                "props": {},
+                "src": [
+                  {
+                    "f": "corpus/09_observable/ContentView.swift",
+                    "a": 2604,
+                    "b": 2612
+                  }
+                ]
+              },
+              {
+                "id": "r.0.4.3",
+                "type": "Button",
+                "props": {},
+                "label": [
+                  {
+                    "id": "r.0.4.3.l0",
+                    "type": "Image",
+                    "props": {
+                      "system": "plus.circle.fill"
+                    },
+                    "mods": [
+                      {
+                        "m": "font",
+                        "font": {
+                          "style": "title2"
+                        }
+                      }
+                    ],
+                    "src": [
+                      {
+                        "f": "corpus/09_observable/ContentView.swift",
+                        "a": 2723,
+                        "b": 2799
+                      }
+                    ]
+                  }
+                ],
+                "src": [
+                  {
+                    "f": "corpus/09_observable/ContentView.swift",
+                    "a": 2629,
+                    "b": 2817
+                  }
+                ],
+                "event": "r.0.4.3"
+              }
+            ],
+            "src": [
+              {
+                "f": "corpus/09_observable/ContentView.swift",
+                "a": 2257,
+                "b": 2831
+              }
+            ]
+          }
+        ],
+        "mods": [
+          {
+            "m": "navTitle",
+            "title": "Shop"
+          },
+          {
+            "m": "scheme",
+            "value": "light"
+          },
+          {
+            "m": "tint",
+            "color": {
+              "name": "blue"
+            }
+          }
+        ],
+        "src": [
+          {
+            "f": "corpus/09_observable/ContentView.swift",
+            "a": 2218,
+            "b": 3989
+          },
+          {
+            "f": "corpus/09_observable/ContentView.swift",
+            "a": 1829,
+            "b": 2027
+          }
+        ]
+      }
+    ],
+    "src": [
+      {
+        "f": "corpus/09_observable/ContentView.swift",
+        "a": 1799,
+        "b": 2037
+      },
+      {
+        "f": "corpus/09_observable/ContentView.swift",
+        "a": 5084,
+        "b": 5097
+      }
+    ]
+  },
+  "allParseErrors": []
+}
