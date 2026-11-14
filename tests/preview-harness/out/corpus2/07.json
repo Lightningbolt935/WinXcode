@@ -1,0 +1,74 @@
+{
+  "id": "07",
+  "name": "CapyTimer",
+  "source": "andev0x (CapyTimer)",
+  "license": "MIT",
+  "fileCount": 5,
+  "parseOk": true,
+  "parseErrors": [],
+  "renderOk": true,
+  "targets": [
+    "corpus2/07_capy_timer/ContentView.swift:preview:0",
+    "corpus2/07_capy_timer/ContentView.swift:view:ContentView",
+    "corpus2/07_capy_timer/NotesView.swift:view:NotesView",
+    "corpus2/07_capy_timer/SettingsView.swift:view:SettingsView",
+    "corpus2/07_capy_timer/TodoView.swift:view:TodoView",
+    "corpus2/07_capy_timer/UpdateSettingsView.swift:preview:0",
+    "corpus2/07_capy_timer/UpdateSettingsView.swift:view:UpdateSettingsView"
+  ],
+  "selectedTarget": "corpus2/07_capy_timer/ContentView.swift:view:ContentView",
+  "notes": [],
+  "unsupportedNodes": [],
+  "stats": {
+    "views": 2,
+    "depth": 1,
+    "heavy": 0
+  },
+  "treeDepth": 2,
+  "viewNodeCount": 2,
+  "tree": {
+    "id": "r",
+    "type": "ScrollView",
+    "props": {
+      "axis": "vertical"
+    },
+    "children": [
+      {
+        "id": "r.0",
+        "type": "VStack",
+        "props": {
+          "alignment": "leading",
+          "spacing": 12
+        },
+        "children": [],
+        "mods": [
+          {
+            "m": "padding",
+            "top": 16,
+            "leading": 16,
+            "bottom": 16,
+            "trailing": 16
+          },
+          {
+            "m": "frame",
+            "width": 280
+          }
+        ],
+        "src": [
+          {
+            "f": "corpus2/07_capy_timer/ContentView.swift",
+            "a": 427,
+            "b": 3010
+          }
+        ]
+      }
+    ],
+    "src": [
+      {
+        "f": "corpus2/07_capy_timer/ContentView.swift",
+        "a": 401,
+        "b": 3021
+      }
+    ]
+  }
+}

@@ -1,6 +1,7 @@
 {
   "id": "04",
   "name": "Onboarding",
+  "fileCount": 1,
   "parseOk": true,
   "parseErrors": [],
   "renderOk": true,
@@ -11,6 +12,7 @@
     "view:OnboardingPageView",
     "view:HomeView"
   ],
+  "selectedTarget": "preview:0",
   "notes": [],
   "unsupportedNodes": [],
   "stats": {

@@ -1,0 +1,218 @@
+{
+  "timestamp": "2026-11-14T19:45:18.934Z",
+  "results": [
+    {
+      "id": "01",
+      "name": "FoodTruck",
+      "source": "Apple Inc. (sample-food-truck)",
+      "license": "Apple Sample Code (MIT-style)",
+      "fileCount": 2,
+      "parseOk": true,
+      "parseErrorCount": 0,
+      "renderOk": true,
+      "selectedTarget": "corpus2/01_food_truck/ContentView.swift:provider:ContentView_Previews",
+      "notes": [],
+      "unsupportedNodes": [],
+      "viewNodeCount": 21,
+      "treeDepth": 6,
+      "stats": {
+        "views": 21,
+        "depth": 5,
+        "heavy": 0
+      }
+    },
+    {
+      "id": "02",
+      "name": "SimpleNews",
+      "source": "Paul Hudson (twostraws/simple-swiftui)",
+      "license": "MIT",
+      "fileCount": 6,
+      "parseOk": true,
+      "parseErrorCount": 0,
+      "renderOk": true,
+      "selectedTarget": "corpus2/02_simple_news/ContentView.swift:provider:ContentView_Previews",
+      "notes": [],
+      "unsupportedNodes": [],
+      "viewNodeCount": 5,
+      "treeDepth": 4,
+      "stats": {
+        "views": 5,
+        "depth": 3,
+        "heavy": 0
+      }
+    },
+    {
+      "id": "03",
+      "name": "SimpleNotes",
+      "source": "Paul Hudson (twostraws/simple-swiftui)",
+      "license": "MIT",
+      "fileCount": 3,
+      "parseOk": true,
+      "parseErrorCount": 0,
+      "renderOk": true,
+      "selectedTarget": "corpus2/03_simple_notes/ContentView.swift:provider:ContentView_Previews",
+      "notes": [],
+      "unsupportedNodes": [],
+      "viewNodeCount": 16,
+      "treeDepth": 5,
+      "stats": {
+        "views": 16,
+        "depth": 4,
+        "heavy": 0
+      }
+    },
+    {
+      "id": "04",
+      "name": "SimpleScores",
+      "source": "Paul Hudson (twostraws/simple-swiftui)",
+      "license": "MIT",
+      "fileCount": 7,
+      "parseOk": true,
+      "parseErrorCount": 0,
+      "renderOk": true,
+      "selectedTarget": "corpus2/04_simple_scores/ContentView.swift:provider:ContentView_Previews",
+      "notes": [
+        "~FileManager",
+        ".onDelete()"
+      ],
+      "unsupportedNodes": [],
+      "viewNodeCount": 9,
+      "treeDepth": 5,
+      "stats": {
+        "views": 9,
+        "depth": 4,
+        "heavy": 0
+      }
+    },
+    {
+      "id": "05",
+      "name": "SimpleToDo",
+      "source": "Paul Hudson (twostraws/simple-swiftui)",
+      "license": "MIT",
+      "fileCount": 8,
+      "parseOk": true,
+      "parseErrorCount": 0,
+      "renderOk": true,
+      "selectedTarget": "corpus2/05_simple_todo/ContentView.swift:provider:ContentView_Previews",
+      "notes": [
+        "~FileManager",
+        ".onDelete()"
+      ],
+      "unsupportedNodes": [],
+      "viewNodeCount": 1,
+      "treeDepth": 1,
+      "stats": {
+        "views": 1,
+        "depth": 0,
+        "heavy": 0
+      }
+    },
+    {
+      "id": "06",
+      "name": "Calculator",
+      "source": "Swiftify (Calculator-SwiftUI)",
+      "license": "MIT",
+      "fileCount": 7,
+      "parseOk": false,
+      "parseErrorCount": 3,
+      "renderOk": true,
+      "selectedTarget": "corpus2/06_calculator/ContentView.swift:provider:ContentView_Previews",
+      "notes": [
+        ".previewDevice()",
+        ".previewInterfaceOrientation()"
+      ],
+      "unsupportedNodes": [
+        "ContentView: Unknown name '*'"
+      ],
+      "viewNodeCount": 1,
+      "treeDepth": 1,
+      "stats": {
+        "views": 1,
+        "depth": 0,
+        "heavy": 0
+      }
+    },
+    {
+      "id": "07",
+      "name": "CapyTimer",
+      "source": "andev0x (CapyTimer)",
+      "license": "MIT",
+      "fileCount": 5,
+      "parseOk": true,
+      "parseErrorCount": 0,
+      "renderOk": true,
+      "selectedTarget": "corpus2/07_capy_timer/ContentView.swift:view:ContentView",
+      "notes": [],
+      "unsupportedNodes": [],
+      "viewNodeCount": 2,
+      "treeDepth": 2,
+      "stats": {
+        "views": 2,
+        "depth": 1,
+        "heavy": 0
+      }
+    },
+    {
+      "id": "08",
+      "name": "MakeItSo",
+      "source": "Peter Friese (MakeItSo)",
+      "license": "Apache-2.0",
+      "fileCount": 3,
+      "parseOk": true,
+      "parseErrorCount": 0,
+      "renderOk": true,
+      "selectedTarget": "corpus2/08_make_it_so/ReminderDetailsView.swift:provider:ReminderDetailsView_Previews",
+      "notes": [],
+      "unsupportedNodes": [],
+      "viewNodeCount": 2,
+      "treeDepth": 2,
+      "stats": {
+        "views": 2,
+        "depth": 1,
+        "heavy": 0
+      }
+    },
+    {
+      "id": "09",
+      "name": "Countries",
+      "source": "Alexey Naumov (clean-architecture-swiftui)",
+      "license": "MIT",
+      "fileCount": 3,
+      "parseOk": true,
+      "parseErrorCount": 0,
+      "renderOk": true,
+      "selectedTarget": "corpus2/09_countries/CountriesListView.swift:view:CountriesList",
+      "notes": [],
+      "unsupportedNodes": [],
+      "viewNodeCount": 1,
+      "treeDepth": 1,
+      "stats": {
+        "views": 1,
+        "depth": 0,
+        "heavy": 0
+      }
+    },
+    {
+      "id": "10",
+      "name": "ControlRoom",
+      "source": "Paul Hudson (ControlRoom)",
+      "license": "MIT",
+      "fileCount": 1,
+      "parseOk": true,
+      "parseErrorCount": 0,
+      "renderOk": true,
+      "selectedTarget": "corpus2/10_control_room/ContentView.swift:provider:SidebarView_Previews",
+      "notes": [
+        "?onChange"
+      ],
+      "unsupportedNodes": [],
+      "viewNodeCount": 6,
+      "treeDepth": 4,
+      "stats": {
+        "views": 6,
+        "depth": 3,
+        "heavy": 0
+      }
+    }
+  ]
+}

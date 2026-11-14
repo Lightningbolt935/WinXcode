@@ -1,0 +1,62 @@
+{
+  "id": "08",
+  "name": "MakeItSo",
+  "source": "Peter Friese (MakeItSo)",
+  "license": "Apache-2.0",
+  "fileCount": 3,
+  "parseOk": true,
+  "parseErrors": [],
+  "renderOk": true,
+  "targets": [
+    "corpus2/08_make_it_so/ReminderDetailsView.swift:provider:ReminderDetailsView_Previews",
+    "corpus2/08_make_it_so/ReminderDetailsView.swift:view:ReminderDetailsView",
+    "corpus2/08_make_it_so/ReminderListRowView.swift:provider:ReminderListRowView_Previews",
+    "corpus2/08_make_it_so/ReminderListRowView.swift:view:ReminderListRowView",
+    "corpus2/08_make_it_so/RemindersListView.swift:provider:ReminderssListView_Previews",
+    "corpus2/08_make_it_so/RemindersListView.swift:view:RemindersListView"
+  ],
+  "selectedTarget": "corpus2/08_make_it_so/ReminderDetailsView.swift:provider:ReminderDetailsView_Previews",
+  "notes": [],
+  "unsupportedNodes": [],
+  "stats": {
+    "views": 2,
+    "depth": 1,
+    "heavy": 0
+  },
+  "treeDepth": 2,
+  "viewNodeCount": 2,
+  "tree": {
+    "id": "r",
+    "type": "NavigationStack",
+    "props": {},
+    "children": [
+      {
+        "id": "r.0",
+        "type": "Text",
+        "props": {
+          "text": "Dummy screen content"
+        },
+        "mods": [
+          {
+            "m": "navTitle",
+            "title": "Dummy screen"
+          }
+        ],
+        "src": [
+          {
+            "f": "corpus2/08_make_it_so/ReminderDetailsView.swift",
+            "a": 4257,
+            "b": 4518
+          }
+        ]
+      }
+    ],
+    "src": [
+      {
+        "f": "corpus2/08_make_it_so/ReminderDetailsView.swift",
+        "a": 4233,
+        "b": 4525
+      }
+    ]
+  }
+}

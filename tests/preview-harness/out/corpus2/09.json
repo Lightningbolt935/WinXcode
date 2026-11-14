@@ -1,0 +1,37 @@
+{
+  "id": "09",
+  "name": "Countries",
+  "source": "Alexey Naumov (clean-architecture-swiftui)",
+  "license": "MIT",
+  "fileCount": 3,
+  "parseOk": true,
+  "parseErrors": [],
+  "renderOk": true,
+  "targets": [
+    "corpus2/09_countries/CountriesListView.swift:view:CountriesList",
+    "corpus2/09_countries/CountryCell.swift:view:CountryCell"
+  ],
+  "selectedTarget": "corpus2/09_countries/CountriesListView.swift:view:CountriesList",
+  "notes": [],
+  "unsupportedNodes": [],
+  "stats": {
+    "views": 1,
+    "depth": 0,
+    "heavy": 0
+  },
+  "treeDepth": 1,
+  "viewNodeCount": 1,
+  "tree": {
+    "id": "r",
+    "type": "NavigationStack",
+    "props": {},
+    "children": [],
+    "src": [
+      {
+        "f": "corpus2/09_countries/CountriesListView.swift",
+        "a": 1094,
+        "b": 2013
+      }
+    ]
+  }
+}

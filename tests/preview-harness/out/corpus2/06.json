@@ -1,0 +1,67 @@
+{
+  "id": "06",
+  "name": "Calculator",
+  "source": "Swiftify (Calculator-SwiftUI)",
+  "license": "MIT",
+  "fileCount": 7,
+  "parseOk": false,
+  "parseErrors": [
+    {
+      "file": "CalculatorBrain.swift",
+      "message": "Expected a name",
+      "line": 179
+    },
+    {
+      "file": "CalculatorBrain.swift",
+      "message": "Expected a name",
+      "line": 181
+    },
+    {
+      "file": "CalculatorBrain.swift",
+      "message": "Expected a name",
+      "line": 207
+    }
+  ],
+  "renderOk": true,
+  "targets": [
+    "corpus2/06_calculator/Calculator_SwiftUIApp.swift:app:Calculator_SwiftUIApp",
+    "corpus2/06_calculator/ContentView.swift:provider:ContentView_Previews",
+    "corpus2/06_calculator/ContentView.swift:view:ContentView",
+    "corpus2/06_calculator/DynamicSize.swift:provider:Previews_DyanmicSize_Previews"
+  ],
+  "selectedTarget": "corpus2/06_calculator/ContentView.swift:provider:ContentView_Previews",
+  "notes": [
+    ".previewDevice()",
+    ".previewInterfaceOrientation()"
+  ],
+  "unsupportedNodes": [
+    "ContentView: Unknown name '*'"
+  ],
+  "stats": {
+    "views": 1,
+    "depth": 0,
+    "heavy": 0
+  },
+  "treeDepth": 1,
+  "viewNodeCount": 1,
+  "tree": {
+    "id": "r",
+    "type": "Unsupported",
+    "props": {
+      "name": "ContentView: Unknown name '*'"
+    },
+    "mods": [
+      {
+        "m": "scheme",
+        "value": "light"
+      }
+    ],
+    "src": [
+      {
+        "f": "corpus2/06_calculator/ContentView.swift",
+        "a": 19712,
+        "b": 19904
+      }
+    ]
+  }
+}

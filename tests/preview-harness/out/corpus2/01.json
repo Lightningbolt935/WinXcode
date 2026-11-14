@@ -1,0 +1,362 @@
+{
+  "id": "01",
+  "name": "FoodTruck",
+  "source": "Apple Inc. (sample-food-truck)",
+  "license": "Apple Sample Code (MIT-style)",
+  "fileCount": 2,
+  "parseOk": true,
+  "parseErrors": [],
+  "renderOk": true,
+  "targets": [
+    "corpus2/01_food_truck/ContentView.swift:provider:ContentView_Previews",
+    "corpus2/01_food_truck/ContentView.swift:view:ContentView",
+    "corpus2/01_food_truck/ContentView.swift:view:Preview",
+    "corpus2/01_food_truck/Sidebar.swift:provider:Sidebar_Previews",
+    "corpus2/01_food_truck/Sidebar.swift:view:Sidebar",
+    "corpus2/01_food_truck/Sidebar.swift:view:Preview"
+  ],
+  "selectedTarget": "corpus2/01_food_truck/ContentView.swift:provider:ContentView_Previews",
+  "notes": [],
+  "unsupportedNodes": [],
+  "stats": {
+    "views": 21,
+    "depth": 5,
+    "heavy": 0
+  },
+  "treeDepth": 6,
+  "viewNodeCount": 21,
+  "tree": {
+    "id": "r",
+    "type": "NavigationStack",
+    "props": {},
+    "children": [
+      {
+        "id": "r.0",
+        "type": "List",
+        "props": {},
+        "children": [
+          {
+            "id": "r.0.0",
+            "type": "NavigationLink",
+            "props": {},
+            "children": [],
+            "label": [
+              {
+                "id": "r.0.0.l0",
+                "type": "Label",
+                "props": {
+                  "title": "Truck",
+                  "system": "box.truck"
+                },
+                "src": [
+                  {
+                    "f": "corpus2/01_food_truck/Sidebar.swift",
+                    "a": 1769,
+                    "b": 1809
+                  }
+                ]
+              }
+            ],
+            "src": [
+              {
+                "f": "corpus2/01_food_truck/Sidebar.swift",
+                "a": 1715,
+                "b": 1824
+              }
+            ]
+          },
+          {
+            "id": "r.0.1",
+            "type": "NavigationLink",
+            "props": {},
+            "children": [],
+            "label": [
+              {
+                "id": "r.0.1.l0",
+                "type": "Label",
+                "props": {
+                  "title": "Orders",
+                  "system": "shippingbox"
+                },
+                "src": [
+                  {
+                    "f": "corpus2/01_food_truck/Sidebar.swift",
+                    "a": 1907,
+                    "b": 1950
+                  }
+                ]
+              }
+            ],
+            "src": [
+              {
+                "f": "corpus2/01_food_truck/Sidebar.swift",
+                "a": 1852,
+                "b": 1965
+              }
+            ]
+          },
+          {
+            "id": "r.0.2",
+            "type": "NavigationLink",
+            "props": {},
+            "children": [],
+            "label": [
+              {
+                "id": "r.0.2.l0",
+                "type": "Label",
+                "props": {
+                  "title": "Social Feed",
+                  "system": "text.bubble"
+                },
+                "src": [
+                  {
+                    "f": "corpus2/01_food_truck/Sidebar.swift",
+                    "a": 2052,
+                    "b": 2100
+                  }
+                ]
+              }
+            ],
+            "src": [
+              {
+                "f": "corpus2/01_food_truck/Sidebar.swift",
+                "a": 1993,
+                "b": 2115
+              }
+            ]
+          },
+          {
+            "id": "r.0.3",
+            "type": "NavigationLink",
+            "props": {},
+            "children": [],
+            "label": [
+              {
+                "id": "r.0.3.l0",
+                "type": "Label",
+                "props": {
+                  "title": "Account",
+                  "system": "person.crop.circle"
+                },
+                "src": [
+                  {
+                    "f": "corpus2/01_food_truck/Sidebar.swift",
+                    "a": 2215,
+                    "b": 2266
+                  }
+                ]
+              }
+            ],
+            "src": [
+              {
+                "f": "corpus2/01_food_truck/Sidebar.swift",
+                "a": 2159,
+                "b": 2281
+              }
+            ]
+          },
+          {
+            "id": "r.0.4",
+            "type": "NavigationLink",
+            "props": {},
+            "children": [],
+            "label": [
+              {
+                "id": "r.0.4.l0",
+                "type": "Label",
+                "props": {
+                  "title": "Sales History",
+                  "system": "clock"
+                },
+                "src": [
+                  {
+                    "f": "corpus2/01_food_truck/Sidebar.swift",
+                    "a": 2376,
+                    "b": 2420
+                  }
+                ]
+              }
+            ],
+            "src": [
+              {
+                "f": "corpus2/01_food_truck/Sidebar.swift",
+                "a": 2315,
+                "b": 2435
+              }
+            ]
+          },
+          {
+            "id": "r.0.5",
+            "type": "Section",
+            "props": {
+              "header": "Donuts"
+            },
+            "children": [
+              {
+                "id": "r.0.5.0",
+                "type": "NavigationLink",
+                "props": {},
+                "children": [],
+                "label": [
+                  {
+                    "id": "r.0.5.0.l0",
+                    "type": "Label",
+                    "props": {},
+                    "label": [
+                      {
+                        "id": "r.0.5.0.l0.l0",
+                        "type": "Text",
+                        "props": {
+                          "text": "Donuts"
+                        },
+                        "src": [
+                          {
+                            "f": "corpus2/01_food_truck/Sidebar.swift",
+                            "a": 2592,
+                            "b": 2606
+                          }
+                        ]
+                      }
+                    ],
+                    "children": [],
+                    "src": [
+                      {
+                        "f": "corpus2/01_food_truck/Sidebar.swift",
+                        "a": 2559,
+                        "b": 2703
+                      }
+                    ]
+                  }
+                ],
+                "src": [
+                  {
+                    "f": "corpus2/01_food_truck/Sidebar.swift",
+                    "a": 2500,
+                    "b": 2722
+                  }
+                ]
+              },
+              {
+                "id": "r.0.5.1",
+                "type": "NavigationLink",
+                "props": {},
+                "children": [],
+                "label": [
+                  {
+                    "id": "r.0.5.1.l0",
+                    "type": "Label",
+                    "props": {
+                      "title": "Donut Editor",
+                      "system": "slider.horizontal.3"
+                    },
+                    "src": [
+                      {
+                        "f": "corpus2/01_food_truck/Sidebar.swift",
+                        "a": 2822,
+                        "b": 2879
+                      }
+                    ]
+                  }
+                ],
+                "src": [
+                  {
+                    "f": "corpus2/01_food_truck/Sidebar.swift",
+                    "a": 2758,
+                    "b": 2898
+                  }
+                ]
+              },
+              {
+                "id": "r.0.5.2",
+                "type": "NavigationLink",
+                "props": {},
+                "children": [],
+                "label": [
+                  {
+                    "id": "r.0.5.2.l0",
+                    "type": "Label",
+                    "props": {
+                      "title": "Top 5",
+                      "system": "trophy"
+                    },
+                    "src": [
+                      {
+                        "f": "corpus2/01_food_truck/Sidebar.swift",
+                        "a": 2994,
+                        "b": 3031
+                      }
+                    ]
+                  }
+                ],
+                "src": [
+                  {
+                    "f": "corpus2/01_food_truck/Sidebar.swift",
+                    "a": 2934,
+                    "b": 3050
+                  }
+                ]
+              }
+            ],
+            "src": [
+              {
+                "f": "corpus2/01_food_truck/Sidebar.swift",
+                "a": 2463,
+                "b": 3065
+              }
+            ]
+          },
+          {
+            "id": "r.0.6",
+            "type": "Section",
+            "props": {
+              "header": "Cities"
+            },
+            "children": [],
+            "src": [
+              {
+                "f": "corpus2/01_food_truck/Sidebar.swift",
+                "a": 3081,
+                "b": 3384
+              }
+            ]
+          }
+        ],
+        "mods": [
+          {
+            "m": "navTitle",
+            "title": "Food Truck"
+          }
+        ],
+        "src": [
+          {
+            "f": "corpus2/01_food_truck/Sidebar.swift",
+            "a": 1672,
+            "b": 3435
+          },
+          {
+            "f": "corpus2/01_food_truck/ContentView.swift",
+            "a": 1616,
+            "b": 1646
+          }
+        ]
+      }
+    ],
+    "src": [
+      {
+        "f": "corpus2/01_food_truck/ContentView.swift",
+        "a": 1581,
+        "b": 1939
+      },
+      {
+        "f": "corpus2/01_food_truck/ContentView.swift",
+        "a": 3308,
+        "b": 3361
+      },
+      {
+        "f": "corpus2/01_food_truck/ContentView.swift",
+        "a": 3427,
+        "b": 3436
+      }
+    ]
+  }
+}

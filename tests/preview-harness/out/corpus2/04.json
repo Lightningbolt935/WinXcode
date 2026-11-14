@@ -1,0 +1,258 @@
+{
+  "id": "04",
+  "name": "SimpleScores",
+  "source": "Paul Hudson (twostraws/simple-swiftui)",
+  "license": "MIT",
+  "fileCount": 7,
+  "parseOk": true,
+  "parseErrors": [],
+  "renderOk": true,
+  "targets": [
+    "corpus2/04_simple_scores/ContentView.swift:provider:ContentView_Previews",
+    "corpus2/04_simple_scores/ContentView.swift:view:ContentView",
+    "corpus2/04_simple_scores/ScoreRow.swift:provider:ScoreRow_Previews",
+    "corpus2/04_simple_scores/ScoreRow.swift:view:ScoreRow",
+    "corpus2/04_simple_scores/SimpleScoresApp.swift:app:SimpleScoresApp"
+  ],
+  "selectedTarget": "corpus2/04_simple_scores/ContentView.swift:provider:ContentView_Previews",
+  "notes": [
+    "~FileManager",
+    ".onDelete()"
+  ],
+  "unsupportedNodes": [],
+  "stats": {
+    "views": 9,
+    "depth": 4,
+    "heavy": 0
+  },
+  "treeDepth": 5,
+  "viewNodeCount": 9,
+  "tree": {
+    "id": "r",
+    "type": "Group",
+    "props": {},
+    "children": [
+      {
+        "id": "r.0",
+        "type": "NavigationStack",
+        "props": {},
+        "children": [
+          {
+            "id": "r.0.0",
+            "type": "List",
+            "props": {},
+            "children": [
+              {
+                "id": "r.0.0.0",
+                "type": "Button",
+                "props": {},
+                "label": [
+                  {
+                    "id": "r.0.0.0.l0",
+                    "type": "Label",
+                    "props": {
+                      "title": "Add Player",
+                      "system": "plus"
+                    },
+                    "mods": [
+                      {
+                        "m": "font",
+                        "font": {
+                          "style": "title",
+                          "weight": "bold"
+                        }
+                      },
+                      {
+                        "m": "foreground",
+                        "color": {
+                          "name": "primary"
+                        }
+                      },
+                      {
+                        "m": "frame",
+                        "minHeight": 44,
+                        "maxWidth": "inf"
+                      }
+                    ],
+                    "src": [
+                      {
+                        "f": "corpus2/04_simple_scores/ContentView.swift",
+                        "a": 889,
+                        "b": 1131
+                      }
+                    ]
+                  }
+                ],
+                "src": [
+                  {
+                    "f": "corpus2/04_simple_scores/ContentView.swift",
+                    "a": 844,
+                    "b": 1258
+                  }
+                ],
+                "event": "r.0.0.0"
+              }
+            ],
+            "mods": [
+              {
+                "m": "animation",
+                "curve": {
+                  "kind": "default"
+                },
+                "value": "—"
+              },
+              {
+                "m": "navTitle",
+                "title": "SimpleScores"
+              },
+              {
+                "m": "listStyle",
+                "value": "plain"
+              },
+              {
+                "m": "buttonStyle",
+                "value": "plain"
+              }
+            ],
+            "src": [
+              {
+                "f": "corpus2/04_simple_scores/ContentView.swift",
+                "a": 580,
+                "b": 2387
+              },
+              {
+                "f": "corpus2/04_simple_scores/ContentView.swift",
+                "a": 2599,
+                "b": 2630
+              }
+            ]
+          }
+        ],
+        "src": [
+          {
+            "f": "corpus2/04_simple_scores/ContentView.swift",
+            "a": 2565,
+            "b": 2645
+          }
+        ]
+      },
+      {
+        "id": "r.1",
+        "type": "NavigationStack",
+        "props": {},
+        "children": [
+          {
+            "id": "r.1.0",
+            "type": "List",
+            "props": {},
+            "children": [
+              {
+                "id": "r.1.0.0",
+                "type": "Button",
+                "props": {},
+                "label": [
+                  {
+                    "id": "r.1.0.0.l0",
+                    "type": "Label",
+                    "props": {
+                      "title": "Add Player",
+                      "system": "plus"
+                    },
+                    "mods": [
+                      {
+                        "m": "font",
+                        "font": {
+                          "style": "title",
+                          "weight": "bold"
+                        }
+                      },
+                      {
+                        "m": "foreground",
+                        "color": {
+                          "name": "primary"
+                        }
+                      },
+                      {
+                        "m": "frame",
+                        "minHeight": 44,
+                        "maxWidth": "inf"
+                      }
+                    ],
+                    "src": [
+                      {
+                        "f": "corpus2/04_simple_scores/ContentView.swift",
+                        "a": 889,
+                        "b": 1131
+                      }
+                    ]
+                  }
+                ],
+                "src": [
+                  {
+                    "f": "corpus2/04_simple_scores/ContentView.swift",
+                    "a": 844,
+                    "b": 1258
+                  }
+                ],
+                "event": "r.1.0.0"
+              }
+            ],
+            "mods": [
+              {
+                "m": "animation",
+                "curve": {
+                  "kind": "default"
+                },
+                "value": "—"
+              },
+              {
+                "m": "navTitle",
+                "title": "SimpleScores"
+              },
+              {
+                "m": "listStyle",
+                "value": "plain"
+              },
+              {
+                "m": "buttonStyle",
+                "value": "plain"
+              }
+            ],
+            "src": [
+              {
+                "f": "corpus2/04_simple_scores/ContentView.swift",
+                "a": 580,
+                "b": 2387
+              },
+              {
+                "f": "corpus2/04_simple_scores/ContentView.swift",
+                "a": 2693,
+                "b": 2724
+              }
+            ]
+          }
+        ],
+        "mods": [
+          {
+            "m": "scheme",
+            "value": "dark"
+          }
+        ],
+        "src": [
+          {
+            "f": "corpus2/04_simple_scores/ContentView.swift",
+            "a": 2659,
+            "b": 2843
+          }
+        ]
+      }
+    ],
+    "src": [
+      {
+        "f": "corpus2/04_simple_scores/ContentView.swift",
+        "a": 2544,
+        "b": 2854
+      }
+    ]
+  }
+}

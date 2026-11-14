@@ -1,0 +1,308 @@
+{
+  "id": "03",
+  "name": "SimpleNotes",
+  "source": "Paul Hudson (twostraws/simple-swiftui)",
+  "license": "MIT",
+  "fileCount": 3,
+  "parseOk": true,
+  "parseErrors": [],
+  "renderOk": true,
+  "targets": [
+    "corpus2/03_simple_notes/ContentView.swift:provider:ContentView_Previews",
+    "corpus2/03_simple_notes/ContentView.swift:view:ContentView",
+    "corpus2/03_simple_notes/SimpleNotesApp.swift:app:SimpleNotesApp"
+  ],
+  "selectedTarget": "corpus2/03_simple_notes/ContentView.swift:provider:ContentView_Previews",
+  "notes": [],
+  "unsupportedNodes": [],
+  "stats": {
+    "views": 16,
+    "depth": 4,
+    "heavy": 0
+  },
+  "treeDepth": 5,
+  "viewNodeCount": 16,
+  "tree": {
+    "id": "r",
+    "type": "VStack",
+    "props": {
+      "alignment": "center"
+    },
+    "children": [
+      {
+        "id": "r.0",
+        "type": "TextField",
+        "props": {
+          "text": "",
+          "placeholder": ""
+        },
+        "mods": [
+          {
+            "m": "frame",
+            "width": 400,
+            "height": 400
+          },
+          {
+            "m": "font",
+            "font": {
+              "size": 13
+            }
+          }
+        ],
+        "src": [
+          {
+            "f": "corpus2/03_simple_notes/ContentView.swift",
+            "a": 977,
+            "b": 1098
+          }
+        ],
+        "event": "r.0"
+      },
+      {
+        "id": "r.1",
+        "type": "HStack",
+        "props": {
+          "alignment": "center"
+        },
+        "children": [
+          {
+            "id": "r.1.0",
+            "type": "VStack",
+            "props": {
+              "alignment": "leading",
+              "spacing": 8
+            },
+            "children": [
+              {
+                "id": "r.1.0.0",
+                "type": "Button",
+                "props": {},
+                "label": [
+                  {
+                    "id": "r.1.0.0.l0",
+                    "type": "Label",
+                    "props": {
+                      "title": "Decrease font size",
+                      "system": "textformat.size.smaller"
+                    },
+                    "src": [
+                      {
+                        "f": "corpus2/03_simple_notes/ContentView.swift",
+                        "a": 1281,
+                        "b": 1348
+                      }
+                    ]
+                  }
+                ],
+                "src": [
+                  {
+                    "f": "corpus2/03_simple_notes/ContentView.swift",
+                    "a": 1176,
+                    "b": 1371
+                  }
+                ],
+                "event": "r.1.0.0"
+              },
+              {
+                "id": "r.1.0.1",
+                "type": "Button",
+                "props": {},
+                "label": [
+                  {
+                    "id": "r.1.0.1.l0",
+                    "type": "Label",
+                    "props": {
+                      "title": "Increase font size",
+                      "system": "textformat.size.larger"
+                    },
+                    "src": [
+                      {
+                        "f": "corpus2/03_simple_notes/ContentView.swift",
+                        "a": 1500,
+                        "b": 1566
+                      }
+                    ]
+                  }
+                ],
+                "src": [
+                  {
+                    "f": "corpus2/03_simple_notes/ContentView.swift",
+                    "a": 1395,
+                    "b": 1589
+                  }
+                ],
+                "event": "r.1.0.1"
+              },
+              {
+                "id": "r.1.0.2",
+                "type": "Button",
+                "props": {},
+                "label": [
+                  {
+                    "id": "r.1.0.2.l0",
+                    "type": "Label",
+                    "props": {
+                      "title": "Reset font size",
+                      "system": "arrow.counterclockwise"
+                    },
+                    "src": [
+                      {
+                        "f": "corpus2/03_simple_notes/ContentView.swift",
+                        "a": 1718,
+                        "b": 1781
+                      }
+                    ]
+                  }
+                ],
+                "src": [
+                  {
+                    "f": "corpus2/03_simple_notes/ContentView.swift",
+                    "a": 1613,
+                    "b": 1804
+                  }
+                ],
+                "event": "r.1.0.2"
+              }
+            ],
+            "mods": [],
+            "src": [
+              {
+                "f": "corpus2/03_simple_notes/ContentView.swift",
+                "a": 1140,
+                "b": 1823
+              }
+            ]
+          },
+          {
+            "id": "r.1.1",
+            "type": "VStack",
+            "props": {
+              "alignment": "leading",
+              "spacing": 8
+            },
+            "children": [
+              {
+                "id": "r.1.1.0",
+                "type": "Button",
+                "props": {},
+                "label": [
+                  {
+                    "id": "r.1.1.0.l0",
+                    "type": "Label",
+                    "props": {
+                      "title": "Copy",
+                      "system": "doc.on.doc"
+                    },
+                    "src": [
+                      {
+                        "f": "corpus2/03_simple_notes/ContentView.swift",
+                        "a": 2206,
+                        "b": 2246
+                      }
+                    ]
+                  }
+                ],
+                "src": [
+                  {
+                    "f": "corpus2/03_simple_notes/ContentView.swift",
+                    "a": 1879,
+                    "b": 2269
+                  }
+                ],
+                "event": "r.1.1.0"
+              },
+              {
+                "id": "r.1.1.1",
+                "type": "Button",
+                "props": {},
+                "label": [
+                  {
+                    "id": "r.1.1.1.l0",
+                    "type": "Label",
+                    "props": {
+                      "title": "Quit",
+                      "system": "power"
+                    },
+                    "src": [
+                      {
+                        "f": "corpus2/03_simple_notes/ContentView.swift",
+                        "a": 2405,
+                        "b": 2440
+                      }
+                    ]
+                  }
+                ],
+                "src": [
+                  {
+                    "f": "corpus2/03_simple_notes/ContentView.swift",
+                    "a": 2293,
+                    "b": 2463
+                  }
+                ],
+                "event": "r.1.1.1"
+              }
+            ],
+            "mods": [],
+            "src": [
+              {
+                "f": "corpus2/03_simple_notes/ContentView.swift",
+                "a": 1843,
+                "b": 2482
+              }
+            ]
+          }
+        ],
+        "src": [
+          {
+            "f": "corpus2/03_simple_notes/ContentView.swift",
+            "a": 1114,
+            "b": 2497
+          }
+        ]
+      },
+      {
+        "id": "r.2",
+        "type": "Text",
+        "props": {
+          "text": "Last saved: 15/11/2026"
+        },
+        "mods": [
+          {
+            "m": "foreground",
+            "color": {
+              "name": "secondary"
+            }
+          }
+        ],
+        "src": [
+          {
+            "f": "corpus2/03_simple_notes/ContentView.swift",
+            "a": 2513,
+            "b": 2638
+          }
+        ]
+      }
+    ],
+    "mods": [
+      {
+        "m": "padding",
+        "top": 16,
+        "leading": 16,
+        "bottom": 16,
+        "trailing": 16
+      }
+    ],
+    "src": [
+      {
+        "f": "corpus2/03_simple_notes/ContentView.swift",
+        "a": 955,
+        "b": 2748
+      },
+      {
+        "f": "corpus2/03_simple_notes/ContentView.swift",
+        "a": 3577,
+        "b": 3590
+      }
+    ]
+  }
+}

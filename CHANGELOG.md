@@ -6,6 +6,11 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 ## [Unreleased]
 
 ### Added
+- Phase 1a Item 0: `tests/corpus2/` — 10 real-world permissively licensed open-source SwiftUI apps (Apple, Paul Hudson, Swiftify, Peter Friese, etc.)
+- Phase 1a Item 0: `tests/corpus2/SOURCES.md` — source URLs, copyright, and licenses for all 10 apps
+- Phase 1a Item 0: `tests/preview-harness/corpus.test.ts` expanded to run both Corpus 1 and Corpus 2
+- Phase 1a Item 0: `tests/preview-harness/out/corpus2/` — JSON results and summary for Corpus 2 (9/10 clean pass)
+- Phase 1a Item 0: `docs/BASELINE.md` updated with Corpus 2 benchmark table
 - Phase 0: Forked OnelightCyber/XWinCode (GPL-3.0-or-later)
 - Phase 0: `tests/corpus/` — 10 SwiftUI student-style apps (01–10)
 - Phase 0: `docs/NOTES.md` — build verification and repo audit

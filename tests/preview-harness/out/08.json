@@ -1,6 +1,7 @@
 {
   "id": "08",
   "name": "Game",
+  "fileCount": 1,
   "parseOk": true,
   "parseErrors": [],
   "renderOk": true,
@@ -8,6 +9,7 @@
     "preview:0",
     "view:ContentView"
   ],
+  "selectedTarget": "preview:0",
   "notes": [
     "Canvas"
   ],

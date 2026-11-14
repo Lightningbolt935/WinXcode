@@ -1,6 +1,7 @@
 {
   "id": "02",
   "name": "Quiz",
+  "fileCount": 1,
   "parseOk": true,
   "parseErrors": [],
   "renderOk": true,
@@ -10,6 +11,7 @@
     "view:QuizView",
     "view:ResultView"
   ],
+  "selectedTarget": "preview:0",
   "notes": [],
   "unsupportedNodes": [],
   "stats": {

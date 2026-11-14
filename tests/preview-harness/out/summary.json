@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-14T19:25:26.449Z",
+  "timestamp": "2026-11-14T19:45:18.847Z",
   "results": [
     {
       "id": "01",
@@ -8,7 +8,6 @@
       "parseErrorCount": 0,
       "renderOk": true,
       "targetCount": 2,
-      "noteCount": 0,
       "notes": [],
       "unsupportedNodes": [],
       "viewNodeCount": 11,
@@ -26,7 +25,6 @@
       "parseErrorCount": 0,
       "renderOk": true,
       "targetCount": 4,
-      "noteCount": 0,
       "notes": [],
       "unsupportedNodes": [],
       "viewNodeCount": 27,
@@ -44,7 +42,6 @@
       "parseErrorCount": 0,
       "renderOk": true,
       "targetCount": 2,
-      "noteCount": 0,
       "notes": [],
       "unsupportedNodes": [],
       "viewNodeCount": 17,
@@ -62,7 +59,6 @@
       "parseErrorCount": 0,
       "renderOk": true,
       "targetCount": 5,
-      "noteCount": 0,
       "notes": [],
       "unsupportedNodes": [],
       "viewNodeCount": 32,
@@ -80,7 +76,6 @@
       "parseErrorCount": 0,
       "renderOk": true,
       "targetCount": 2,
-      "noteCount": 0,
       "notes": [],
       "unsupportedNodes": [],
       "viewNodeCount": 27,
@@ -98,7 +93,6 @@
       "parseErrorCount": 0,
       "renderOk": true,
       "targetCount": 2,
-      "noteCount": 1,
       "notes": [
         "Canvas"
       ],
@@ -120,7 +114,6 @@
       "parseErrorCount": 0,
       "renderOk": true,
       "targetCount": 2,
-      "noteCount": 1,
       "notes": [
         "Chart"
       ],
@@ -142,7 +135,6 @@
       "parseErrorCount": 0,
       "renderOk": true,
       "targetCount": 2,
-      "noteCount": 1,
       "notes": [
         "Canvas"
       ],
@@ -164,7 +156,6 @@
       "parseErrorCount": 0,
       "renderOk": true,
       "targetCount": 5,
-      "noteCount": 0,
       "notes": [],
       "unsupportedNodes": [],
       "viewNodeCount": 42,
@@ -182,7 +173,6 @@
       "parseErrorCount": 0,
       "renderOk": true,
       "targetCount": 6,
-      "noteCount": 3,
       "notes": [
         ".accessibilityAdjustableAction()",
         "?stat",

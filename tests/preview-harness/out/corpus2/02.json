@@ -1,0 +1,114 @@
+{
+  "id": "02",
+  "name": "SimpleNews",
+  "source": "Paul Hudson (twostraws/simple-swiftui)",
+  "license": "MIT",
+  "fileCount": 6,
+  "parseOk": true,
+  "parseErrors": [],
+  "renderOk": true,
+  "targets": [
+    "corpus2/02_simple_news/ArticleRow.swift:provider:ArticleRow_Previews",
+    "corpus2/02_simple_news/ArticleRow.swift:view:ArticleRow",
+    "corpus2/02_simple_news/ContentView.swift:provider:ContentView_Previews",
+    "corpus2/02_simple_news/ContentView.swift:view:ContentView",
+    "corpus2/02_simple_news/ReadingView.swift:provider:ReadingView_Previews",
+    "corpus2/02_simple_news/ReadingView.swift:view:ReadingView",
+    "corpus2/02_simple_news/SelectSomethingView.swift:provider:SelectSomethingView_Previews",
+    "corpus2/02_simple_news/SelectSomethingView.swift:view:SelectSomethingView",
+    "corpus2/02_simple_news/SimpleNewsApp.swift:app:SimpleNewsApp"
+  ],
+  "selectedTarget": "corpus2/02_simple_news/ContentView.swift:provider:ContentView_Previews",
+  "notes": [],
+  "unsupportedNodes": [],
+  "stats": {
+    "views": 5,
+    "depth": 3,
+    "heavy": 0
+  },
+  "treeDepth": 4,
+  "viewNodeCount": 5,
+  "tree": {
+    "id": "r",
+    "type": "NavigationStack",
+    "props": {},
+    "children": [
+      {
+        "id": "r.0",
+        "type": "Group",
+        "props": {},
+        "children": [
+          {
+            "id": "r.0.0",
+            "type": "VStack",
+            "props": {
+              "alignment": "center"
+            },
+            "children": [
+              {
+                "id": "r.0.0.0",
+                "type": "Text",
+                "props": {
+                  "text": "Downloading…"
+                },
+                "src": [
+                  {
+                    "f": "corpus2/02_simple_news/ContentView.swift",
+                    "a": 1041,
+                    "b": 1061
+                  }
+                ]
+              },
+              {
+                "id": "r.0.0.1",
+                "type": "ProgressView",
+                "props": {
+                  "total": 1
+                },
+                "src": [
+                  {
+                    "f": "corpus2/02_simple_news/ContentView.swift",
+                    "a": 1083,
+                    "b": 1097
+                  }
+                ]
+              }
+            ],
+            "src": [
+              {
+                "f": "corpus2/02_simple_news/ContentView.swift",
+                "a": 1011,
+                "b": 1116
+              }
+            ]
+          }
+        ],
+        "mods": [
+          {
+            "m": "navTitle",
+            "title": "SimpleNews"
+          }
+        ],
+        "src": [
+          {
+            "f": "corpus2/02_simple_news/ContentView.swift",
+            "a": 926,
+            "b": 2246
+          },
+          {
+            "f": "corpus2/02_simple_news/ContentView.swift",
+            "a": 3417,
+            "b": 3430
+          }
+        ]
+      }
+    ],
+    "src": [
+      {
+        "f": "corpus2/02_simple_news/ContentView.swift",
+        "a": 3387,
+        "b": 3441
+      }
+    ]
+  }
+}

@@ -1,6 +1,7 @@
 {
   "id": "05",
   "name": "Settings",
+  "fileCount": 1,
   "parseOk": true,
   "parseErrors": [],
   "renderOk": true,
@@ -8,6 +9,7 @@
     "preview:0",
     "view:ContentView"
   ],
+  "selectedTarget": "preview:0",
   "notes": [],
   "unsupportedNodes": [],
   "stats": {

@@ -1,6 +1,7 @@
 {
   "id": "09",
   "name": "@Observable",
+  "fileCount": 1,
   "parseOk": true,
   "parseErrors": [],
   "renderOk": true,
@@ -11,6 +12,7 @@
     "view:CartView",
     "view:ThemeEditorView"
   ],
+  "selectedTarget": "preview:0",
   "notes": [],
   "unsupportedNodes": [],
   "stats": {

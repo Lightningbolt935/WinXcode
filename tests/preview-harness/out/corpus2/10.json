@@ -1,0 +1,168 @@
+{
+  "id": "10",
+  "name": "ControlRoom",
+  "source": "Paul Hudson (ControlRoom)",
+  "license": "MIT",
+  "fileCount": 1,
+  "parseOk": true,
+  "parseErrors": [],
+  "renderOk": true,
+  "targets": [
+    "corpus2/10_control_room/ContentView.swift:provider:SidebarView_Previews",
+    "corpus2/10_control_room/ContentView.swift:view:SidebarView"
+  ],
+  "selectedTarget": "corpus2/10_control_room/ContentView.swift:provider:SidebarView_Previews",
+  "notes": [
+    "?onChange"
+  ],
+  "unsupportedNodes": [],
+  "stats": {
+    "views": 6,
+    "depth": 3,
+    "heavy": 0
+  },
+  "treeDepth": 4,
+  "viewNodeCount": 6,
+  "tree": {
+    "id": "r",
+    "type": "VStack",
+    "props": {
+      "alignment": "center",
+      "spacing": 0
+    },
+    "children": [
+      {
+        "id": "r.0",
+        "type": "List",
+        "props": {},
+        "children": [],
+        "mods": [
+          {
+            "m": "listStyle",
+            "value": "sidebar"
+          }
+        ],
+        "src": [
+          {
+            "f": "corpus2/10_control_room/ContentView.swift",
+            "a": 1169,
+            "b": 1780
+          }
+        ]
+      },
+      {
+        "id": "r.1",
+        "type": "Divider",
+        "props": {},
+        "src": [
+          {
+            "f": "corpus2/10_control_room/ContentView.swift",
+            "a": 1796,
+            "b": 1805
+          }
+        ]
+      },
+      {
+        "id": "r.2",
+        "type": "HStack",
+        "props": {
+          "alignment": "center",
+          "spacing": 4
+        },
+        "children": [
+          {
+            "id": "r.2.0",
+            "type": "Button",
+            "props": {},
+            "label": [
+              {
+                "id": "r.2.0.l0",
+                "type": "Image",
+                "props": {
+                  "system": "power"
+                },
+                "mods": [
+                  {
+                    "m": "resizable"
+                  },
+                  {
+                    "m": "foreground",
+                    "color": {
+                      "name": "secondary"
+                    }
+                  },
+                  {
+                    "m": "aspect",
+                    "mode": "fit"
+                  },
+                  {
+                    "m": "frame",
+                    "width": 16
+                  },
+                  {
+                    "m": "padding",
+                    "top": 0,
+                    "leading": 2,
+                    "bottom": 0,
+                    "trailing": 2
+                  }
+                ],
+                "src": [
+                  {
+                    "f": "corpus2/10_control_room/ContentView.swift",
+                    "a": 2038,
+                    "b": 2363
+                  }
+                ]
+              }
+            ],
+            "mods": [
+              {
+                "m": "buttonStyle",
+                "value": "borderless"
+              },
+              {
+                "m": "padding",
+                "top": 0,
+                "leading": 3,
+                "bottom": 0,
+                "trailing": 0
+              }
+            ],
+            "src": [
+              {
+                "f": "corpus2/10_control_room/ContentView.swift",
+                "a": 1859,
+                "b": 2570
+              }
+            ],
+            "event": "r.2.0"
+          }
+        ],
+        "mods": [
+          {
+            "m": "padding",
+            "top": 2,
+            "leading": 2,
+            "bottom": 2,
+            "trailing": 2
+          }
+        ],
+        "src": [
+          {
+            "f": "corpus2/10_control_room/ContentView.swift",
+            "a": 1821,
+            "b": 3264
+          }
+        ]
+      }
+    ],
+    "src": [
+      {
+        "f": "corpus2/10_control_room/ContentView.swift",
+        "a": 1135,
+        "b": 3275
+      }
+    ]
+  }
+}
