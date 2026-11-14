@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-14T19:45:18.847Z",
+  "timestamp": "2026-11-14T19:47:43.216Z",
   "results": [
     {
       "id": "01",
@@ -174,9 +174,7 @@
       "renderOk": true,
       "targetCount": 6,
       "notes": [
-        ".accessibilityAdjustableAction()",
-        "?stat",
-        "?subtitle"
+        ".accessibilityAdjustableAction()"
       ],
       "unsupportedNodes": [],
       "viewNodeCount": 72,

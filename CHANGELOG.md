@@ -5,7 +5,10 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
 ## [Unreleased]
 
+### Fixed
+- Phase 1a Item 1: Parser `;` terminator bug in `parser.ts:551` and `parser.ts:561` where `typeText` did not stop at semicolons on same-line declarations
 ### Added
+- Phase 1a Item 1: Unit tests in `src/lib/preview/parser.test.ts` for multiple properties separated by semicolons
 - Phase 1a Item 0: `tests/corpus2/` — 10 real-world permissively licensed open-source SwiftUI apps (Apple, Paul Hudson, Swiftify, Peter Friese, etc.)
 - Phase 1a Item 0: `tests/corpus2/SOURCES.md` — source URLs, copyright, and licenses for all 10 apps
 - Phase 1a Item 0: `tests/preview-harness/corpus.test.ts` expanded to run both Corpus 1 and Corpus 2

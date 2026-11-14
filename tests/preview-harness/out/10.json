@@ -15,9 +15,7 @@
   ],
   "selectedTarget": "preview:0",
   "notes": [
-    ".accessibilityAdjustableAction()",
-    "?stat",
-    "?subtitle"
+    ".accessibilityAdjustableAction()"
   ],
   "unsupportedNodes": [],
   "stats": {
@@ -1217,7 +1215,7 @@
                                     "id": "r.0.0.3.0.0.0.0.1",
                                     "type": "Text",
                                     "props": {
-                                      "text": ""
+                                      "text": "Goal: 10,000 steps"
                                     },
                                     "mods": [
                                       {
@@ -1266,7 +1264,7 @@
                                 "id": "r.0.0.3.0.0.0.2",
                                 "type": "Text",
                                 "props": {
-                                  "text": ""
+                                  "text": "7,432"
                                 },
                                 "mods": [
                                   {
@@ -1359,7 +1357,7 @@
                                     "id": "r.0.0.3.0.0.1.0.1",
                                     "type": "Text",
                                     "props": {
-                                      "text": ""
+                                      "text": "Goal: 30 min"
                                     },
                                     "mods": [
                                       {
@@ -1408,7 +1406,7 @@
                                 "id": "r.0.0.3.0.0.1.2",
                                 "type": "Text",
                                 "props": {
-                                  "text": ""
+                                  "text": "22 min"
                                 },
                                 "mods": [
                                   {
@@ -1501,7 +1499,7 @@
                                     "id": "r.0.0.3.0.0.2.0.1",
                                     "type": "Text",
                                     "props": {
-                                      "text": ""
+                                      "text": "Goal: 500 kcal"
                                     },
                                     "mods": [
                                       {
@@ -1550,7 +1548,7 @@
                                 "id": "r.0.0.3.0.0.2.2",
                                 "type": "Text",
                                 "props": {
-                                  "text": ""
+                                  "text": "318 kcal"
                                 },
                                 "mods": [
                                   {
