@@ -6,6 +6,9 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 ## [Unreleased]
 
 ### Added
+- Phase 1a Item 4: Generated `docs/COVERAGE.md` via `scripts/generate-coverage.mjs`:
+  - Complete coverage matrix across 62 supported views, 57 modifiers, 14 property wrappers, 181 ignored modifiers (Level 2), and 15 explicitly unsupported constructs (Level 1)
+  - Detailed architecture and boundaries documentation for `@AppStorage` persistence and `DispatchQueue.main.asyncAfter` timer queue
 - Phase 1a Item 3: Shims for `DispatchQueue.main.asyncAfter` and `@AppStorage` persistence:
   - `DispatchQueue.main.asyncAfter` and `DispatchQueue.main.async` support with timer queue maintaining strict deadline + sequence FIFO ordering
   - `DispatchTime.now()`, `.now() + seconds`, `.seconds(n)`, and `.milliseconds(n)` deadline offset arithmetic

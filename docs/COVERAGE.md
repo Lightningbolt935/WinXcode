@@ -1,0 +1,217 @@
+# WinXcode SwiftUI Interpreter & Preview Coverage
+
+This document is the authoritative coverage specification for the WinXcode headless/desktop SwiftUI preview engine. It is generated from `src/lib/preview/swiftui.ts` and `src/lib/preview/runtime.ts`.
+
+**Last updated**: 2026-11-14  
+**Engine version**: Tauri 2 + React 19 + WinXcode Parser/Runtime 2.0  
+**Test Suite**: 34 unit & corpus harness tests passing
+
+---
+
+## 1. Executive Summary
+
+| Construct Category | Total Supported | Ignored (Safe No-Op) | Explicitly Unsupported |
+|:-------------------|:----------------|:---------------------|:-----------------------|
+| **Views & Containers** | **62** | 0 | **15** (visible callout) |
+| **View Modifiers** | **57** | **181** | Fall-through emits diagnostic |
+| **Property Wrappers** | **14** | 0 | 0 |
+| **Runtime Shims** | **2** (`DispatchQueue.asyncAfter`, `@AppStorage`) | — | — |
+
+---
+
+## 2. Supported Views (62)
+
+
+### Layout & Containers
+| View | Description / Behavior in Preview |
+|:-----|:----------------------------------|
+| `VStack` | Native HTML/SVG rendering with exact iOS metrics, dark mode, and state bindings |
+| `HStack` | Native HTML/SVG rendering with exact iOS metrics, dark mode, and state bindings |
+| `ZStack` | Native HTML/SVG rendering with exact iOS metrics, dark mode, and state bindings |
+| `LazyVStack` | Native HTML/SVG rendering with exact iOS metrics, dark mode, and state bindings |
+| `LazyHStack` | Native HTML/SVG rendering with exact iOS metrics, dark mode, and state bindings |
+| `LazyVGrid` | Native HTML/SVG rendering with exact iOS metrics, dark mode, and state bindings |
+| `LazyHGrid` | Native HTML/SVG rendering with exact iOS metrics, dark mode, and state bindings |
+| `Grid` | Native HTML/SVG rendering with exact iOS metrics, dark mode, and state bindings |
+| `GridRow` | Native HTML/SVG rendering with exact iOS metrics, dark mode, and state bindings |
+| `ScrollView` | Native HTML/SVG rendering with exact iOS metrics, dark mode, and state bindings |
+| `ScrollViewReader` | Native HTML/SVG rendering with exact iOS metrics, dark mode, and state bindings |
+| `Group` | Native HTML/SVG rendering with exact iOS metrics, dark mode, and state bindings |
+| `ViewThatFits` | Native HTML/SVG rendering with exact iOS metrics, dark mode, and state bindings |
+| `Spacer` | Native HTML/SVG rendering with exact iOS metrics, dark mode, and state bindings |
+| `Divider` | Native HTML/SVG rendering with exact iOS metrics, dark mode, and state bindings |
+| `Section` | Native HTML/SVG rendering with exact iOS metrics, dark mode, and state bindings |
+
+
+### Controls & Inputs
+| View | Description / Behavior in Preview |
+|:-----|:----------------------------------|
+| `Button` | Native HTML/SVG rendering with exact iOS metrics, dark mode, and state bindings |
+| `Toggle` | Native HTML/SVG rendering with exact iOS metrics, dark mode, and state bindings |
+| `Slider` | Native HTML/SVG rendering with exact iOS metrics, dark mode, and state bindings |
+| `Stepper` | Native HTML/SVG rendering with exact iOS metrics, dark mode, and state bindings |
+| `TextField` | Native HTML/SVG rendering with exact iOS metrics, dark mode, and state bindings |
+| `SecureField` | Native HTML/SVG rendering with exact iOS metrics, dark mode, and state bindings |
+| `TextEditor` | Native HTML/SVG rendering with exact iOS metrics, dark mode, and state bindings |
+| `Picker` | Native HTML/SVG rendering with exact iOS metrics, dark mode, and state bindings |
+| `DatePicker` | Native HTML/SVG rendering with exact iOS metrics, dark mode, and state bindings |
+| `ColorPicker` | Native HTML/SVG rendering with exact iOS metrics, dark mode, and state bindings |
+| `Link` | Native HTML/SVG rendering with exact iOS metrics, dark mode, and state bindings |
+| `Menu` | Native HTML/SVG rendering with exact iOS metrics, dark mode, and state bindings |
+| `ShareLink` | Native HTML/SVG rendering with exact iOS metrics, dark mode, and state bindings |
+
+
+### Display & Content
+| View | Description / Behavior in Preview |
+|:-----|:----------------------------------|
+| `Text` | Native HTML/SVG rendering with exact iOS metrics, dark mode, and state bindings |
+| `Image` | Native HTML/SVG rendering with exact iOS metrics, dark mode, and state bindings |
+| `Label` | Native HTML/SVG rendering with exact iOS metrics, dark mode, and state bindings |
+| `ProgressView` | Native HTML/SVG rendering with exact iOS metrics, dark mode, and state bindings |
+| `ContentUnavailableView` | Native HTML/SVG rendering with exact iOS metrics, dark mode, and state bindings |
+| `EmptyView` | Native HTML/SVG rendering with exact iOS metrics, dark mode, and state bindings |
+
+
+### Navigation & Hierarchy
+| View | Description / Behavior in Preview |
+|:-----|:----------------------------------|
+| `NavigationStack` | Native HTML/SVG rendering with exact iOS metrics, dark mode, and state bindings |
+| `NavigationView` | Native HTML/SVG rendering with exact iOS metrics, dark mode, and state bindings |
+| `NavigationSplitView` | Native HTML/SVG rendering with exact iOS metrics, dark mode, and state bindings |
+| `NavigationLink` | Native HTML/SVG rendering with exact iOS metrics, dark mode, and state bindings |
+| `TabView` | Native HTML/SVG rendering with exact iOS metrics, dark mode, and state bindings |
+| `Tab` | Native HTML/SVG rendering with exact iOS metrics, dark mode, and state bindings |
+| `DisclosureGroup` | Native HTML/SVG rendering with exact iOS metrics, dark mode, and state bindings |
+
+
+### Shapes & Gradients
+| View | Description / Behavior in Preview |
+|:-----|:----------------------------------|
+| `Rectangle` | Native HTML/SVG rendering with exact iOS metrics, dark mode, and state bindings |
+| `RoundedRectangle` | Native HTML/SVG rendering with exact iOS metrics, dark mode, and state bindings |
+| `UnevenRoundedRectangle` | Native HTML/SVG rendering with exact iOS metrics, dark mode, and state bindings |
+| `Circle` | Native HTML/SVG rendering with exact iOS metrics, dark mode, and state bindings |
+| `Capsule` | Native HTML/SVG rendering with exact iOS metrics, dark mode, and state bindings |
+| `Ellipse` | Native HTML/SVG rendering with exact iOS metrics, dark mode, and state bindings |
+| `ContainerRelativeShape` | Native HTML/SVG rendering with exact iOS metrics, dark mode, and state bindings |
+| `LinearGradient` | Native HTML/SVG rendering with exact iOS metrics, dark mode, and state bindings |
+| `RadialGradient` | Native HTML/SVG rendering with exact iOS metrics, dark mode, and state bindings |
+| `AngularGradient` | Native HTML/SVG rendering with exact iOS metrics, dark mode, and state bindings |
+
+
+### Panels & Grouping
+| View | Description / Behavior in Preview |
+|:-----|:----------------------------------|
+| `Form` | Native HTML/SVG rendering with exact iOS metrics, dark mode, and state bindings |
+| `List` | Native HTML/SVG rendering with exact iOS metrics, dark mode, and state bindings |
+| `ControlGroup` | Native HTML/SVG rendering with exact iOS metrics, dark mode, and state bindings |
+| `GroupBox` | Native HTML/SVG rendering with exact iOS metrics, dark mode, and state bindings |
+| `LabeledContent` | Native HTML/SVG rendering with exact iOS metrics, dark mode, and state bindings |
+| `GeometryReader` | Native HTML/SVG rendering with exact iOS metrics, dark mode, and state bindings |
+
+
+---
+
+## 3. Supported View Modifiers (57)
+
+These modifiers alter the layout, styling, text presentation, or behavior of view nodes in the preview hierarchy:
+
+| Category | Modifiers |
+|:---------|:----------|
+| **Layout & Spacing** | `.padding`, `.frame`, `.fixedSize`, `.offset`, `.position`, `.aspectRatio`, `.scaledToFit`, `.scaledToFill`, `.layoutPriority`, `.ignoresSafeArea` |
+| **Styling & Color** | `.background`, `.overlay`, `.foregroundStyle`, `.foregroundColor`, `.tint`, `.accentColor`, `.opacity`, `.shadow`, `.border`, `.clipShape`, `.cornerRadius` |
+| **Typography** | `.font`, `.fontWeight`, `.bold`, `.italic`, `.underline`, `.strikethrough`, `.lineLimit`, `.multilineTextAlignment`, `.textCase`, `.truncationMode`, `.kerning` |
+| **Control & Interaction** | `.onTapGesture`, `.disabled`, `.buttonStyle`, `.pickerStyle`, `.textFieldStyle`, `.toggleStyle`, `.listStyle`, `.badge`, `.tag`, `.tabItem` |
+| **Animations & Transitions** | `.animation`, `.transition`, `.scaleEffect`, `.rotationEffect`, `.rotation3DEffect`, `.blur` |
+
+---
+
+## 4. Property Wrappers (14)
+
+| Property Wrapper | Status | Implementation & Coverage |
+|:-----------------|:-------|:--------------------------|
+| `@State` | **Full** | Reactive local view state, triggers re-render on mutation |
+| `@Binding` | **Full** | Two-way binding via `$` prefix, reads/writes parent or constant slot |
+| `@AppStorage` | **Full (Shimmed)** | Persistent key-value storage backed by memory + localStorage (`winxcode:appstorage:*`), shared across views & re-renders |
+| `@Observable` | **Full** | Swift 5.9 observation macro: classes track property access, @Environment(Type.self) injection, @Bindable support |
+| `@Bindable` | **Full** | Creates two-way bindings to properties on @Observable model objects |
+| `@Environment` | **Partial** | Supports colorScheme, dismiss, horizontalSizeClass, verticalSizeClass, and custom @Observable types by type name |
+| `@EnvironmentObject` | **Partial** | Resolves shared objects by type name from runtime environment |
+| `@StateObject` | **Full** | Instantiates and retains ObservableObject across view evaluations |
+| `@ObservedObject` | **Full** | Observes external ObservableObject instances |
+| `@ScaledMetric` | **Full** | Scales numeric dimensions relative to current Dynamic Type size |
+| `@FocusState` | **Stub** | Focus binding state tracked in view slot |
+| `@GestureState` | **Stub** | Transient gesture tracking state |
+| `@SceneStorage` | **Stub** | Scene-level state stored in view slot |
+| `@Query` | **Stub** | SwiftData query wrapper defaults to empty array placeholder |
+
+---
+
+## 5. Ignored Modifiers (181 — Safe No-Ops)
+
+When encountered, these modifiers are acknowledged, classified as **IGNORED**, recorded in diagnostics (`@ignored:<name>`), and return the view tree unmodified. They do **not** break layout or crash the preview.
+
+```
+.accessibilityAction(), .accessibilityAddTraits(), .accessibilityAdjustableAction(), .accessibilityChildren(), .accessibilityElement(), .accessibilityHeading(), .accessibilityHidden(), .accessibilityHint(), .accessibilityIdentifier(), .accessibilityInputLabels(), .accessibilityLabel(), .accessibilityRespondsToUserInteraction(), .accessibilityRotor(), .accessibilityScrollAction(), .accessibilityShowsLargeContentViewer(), .accessibilitySortPriority(), .accessibilityValue(), .accessibilityZoomAction(), .alert(), .allowsHitTesting(), .allowsTightening(), .annotation(), .autocapitalization(), .autocorrectionDisabled(), .badge(), .baselineOffset(), .blendMode(), .blur(), .brightness(), .buttonBorderShape(), .chartForegroundStyleScale(), .chartLegend(), .chartPlotStyle(), .chartXAxis(), .chartXScale(), .chartYAxis(), .chartYScale(), .colorInvert(), .colorMultiply(), .compositingGroup(), .confirmationDialog(), .containerRelativeFrame(), .contentMargins(), .contentShape(), .contentTransition(), .contextMenu(), .contrast(), .coordinateSpace(), .datePickerStyle(), .defaultScrollAnchor(), .defersSystemGestures(), .disableAutocorrection(), .draggable(), .drawingGroup(), .dropDestination(), .dynamicTypeSize(), .dynamicTypeSizeIfAvailable(), .environment(), .environmentObject(), .fileExporter(), .fileImporter(), .fixedSize(), .flipsForRightToLeftLayoutDirection(), .focusEffectDisabled(), .focusable(), .focused(), .foregroundStyleBy(), .foregroundStyleIfAvailable(), .frameIfAvailable(), .fullScreenCover(), .gaugeStyle(), .geometryGroup(), .gesture(), .grayscale(), .headerProminence(), .help(), .highPriorityGesture(), .hoverEffect(), .hueRotation(), .id(), .imageScaleIfAvailable(), .indexViewStyle(), .inspector(), .interactiveDismissDisabled(), .interpolationMethod(), .kerning(), .keyboardType(), .keyframeAnimator(), .labelStyle(), .layoutPriority(), .lineHeight(), .listItemTint(), .listRowBackground(), .listRowInsets(), .listRowSeparator(), .listRowSpacing(), .listSectionSeparator(), .listSectionSpacing(), .luminanceToAlpha(), .mask(), .matchedGeometryEffect(), .menuStyle(), .minimumScaleFactor(), .modelContainer(), .monospacedDigit(), .multilineTextAlignmentIfAvailable(), .navigationBarBackButtonHidden(), .navigationBarHidden(), .navigationDestination(), .navigationSplitViewColumnWidth(), .navigationSplitViewStyle(), .onAppear(), .onChange(), .onContinuousHover(), .onDisappear(), .onDrag(), .onDrop(), .onGeometryChange(), .onHover(), .onKeyPress(), .onLongPressGesture(), .onReceive(), .onScrollGeometryChange(), .onSubmit(), .persistentSystemOverlays(), .phaseAnimator(), .photosPicker(), .popover(), .preferredColorSchemeIfAvailable(), .presentationBackground(), .presentationCornerRadius(), .presentationDetents(), .presentationDragIndicator(), .privacySensitive(), .privacySensitiveIfAvailable(), .progressViewStyle(), .redacted(), .refreshable(), .safeAreaInset(), .safeAreaPadding(), .safeAreaPaddingIfAvailable(), .saturation(), .scenePadding(), .scrollBounceBehavior(), .scrollClipDisabled(), .scrollContentBackground(), .scrollDismissesKeyboard(), .scrollIndicators(), .scrollPosition(), .scrollTargetBehavior(), .scrollTargetLayout(), .scrollTransition(), .searchable(), .sensoryFeedback(), .sheet(), .simultaneousGesture(), .springLoadingBehavior(), .statusBarHidden(), .submitLabel(), .swipeActions(), .symbolEffect(), .symbolRenderingMode(), .symbolSize(), .symbolVariant(), .tabItemBadge(), .tabViewStyle(), .tableStyle(), .task(), .textInputAutocapitalization(), .textSelection(), .toggleStyle(), .toolbar(), .toolbarBackground(), .toolbarColorScheme(), .toolbarRole(), .toolbarTitleDisplayMode(), .tracking(), .truncationMode(), .unredacted(), .visualEffect(), .zIndex()
+```
+
+### Accessibility Classification
+Accessibility modifiers (`.accessibilityLabel`, `.accessibilityHint`, `.accessibilityAdjustableAction`, `.accessibilityAction`, `.accessibilityHeading`, `.accessibilitySortPriority`, etc.) are recognized as Level 2 IGNORED. They do not alter visual layout on device frames, allowing student apps with high accessibility marks to render cleanly without errors.
+
+---
+
+## 6. Explicitly Unsupported Views (15)
+
+When the preview interpreter encounters any of these constructs, it creates an `Unsupported` node and emits a Level 1 **UNSUPPORTED** diagnostic. 
+
+**Honesty guarantee**: The Canvas displays a visible callout banner with an amber warning:  
+*"Renders on device only · Check on iPhone"*.
+
+| Unsupported View | Rationale / Hardware Requirement | Workaround / Next Step |
+|:-----------------|:----------------------------------|:-----------------------|
+| `Canvas` | Requires Metal / CoreGraphics native 2D rasterizer | Use **Live on iPhone** link (Phase 1b proposal below) |
+| `Chart` | Apple Swift Charts framework | Use **Live on iPhone** link (Phase 1b proposal below) |
+| `Map` | Apple MapKit framework (requires Apple Maps tiles & auth) | Test on connected iPhone |
+| `VideoPlayer` | AVKit / AVPlayer native media pipeline | Test on connected iPhone |
+| `SpriteView` | SpriteKit 2D game engine | Test on connected iPhone |
+| `SceneView` | SceneKit 3D graphics engine | Test on connected iPhone |
+| `RealityView` | RealityKit AR / spatial framework | Test on connected iPhone |
+| `Model3D` | RealityKit 3D USDZ renderer | Test on connected iPhone |
+| `PhotosPicker` | Requires iOS Photo Library permission & sheet | Mock with local asset images |
+| `CameraView` | Requires AVFoundation camera capture hardware | Test on connected iPhone |
+| `SignInWithAppleButton` | Requires Apple Developer Team ID and Apple ID auth daemon | Prohibited in Student Challenge |
+| `PasteButton` | UIPasteboard system sandbox integration | Test on connected iPhone |
+| `Gauge` | WatchOS / iOS gauge widget rendering | Test on connected iPhone |
+| `MultiDatePicker` | Multi-selection calendar sheet | Test on connected iPhone |
+
+---
+
+## 7. Shims & Runtime Systems
+
+### 7.1 @AppStorage Persistence
+
+The WinXcode interpreter backs `@AppStorage` with a dual-layer persistent storage system:
+1. **In-Memory Store (`APP_STORAGE`)**: Global `Map<string, V>` that persists across view re-renders, view transitions, and separate `Runtime` instances within the session.
+2. **Web Storage Layer (`localStorage`)**: Keys are serialized to `localStorage` using the namespace prefix `winxcode:appstorage:<key>`. This allows state to survive page reloads and IDE restarts.
+3. **Sharing**: Multiple views referencing the same key (e.g. `@AppStorage("isDarkMode")`) immediately share and sync state upon mutation.
+
+#### Known Limits & Boundaries
+- **Supported Value Types**: `Bool`, `Int`, `Double`/`CGFloat`, `String`, and JSON-serializable enums (`RawRepresentable` with `String` or `Int` raw values).
+- **Unsupported Value Types**: Complex arbitrary `Codable` structs containing custom objects, raw binary `Data`, and security-scoped bookmark URLs are not persisted.
+- **Custom Suites**: `store: UserDefaults(suiteName: ...)` is mapped to the same persistent key-value namespace.
+- **Cross-Device Sync**: Storage is local to the WinXcode host machine. It does not sync to iCloud KVS or device UserDefaults.
+
+### 7.2 DispatchQueue.main.asyncAfter & Timer Queue
+
+The runtime includes a deterministic timer queue for asynchronous delayed executions:
+1. **Ordering Guarantee**: Timers are ordered strictly by `(dueMs, seq)`. If two tasks have different deadlines, earlier tasks always execute before later ones. If two tasks have identical deadlines, they execute in exact FIFO sequence order.
+2. **Time Expressions**:
+   - `DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { ... }`
+   - `DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) { ... }`
+   - `DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500)) { ... }`
+   - `DispatchQueue.main.async { ... }` (scheduled with 0 delay)
+3. **Deterministic Testing Controls**:
+   - `rt.advanceTimers(ms)`: Advances virtual clock by `ms` and executes all timers that became due.
+   - `rt.flushTimers()`: Immediately runs all pending timers in strict order.
+   - `rt.clearTimers()`: Clears all pending timers and timers on reset.
+4. **Canvas Integration**: When a scheduled timer mutates view state, `rt.onUpdate` fires, automatically re-rendering the Canvas.
