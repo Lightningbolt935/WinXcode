@@ -12,14 +12,14 @@ This document is the authoritative coverage specification for the WinXcode headl
 
 | Construct Category | Total Supported | Degraded (Visual Dropped) | Behavior Skipped (Runtime) | Ignored (Safe No-Op) | Explicitly Unsupported |
 |:-------------------|:----------------|:--------------------------|:---------------------------|:---------------------|:-----------------------|
-| **Views & Containers** | **62** | — | — | 0 | **15** (visible callout) |
+| **Views & Containers** | **65** | — | — | 0 | **14** (visible callout) |
 | **View Modifiers** | **57** | **114** (amber banner) | **20** (purple banner) | **52** (safe no-op) | Fall-through emits diagnostic |
 | **Property Wrappers** | **14** | — | — | 0 | 0 |
 | **Runtime Shims** | **2** (`DispatchQueue.asyncAfter`, `@AppStorage`) | — | — | — | — |
 
 ---
 
-## 2. Supported Views (62)
+## 2. Supported Views (65)
 
 
 ### Layout & Containers
@@ -97,6 +97,9 @@ This document is the authoritative coverage specification for the WinXcode headl
 | `LinearGradient` | Native HTML/SVG rendering with exact iOS metrics, dark mode, and state bindings |
 | `RadialGradient` | Native HTML/SVG rendering with exact iOS metrics, dark mode, and state bindings |
 | `AngularGradient` | Native HTML/SVG rendering with exact iOS metrics, dark mode, and state bindings |
+| `Canvas` | Native HTML/SVG rendering with exact iOS metrics, dark mode, and state bindings |
+| `TimelineView` | Native HTML/SVG rendering with exact iOS metrics, dark mode, and state bindings |
+| `Path` | Native HTML/SVG rendering with exact iOS metrics, dark mode, and state bindings |
 
 
 ### Panels & Grouping
@@ -204,7 +207,7 @@ Accessibility modifiers (`.accessibilityLabel`, `.accessibilityHint`, `.accessib
 
 ---
 
-## 8. Explicitly Unsupported Views (15)
+## 8. Explicitly Unsupported Views (14)
 
 When the preview interpreter encounters any of these constructs, it creates an `Unsupported` node and emits a Level 1 **UNSUPPORTED** diagnostic. 
 
@@ -213,8 +216,7 @@ When the preview interpreter encounters any of these constructs, it creates an `
 
 | Unsupported View | Rationale / Hardware Requirement | Workaround / Next Step |
 |:-----------------|:----------------------------------|:-----------------------|
-| `Canvas` | Requires Metal / CoreGraphics native 2D rasterizer | Use **Live on iPhone** link (Phase 1b proposal below) |
-| `Chart` | Apple Swift Charts framework | Use **Live on iPhone** link (Phase 1b proposal below) |
+| `Chart` | Apple Swift Charts framework | Planned for Phase 1d/2 · Use **Live on iPhone** link |
 | `Map` | Apple MapKit framework (requires Apple Maps tiles & auth) | Test on connected iPhone |
 | `VideoPlayer` | AVKit / AVPlayer native media pipeline | Test on connected iPhone |
 | `SpriteView` | SpriteKit 2D game engine | Test on connected iPhone |
@@ -259,3 +261,19 @@ The runtime includes a deterministic timer queue for asynchronous delayed execut
    - `rt.flushTimers()`: Immediately runs all pending timers in strict order.
    - `rt.clearTimers()`: Clears all pending timers and timers on reset.
 4. **Canvas Integration**: When a scheduled timer mutates view state, `rt.onUpdate` fires, automatically re-rendering the Canvas.
+
+### 7.3 Canvas & 2D Vector Drawing (Proposal A)
+
+The Canvas preview engine implements a vector-accurate 2D graphics subsystem for SwiftUI `Canvas`:
+1. **View Integration**: `Canvas { context, size in ... }` evaluates the drawing closure with `(inout GraphicsContext, CGSize)`.
+2. **Path Model (`Path`)**:
+   - `Path()` creates an empty vector path.
+   - `Path(ellipseIn: CGRect)` generates exact SVG arc commands.
+   - Path operations: `.move(to: CGPoint)`, `.addLine(to: CGPoint)`, `.addQuadCurve(to: CGPoint, control: CGPoint)`, `.closeSubpath()`.
+   - Serializes to SVG path commands (`M`, `L`, `Q`, `A`, `Z`).
+3. **GraphicsContext**:
+   - `.fill(path, with: .color(...))` records vector fill commands with resolved colors.
+   - `.stroke(path, with: .color(...), style: StrokeStyle(lineWidth: ..., lineCap: ..., lineJoin: ...))` records vector stroke commands with line widths and join styles.
+4. **TimelineView**:
+   - `TimelineView(.animation) { timeline in ... }` evaluates inner animations passing `timeline.date`.
+5. **SVG Renderer**: Renders crisp, scalable `<svg viewBox="...">` paths directly into the device frame.

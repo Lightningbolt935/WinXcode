@@ -372,7 +372,6 @@ const PASSTHROUGH = new Set(["Group", "AnyView", "ViewThatFits", "VStackLayout",
 const UNSUPPORTED = new Set([
   "Map",
   "Chart",
-  "Canvas",
   "VideoPlayer",
   "WebView",
   "SceneView",
@@ -438,6 +437,9 @@ const VIEW_NAMES = new Set([
   "LinearGradient",
   "RadialGradient",
   "AngularGradient",
+  "Canvas",
+  "TimelineView",
+  "Path",
   "ControlGroup",
   "GroupBox",
   "LabeledContent",
@@ -724,6 +726,44 @@ export function makeView(name: string, args: EvArg[], trailing: V[], ctx: Ctx): 
       const colorsArg = labeled("colors") ?? (isT(labeled("gradient") ?? null, "tuple") ? undefined : undefined);
       const colors = Array.isArray(colorsArg) ? colorsArg.map((c) => toColor(c, ctx.scheme)).filter((c): c is ColorSpec => !!c) : [];
       return [node("Color", { color: colors[0] ?? { name: "accentColor" }, colors })];
+    }
+    case "Canvas": {
+      const contextVal: V = { t: "graphics_context", commands: [] };
+      const sizeVal: V = {
+        t: "tuple",
+        items: [new Dbl(ctx.size?.width || 393), new Dbl(ctx.size?.height || 852)],
+        labels: ["width", "height"],
+      };
+      const drawClosure = trailing[0] ?? labeled("renders") ?? first;
+      if (drawClosure && (isT(drawClosure, "closure") || isT(drawClosure, "fn"))) {
+        try {
+          ctx.call(drawClosure, [contextVal, sizeVal]);
+        } catch (e) {
+          ctx.note(`Canvas: ${e instanceof Error ? e.message : String(e)}`);
+        }
+      }
+      return [
+        node("Canvas", {
+          width: ctx.size?.width || 393,
+          height: ctx.size?.height || 852,
+          commands: contextVal.commands,
+        }),
+      ];
+    }
+    case "TimelineView": {
+      const dateVal: V = { t: "date", ms: Date.now() };
+      const timelineVal: V = { t: "tuple", items: [dateVal], labels: ["date"] };
+      const closure = trailing[0] ?? labeled("content") ?? first;
+      if (closure && (isT(closure, "closure") || isT(closure, "fn"))) {
+        try {
+          const res = ctx.call(closure, [timelineVal]);
+          const kids = nodesOf(res);
+          if (kids && kids.length) return kids;
+        } catch (e) {
+          ctx.note(`TimelineView: ${e instanceof Error ? e.message : String(e)}`);
+        }
+      }
+      return content();
     }
   }
   return null;

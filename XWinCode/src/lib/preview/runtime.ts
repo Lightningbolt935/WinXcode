@@ -1,5 +1,6 @@
 import { lineCol } from "./lexer";
 import { parseSwift, type Cond, type Expr, type FileAST, type Method, type Property, type Stmt, type TypeDecl } from "./parser";
+import { extractColorSpec, extractPoint, extractRect, pathToSvgD } from "./canvas";
 import {
   animCurve,
   applyMod,
@@ -1924,6 +1925,8 @@ export class Runtime {
         return { t: "fn", name, call: (args) => new Dbl(Math.pow(num(args[0]?.value ?? 0), num(args[1]?.value ?? 0))) };
       case "atan2":
         return { t: "fn", name, call: (args) => new Dbl(Math.atan2(num(args[0]?.value ?? 0), num(args[1]?.value ?? 0))) };
+      case "hypot":
+        return { t: "fn", name, call: (args) => new Dbl(Math.hypot(num(args[0]?.value ?? 0), num(args[1]?.value ?? 0))) };
       case "print":
       case "debugPrint":
       case "dump":
@@ -2080,6 +2083,30 @@ export class Runtime {
         return { t: "tuple", items: [arg(args, "x") ?? new Dbl(0), arg(args, "y") ?? new Dbl(0)], labels: ["x", "y"] };
       case "CGRect":
         return { t: "tuple", items: [arg(args, "x") ?? new Dbl(0), arg(args, "y") ?? new Dbl(0), arg(args, "width") ?? new Dbl(0), arg(args, "height") ?? new Dbl(0)], labels: ["x", "y", "width", "height"] };
+      case "Path": {
+        const ellipseIn = arg(args, "ellipseIn");
+        if (ellipseIn !== undefined) {
+          const rect = extractRect(ellipseIn);
+          return { t: "path", elements: [{ type: "ellipse", rect }] };
+        }
+        return { t: "path", elements: [] };
+      }
+      case "StrokeStyle": {
+        const lw = num(arg(args, "lineWidth") ?? first ?? 1);
+        const cap = arg(args, "lineCap");
+        const join = arg(args, "lineJoin");
+        return {
+          t: "sym",
+          name: "StrokeStyle",
+          args: [
+            { label: "lineWidth", value: new Dbl(lw) },
+            { label: "lineCap", value: cap ?? { t: "sym", name: "round" } },
+            { label: "lineJoin", value: join ?? { t: "sym", name: "round" } },
+          ],
+        };
+      }
+      case "GraphicsContext":
+        return { t: "graphics_context", commands: [] };
       case "Angle":
         return { t: "sym", name: arg(args, "radians") !== undefined ? "radians" : "degrees", args: [{ label: null, value: arg(args, "degrees") ?? arg(args, "radians") ?? 0 }] };
       case "Binding": {
@@ -2123,6 +2150,61 @@ export class Runtime {
       if (name === "opacity") return { t: "color", spec: withOpacity(v.spec, num(first ?? 1)) };
       if (name === "gradient" || name === "mix" || name === "secondary" || name === "shadow") return v;
       return this.applyModifier(this.toNodes(v), v, name, a, trailing, env);
+    }
+    if (isT(v, "path")) {
+      if (name === "move") {
+        const to = extractPoint(arg(a, "to") ?? a[0]?.value ?? null);
+        v.elements.push({ type: "move", to });
+        return v;
+      }
+      if (name === "addLine") {
+        const to = extractPoint(arg(a, "to") ?? a[0]?.value ?? null);
+        v.elements.push({ type: "line", to });
+        return v;
+      }
+      if (name === "addQuadCurve") {
+        const to = extractPoint(arg(a, "to") ?? a[0]?.value ?? null);
+        const control = extractPoint(arg(a, "control") ?? a[1]?.value ?? null);
+        v.elements.push({ type: "quadCurve", to, control });
+        return v;
+      }
+      if (name === "closeSubpath") {
+        v.elements.push({ type: "close" });
+        return v;
+      }
+      return v;
+    }
+    if (isT(v, "graphics_context")) {
+      if (name === "fill") {
+        const p = a[0]?.value;
+        const d = isT(p, "path") ? pathToSvgD(p.elements) : "";
+        const withArg = arg(a, "with") ?? a[1]?.value;
+        const spec = extractColorSpec(withArg, this.scheme);
+        v.commands.push({ type: "fill", d, color: spec });
+        return null;
+      }
+      if (name === "stroke") {
+        const p = a[0]?.value;
+        const d = isT(p, "path") ? pathToSvgD(p.elements) : "";
+        const withArg = arg(a, "with") ?? a[1]?.value;
+        const spec = extractColorSpec(withArg, this.scheme);
+        const styleArg = arg(a, "style");
+        let lineWidth = 1;
+        let lineCap = "round";
+        let lineJoin = "round";
+        const sVal = styleArg ?? null;
+        if (isT(sVal, "sym") && sVal.args) {
+          const lwVal = arg(sVal.args, "lineWidth");
+          if (lwVal !== undefined) lineWidth = num(lwVal);
+          const capVal = arg(sVal.args, "lineCap") ?? null;
+          if (isT(capVal, "sym")) lineCap = capVal.name;
+          const joinVal = arg(sVal.args, "lineJoin") ?? null;
+          if (isT(joinVal, "sym")) lineJoin = joinVal.name;
+        }
+        v.commands.push({ type: "stroke", d, color: spec, lineWidth, lineCap, lineJoin });
+        return null;
+      }
+      return null;
     }
     if (isT(v, "font")) return call ? { t: "font", spec: fontMethod(v.spec, name, a) } : v;
     if (isT(v, "sym")) {

@@ -1,5 +1,6 @@
 import type { Closure, Stmt, TypeDecl } from "./parser";
 import type { ColorSpec, FontSpec, ViewNode } from "./types";
+import type { GraphicsContextValue, PathValue } from "./canvas";
 
 export class Dbl {
   constructor(readonly v: number) {}
@@ -39,7 +40,9 @@ export type V =
   | { t: "dispatch_queue"; name: string }
   | { t: "dispatch_time"; ms: number }
   | { t: "keypath"; path: string[] }
-  | { t: "opaque"; name: string };
+  | { t: "opaque"; name: string }
+  | PathValue
+  | GraphicsContextValue;
 
 export type Obj<T extends string> = Extract<V, { t: T }>;
 

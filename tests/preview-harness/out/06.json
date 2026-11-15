@@ -2,7 +2,7 @@
   "id": "06",
   "name": "Drawing",
   "fileCount": 1,
-  "level": "FAILED",
+  "level": "DEGRADED",
   "parseOk": true,
   "parseErrors": [],
   "renderOk": true,
@@ -12,15 +12,12 @@
   ],
   "selectedTarget": "preview:0",
   "notes": [
-    "Canvas",
     "@behavior:gesture",
     "@degraded:toolbar",
     "@degraded:alert"
   ],
-  "unsupportedNodes": [
-    "Canvas"
-  ],
-  "diagnosticCount": 5,
+  "unsupportedNodes": [],
+  "diagnosticCount": 3,
   "degradedCount": 2,
   "behaviorCount": 1,
   "ignoredCount": 0,
@@ -645,9 +642,11 @@
           },
           {
             "id": "r.0.1",
-            "type": "Unsupported",
+            "type": "Canvas",
             "props": {
-              "name": "Canvas"
+              "width": 393,
+              "height": 852,
+              "commands": []
             },
             "mods": [
               {

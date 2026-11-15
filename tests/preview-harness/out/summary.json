@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-15T08:13:49.979Z",
+  "timestamp": "2026-11-15T08:33:49.222Z",
   "results": [
     {
       "id": "01",
@@ -121,21 +121,18 @@
     {
       "id": "06",
       "name": "Drawing",
-      "level": "FAILED",
+      "level": "DEGRADED",
       "parseOk": true,
       "parseErrorCount": 0,
       "renderOk": true,
       "targetCount": 2,
       "notes": [
-        "Canvas",
         "@behavior:gesture",
         "@degraded:toolbar",
         "@degraded:alert"
       ],
-      "unsupportedNodes": [
-        "Canvas"
-      ],
-      "diagnosticCount": 5,
+      "unsupportedNodes": [],
+      "diagnosticCount": 3,
       "degradedCount": 2,
       "behaviorCount": 1,
       "ignoredCount": 0,
@@ -176,19 +173,17 @@
     {
       "id": "08",
       "name": "Game",
-      "level": "FAILED",
+      "level": "DEGRADED",
       "parseOk": true,
       "parseErrorCount": 0,
       "renderOk": true,
       "targetCount": 2,
       "notes": [
-        "Canvas",
+        "?date",
         "@behavior:gesture"
       ],
-      "unsupportedNodes": [
-        "Canvas"
-      ],
-      "diagnosticCount": 3,
+      "unsupportedNodes": [],
+      "diagnosticCount": 2,
       "degradedCount": 0,
       "behaviorCount": 1,
       "ignoredCount": 0,

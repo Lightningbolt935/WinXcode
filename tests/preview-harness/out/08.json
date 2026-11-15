@@ -2,7 +2,7 @@
   "id": "08",
   "name": "Game",
   "fileCount": 1,
-  "level": "FAILED",
+  "level": "DEGRADED",
   "parseOk": true,
   "parseErrors": [],
   "renderOk": true,
@@ -12,13 +12,11 @@
   ],
   "selectedTarget": "preview:0",
   "notes": [
-    "Canvas",
+    "?date",
     "@behavior:gesture"
   ],
-  "unsupportedNodes": [
-    "Canvas"
-  ],
-  "diagnosticCount": 3,
+  "unsupportedNodes": [],
+  "diagnosticCount": 2,
   "degradedCount": 0,
   "behaviorCount": 1,
   "ignoredCount": 0,
@@ -79,9 +77,506 @@
           },
           {
             "id": "r.0.1",
-            "type": "Unsupported",
+            "type": "Canvas",
             "props": {
-              "name": "Canvas"
+              "width": 393,
+              "height": 852,
+              "commands": [
+                {
+                  "type": "fill",
+                  "d": "M 0 1 A 1 1 0 1 0 2 1 A 1 1 0 1 0 0 1 Z",
+                  "color": {
+                    "name": "white",
+                    "opacity": 0.6
+                  }
+                },
+                {
+                  "type": "fill",
+                  "d": "M 97 138 A 1 1 0 1 0 99 138 A 1 1 0 1 0 97 138 Z",
+                  "color": {
+                    "name": "white",
+                    "opacity": 0.6
+                  }
+                },
+                {
+                  "type": "fill",
+                  "d": "M 194 275 A 1 1 0 1 0 196 275 A 1 1 0 1 0 194 275 Z",
+                  "color": {
+                    "name": "white",
+                    "opacity": 0.6
+                  }
+                },
+                {
+                  "type": "fill",
+                  "d": "M 291 412 A 1 1 0 1 0 293 412 A 1 1 0 1 0 291 412 Z",
+                  "color": {
+                    "name": "white",
+                    "opacity": 0.6
+                  }
+                },
+                {
+                  "type": "fill",
+                  "d": "M 388 549 A 1 1 0 1 0 390 549 A 1 1 0 1 0 388 549 Z",
+                  "color": {
+                    "name": "white",
+                    "opacity": 0.6
+                  }
+                },
+                {
+                  "type": "fill",
+                  "d": "M 92 686 A 1 1 0 1 0 94 686 A 1 1 0 1 0 92 686 Z",
+                  "color": {
+                    "name": "white",
+                    "opacity": 0.6
+                  }
+                },
+                {
+                  "type": "fill",
+                  "d": "M 189 823 A 1 1 0 1 0 191 823 A 1 1 0 1 0 189 823 Z",
+                  "color": {
+                    "name": "white",
+                    "opacity": 0.6
+                  }
+                },
+                {
+                  "type": "fill",
+                  "d": "M 286 108 A 1 1 0 1 0 288 108 A 1 1 0 1 0 286 108 Z",
+                  "color": {
+                    "name": "white",
+                    "opacity": 0.6
+                  }
+                },
+                {
+                  "type": "fill",
+                  "d": "M 383 245 A 1 1 0 1 0 385 245 A 1 1 0 1 0 383 245 Z",
+                  "color": {
+                    "name": "white",
+                    "opacity": 0.6
+                  }
+                },
+                {
+                  "type": "fill",
+                  "d": "M 87 382 A 1 1 0 1 0 89 382 A 1 1 0 1 0 87 382 Z",
+                  "color": {
+                    "name": "white",
+                    "opacity": 0.6
+                  }
+                },
+                {
+                  "type": "fill",
+                  "d": "M 184 519 A 1 1 0 1 0 186 519 A 1 1 0 1 0 184 519 Z",
+                  "color": {
+                    "name": "white",
+                    "opacity": 0.6
+                  }
+                },
+                {
+                  "type": "fill",
+                  "d": "M 281 656 A 1 1 0 1 0 283 656 A 1 1 0 1 0 281 656 Z",
+                  "color": {
+                    "name": "white",
+                    "opacity": 0.6
+                  }
+                },
+                {
+                  "type": "fill",
+                  "d": "M 378 793 A 1 1 0 1 0 380 793 A 1 1 0 1 0 378 793 Z",
+                  "color": {
+                    "name": "white",
+                    "opacity": 0.6
+                  }
+                },
+                {
+                  "type": "fill",
+                  "d": "M 82 78 A 1 1 0 1 0 84 78 A 1 1 0 1 0 82 78 Z",
+                  "color": {
+                    "name": "white",
+                    "opacity": 0.6
+                  }
+                },
+                {
+                  "type": "fill",
+                  "d": "M 179 215 A 1 1 0 1 0 181 215 A 1 1 0 1 0 179 215 Z",
+                  "color": {
+                    "name": "white",
+                    "opacity": 0.6
+                  }
+                },
+                {
+                  "type": "fill",
+                  "d": "M 276 352 A 1 1 0 1 0 278 352 A 1 1 0 1 0 276 352 Z",
+                  "color": {
+                    "name": "white",
+                    "opacity": 0.6
+                  }
+                },
+                {
+                  "type": "fill",
+                  "d": "M 373 489 A 1 1 0 1 0 375 489 A 1 1 0 1 0 373 489 Z",
+                  "color": {
+                    "name": "white",
+                    "opacity": 0.6
+                  }
+                },
+                {
+                  "type": "fill",
+                  "d": "M 77 626 A 1 1 0 1 0 79 626 A 1 1 0 1 0 77 626 Z",
+                  "color": {
+                    "name": "white",
+                    "opacity": 0.6
+                  }
+                },
+                {
+                  "type": "fill",
+                  "d": "M 174 763 A 1 1 0 1 0 176 763 A 1 1 0 1 0 174 763 Z",
+                  "color": {
+                    "name": "white",
+                    "opacity": 0.6
+                  }
+                },
+                {
+                  "type": "fill",
+                  "d": "M 271 48 A 1 1 0 1 0 273 48 A 1 1 0 1 0 271 48 Z",
+                  "color": {
+                    "name": "white",
+                    "opacity": 0.6
+                  }
+                },
+                {
+                  "type": "fill",
+                  "d": "M 368 185 A 1 1 0 1 0 370 185 A 1 1 0 1 0 368 185 Z",
+                  "color": {
+                    "name": "white",
+                    "opacity": 0.6
+                  }
+                },
+                {
+                  "type": "fill",
+                  "d": "M 72 322 A 1 1 0 1 0 74 322 A 1 1 0 1 0 72 322 Z",
+                  "color": {
+                    "name": "white",
+                    "opacity": 0.6
+                  }
+                },
+                {
+                  "type": "fill",
+                  "d": "M 169 459 A 1 1 0 1 0 171 459 A 1 1 0 1 0 169 459 Z",
+                  "color": {
+                    "name": "white",
+                    "opacity": 0.6
+                  }
+                },
+                {
+                  "type": "fill",
+                  "d": "M 266 596 A 1 1 0 1 0 268 596 A 1 1 0 1 0 266 596 Z",
+                  "color": {
+                    "name": "white",
+                    "opacity": 0.6
+                  }
+                },
+                {
+                  "type": "fill",
+                  "d": "M 363 733 A 1 1 0 1 0 365 733 A 1 1 0 1 0 363 733 Z",
+                  "color": {
+                    "name": "white",
+                    "opacity": 0.6
+                  }
+                },
+                {
+                  "type": "fill",
+                  "d": "M 67 18 A 1 1 0 1 0 69 18 A 1 1 0 1 0 67 18 Z",
+                  "color": {
+                    "name": "white",
+                    "opacity": 0.6
+                  }
+                },
+                {
+                  "type": "fill",
+                  "d": "M 164 155 A 1 1 0 1 0 166 155 A 1 1 0 1 0 164 155 Z",
+                  "color": {
+                    "name": "white",
+                    "opacity": 0.6
+                  }
+                },
+                {
+                  "type": "fill",
+                  "d": "M 261 292 A 1 1 0 1 0 263 292 A 1 1 0 1 0 261 292 Z",
+                  "color": {
+                    "name": "white",
+                    "opacity": 0.6
+                  }
+                },
+                {
+                  "type": "fill",
+                  "d": "M 358 429 A 1 1 0 1 0 360 429 A 1 1 0 1 0 358 429 Z",
+                  "color": {
+                    "name": "white",
+                    "opacity": 0.6
+                  }
+                },
+                {
+                  "type": "fill",
+                  "d": "M 62 566 A 1 1 0 1 0 64 566 A 1 1 0 1 0 62 566 Z",
+                  "color": {
+                    "name": "white",
+                    "opacity": 0.6
+                  }
+                },
+                {
+                  "type": "fill",
+                  "d": "M 159 703 A 1 1 0 1 0 161 703 A 1 1 0 1 0 159 703 Z",
+                  "color": {
+                    "name": "white",
+                    "opacity": 0.6
+                  }
+                },
+                {
+                  "type": "fill",
+                  "d": "M 256 840 A 1 1 0 1 0 258 840 A 1 1 0 1 0 256 840 Z",
+                  "color": {
+                    "name": "white",
+                    "opacity": 0.6
+                  }
+                },
+                {
+                  "type": "fill",
+                  "d": "M 353 125 A 1 1 0 1 0 355 125 A 1 1 0 1 0 353 125 Z",
+                  "color": {
+                    "name": "white",
+                    "opacity": 0.6
+                  }
+                },
+                {
+                  "type": "fill",
+                  "d": "M 57 262 A 1 1 0 1 0 59 262 A 1 1 0 1 0 57 262 Z",
+                  "color": {
+                    "name": "white",
+                    "opacity": 0.6
+                  }
+                },
+                {
+                  "type": "fill",
+                  "d": "M 154 399 A 1 1 0 1 0 156 399 A 1 1 0 1 0 154 399 Z",
+                  "color": {
+                    "name": "white",
+                    "opacity": 0.6
+                  }
+                },
+                {
+                  "type": "fill",
+                  "d": "M 251 536 A 1 1 0 1 0 253 536 A 1 1 0 1 0 251 536 Z",
+                  "color": {
+                    "name": "white",
+                    "opacity": 0.6
+                  }
+                },
+                {
+                  "type": "fill",
+                  "d": "M 348 673 A 1 1 0 1 0 350 673 A 1 1 0 1 0 348 673 Z",
+                  "color": {
+                    "name": "white",
+                    "opacity": 0.6
+                  }
+                },
+                {
+                  "type": "fill",
+                  "d": "M 52 810 A 1 1 0 1 0 54 810 A 1 1 0 1 0 52 810 Z",
+                  "color": {
+                    "name": "white",
+                    "opacity": 0.6
+                  }
+                },
+                {
+                  "type": "fill",
+                  "d": "M 149 95 A 1 1 0 1 0 151 95 A 1 1 0 1 0 149 95 Z",
+                  "color": {
+                    "name": "white",
+                    "opacity": 0.6
+                  }
+                },
+                {
+                  "type": "fill",
+                  "d": "M 246 232 A 1 1 0 1 0 248 232 A 1 1 0 1 0 246 232 Z",
+                  "color": {
+                    "name": "white",
+                    "opacity": 0.6
+                  }
+                },
+                {
+                  "type": "fill",
+                  "d": "M 343 369 A 1 1 0 1 0 345 369 A 1 1 0 1 0 343 369 Z",
+                  "color": {
+                    "name": "white",
+                    "opacity": 0.6
+                  }
+                },
+                {
+                  "type": "fill",
+                  "d": "M 47 506 A 1 1 0 1 0 49 506 A 1 1 0 1 0 47 506 Z",
+                  "color": {
+                    "name": "white",
+                    "opacity": 0.6
+                  }
+                },
+                {
+                  "type": "fill",
+                  "d": "M 144 643 A 1 1 0 1 0 146 643 A 1 1 0 1 0 144 643 Z",
+                  "color": {
+                    "name": "white",
+                    "opacity": 0.6
+                  }
+                },
+                {
+                  "type": "fill",
+                  "d": "M 241 780 A 1 1 0 1 0 243 780 A 1 1 0 1 0 241 780 Z",
+                  "color": {
+                    "name": "white",
+                    "opacity": 0.6
+                  }
+                },
+                {
+                  "type": "fill",
+                  "d": "M 338 65 A 1 1 0 1 0 340 65 A 1 1 0 1 0 338 65 Z",
+                  "color": {
+                    "name": "white",
+                    "opacity": 0.6
+                  }
+                },
+                {
+                  "type": "fill",
+                  "d": "M 42 202 A 1 1 0 1 0 44 202 A 1 1 0 1 0 42 202 Z",
+                  "color": {
+                    "name": "white",
+                    "opacity": 0.6
+                  }
+                },
+                {
+                  "type": "fill",
+                  "d": "M 139 339 A 1 1 0 1 0 141 339 A 1 1 0 1 0 139 339 Z",
+                  "color": {
+                    "name": "white",
+                    "opacity": 0.6
+                  }
+                },
+                {
+                  "type": "fill",
+                  "d": "M 236 476 A 1 1 0 1 0 238 476 A 1 1 0 1 0 236 476 Z",
+                  "color": {
+                    "name": "white",
+                    "opacity": 0.6
+                  }
+                },
+                {
+                  "type": "fill",
+                  "d": "M 333 613 A 1 1 0 1 0 335 613 A 1 1 0 1 0 333 613 Z",
+                  "color": {
+                    "name": "white",
+                    "opacity": 0.6
+                  }
+                },
+                {
+                  "type": "fill",
+                  "d": "M 37 750 A 1 1 0 1 0 39 750 A 1 1 0 1 0 37 750 Z",
+                  "color": {
+                    "name": "white",
+                    "opacity": 0.6
+                  }
+                },
+                {
+                  "type": "fill",
+                  "d": "M 134 35 A 1 1 0 1 0 136 35 A 1 1 0 1 0 134 35 Z",
+                  "color": {
+                    "name": "white",
+                    "opacity": 0.6
+                  }
+                },
+                {
+                  "type": "fill",
+                  "d": "M 231 172 A 1 1 0 1 0 233 172 A 1 1 0 1 0 231 172 Z",
+                  "color": {
+                    "name": "white",
+                    "opacity": 0.6
+                  }
+                },
+                {
+                  "type": "fill",
+                  "d": "M 328 309 A 1 1 0 1 0 330 309 A 1 1 0 1 0 328 309 Z",
+                  "color": {
+                    "name": "white",
+                    "opacity": 0.6
+                  }
+                },
+                {
+                  "type": "fill",
+                  "d": "M 32 446 A 1 1 0 1 0 34 446 A 1 1 0 1 0 32 446 Z",
+                  "color": {
+                    "name": "white",
+                    "opacity": 0.6
+                  }
+                },
+                {
+                  "type": "fill",
+                  "d": "M 129 583 A 1 1 0 1 0 131 583 A 1 1 0 1 0 129 583 Z",
+                  "color": {
+                    "name": "white",
+                    "opacity": 0.6
+                  }
+                },
+                {
+                  "type": "fill",
+                  "d": "M 226 720 A 1 1 0 1 0 228 720 A 1 1 0 1 0 226 720 Z",
+                  "color": {
+                    "name": "white",
+                    "opacity": 0.6
+                  }
+                },
+                {
+                  "type": "fill",
+                  "d": "M 323 5 A 1 1 0 1 0 325 5 A 1 1 0 1 0 323 5 Z",
+                  "color": {
+                    "name": "white",
+                    "opacity": 0.6
+                  }
+                },
+                {
+                  "type": "fill",
+                  "d": "M 27 142 A 1 1 0 1 0 29 142 A 1 1 0 1 0 27 142 Z",
+                  "color": {
+                    "name": "white",
+                    "opacity": 0.6
+                  }
+                },
+                {
+                  "type": "fill",
+                  "d": "M 124 279 A 1 1 0 1 0 126 279 A 1 1 0 1 0 124 279 Z",
+                  "color": {
+                    "name": "white",
+                    "opacity": 0.6
+                  }
+                },
+                {
+                  "type": "fill",
+                  "d": "M 221 416 A 1 1 0 1 0 223 416 A 1 1 0 1 0 221 416 Z",
+                  "color": {
+                    "name": "white",
+                    "opacity": 0.6
+                  }
+                },
+                {
+                  "type": "fill",
+                  "d": "M 17.55982285138203 1.8408382313932847 A 34.134527729949475 34.134527729949475 0 1 0 85.82887831128099 1.8408382313932847 A 34.134527729949475 34.134527729949475 0 1 0 17.55982285138203 1.8408382313932847 Z",
+                  "color": {
+                    "name": "gray"
+                  }
+                },
+                {
+                  "type": "fill",
+                  "d": "M 196.5 772 L 176.5 808 L 216.5 808 Z",
+                  "color": {
+                    "name": "cyan"
+                  }
+                }
+              ]
             },
             "src": [
               {

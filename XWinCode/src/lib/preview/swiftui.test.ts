@@ -56,26 +56,26 @@ describe("swiftui unsupported and ignored modifiers", () => {
     expect(result.notes).toContain("@degraded:toolbar");
   });
 
-  it("emits Unsupported node for unhandled views like Canvas", () => {
+  it("emits Unsupported node for unhandled views like Chart", () => {
     const src = `
     import SwiftUI
 
-    struct DrawingPreview: View {
+    struct ChartPreview: View {
         var body: some View {
-            Canvas { context, size in
+            Chart {
             }
         }
     }
     `;
     const rt = new Runtime();
-    rt.setFiles([{ path: "DrawingPreview.swift", src }]);
-    const targets = rt.targets("DrawingPreview.swift");
+    rt.setFiles([{ path: "ChartPreview.swift", src }]);
+    const targets = rt.targets("ChartPreview.swift");
     expect(targets.length).toBeGreaterThan(0);
 
-    const result = rt.render("DrawingPreview.swift", targets[0].key);
+    const result = rt.render("ChartPreview.swift", targets[0].key);
     expect(result.errors).toHaveLength(0);
     expect(result.tree).not.toBeNull();
     expect(result.tree?.type).toBe("Unsupported");
-    expect(result.tree?.props?.name).toBe("Canvas");
+    expect(result.tree?.props?.name).toBe("Chart");
   });
 });

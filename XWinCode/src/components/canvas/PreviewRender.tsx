@@ -2,6 +2,7 @@ import { Fragment, memo, useMemo, useState, type CSSProperties, type ReactNode }
 import { cssColor } from "../../lib/preview/colors";
 import { sfSymbol } from "../../lib/preview/sf";
 import type { AnimCurve, ColorSpec, FontSpec, Mod, PreviewEvent, ShapeSpec, TextStyle, ViewNode, Weight } from "../../lib/preview/types";
+import type { CanvasCommand } from "../../lib/preview/canvas";
 
 export interface RenderEnv {
   dark: boolean;
@@ -649,6 +650,44 @@ function Base({ node, env, ex }: { node: ViewNode; env: RenderEnv; ex: Expand })
       return <NavStack node={node} env={env} />;
     case "TabView":
       return <TabsView node={node} env={env} />;
+    case "Canvas": {
+      const commands = (node.props.commands as CanvasCommand[]) || [];
+      const w = Number(node.props.width) || 393;
+      const h = Number(node.props.height) || 852;
+      return (
+        <svg
+          className="pv-canvas"
+          viewBox={`0 0 ${w} ${h}`}
+          style={{ width: "100%", height: "100%", display: "block" }}
+        >
+          {commands.map((cmd, idx) => {
+            if (cmd.type === "fill") {
+              return (
+                <path
+                  key={idx}
+                  d={cmd.d}
+                  fill={color(cmd.color, env) || "currentColor"}
+                />
+              );
+            }
+            if (cmd.type === "stroke") {
+              return (
+                <path
+                  key={idx}
+                  d={cmd.d}
+                  stroke={color(cmd.color, env) || "currentColor"}
+                  strokeWidth={cmd.lineWidth}
+                  strokeLinecap={(cmd.lineCap as any) || "round"}
+                  strokeLinejoin={(cmd.lineJoin as any) || "round"}
+                  fill="none"
+                />
+              );
+            }
+            return null;
+          })}
+        </svg>
+      );
+    }
     case "Unsupported":
       return (
         <div className="pv-unsupported-callout">
