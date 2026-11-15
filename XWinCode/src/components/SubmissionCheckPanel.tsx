@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { AlertCircle, AlertTriangle, CheckCircle2, Download, FileCode, RefreshCw, X } from "lucide-react";
+import { AlertCircle, AlertTriangle, Check, CheckCircle2, Copy, Download, FileCode, RefreshCw, X } from "lucide-react";
 import { api, type ExportResult } from "../lib/ipc";
 import { useStore } from "../lib/store";
 import type { ValidationReport } from "../lib/validator";
@@ -17,6 +17,42 @@ export function SubmissionCheckPanel({ onClose }: SubmissionCheckPanelProps) {
   const [exportResult, setExportResult] = useState<ExportResult | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [filter, setFilter] = useState<"all" | "fail" | "warn" | "pass">("all");
+  const [copiedDiagnostics, setCopiedDiagnostics] = useState(false);
+
+  const handleCopyDiagnostics = async () => {
+    const diagData = {
+      tool: "WinXcode / XWinCode",
+      appVersion: "0.2.0",
+      platform: typeof navigator !== "undefined" ? navigator.userAgent : "Windows",
+      timestamp: new Date().toISOString(),
+      project: project ? { name: project.name, kind: project.kind } : null,
+      validator: report
+        ? {
+            passed: report.summary.passed,
+            canExport: report.summary.canExport,
+            totalChecks: report.summary.totalChecks,
+            passCount: report.summary.passCount,
+            warnCount: report.summary.warnCount,
+            failCount: report.summary.failCount,
+            estimatedZipBytes: report.summary.estimatedZipBytes,
+            unverified: report.summary.unverified,
+            failedCheckIds: report.checks.filter((c) => c.status === "fail").map((c) => c.id),
+            warningCheckIds: report.checks.filter((c) => c.status === "warn").map((c) => c.id),
+          }
+        : null,
+      privacyNotice: "Opt-in diagnostic snapshot for beta feedback. Contains ZERO student source code.",
+    };
+
+    const text = JSON.stringify(diagData, null, 2);
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopiedDiagnostics(true);
+      setTimeout(() => setCopiedDiagnostics(false), 2500);
+      useStore.getState().toast("info", "Diagnostics copied to clipboard (no source code included).");
+    } catch {
+      // Fallback if clipboard API restricted
+    }
+  };
 
   const runCheck = async () => {
     if (!project) return;
@@ -228,13 +264,30 @@ export function SubmissionCheckPanel({ onClose }: SubmissionCheckPanelProps) {
 
         {/* Footer */}
         <div className="border-t border-border px-6 py-4 flex items-center justify-between bg-muted/20">
-          <button
-            onClick={() => void runCheck()}
-            disabled={loading}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium border border-border hover:bg-accent transition-colors"
-          >
-            <RefreshCw size={14} className={loading ? "animate-spin" : ""} /> Re-run Checks
-          </button>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => void runCheck()}
+              disabled={loading}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium border border-border hover:bg-accent transition-colors"
+            >
+              <RefreshCw size={14} className={loading ? "animate-spin" : ""} /> Re-run Checks
+            </button>
+            <button
+              onClick={() => void handleCopyDiagnostics()}
+              title="Copy diagnostic snapshot to clipboard (app version, OS, validator results; no source code, no automatic upload)"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium border border-border hover:bg-accent transition-colors text-muted-foreground hover:text-foreground"
+            >
+              {copiedDiagnostics ? (
+                <>
+                  <Check size={14} className="text-emerald-400" /> Copied Diagnostics!
+                </>
+              ) : (
+                <>
+                  <Copy size={14} /> Copy Diagnostics
+                </>
+              )}
+            </button>
+          </div>
 
           <div className="flex items-center gap-3">
             <button
