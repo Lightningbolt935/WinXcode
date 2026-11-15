@@ -2,7 +2,7 @@
   "id": "08",
   "name": "Game",
   "fileCount": 1,
-  "level": "CLEAN",
+  "level": "DEGRADED",
   "parseOk": true,
   "parseErrors": [],
   "renderOk": true,
@@ -11,10 +11,12 @@
     "view:ContentView"
   ],
   "selectedTarget": "preview:0",
-  "notes": [],
+  "notes": [
+    "@degraded:animation not run"
+  ],
   "unsupportedNodes": [],
-  "diagnosticCount": 0,
-  "degradedCount": 0,
+  "diagnosticCount": 1,
+  "degradedCount": 1,
   "behaviorCount": 0,
   "ignoredCount": 0,
   "stats": {

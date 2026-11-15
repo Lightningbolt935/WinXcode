@@ -752,6 +752,7 @@ export function makeView(name: string, args: EvArg[], trailing: V[], ctx: Ctx): 
       ];
     }
     case "TimelineView": {
+      ctx.note("@degraded:animation not run");
       const dateVal: V = { t: "date", ms: Date.now() };
       const timelineVal: V = { t: "tuple", items: [dateVal], labels: ["date"] };
       const closure = trailing[0] ?? labeled("content") ?? first;

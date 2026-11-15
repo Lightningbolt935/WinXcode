@@ -165,3 +165,46 @@ The following constructs in `tests/corpus/` should be manually verified against 
 * **3 / 10** apps hit explicit `Unsupported` nodes for `Canvas` and `Chart`—which is already designed to display an honest fallback message in the UI rather than silently failing.
 * **0** fatal interpreter crashes.
 * The go/no-go threshold of 5/10 acceptable renders is comfortably exceeded.
+
+---
+
+## 6. Phase 3b Measured Re-Score: Animation & TimelineView Honest Accounting
+
+### Why Corpus 08 (Game) Was Marked CLEAN and Why It Must Be DEGRADED
+In Phase 3a, `DragGesture` was wired up with full event dispatch, which removed `@behavior:gesture`. Because `08 Game` evaluated without throwing runtime errors or unhandled modifier diagnostics, its `diagnosticCount` dropped to 0, which automatically caused the harness to score it as `CLEAN`.
+However, `08 Game` relies on `TimelineView(.animation)` to drive a 60fps continuous game loop. WinXcode's preview engine only evaluates a single static snapshot at `Date.now()`. Calling it CLEAN was misleading: the user sees a still frame, and the time-driven animation loop does not run.
+Under the honest Phase 3b rule, any app utilizing `TimelineView` or time-driven animation where only a static frame is rendered emits `@degraded:animation not run` and is classified as **DEGRADED** with the callout banner `"animation not run"`.
+
+### Corpus 1 Re-Scored Table
+
+| App | Level | Diagnostic Count | Degraded Count | Behavior Count | Notes / Banners |
+|---|---|---|---|---|---|
+| **01 Counter** | **CLEAN** | 0 | 0 | 0 | None (Clean preview) |
+| **02 Quiz** | **CLEAN** | 0 | 0 | 0 | None (Clean preview) |
+| **03 Todo** | **DEGRADED** | 2 | 2 | 0 | `@degraded:swipeActions`, `@degraded:toolbar` |
+| **04 Onboarding** | **DEGRADED** | 3 | 3 | 0 | `@degraded:symbolEffect`, `@degraded:tabViewStyle`, `@degraded:indexViewStyle` |
+| **05 Settings** | **CLEAN** | 0 | 0 | 0 | None (Clean preview) |
+| **06 Drawing** | **DEGRADED** | 2 | 2 | 0 | `@degraded:toolbar`, `@degraded:alert` |
+| **07 Charts** | **FAILED** | 2 | 0 | 0 | Explicit Unsupported node: `Chart` |
+| **08 Game** | **DEGRADED** | 1 | 1 | 0 | `@degraded:animation not run` |
+| **09 @Observable** | **DEGRADED** | 2 | 1 | 1 | `@degraded:toolbar`, `@behavior:environment` |
+| **10 A11y** | **DEGRADED** | 7 | 1 | 0 | 6 ignored a11y mods, `@degraded:minimumScaleFactor` |
+
+**Corpus 1 Totals:** 3 CLEAN, 6 DEGRADED, 1 FAILED, 0 EMPTY.
+
+### Corpus 2 Re-Scored Table
+
+| App | Level | Diagnostic Count | Degraded Count | Behavior Count | Notes / Banners |
+|---|---|---|---|---|---|
+| **01 FoodTruck** | **DEGRADED** | 2 | 0 | 2 | `@behavior:onChange`, `@behavior:environmentObject` |
+| **02 SimpleNews** | **DEGRADED** | 1 | 0 | 1 | `@behavior:task` |
+| **03 SimpleNotes** | **DEGRADED** | 2 | 0 | 2 | `@behavior:onAppear`, `@behavior:onChange` |
+| **04 SimpleScores** | **DEGRADED** | 7 | 3 | 1 | `~FileManager`, `.onDelete()`, `@ignored:contentShape`, `@degraded:listRowSeparator`, `@degraded:toolbar`, `@degraded:alert`, `@behavior:environment` |
+| **05 SimpleToDo** | **EMPTY** | 4 | 1 | 1 | $\le 3$ view nodes; `~FileManager`, `.onDelete()`, `@degraded:toolbar`, `@behavior:environment` |
+| **06 Calculator** | **DEGRADED** | 2 | 0 | 0 | `.previewDevice()`, `.previewInterfaceOrientation()` |
+| **07 CapyTimer** | **DEGRADED** | 2 | 1 | 1 | `@behavior:onAppear`, `@degraded:sheet` |
+| **08 MakeItSo** | **EMPTY** | 1 | 1 | 0 | $\le 3$ view nodes; `@degraded:sheet` |
+| **09 Countries** | **EMPTY** | 2 | 0 | 1 | $\le 3$ view nodes; `@behavior:onReceive`, `@ignored:flipsForRightToLeftLayoutDirection` |
+| **10 ControlRoom** | **DEGRADED** | 5 | 2 | 1 | `@degraded:contextMenu`, `@ignored:help`, `?onChange`, `@degraded:sheet`, `@behavior:environmentObject` |
+
+**Corpus 2 Totals:** 0 CLEAN, 7 DEGRADED, 3 EMPTY, 0 FAILED.

@@ -1158,7 +1158,7 @@ export default function Canvas({ path, onClose }: { path: string; onClose: () =>
           <div className="canvas-callout-badge degraded">DEGRADED</div>
           <div className="canvas-callout-body">
             <span className="canvas-callout-title">Visual effects dropped:</span>
-            <span className="canvas-callout-items">{degradedMods.map((m) => `.${m}()`).join(", ")}</span>
+            <span className="canvas-callout-items">{degradedMods.map((m) => m.includes(" ") ? m : `.${m}()`).join(", ")}</span>
           </div>
           <button
             className="canvas-check-iphone-btn"

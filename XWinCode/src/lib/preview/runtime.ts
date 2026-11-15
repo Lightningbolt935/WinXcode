@@ -2230,6 +2230,7 @@ export class Runtime {
       case "StrokeStyle":
         return { t: "tuple", items: [arg(args, "lineWidth") ?? new Dbl(1)], labels: ["lineWidth"] };
       case "TimelineView":
+        this.notes.add("@degraded:animation not run");
         return views(this.build(trailing[0], [{ t: "tuple", items: [{ t: "date", ms: Date.now() }], labels: ["date"] }]));
       case "Animation":
         return null;

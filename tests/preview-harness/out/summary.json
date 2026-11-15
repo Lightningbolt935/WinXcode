@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-15T18:39:06.990Z",
+  "timestamp": "2026-11-15T18:56:04.484Z",
   "results": [
     {
       "id": "01",
@@ -172,15 +172,17 @@
     {
       "id": "08",
       "name": "Game",
-      "level": "CLEAN",
+      "level": "DEGRADED",
       "parseOk": true,
       "parseErrorCount": 0,
       "renderOk": true,
       "targetCount": 2,
-      "notes": [],
+      "notes": [
+        "@degraded:animation not run"
+      ],
       "unsupportedNodes": [],
-      "diagnosticCount": 0,
-      "degradedCount": 0,
+      "diagnosticCount": 1,
+      "degradedCount": 1,
       "behaviorCount": 0,
       "ignoredCount": 0,
       "viewNodeCount": 15,
