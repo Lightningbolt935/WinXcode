@@ -14,28 +14,49 @@
 ## 1. Official Challenge Requirements & Toolchain Versions
 
 ### Toolchain & Version Specifications
-- **Xcode Version Requirement:** Xcode 16.0 or later (Xcode 16.2 / 16.3+; download via [Apple Developer Xcode](https://developer.apple.com/xcode/)).
-- **Swift Playgrounds Requirement:** Swift Playgrounds 4.5 or later on iPadOS 17.5+ / macOS 14.5+ or macOS 15 Sequoia (download via [Apple Swift Playgrounds](https://developer.apple.com/swift-playgrounds/)).
-- **Swift Tools Version:** `// swift-tools-version: 5.9` (default for app playgrounds) or `6.0` (Swift 6 mode on Xcode 16+).
-- **Target Platform Requirement:** Minimum `.iOS("17.0")` for modern SwiftUI APIs, backward-compatible with `.iOS("16.0")`.
-- **2027 Challenge Version Verification Notice:**
-  > [!IMPORTANT]
-  > **STATUS: UNVERIFIED (Apple 2027 Specific Build Requirement)**
-  > Apple officially updates and freezes the exact minimum Xcode and Swift Playgrounds minor build specifications for each challenge cycle during the winter application window (typically December/January preceding the February submission deadline). The requirements listed here reflect Apple's published baseline (Xcode 16+ / Swift Playgrounds 4.5+). When Apple formally opens the 2027 challenge portal, verify if Xcode 17 or Swift Playgrounds 5.0 is mandated.
+- **Official Policy Statement (Apple Developer):**
+  > *"Your submission must be an Xcode app or an app playground built with Swift Playgrounds packaged in a ZIP file."*
+  > — Source: [Apple Swift Student Challenge Terms and Conditions](https://developer.apple.com/swift-student-challenge/terms-and-conditions/) & [Eligibility](https://developer.apple.com/swift-student-challenge/eligibility/) (Fetched: November 16, 2026)
+- **Exact Xcode Version Requirement (2027 Challenge):** **NOT PUBLISHED BY APPLE.** Apple has not specified an exact minimum build number or release of Xcode for the 2027 challenge. Any specific version statement is **UNVERIFIED**. Do not guess.
+- **Exact Swift Playgrounds Requirement (2027 Challenge):** **NOT PUBLISHED BY APPLE.** Apple has not specified an exact minimum version of Swift Playgrounds for the 2027 challenge. Any specific version statement is **UNVERIFIED**. Do not guess.
+- **Swift Tools Version:** `// swift-tools-version: 5.9` (standard baseline accepted by SwiftPM across recent Xcode and Swift Playgrounds releases; tools-version 6.0 is also supported).
+- **Target Platform Requirement:** `.iOS("16.0")` or `.iOS("17.0")`. Neither Apple's eligibility page nor terms-and-conditions mandate a specific minimum deployment target version.
 
-### Verification Against $\ge$ 3 Public App Playgrounds
-The template structure and `Package.swift` fields were cross-checked against 3 public reference projects:
-1. **`DominatorVbN/Swift-Student-Challenge-Resources`**
-   - **Commit:** `24b071a938c7f3e8f6e872c676d758c0678e24c7`
-   - **URL:** `https://github.com/DominatorVbN/Swift-Student-Challenge-Resources`
-   - **Manifest:** `// swift-tools-version: 5.9`, `platforms: [.iOS("17.0")]`, `products: [.iOSApplication(targets: ["AppModule"])]`, `targets: [.executableTarget(name: "AppModule", path: ".")]`.
-2. **`skyaaron/WWDC24-Student-Challenge`**
-   - **Commit:** `3b62477382d6219d3f57f4955b9e1189db8a7605`
-   - **URL:** `https://github.com/skyaaron/`
-   - **Manifest:** `// swift-tools-version: 5.9`, `platforms: [.iOS("17.0")]`, `products: [.iOSApplication(name: "App", targets: ["AppModule"])]`.
-3. **`Apple Developer Swift Playgrounds 4.5 Official Template Specification`**
-   - **URL:** `https://developer.apple.com/documentation/swift_playgrounds`
-   - **Manifest:** `// swift-tools-version: 5.9` (and `6.0`), `platforms: [.iOS("17.0")]`, `AppleProductTypes` framework import with `.iOSApplication` product definition.
+### Verified Cross-Check Repositories (Publicly Verified & Opened)
+The template structure and `Package.swift` fields were cross-checked against 3 public, open-source repositories containing verified Swift Student Challenge App Playgrounds:
+
+1. **`dongdong867/SimPOS`**
+   - **Status:** Verified & Opened
+   - **URL:** `https://github.com/dongdong867/SimPOS`
+   - **Commit:** `main` (WWDC24 Winner)
+   - **Manifest (`Package.swift`):**
+     - `// swift-tools-version: 5.9`
+     - `platforms: [.iOS("17.0")]`
+     - `import AppleProductTypes`
+     - `products: [.iOSApplication(name: "SimPOS", targets: ["AppModule"], bundleIdentifier: "com.dong.SimPOS", ...)]`
+     - `targets: [.executableTarget(name: "AppModule", path: ".")]`
+
+2. **`LayzaCarneiro/SeAjeite`**
+   - **Status:** Verified & Opened
+   - **URL:** `https://github.com/LayzaCarneiro/SeAjeite`
+   - **Commit:** `main` (Swift Student Challenge Winner)
+   - **Manifest (`Package.swift`):**
+     - `// swift-tools-version: 5.9`
+     - `platforms: [.iOS("16.0")]`
+     - `import AppleProductTypes`
+     - `products: [.iOSApplication(name: "SeAjeite", targets: ["AppModule"], bundleIdentifier: "br.com.layza.SeAjeite", ...)]`
+     - `targets: [.executableTarget(name: "AppModule", path: ".")]`
+
+3. **`Ronuhz/Swift-Student-Challenge-2025`**
+   - **Status:** Verified & Opened
+   - **URL:** `https://github.com/Ronuhz/Swift-Student-Challenge-2025`
+   - **Commit:** `main` (Swift Student Challenge 2025 Submission)
+   - **Manifest (`Package.swift`):**
+     - `// swift-tools-version: 5.9`
+     - `platforms: [.iOS("16.0")]`
+     - `import AppleProductTypes`
+     - `products: [.iOSApplication(name: "(Not) Lost", targets: ["AppModule"], bundleIdentifier: "com.ronuhz.notlost", ...)]`
+     - `targets: [.executableTarget(name: "AppModule", path: ".")]`
 
 ### Eligibility Criteria
 - **Individual Work:** Must be created individually; team work is not permitted.

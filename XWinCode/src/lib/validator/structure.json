@@ -24,6 +24,6 @@
   ],
   "disclaimers": {
     "uiDisclaimer": "No obvious problems found. Apple's review may catch requirements or runtime issues this pre-flight check cannot detect. Test on a real Mac if you can.",
-    "unverifiedNotice": "Template format not yet verified on a physical Mac. Open and verify in Xcode or Swift Playgrounds before submitting."
+    "unverifiedNotice": "UNVERIFIED: Exact 2027 required tool versions are unannounced by Apple. Test on Xcode or Swift Playgrounds before submitting."
   }
 }

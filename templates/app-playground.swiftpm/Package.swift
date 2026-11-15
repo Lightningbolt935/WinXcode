@@ -1,7 +1,8 @@
 // swift-tools-version: 5.9
 
-// UNVERIFIED: App Playground manifest based on Apple developer documentation for Swift Student Challenge (Xcode 16+ / Swift Playgrounds 4.5+).
-// Verify on a physical Mac running Xcode / Swift Playgrounds before submitting.
+// UNVERIFIED: Exact minimum toolchain version and deployment target for the 2027 challenge are not published by Apple.
+// Official requirement: "Your submission must be an Xcode app or an app playground built with Swift Playgrounds packaged in a ZIP file."
+// Verify on a physical Mac or iPad before submitting.
 
 import PackageDescription
 import AppleProductTypes
@@ -9,7 +10,7 @@ import AppleProductTypes
 let package = Package(
     name: "MyPlaygroundApp",
     platforms: [
-        .iOS("17.0")
+        .iOS("16.0")
     ],
     products: [
         .iOSApplication(

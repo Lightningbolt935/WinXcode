@@ -172,8 +172,9 @@ struct ContentView: View {
                 format!(
                     r#"// swift-tools-version: 5.9
 
-// UNVERIFIED: App Playground manifest based on Apple developer documentation for Swift Student Challenge (Xcode 16+ / Swift Playgrounds 4.5+).
-// Verify on a physical Mac running Xcode / Swift Playgrounds before submitting.
+// UNVERIFIED: Exact minimum toolchain version and deployment target for 2027 are unannounced by Apple.
+// Official requirement: "Your submission must be an Xcode app or an app playground built with Swift Playgrounds."
+// Verify on a physical Mac or iPad running Xcode / Swift Playgrounds before submitting.
 
 import PackageDescription
 import AppleProductTypes
@@ -181,7 +182,7 @@ import AppleProductTypes
 let package = Package(
     name: "{name}",
     platforms: [
-        .iOS("17.0")
+        .iOS("16.0")
     ],
     products: [
         .iOSApplication(
