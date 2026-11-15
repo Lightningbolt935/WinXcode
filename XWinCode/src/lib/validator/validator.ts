@@ -127,6 +127,53 @@ export function stripComments(code: string): string {
   return out;
 }
 
+export function measureCompressedZipSize(files: ProjectFile[]): number {
+  const g = globalThis as unknown as {
+    process?: { versions?: { node?: string } };
+    require?: (id: string) => any;
+  };
+
+  if (typeof g.process !== "undefined" && g.process?.versions?.node && typeof g.require === "function") {
+    try {
+      const fs = g.require("fs");
+      const path = g.require("path");
+      const os = g.require("os");
+      const { execSync } = g.require("child_process");
+
+      const tmpStage = path.join(os.tmpdir(), `winxcode_val_size_${Date.now()}_${Math.random().toString(36).slice(2)}`);
+      const appDir = path.join(tmpStage, "App.swiftpm");
+      fs.mkdirSync(appDir, { recursive: true });
+
+      for (const f of files) {
+        const dest = path.join(appDir, f.path);
+        fs.mkdirSync(path.dirname(dest), { recursive: true });
+        fs.writeFileSync(dest, f.content ?? "");
+      }
+
+      const outZip = path.join(tmpStage, "measure.zip");
+      execSync(
+        `tar -a -c -f "${outZip}" --exclude ".build" --exclude "*/.build" --exclude "*/.build/*" --exclude ".git" --exclude "*/.git" --exclude "*/.git/*" --exclude ".DS_Store" --exclude "*/.DS_Store" --exclude "*.xcuserdata" --exclude "*/*.xcuserdata" --exclude "*/*.xcuserdata/*" --exclude "xcuserdata" --exclude "*/xcuserdata" --exclude "*/xcuserdata/*" --exclude "*.xcuserdatad" --exclude "*/*.xcuserdatad" --exclude "*/*.xcuserdatad/*" --exclude "xcuserdatad" --exclude "*/xcuserdatad" --exclude "*/xcuserdatad/*" --exclude "*/.*" -C "${tmpStage}" "App.swiftpm"`
+      );
+      const stat = fs.statSync(outZip);
+      const size = stat.size;
+      fs.rmSync(tmpStage, { recursive: true, force: true });
+      return size;
+    } catch {
+      // Fallback if tar or temp dir unavailable
+    }
+  }
+
+  let totalBytes = 0;
+  for (const f of files) {
+    totalBytes += f.sizeBytes ?? (typeof f.content === "string" ? new TextEncoder().encode(f.content).length : 0);
+  }
+  return Math.round(totalBytes * 0.7);
+}
+
+function getLineNumber(source: string, index: number): number {
+  return source.slice(0, index).split("\n").length;
+}
+
 export function validatePackage(files: ProjectFile[]): ValidationReport {
   const checks: CheckItem[] = [];
   const fileMap = new Map<string, ProjectFile>();
@@ -250,24 +297,23 @@ export function validatePackage(files: ProjectFile[]): ValidationReport {
     }
   }
 
-  // 2. Package Size Check (zipped estimate vs 500 MB limit)
-  // Text files compress ~3x, binaries ~1x. We estimate conservative zip size.
-  const estimatedZip = Math.round(totalBytes * 0.7);
-  if (estimatedZip > structureConfig.maxZipSizeBytes) {
+  // 2. Package Size Check (real compressed ZIP measurement)
+  const realZip = measureCompressedZipSize(files);
+  if (realZip > structureConfig.maxZipSizeBytes) {
     checks.push({
       id: "size-limit",
       category: "size",
       name: "Package Archive Size",
       status: "fail",
-      message: `Package size (~${(estimatedZip / (1024 * 1024)).toFixed(1)} MB) exceeds Apple's 500 MB submission limit!`,
+      message: `Package compressed ZIP size (${(realZip / (1024 * 1024)).toFixed(2)} MB) exceeds Apple's 500 MB submission limit!`,
     });
-  } else if (estimatedZip > structureConfig.warnZipSizeBytes) {
+  } else if (realZip > structureConfig.warnZipSizeBytes) {
     checks.push({
       id: "size-limit",
       category: "size",
       name: "Package Archive Size",
       status: "warn",
-      message: `Package size (~${(estimatedZip / (1024 * 1024)).toFixed(1)} MB) is large; ensure all large assets are necessary.`,
+      message: `Package compressed ZIP size (${(realZip / (1024 * 1024)).toFixed(2)} MB) is large; ensure all large assets are necessary.`,
     });
   } else {
     checks.push({
@@ -275,7 +321,7 @@ export function validatePackage(files: ProjectFile[]): ValidationReport {
       category: "size",
       name: "Package Archive Size",
       status: "pass",
-      message: `Package size (~${(estimatedZip / (1024 * 1024)).toFixed(2)} MB) is well within the 500 MB limit.`,
+      message: `Package compressed ZIP size (${(realZip / (1024 * 1024)).toFixed(2)} MB) is well within the 500 MB limit.`,
     });
   }
 
@@ -293,32 +339,34 @@ export function validatePackage(files: ProjectFile[]): ValidationReport {
     }
   }
 
-  // 3, 4, 5. Scan Swift source files
+  // 3, 4, 5. Scan Swift source files using multiline tokenizer
   const swiftFiles = Array.from(fileMap.values()).filter((f) => f.path.endsWith(".swift") && f.path !== "Package.swift");
   for (const sf of swiftFiles) {
     const stripped = stripComments(sf.content);
-    const lines = stripped.split("\n");
-    for (let i = 0; i < lines.length; i++) {
-      const line = lines[i];
-      const lineNum = i + 1;
-      const trimmed = line.trim();
-      if (!trimmed) continue;
 
-      // Rule 3: Network Use (Direct or through helper functions)
-      if (/\b(URLSession|URLSessionConfiguration|URLRequest|NWPathMonitor|NWConnection|WebSocketTask)\b/.test(line)) {
-        const match = line.match(/\b(URLSession|URLSessionConfiguration|URLRequest|NWPathMonitor|NWConnection|WebSocketTask)\b/);
-        const apiName = match ? match[1] : "URLSession";
-        checks.push({
-          id: `net-api-${sf.path}-${lineNum}`,
-          category: "network",
-          name: `Network API (${apiName})`,
-          status: "fail",
-          message: `Submissions are judged offline. Prohibited network connectivity API detected (${apiName}).`,
-          file: sf.path,
-          line: lineNum,
-        });
-      }
-      if (/URL\(string:\s*"https?:\/\//.test(line)) {
+    // Rule 3: Network calls (URLSession, NWPathMonitor, etc.)
+    const netApiRegex = /\b(URLSession|URLSessionConfiguration|URLRequest|NWPathMonitor|NWConnection|WebSocketTask)\b/g;
+    let match: RegExpExecArray | null;
+    while ((match = netApiRegex.exec(stripped)) !== null) {
+      const apiName = match[1];
+      const lineNum = getLineNumber(stripped, match.index);
+      checks.push({
+        id: `net-api-${sf.path}-${lineNum}`,
+        category: "network",
+        name: `Network API (${apiName})`,
+        status: "fail",
+        message: `Submissions are judged offline. Prohibited network connectivity API detected (${apiName}).`,
+        file: sf.path,
+        line: lineNum,
+      });
+    }
+
+    // Multiline URL(string: "http://...") tokenizer
+    const urlRegex = /\bURL\s*\(\s*string\s*:\s*"([^"\\]*(?:\\.[^"\\]*)*)"/g;
+    while ((match = urlRegex.exec(stripped)) !== null) {
+      const urlVal = match[1];
+      const lineNum = getLineNumber(stripped, match.index);
+      if (/^https?:\/\//i.test(urlVal)) {
         checks.push({
           id: `net-remote-url-${sf.path}-${lineNum}`,
           category: "network",
@@ -329,7 +377,14 @@ export function validatePackage(files: ProjectFile[]): ValidationReport {
           line: lineNum,
         });
       }
-      if (/AsyncImage\(url:\s*URL\(string:\s*"https?:\/\//.test(line)) {
+    }
+
+    // Multiline AsyncImage(url: URL(string: "http..."))
+    const asyncImgRegex = /\bAsyncImage\s*\(\s*url\s*:\s*URL\s*\(\s*string\s*:\s*"([^"\\]*(?:\\.[^"\\]*)*)"/g;
+    while ((match = asyncImgRegex.exec(stripped)) !== null) {
+      const urlVal = match[1];
+      const lineNum = getLineNumber(stripped, match.index);
+      if (/^https?:\/\//i.test(urlVal)) {
         checks.push({
           id: `net-asyncimage-${sf.path}-${lineNum}`,
           category: "network",
@@ -340,59 +395,68 @@ export function validatePackage(files: ProjectFile[]): ValidationReport {
           line: lineNum,
         });
       }
-      if (/\bWKWebView\b/.test(line)) {
-        checks.push({
-          id: `net-wkwebview-${sf.path}-${lineNum}`,
-          category: "network",
-          name: "WKWebView Usage",
-          status: "warn",
-          message: "WKWebView detected. Verify that it only loads bundled local HTML and assets.",
-          file: sf.path,
-          line: lineNum,
-        });
-      }
+    }
 
-      // Rule 4: Sign-In / Auth SDKs
-      if (/import\s+AuthenticationServices\b|\bSignInWithAppleButton\b|\bFirebaseAuth\b|\bAmplify\.Auth\b/.test(line)) {
+    // WKWebView
+    const wkRegex = /\bWKWebView\b/g;
+    while ((match = wkRegex.exec(stripped)) !== null) {
+      const lineNum = getLineNumber(stripped, match.index);
+      checks.push({
+        id: `net-wkwebview-${sf.path}-${lineNum}`,
+        category: "network",
+        name: "WKWebView Usage",
+        status: "warn",
+        message: "WKWebView detected. Verify that it only loads bundled local HTML and assets.",
+        file: sf.path,
+        line: lineNum,
+      });
+    }
+
+    // Rule 4: Sign-In / Auth SDKs
+    const authRegex = /\b(import\s+AuthenticationServices|SignInWithAppleButton|FirebaseAuth|AWSMobileClient|Amplify\.Auth)\b/g;
+    while ((match = authRegex.exec(stripped)) !== null) {
+      const lineNum = getLineNumber(stripped, match.index);
+      checks.push({
+        id: `auth-gate-${sf.path}-${lineNum}`,
+        category: "auth_analytics",
+        name: "Sign-In / Authentication Gate",
+        status: "fail",
+        message: "Apple strictly prohibits sign-in gates. Apps requiring login will be disqualified.",
+        file: sf.path,
+        line: lineNum,
+      });
+    }
+
+    // Rule 5: Tracking / Analytics Telemetry
+    const trackRegex = /\b(import\s+FirebaseAnalytics|Mixpanel|Amplitude|AppTrackingTransparency|ATTrackingManager|FacebookCore|GoogleAnalytics)\b/g;
+    while ((match = trackRegex.exec(stripped)) !== null) {
+      const lineNum = getLineNumber(stripped, match.index);
+      checks.push({
+        id: `tracking-${sf.path}-${lineNum}`,
+        category: "auth_analytics",
+        name: "Tracking / Analytics Telemetry",
+        status: "fail",
+        message: "Judge tracking/telemetry code is explicitly prohibited by Apple Challenge terms.",
+        file: sf.path,
+        line: lineNum,
+      });
+    }
+
+    // Rule 6: Missing Assets Referenced in Code (multiline Image("...") tokenizer)
+    const imgRegex = /\bImage\s*\(\s*"([^"\\]*(?:\\.[^"\\]*)*)"\s*[\),]/g;
+    while ((match = imgRegex.exec(stripped)) !== null) {
+      const refName = match[1];
+      const lineNum = getLineNumber(stripped, match.index);
+      if (!knownAssets.has(refName)) {
         checks.push({
-          id: `auth-gate-${sf.path}-${lineNum}`,
-          category: "auth_analytics",
-          name: "Sign-In / Authentication Gate",
+          id: `asset-missing-${sf.path}-${lineNum}`,
+          category: "assets",
+          name: `Missing Asset: "${refName}"`,
           status: "fail",
-          message: "Apple strictly prohibits sign-in gates. Apps requiring login will be disqualified.",
+          message: `Referenced image "${refName}" not found in Assets.xcassets catalog.`,
           file: sf.path,
           line: lineNum,
         });
-      }
-
-      // Rule 5: Analytics / Tracking SDKs
-      if (/import\s+FirebaseAnalytics\b|\bMixpanel\b|\bAmplitude\b|\bAppTrackingTransparency\b|\bATTrackingManager\b/.test(line)) {
-        checks.push({
-          id: `tracking-${sf.path}-${lineNum}`,
-          category: "auth_analytics",
-          name: "Tracking / Analytics Telemetry",
-          status: "fail",
-          message: "Judge tracking/telemetry code is explicitly prohibited by Apple Challenge terms.",
-          file: sf.path,
-          line: lineNum,
-        });
-      }
-
-      // Rule 6: Missing Assets Referenced in Code
-      const imgMatch = line.match(/\bImage\("([^"]+)"\)/);
-      if (imgMatch) {
-        const refName = imgMatch[1];
-        if (!knownAssets.has(refName)) {
-          checks.push({
-            id: `asset-missing-${sf.path}-${lineNum}`,
-            category: "assets",
-            name: `Missing Asset: "${refName}"`,
-            status: "fail",
-            message: `Referenced image "${refName}" not found in Assets.xcassets catalog.`,
-            file: sf.path,
-            line: lineNum,
-          });
-        }
       }
     }
   }
@@ -464,7 +528,7 @@ export function validatePackage(files: ProjectFile[]): ValidationReport {
       passCount,
       warnCount,
       failCount,
-      estimatedZipBytes: estimatedZip,
+      estimatedZipBytes: realZip,
       maxZipBytes: structureConfig.maxZipSizeBytes,
       unverified: structureConfig.unverified,
       statusNotice: structureConfig.statusNotice,

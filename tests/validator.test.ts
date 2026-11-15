@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { validatePackage, stripComments, ProjectFile } from "../XWinCode/src/lib/validator/validator";
+import { validatePackage, stripComments, measureCompressedZipSize, ProjectFile } from "../XWinCode/src/lib/validator/validator";
 import * as fs from "fs";
 import * as path from "path";
 
@@ -365,6 +365,94 @@ describe("Swift Student Challenge Submission Validator", () => {
       const netFails = report.checks.filter((c) => c.category === "network" && c.status === "fail");
       expect(netFails).toHaveLength(0);
       expect(report.summary.passed).toBe(true);
+    });
+  });
+
+  describe("Multiline call tokenizer & real ZIP compression size check", () => {
+    it("detects multiline URL(string: ...) calls across line breaks", () => {
+      const validFiles = loadFixture("fixtures/valid_submission.swiftpm");
+      const multilineCode = `
+        import SwiftUI
+        struct ContentView: View {
+          func fetchRemote() {
+            let u = URL(
+              string: "https://remote.api.com/v2/items"
+            )
+          }
+          var body: some View { Text("Hi") }
+        }
+      `;
+      const files = validFiles.map((f) => (f.path === "ContentView.swift" ? { ...f, content: multilineCode } : f));
+      const report = validatePackage(files);
+
+      expect(report.summary.passed).toBe(false);
+      const urlCheck = report.checks.find((c) => c.id.includes("net-remote-url"));
+      expect(urlCheck).toBeDefined();
+      expect(urlCheck?.status).toBe("fail");
+      // Starts on line 5 where URL( begins
+      expect(urlCheck?.line).toBe(5);
+    });
+
+    it("detects multiline Image(...) calls across line breaks with missing assets", () => {
+      const validFiles = loadFixture("fixtures/valid_submission.swiftpm");
+      const multilineImg = `
+        import SwiftUI
+        struct ContentView: View {
+          var body: some View {
+            VStack {
+              Image(
+                "MissingMultilineHeroImage"
+              )
+            }
+          }
+        }
+      `;
+      const files = validFiles.map((f) => (f.path === "ContentView.swift" ? { ...f, content: multilineImg } : f));
+      const report = validatePackage(files);
+
+      expect(report.summary.passed).toBe(false);
+      const imgCheck = report.checks.find((c) => c.id.includes("asset-missing"));
+      expect(imgCheck).toBeDefined();
+      expect(imgCheck?.name).toContain("MissingMultilineHeroImage");
+      expect(imgCheck?.line).toBe(6);
+    });
+
+    it("detects multiline AsyncImage(...) calls with remote URLs", () => {
+      const validFiles = loadFixture("fixtures/valid_submission.swiftpm");
+      const multilineAsync = `
+        import SwiftUI
+        struct ContentView: View {
+          var body: some View {
+            AsyncImage(
+              url: URL(
+                string: "https://cdn.example.com/banner.png"
+              )
+            )
+          }
+        }
+      `;
+      const files = validFiles.map((f) => (f.path === "ContentView.swift" ? { ...f, content: multilineAsync } : f));
+      const report = validatePackage(files);
+
+      expect(report.summary.passed).toBe(false);
+      const asyncCheck = report.checks.find((c) => c.id.includes("net-asyncimage"));
+      expect(asyncCheck).toBeDefined();
+      expect(asyncCheck?.line).toBe(5);
+    });
+
+    it("computes real compressed ZIP size by building archive in temp dir", () => {
+      const validFiles = loadFixture("fixtures/valid_submission.swiftpm");
+      const realZipSize = measureCompressedZipSize(validFiles);
+
+      expect(realZipSize).toBeGreaterThan(200);
+      // Valid submission fixture is small (~5KB compressed)
+      expect(realZipSize).toBeLessThan(100 * 1024 * 1024);
+
+      const report = validatePackage(validFiles);
+      expect(report.summary.estimatedZipBytes).toBe(realZipSize);
+      const sizeCheck = report.checks.find((c) => c.id === "size-limit");
+      expect(sizeCheck?.status).toBe("pass");
+      expect(sizeCheck?.message).toContain("well within");
     });
   });
 });

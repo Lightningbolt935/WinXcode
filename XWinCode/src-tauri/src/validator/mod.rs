@@ -370,25 +370,75 @@ pub fn validate_submission(project_path: String) -> Result<ValidationReport, Str
         }
     }
 
-    // 2. Package Size Check
-    let est_zip = (total_bytes as f64 * 0.7) as u64;
-    if est_zip > cfg.max_zip_size_bytes {
+    // 2. Package Size Check (real compressed archive measurement in temp dir)
+    let temp_dir = std::env::temp_dir();
+    let unique_id = std::time::SystemTime::now()
+        .duration_since(std::time::UNIX_EPOCH)
+        .unwrap_or_default()
+        .as_nanos();
+    let temp_zip_path = temp_dir.join(format!("winxcode_val_sz_{}.zip", unique_id));
+
+    let parent_dir = root.parent().unwrap_or(root);
+    let original_name = root.file_name().and_then(|n| n.to_str()).unwrap_or("App");
+
+    let status = Command::new("tar")
+        .args(["-a", "-c", "-f"])
+        .arg(&temp_zip_path)
+        .args([
+            "--exclude", ".build",
+            "--exclude", "*/.build",
+            "--exclude", "*/.build/*",
+            "--exclude", ".git",
+            "--exclude", "*/.git",
+            "--exclude", "*/.git/*",
+            "--exclude", ".DS_Store",
+            "--exclude", "*/.DS_Store",
+            "--exclude", "*.xcuserdata",
+            "--exclude", "*/*.xcuserdata",
+            "--exclude", "*/*.xcuserdata/*",
+            "--exclude", "xcuserdata",
+            "--exclude", "*/xcuserdata",
+            "--exclude", "*/xcuserdata/*",
+            "--exclude", "*.xcuserdatad",
+            "--exclude", "*/*.xcuserdatad",
+            "--exclude", "*/*.xcuserdatad/*",
+            "--exclude", "xcuserdatad",
+            "--exclude", "*/xcuserdatad",
+            "--exclude", "*/xcuserdatad/*",
+            "--exclude", "*/.*",
+            "-C",
+        ])
+        .arg(&parent_dir)
+        .arg(&original_name)
+        .status();
+
+    let real_zip = if status.map(|s| s.success()).unwrap_or(false) && temp_zip_path.exists() {
+        let sz = fs::metadata(&temp_zip_path)
+            .map(|m| m.len())
+            .unwrap_or((total_bytes as f64 * 0.7) as u64);
+        let _ = fs::remove_file(&temp_zip_path);
+        sz
+    } else {
+        (total_bytes as f64 * 0.7) as u64
+    };
+
+    if real_zip > cfg.max_zip_size_bytes {
         checks.push(CheckItem {
             id: "size-limit".into(),
             category: "size".into(),
             name: "Package Archive Size".into(),
             status: "fail".into(),
-            message: format!("Estimated size (~{:.1} MB) exceeds Apple 500 MB limit!", est_zip as f64 / 1_048_576.0),
+            message: format!("Archive compressed ZIP size ({:.2} MB) exceeds Apple's 500 MB limit!", real_zip as f64 / 1_048_576.0),
             file: None,
             line: None,
         });
-    } else if est_zip > cfg.warn_zip_size_bytes {
+    } else if real_zip > cfg.warn_zip_size_bytes {
         checks.push(CheckItem {
             id: "size-limit".into(),
             category: "size".into(),
             name: "Package Archive Size".into(),
             status: "warn".into(),
-            message: format!("Estimated size (~{:.1} MB) is large; consider compressing media.", est_zip as f64 / 1_048_576.0),
+            message: format!("Archive compressed ZIP size ({:.2} MB) is large; consider compressing media.", real_zip as f64 / 1_048_576.0),
             file: None,
             line: None,
         });
@@ -398,50 +448,49 @@ pub fn validate_submission(project_path: String) -> Result<ValidationReport, Str
             category: "size".into(),
             name: "Package Archive Size".into(),
             status: "pass".into(),
-            message: format!("Estimated size (~{:.2} MB) is well within limit.", est_zip as f64 / 1_048_576.0),
+            message: format!("Archive compressed ZIP size ({:.2} MB) is well within limit.", real_zip as f64 / 1_048_576.0),
             file: None,
             line: None,
         });
     }
 
-    // 3, 4, 5. Scan Swift source files
-    let url_re = regex::Regex::new(r#"URL\(string:\s*"https?://"#).unwrap();
-    let img_re = regex::Regex::new(r#"Image\("([^"]+)"\)"#).unwrap();
+    // 3, 4, 5. Scan Swift source files using multiline tokenizer regexes
+    let url_re = regex::Regex::new(r#"\bURL\s*\(\s*string\s*:\s*"([^"\\]*(?:\\.[^"\\]*)*)""#).unwrap();
+    let async_img_re = regex::Regex::new(r#"\bAsyncImage\s*\(\s*url\s*:\s*URL\s*\(\s*string\s*:\s*"([^"\\]*(?:\\.[^"\\]*)*)""#).unwrap();
+    let img_re = regex::Regex::new(r#"\bImage\s*\(\s*"([^"\\]*(?:\\.[^"\\]*)*)"\s*[\),]"#).unwrap();
+    let net_api_re = regex::Regex::new(r#"\b(URLSession|URLSessionConfiguration|URLRequest|NWPathMonitor|NWConnection|WebSocketTask)\b"#).unwrap();
+    let wk_re = regex::Regex::new(r#"\bWKWebView\b"#).unwrap();
+    let auth_re = regex::Regex::new(r#"\b(import\s+AuthenticationServices|SignInWithAppleButton|FirebaseAuth|AWSMobileClient|Amplify\.Auth)\b"#).unwrap();
+    let track_re = regex::Regex::new(r#"\b(import\s+FirebaseAnalytics|Mixpanel|Amplitude|AppTrackingTransparency|ATTrackingManager|FacebookCore|GoogleAnalytics)\b"#).unwrap();
 
     for (rel_path, abs_path) in &swift_files {
         if let Ok(raw_src) = fs::read_to_string(abs_path) {
             let src = strip_comments(&raw_src);
-            for (idx, line) in src.lines().enumerate() {
-                let line_num = idx + 1;
-                let trimmed = line.trim();
-                if trimmed.is_empty() {
-                    continue;
-                }
 
-                // Network
-                if line.contains("URLSession") || line.contains("URLSessionConfiguration") || line.contains("URLRequest") || line.contains("NWPathMonitor") || line.contains("NWConnection") || line.contains("WebSocketTask") {
-                    let api_name = if line.contains("URLRequest") {
-                        "URLRequest"
-                    } else if line.contains("NWPathMonitor") {
-                        "NWPathMonitor"
-                    } else if line.contains("NWConnection") {
-                        "NWConnection"
-                    } else if line.contains("WebSocketTask") {
-                        "WebSocketTask"
-                    } else {
-                        "URLSession"
-                    };
-                    checks.push(CheckItem {
-                        id: format!("net-api-{}-{}", rel_path, line_num),
-                        category: "network".into(),
-                        name: format!("Network API ({})", api_name),
-                        status: "fail".into(),
-                        message: format!("Submissions are judged offline. Prohibited network connectivity API detected ({}).", api_name),
-                        file: Some(rel_path.clone()),
-                        line: Some(line_num),
-                    });
-                }
-                if url_re.is_match(line) {
+            let get_line = |pos: usize| -> usize {
+                src[..pos].chars().filter(|&c| c == '\n').count() + 1
+            };
+
+            // Network APIs
+            for mat in net_api_re.find_iter(&src) {
+                let api_name = mat.as_str();
+                let line_num = get_line(mat.start());
+                checks.push(CheckItem {
+                    id: format!("net-api-{}-{}", rel_path, line_num),
+                    category: "network".into(),
+                    name: format!("Network API ({})", api_name),
+                    status: "fail".into(),
+                    message: format!("Submissions are judged offline. Prohibited network connectivity API detected ({}).", api_name),
+                    file: Some(rel_path.clone()),
+                    line: Some(line_num),
+                });
+            }
+
+            // Remote URL
+            for caps in url_re.captures_iter(&src) {
+                let url_val = &caps[1];
+                if url_val.starts_with("http://") || url_val.starts_with("https://") {
+                    let line_num = get_line(caps.get(0).unwrap().start());
                     checks.push(CheckItem {
                         id: format!("net-remote-url-{}-{}", rel_path, line_num),
                         category: "network".into(),
@@ -452,7 +501,13 @@ pub fn validate_submission(project_path: String) -> Result<ValidationReport, Str
                         line: Some(line_num),
                     });
                 }
-                if line.contains("AsyncImage") && url_re.is_match(line) {
+            }
+
+            // Remote AsyncImage
+            for caps in async_img_re.captures_iter(&src) {
+                let url_val = &caps[1];
+                if url_val.starts_with("http://") || url_val.starts_with("https://") {
+                    let line_num = get_line(caps.get(0).unwrap().start());
                     checks.push(CheckItem {
                         id: format!("net-asyncimage-{}-{}", rel_path, line_num),
                         category: "network".into(),
@@ -463,58 +518,64 @@ pub fn validate_submission(project_path: String) -> Result<ValidationReport, Str
                         line: Some(line_num),
                     });
                 }
-                if line.contains("WKWebView") {
-                    checks.push(CheckItem {
-                        id: format!("net-wkwebview-{}-{}", rel_path, line_num),
-                        category: "network".into(),
-                        name: "WKWebView Usage".into(),
-                        status: "warn".into(),
-                        message: "WKWebView detected. Verify that it only loads bundled local HTML.".into(),
-                        file: Some(rel_path.clone()),
-                        line: Some(line_num),
-                    });
-                }
+            }
 
-                // Auth
-                if line.contains("AuthenticationServices") || line.contains("SignInWithAppleButton") || line.contains("FirebaseAuth") || line.contains("Amplify.Auth") {
+            // WKWebView
+            for mat in wk_re.find_iter(&src) {
+                let line_num = get_line(mat.start());
+                checks.push(CheckItem {
+                    id: format!("net-wkwebview-{}-{}", rel_path, line_num),
+                    category: "network".into(),
+                    name: "WKWebView Usage".into(),
+                    status: "warn".into(),
+                    message: "WKWebView detected. Verify that it only loads bundled local HTML.".into(),
+                    file: Some(rel_path.clone()),
+                    line: Some(line_num),
+                });
+            }
+
+            // Auth
+            for mat in auth_re.find_iter(&src) {
+                let line_num = get_line(mat.start());
+                checks.push(CheckItem {
+                    id: format!("auth-gate-{}-{}", rel_path, line_num),
+                    category: "auth_analytics".into(),
+                    name: "Sign-In / Authentication Gate".into(),
+                    status: "fail".into(),
+                    message: "Apple strictly prohibits sign-in gates. Apps requiring login will be disqualified.".into(),
+                    file: Some(rel_path.clone()),
+                    line: Some(line_num),
+                });
+            }
+
+            // Analytics
+            for mat in track_re.find_iter(&src) {
+                let line_num = get_line(mat.start());
+                checks.push(CheckItem {
+                    id: format!("tracking-{}-{}", rel_path, line_num),
+                    category: "auth_analytics".into(),
+                    name: "Tracking / Analytics Telemetry".into(),
+                    status: "fail".into(),
+                    message: "Judge tracking/telemetry code is explicitly prohibited by Apple Challenge terms.".into(),
+                    file: Some(rel_path.clone()),
+                    line: Some(line_num),
+                });
+            }
+
+            // Assets (multiline Image("..."))
+            for caps in img_re.captures_iter(&src) {
+                let asset_name = &caps[1];
+                if !known_assets.contains(asset_name) {
+                    let line_num = get_line(caps.get(0).unwrap().start());
                     checks.push(CheckItem {
-                        id: format!("auth-gate-{}-{}", rel_path, line_num),
-                        category: "auth_analytics".into(),
-                        name: "Sign-In / Authentication Gate".into(),
+                        id: format!("asset-missing-{}-{}", rel_path, line_num),
+                        category: "assets".into(),
+                        name: format!("Missing Asset: \"{}\"", asset_name),
                         status: "fail".into(),
-                        message: "Apple strictly prohibits sign-in gates. Apps requiring login will be disqualified.".into(),
+                        message: format!("Referenced image \"{}\" not found in Assets.xcassets catalog.", asset_name),
                         file: Some(rel_path.clone()),
                         line: Some(line_num),
                     });
-                }
-
-                // Analytics
-                if line.contains("FirebaseAnalytics") || line.contains("Mixpanel") || line.contains("Amplitude") || line.contains("AppTrackingTransparency") || line.contains("ATTrackingManager") {
-                    checks.push(CheckItem {
-                        id: format!("tracking-{}-{}", rel_path, line_num),
-                        category: "auth_analytics".into(),
-                        name: "Tracking / Analytics Telemetry".into(),
-                        status: "fail".into(),
-                        message: "Judge tracking/telemetry code is explicitly prohibited by Apple Challenge terms.".into(),
-                        file: Some(rel_path.clone()),
-                        line: Some(line_num),
-                    });
-                }
-
-                // Assets
-                if let Some(caps) = img_re.captures(line) {
-                    let asset_name = &caps[1];
-                    if !known_assets.contains(asset_name) {
-                        checks.push(CheckItem {
-                            id: format!("asset-missing-{}-{}", rel_path, line_num),
-                            category: "assets".into(),
-                            name: format!("Missing Asset: \"{}\"", asset_name),
-                            status: "fail".into(),
-                            message: format!("Referenced image \"{}\" not found in Assets.xcassets catalog.", asset_name),
-                            file: Some(rel_path.clone()),
-                            line: Some(line_num),
-                        });
-                    }
                 }
             }
         }
