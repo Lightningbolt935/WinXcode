@@ -197,7 +197,18 @@ export default function App() {
   useTheme();
 
   useEffect(() => {
-    void useStore.getState().init();
+    if (import.meta.env.DEV) {
+      const fileParam = new URLSearchParams(window.location.search).get("file");
+      if (fileParam) {
+        void import("./lib/devLoader").then(({ initDevCorpusLoader }) => {
+          void initDevCorpusLoader(fileParam);
+        });
+      } else {
+        void useStore.getState().init();
+      }
+    } else {
+      void useStore.getState().init();
+    }
     installGlassPointer();
     window.addEventListener("keydown", handleKeydown, true);
     const noMenu = (e: MouseEvent) => {

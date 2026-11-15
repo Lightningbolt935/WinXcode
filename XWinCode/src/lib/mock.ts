@@ -350,11 +350,34 @@ export async function mockInvoke<T>(cmd: string, args: Record<string, unknown> =
       return r({ root: ROOT, name: "HelloApp", kind: "iosApp", bundleId: "com.example.HelloApp" });
     case "read_dir":
       return r(children(a.path));
-    case "list_files":
+    case "list_files": {
+      if (import.meta.env.DEV && a.root && !files[a.root]) {
+        try {
+          const res = await fetch(`/__dev/list_files?dir=${encodeURIComponent(a.root)}`);
+          if (res.ok) {
+            const list = await res.json();
+            if (Array.isArray(list)) return r(list);
+          }
+        } catch {}
+      }
       return r(Object.keys(files));
-    case "read_text_file":
-      if (!(a.path in files)) throw "File not found";
+    }
+    case "read_text_file": {
+      if (!(a.path in files)) {
+        if (import.meta.env.DEV) {
+          try {
+            const res = await fetch(`/__dev/file?path=${encodeURIComponent(a.path)}`);
+            if (res.ok) {
+              const text = await res.text();
+              files[a.path] = text;
+              return r(text);
+            }
+          } catch {}
+        }
+        throw "File not found";
+      }
       return r(files[a.path]);
+    }
     case "write_text_file":
       files[a.path] = a.contents;
       return r(undefined);
