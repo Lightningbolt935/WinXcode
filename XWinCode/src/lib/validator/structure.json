@@ -1,0 +1,29 @@
+{
+  "unverified": true,
+  "statusNotice": "UNVERIFIED: Format based on Apple developer documentation and public Swift Student Challenge submissions. Pending verification on a physical Mac running Xcode / Swift Playgrounds.",
+  "maxZipSizeBytes": 524288000,
+  "warnZipSizeBytes": 104857600,
+  "manifest": {
+    "fileName": "Package.swift",
+    "requiredToolsVersion": "5.9",
+    "requiredImports": [
+      "PackageDescription",
+      "AppleProductTypes"
+    ],
+    "productType": ".iOSApplication",
+    "targetName": "AppModule",
+    "targetPath": "."
+  },
+  "requiredFiles": [
+    "Package.swift",
+    "App.swift",
+    "ContentView.swift",
+    "Assets.xcassets/Contents.json",
+    "Assets.xcassets/AppIcon.appiconset/Contents.json",
+    "Assets.xcassets/AccentColor.colorset/Contents.json"
+  ],
+  "disclaimers": {
+    "uiDisclaimer": "This check catches common problems but can't guarantee your project runs in Xcode or Swift Playground. Test on a real Mac if you can.",
+    "unverifiedNotice": "Template format not yet verified on a Mac. Open it in Xcode or Swift Playgrounds before submitting."
+  }
+}

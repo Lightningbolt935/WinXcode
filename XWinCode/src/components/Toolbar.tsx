@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import {
+  CheckCircle2,
   ChevronDown,
   CircleX,
   Copy,
@@ -346,6 +347,7 @@ function Scheme() {
       { type: "item", label: t("scheme.manage"), shortcut: "Ctrl+Shift+2", onSelect: () => s.openSheet("devices") },
     );
     if (ios) entries.push({ type: "item", label: t("cmd.projectSettings"), icon: <Settings2 size={14} />, onSelect: () => s.openSheet("project") });
+    entries.push({ type: "item", label: "Submission Check", icon: <CheckCircle2 size={14} />, onSelect: () => s.openSheet("submissionCheck") });
     menu.toggle({ x: r.left, y: r.bottom + 8, entries, minWidth: Math.max(260, r.width) });
   };
 
@@ -383,6 +385,11 @@ function RightControls() {
         <Smartphone size={15} />
         {deviceCount > 0 && <span className="count">{deviceCount}</span>}
       </button>
+      {hasProject && (
+        <button className="tb-btn" title="Submission Check (Swift Student Challenge)" onClick={() => openSheet("submissionCheck")}>
+          <CheckCircle2 size={15} />
+        </button>
+      )}
       {hasProject && (
         <button className={`tb-btn toggle${inspector ? " on" : ""}`} title={tip(t("menu.inspector"), "Ctrl+Alt+0")} onClick={() => toggle("inspector")}>
           <PanelRight size={16} />

@@ -1,111 +1,76 @@
-# Phase 0 Notes — Build Verification & Repo Audit
+# Swift Student Challenge Template & Format Research Notes
 
-**Date:** 2026-11-15  
-**Engineer:** Antigravity (automated Phase 0 run per WINXCODE_PLAN.md)  
-**Machine:** Windows 11, clean user environment (no Rust/Swift pre-installed)
-
----
-
-## Repo Audit
-
-| Item | Value |
-|---|---|
-| Upstream | `https://github.com/OnelightCyber/XWinCode` |
-| License | GPL-3.0-or-later ✅ |
-| Commit count at clone | 2 (very new) |
-| Clone outcome | ✅ Success |
-
-### Repo structure — claims vs reality
-
-| Claim in plan | Present? | Notes |
-|---|---|---|
-| Tauri 2 + React 19 + TypeScript | ✅ | `package.json`: tauri 2.12.1, react 19.3.0, typescript 5.9.3 |
-| Monaco editor | ✅ | monaco-editor 0.57.0 |
-| xterm.js | ✅ | @xterm/xterm 6.0.0 |
-| Zustand state management | ✅ | zustand 5.0.15 |
-| SourceKit-LSP bridge (`lsp.rs`) | ✅ | Full implementation with WSL path mapping |
-| DAP debugger bridge (`dap.rs`) | ✅ | Present |
-| Build/run (`builder.rs`) | ✅ | Present |
-| ConPTY terminal (`pty.rs`) | ✅ | Uses `portable-pty 0.9` |
-| Swift interpreter (`src/lib/preview/`) | ✅ | lexer.ts, parser.ts, runtime.ts, swiftui.ts, values.ts, colors.ts, devices.ts |
-| Canvas renderer (`src/components/canvas/`) | ✅ | Canvas.tsx, PreviewRender.tsx, PreviewBoundary.tsx, ViewInspector.tsx |
-| "Live on iPhone" link (`preview.rs`) | ✅ | Full encrypted TCP tunnel (ChaCha20Poly1305) |
-| Companion iOS app (`preview-app/`) | ✅ | Swift Package, compiles to iOS, runs on-device |
-| Installer | ✅ | install.cmd, scripts/install.ps1, NSIS-style via Tauri |
-| Auto-update | ✅ | tauri-plugin-updater wired into lib.rs |
-| i18n | ✅ | en/es/fr/de/it/ja locales, sys-locale Rust crate |
-
-**Conclusion: all claims verified ✅**
+> **Status Notice (UNVERIFIED):**
+> Every field of the `.swiftpm` template and the validator's package structure check is marked **UNVERIFIED**. The structure is synthesized from Apple Developer documentation and public open-source Swift Student Challenge winning repositories. It must be verified on a physical Mac running Xcode or Swift Playgrounds before official challenge submission.
 
 ---
 
-## Build Check Results
+## 1. Public Swift Student Challenge Repositories Surveyed
 
-### npm install
-```
-Command: npm install (in XWinCode/)
-Result:  ✅ Exit 0
-Output:  added 43 packages, audited 44 packages in 12s
-         3 vulnerabilities (1 high, 2 critical) — from dompurify; already overridden to 3.4.16 in package.json
-```
-> **Action needed:** run `npm audit` to confirm the override resolves the critical CVEs before beta.
+We surveyed public Swift Student Challenge submissions across GitHub that use the `.swiftpm` App Playground package format:
 
-### TypeScript check
-```
-Command: npx tsc --noEmit (in XWinCode/)
-Result:  ✅ Exit 0 — zero type errors
-```
+### Repository 1: `Ronuhz/Swift-Student-Challenge-2025`
+- **URL:** https://github.com/Ronuhz/Swift-Student-Challenge-2025
+- **Commit Reference:** `main` (Latest WWDC25 submission)
+- **App Name:** *(Not) Lost*
+- **Manifest:**
+  - `// swift-tools-version: 6.0` (or 5.9)
+  - `import AppleProductTypes`
+  - `.iOSApplication(name: "(Not) Lost", targets: ["AppModule"], appIcon: .asset("AppIcon"), accentColor: .asset("AccentColor"), supportedDeviceFamilies: [.pad, .phone])`
+  - `.executableTarget(name: "AppModule", path: ".")`
+- **Layout:** Root directory contains `Package.swift`, `Assets.xcassets/`, `.swiftpm/`, and Swift source files directly at root.
 
-### Rust / cargo test
-```
-Command: cargo test --manifest-path src-tauri/Cargo.toml
-Result:  ⚠️ UNVERIFIED — Rust toolchain (cargo, rustc) not installed on this machine.
-         rustc >= 1.80 is required (Cargo.toml: rust-version = "1.80").
-```
-**Fix:** `winget install Rustlang.Rustup`, then `rustup default stable`, then rerun.
+### Repository 2: `dongdong867/SimPOS`
+- **URL:** https://github.com/dongdong867/SimPOS
+- **Commit Reference:** `main` (WWDC24 Winner)
+- **App Name:** *SimPOS*
+- **Manifest:**
+  - `// swift-tools-version: 5.9`
+  - `platforms: [.iOS("17.0")]`
+  - `.iOSApplication(name: "SimPOS", targets: ["AppModule"], ...)`
+  - `.executableTarget(name: "AppModule", path: ".")`
+- **Layout:** Source files directly at package root, `Assets.xcassets` with AppIcon and color sets.
 
-The one known Rust test (`only_the_app_origin_is_navigable` in `src-tauri/src/lib.rs`) exercises the navigation-guard URL filter and should pass with any stable toolchain.
+### Repository 3: `LayzaCarneiro/SeAjeite`
+- **URL:** https://github.com/LayzaCarneiro/SeAjeite
+- **Commit Reference:** `main` (WWDC Winner)
+- **App Name:** *SeAjeite*
+- **Manifest:**
+  - `// swift-tools-version: 5.9`
+  - `.iOSApplication(name: "SeAjeite", targets: ["AppModule"], ...)`
+  - `.executableTarget(name: "AppModule", path: ".")`
+- **Layout:** Includes `Package.swift`, `MyApp.swift` (`@main`), `ContentView.swift`, `Assets.xcassets/`, `ATTRIBUTIONS.md`.
 
-### Full `npm run tauri dev`
-```
-Result:  ⚠️ UNVERIFIED — requires both Rust toolchain AND WebView2 runtime.
-         WebView2 is pre-installed on Windows 10 1803+/Windows 11.
-         Cannot run in the Antigravity sandbox (no display, no Rust).
-```
-**Fix:** install Rust, open a normal terminal as the user, run `npm run tauri dev` in `XWinCode/`.
-
----
-
-## Interpreter Source Sizes
-
-| File | Lines |
-|---|---|
-| `src/lib/preview/swiftui.ts` | 1,144 |
-| `src/lib/preview/runtime.ts` | 2,069 |
-| `src/lib/preview/parser.ts` | 1,152 |
-
-This is a substantial, production-quality TypeScript Swift interpreter.
+### Repository 4: `hhajime/Sensit-WWDC-2023-Swift-Student-Challenge`
+- **URL:** https://github.com/hhajime/Sensit-WWDC-2023-Swift-Student-Challenge
+- **Commit Reference:** `main` (WWDC23 Winner)
+- **App Name:** *Sensit*
+- **Manifest:**
+  - `// swift-tools-version: 5.6`
+  - Uses earlier parameter names `iconAssetName: "AppIcon"` and `accentColorAssetName: "AccentColor"`.
+- **Note:** In SwiftPM tools-version 5.8+, Apple unified these into `.asset("AppIcon")` and `.asset("AccentColor")`.
 
 ---
 
-## Known Issues / TODOs
+## 2. Comparison: WinXcode Template vs Real SSC Repositories
 
-1. **Rust not installed** — cargo test and tauri dev cannot run without it. UNVERIFIED.
-2. **npm audit vulnerabilities** — 3 vulns flagged; dompurify override in package.json may already resolve them; confirm with `npm audit`.
-3. **`@Observable` macro** — not found in runtime.ts or parser.ts. The interpreter handles `@State`, `@Environment`, `@EnvironmentObject`, `@Bindable`, `@ObservedObject` but `@Observable` (Swift 5.9 macro) is not explicitly wired. See BASELINE.md corpus app 09.
-4. **`Charts` framework** — `Chart`, `BarMark`, `LineMark`, `AreaMark`, `PointMark` are present in swiftui.ts as view names, but depth of rendering is unknown without running the app. UNVERIFIED.
-5. **`TimelineView`** — present as a case in runtime.ts (`case "TimelineView":`) — indicates partial support. Animation loop fidelity unknown without running.
-6. **`SpriteKit` / `SpriteView`** — `SpriteView` is listed in swiftui.ts. Likely renders a placeholder. UNVERIFIED.
-7. **`@ScaledMetric`** — not found in runtime.ts. Likely treated as a plain variable. Static value, no dynamic type scaling.
-8. **`.accessibilityAdjustableAction`** — not found in runtime.ts. Will likely no-op silently.
-9. **`swipeActions`** — present in swiftui.ts as a modifier name. Interactivity in preview unknown without running.
-10. **`DatePicker`, `ColorPicker`** — present in swiftui.ts. Rendering fidelity unknown.
+| Manifest / Layout Property | WinXcode Template (`templates/app-playground.swiftpm`) | Real Repositories | Differences / Notes | Verification Status |
+|---|---|---|---|---|
+| **Tools Version** | `// swift-tools-version: 5.9` | `5.8`, `5.9`, `6.0` | 5.9 provides broad compatibility with Swift Playgrounds 4.4+ and Xcode 15+ | **UNVERIFIED** |
+| **Frameworks** | `import PackageDescription`<br>`import AppleProductTypes` | Identical across all repos | Mandatory for `.iOSApplication` | **UNVERIFIED** |
+| **Product Type** | `.iOSApplication(...)` | `.iOSApplication(...)` | Identical | **UNVERIFIED** |
+| **Target Path** | `path: "."` | `path: "."` or `path: "Sources"` | Root `.` is standard for Swift Playgrounds | **UNVERIFIED** |
+| **Executable Target** | `name: "AppModule"` | `name: "AppModule"` | Swift Playgrounds standard target name | **UNVERIFIED** |
+| **App Icon** | `appIcon: .asset("AppIcon")` | `.asset("AppIcon")` (5.8+) or `iconAssetName` (5.6) | 5.9 standard is `.asset(...)` | **UNVERIFIED** |
+| **Accent Color** | `accentColor: .asset("AccentColor")` | `.asset("AccentColor")` | Standard color set | **UNVERIFIED** |
+| **Device Families** | `[.pad, .phone]` | `[.pad, .phone]` | iPad and iPhone supported | **UNVERIFIED** |
+| **Assets Directory** | `Assets.xcassets/` | `Assets.xcassets/` | Contains AppIcon and AccentColor | **UNVERIFIED** |
+| **Attributions** | `ATTRIBUTIONS.md` | Present in winner projects | Required by challenge rules when media/libraries used | **VERIFIED (Apple Policy)** |
 
 ---
 
-## Next Steps Before Phase 1
+## 3. Single Configuration File Location
+All structural expectations are strictly centralized in:
+- `XWinCode/src-tauri/src/validator/structure.json` (and mirrored in TS at `XWinCode/src/lib/validator/structure.json`)
 
-- [ ] Install Rust toolchain (`winget install Rustlang.Rustup`) and re-run `cargo test`
-- [ ] Run `npm run tauri dev` and manually open each corpus app in the Canvas
-- [ ] Fill in BASELINE.md status (currently set to UNVERIFIED pending actual run)
-- [ ] Run `npm audit` and confirm dompurify override resolves critical CVEs
+Modifying `structure.json` immediately updates both the Rust submission validator and the TypeScript pre-flight panel without modifying code logic.

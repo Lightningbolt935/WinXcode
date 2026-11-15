@@ -23,6 +23,15 @@ function call<T>(cmd: string, args?: Record<string, unknown>): Promise<T> {
   return isTauri ? invoke<T>(cmd, args) : mockInvoke<T>(cmd, args);
 }
 
+import type { ValidationReport } from "./validator";
+
+export interface ExportResult {
+  success: boolean;
+  zipPath: string;
+  zipSizeBytes: number;
+  message: string;
+}
+
 export const api = {
   readDir: (path: string) => call<Entry[]>("read_dir", { path }),
   readTextFile: (path: string) => call<string>("read_text_file", { path }),
@@ -99,6 +108,9 @@ export const api = {
   systemTheme: () => call<"dark" | "light">("system_theme"),
   stopTask: () => call<boolean>("stop_task"),
   sendTaskInput: (text: string) => call<void>("send_task_input", { text }),
+  validateSubmission: (projectPath: string) => call<ValidationReport>("validate_submission", { projectPath }),
+  exportSubmissionZip: (projectPath: string, outputZipPath: string) =>
+    call<ExportResult>("export_submission_zip", { projectPath, outputZipPath }),
 };
 
 export interface TaskStartEvent {

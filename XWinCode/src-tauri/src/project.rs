@@ -166,6 +166,125 @@ struct ContentView: View {
                 .replace("{taps}", &swift_text(&t!("tpl.ios.taps"))),
             ),
         ],
+        "appPlayground" => vec![
+            (
+                "Package.swift".to_string(),
+                format!(
+                    r#"// swift-tools-version: 5.9
+
+// UNVERIFIED: App Playground manifest based on Apple developer documentation.
+// Verify on a physical Mac running Xcode / Swift Playgrounds before submitting.
+
+import PackageDescription
+import AppleProductTypes
+
+let package = Package(
+    name: "{name}",
+    platforms: [
+        .iOS("16.0")
+    ],
+    products: [
+        .iOSApplication(
+            name: "{name}",
+            targets: ["AppModule"],
+            bundleIdentifier: "{org}.{name}",
+            teamIdentifier: "",
+            displayVersion: "1.0",
+            bundleVersion: "1",
+            appIcon: .asset("AppIcon"),
+            accentColor: .asset("AccentColor"),
+            supportedDeviceFamilies: [
+                .pad,
+                .phone
+            ],
+            supportedInterfaceOrientations: [
+                .portrait,
+                .landscapeRight,
+                .landscapeLeft
+            ],
+            capabilities: []
+        )
+    ],
+    targets: [
+        .executableTarget(
+            name: "AppModule",
+            path: "."
+        )
+    ]
+)
+"#
+                ),
+            ),
+            (
+                "App.swift".to_string(),
+                r#"import SwiftUI
+
+// UNVERIFIED: App entry point for Swift Playgrounds.
+@main
+struct MyApp: App {
+    var body: some Scene {
+        WindowGroup {
+            ContentView()
+        }
+    }
+}
+"#
+                .to_string(),
+            ),
+            (
+                "ContentView.swift".to_string(),
+                r#"import SwiftUI
+
+struct ContentView: View {
+    @State private var counter = 0
+
+    var body: some View {
+        VStack(spacing: 20) {
+            Image(systemName: "sparkles")
+                .font(.system(size: 60))
+                .foregroundColor(.accentColor)
+            Text("Welcome to Swift Student Challenge")
+                .font(.title)
+                .bold()
+                .multilineTextAlignment(.center)
+            Text("Counter: \(counter)")
+                .font(.headline)
+            Button("Tap Me") {
+                counter += 1
+            }
+            .buttonStyle(.borderedProminent)
+        }
+        .padding()
+    }
+}
+"#
+                .to_string(),
+            ),
+            (
+                "ATTRIBUTIONS.md".to_string(),
+                r#"# Attributions & Credits
+
+This document details third-party open-source code and public domain media used in this submission, as required by Apple's Swift Student Challenge rules.
+
+- **Project Code:** Created individually by the student.
+- **SF Symbols:** Apple Inc. system symbol library.
+"#
+                .to_string(),
+            ),
+            (
+                "Assets.xcassets/Contents.json".to_string(),
+                r#"{ "info": { "author": "xcode", "version": 1 } }"#.to_string(),
+            ),
+            (
+                "Assets.xcassets/AppIcon.appiconset/Contents.json".to_string(),
+                r#"{ "images": [ { "idiom": "universal", "platform": "ios", "size": "1024x1024" } ], "info": { "author": "xcode", "version": 1 } }"#.to_string(),
+            ),
+            (
+                "Assets.xcassets/AccentColor.colorset/Contents.json".to_string(),
+                r#"{ "colors": [ { "color": { "color-space": "srgb", "components": { "alpha": "1.000", "blue": "0.980", "green": "0.550", "red": "0.000" } }, "idiom": "universal" } ], "info": { "author": "xcode", "version": 1 } }"#.to_string(),
+            ),
+            (".gitignore".to_string(), gitignore.clone()),
+        ],
         "executable" => vec![
             (
                 "Package.swift".to_string(),
@@ -260,6 +379,11 @@ pub fn inspect(root: &Path) -> Result<ProjectInfo, String> {
         let bundle = yml
             .lines()
             .find_map(|l| l.trim().strip_prefix("bundleID:").map(|v| v.trim().trim_matches('"').to_string()));
+        (ProjectKind::IosApp, bundle)
+    } else if manifest.contains(".iOSApplication(") {
+        let bundle = manifest
+            .lines()
+            .find_map(|l| l.trim().strip_prefix("bundleIdentifier:").map(|v| v.trim().trim_matches('"').trim_matches(',').trim().to_string()));
         (ProjectKind::IosApp, bundle)
     } else if manifest.contains(".executableTarget(") || manifest.contains(".executable(") {
         (ProjectKind::Executable, None)

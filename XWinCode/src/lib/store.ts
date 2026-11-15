@@ -24,7 +24,7 @@ import type {
   ToolComponent,
 } from "./types";
 
-export type Sheet = null | "newProject" | "devices" | "settings" | "quickOpen" | "commands" | "project" | "library" | "update";
+export type Sheet = null | "newProject" | "devices" | "settings" | "quickOpen" | "commands" | "project" | "library" | "update" | "submissionCheck";
 
 export interface TerminalTab {
   key: number;

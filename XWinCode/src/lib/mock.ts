@@ -1,4 +1,5 @@
 import type { Entry, Settings } from "./types";
+import { validatePackage } from "./validator";
 
 const ROOT = "C:\\Users\\dev\\XWinCode Projects\\HelloApp";
 
@@ -463,6 +464,35 @@ export async function mockInvoke<T>(cmd: string, args: Record<string, unknown> =
       return r(false);
     case "system_theme":
       return r(matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    case "validate_submission": {
+      const projFiles = Object.entries(files)
+        .filter(([p]) => p.startsWith(ROOT))
+        .map(([p, content]) => ({
+          path: p.slice(ROOT.length + 1),
+          content,
+          sizeBytes: content.length,
+        }));
+      return r(validatePackage(projFiles));
+    }
+    case "export_submission_zip": {
+      const projFiles = Object.entries(files)
+        .filter(([p]) => p.startsWith(ROOT))
+        .map(([p, content]) => ({
+          path: p.slice(ROOT.length + 1),
+          content,
+          sizeBytes: content.length,
+        }));
+      const rep = validatePackage(projFiles);
+      if (!rep.summary.canExport) {
+        throw new Error(`Export refused: ${rep.summary.failCount} critical validation failure(s).`);
+      }
+      return r({
+        success: true,
+        zipPath: `${ROOT}\\Submission.zip`,
+        zipSizeBytes: rep.summary.estimatedZipBytes,
+        message: "Submission ZIP created successfully. Notice: Template format not yet verified on a Mac. Open it in Xcode or Swift Playgrounds before submitting.",
+      });
+    }
     case "wsl_warmup":
       await delay(400);
       return r(400);

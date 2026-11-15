@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Library, Smartphone, SquareTerminal } from "lucide-react";
+import { AlertTriangle, Library, Smartphone, Sparkles, SquareTerminal } from "lucide-react";
 import { t, type TKey } from "../i18n";
 import { pickFolder } from "../lib/dialogs";
 import { api, errorMessage } from "../lib/ipc";
@@ -9,15 +9,24 @@ import { Seg } from "./Controls";
 type Platform = "ios" | "windows" | "multi";
 
 interface Template {
-  id: "iosApp" | "executable" | "library";
+  id: "iosApp" | "appPlayground" | "executable" | "library";
   platform: Platform;
-  title: TKey;
-  desc: TKey;
+  title: TKey | string;
+  desc: TKey | string;
   icon: React.ReactNode;
+  notice?: string;
 }
 
 const TEMPLATES: Template[] = [
   { id: "iosApp", platform: "ios", title: "np.tpl.app.title", desc: "np.tpl.app.desc", icon: <Smartphone size={28} strokeWidth={1.7} /> },
+  {
+    id: "appPlayground",
+    platform: "ios",
+    title: "Swift Student Challenge",
+    desc: "App Playground (.swiftpm) for Swift Playgrounds & iPadOS",
+    icon: <Sparkles size={28} strokeWidth={1.7} />,
+    notice: "Template format not yet verified on a Mac. Open it in Xcode or Swift Playgrounds before submitting.",
+  },
   { id: "executable", platform: "windows", title: "np.tpl.cli.title", desc: "np.tpl.cli.desc", icon: <SquareTerminal size={28} strokeWidth={1.7} /> },
   { id: "library", platform: "multi", title: "np.tpl.lib.title", desc: "np.tpl.lib.desc", icon: <Library size={28} strokeWidth={1.7} /> },
 ];
@@ -71,7 +80,7 @@ export function NewProjectSheet() {
           <h2>{step === 1 ? t("np.chooseTemplate") : t("np.chooseOptions")}</h2>
           {step === 2 && (
             <p>
-              {t(template.title)} · {t(PLATFORMS.find((p) => p.id === template.platform)!.label)}
+              {typeof template.title === "string" && template.title.startsWith("np.") ? t(template.title as TKey) : template.title} · {t(PLATFORMS.find((p) => p.id === template.platform)!.label)}
             </p>
           )}
         </div>
@@ -93,11 +102,17 @@ export function NewProjectSheet() {
                 {shown.map((x) => (
                   <button key={x.id} className={`tpl${template.id === x.id ? " on" : ""}`} onClick={() => setTemplate(x)} onDoubleClick={() => setStep(2)}>
                     <span className="tpl-icon">{x.icon}</span>
-                    <span className="tpl-title">{t(x.title)}</span>
-                    <span className="tpl-desc">{t(x.desc)}</span>
+                    <span className="tpl-title">{typeof x.title === "string" && x.title.startsWith("np.") ? t(x.title as TKey) : x.title}</span>
+                    <span className="tpl-desc">{typeof x.desc === "string" && x.desc.startsWith("np.") ? t(x.desc as TKey) : x.desc}</span>
                   </button>
                 ))}
               </div>
+              {template.notice && (
+                <div style={{ marginTop: 12, padding: "8px 12px", borderRadius: 6, background: "rgba(245, 158, 11, 0.1)", border: "1px solid rgba(245, 158, 11, 0.3)", color: "#fbbf24", fontSize: 11, display: "flex", gap: 8, alignItems: "center" }}>
+                  <AlertTriangle size={15} style={{ flexShrink: 0 }} />
+                  <span>{template.notice}</span>
+                </div>
+              )}
               {platform === "ios" && (
                 <div className="card" style={{ marginTop: 16, fontSize: 12 }}>
                   <div className="pipeline">

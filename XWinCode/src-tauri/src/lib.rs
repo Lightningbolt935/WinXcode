@@ -19,6 +19,7 @@ mod pty;
 mod settings;
 mod toolchain;
 mod trust;
+mod validator;
 mod window_fx;
 mod wsl;
 
@@ -165,6 +166,8 @@ pub fn run() {
             dap::dap_start,
             dap::dap_send,
             dap::dap_stop,
+            validator::validate_submission,
+            validator::export_submission_zip,
         ])
         .build(tauri::generate_context!())
         .expect("failed to start XWinCode")

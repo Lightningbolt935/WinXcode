@@ -11,6 +11,7 @@ import { ProjectSettingsSheet } from "./components/ProjectSettingsSheet";
 import { QuickOpen } from "./components/QuickOpen";
 import { Resizer, usePanelSize } from "./components/Resizer";
 import { SettingsSheet } from "./components/SettingsSheet";
+import { SubmissionCheckPanel } from "./components/SubmissionCheckPanel";
 import { Toasts } from "./components/Toasts";
 import { requestClose, Toolbar } from "./components/Toolbar";
 import { UpdateSheet } from "./components/UpdateSheet";
@@ -267,6 +268,7 @@ export default function App() {
       {sheet === "project" && project && <ProjectSettingsSheet />}
       {sheet === "library" && project && <LibrarySheet />}
       {sheet === "update" && <UpdateSheet />}
+      {sheet === "submissionCheck" && <SubmissionCheckPanel onClose={() => useStore.getState().openSheet(null)} />}
       <Hud />
       <Toasts />
     </div>
