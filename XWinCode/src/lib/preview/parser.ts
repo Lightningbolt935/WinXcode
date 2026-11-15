@@ -51,7 +51,7 @@ export interface SwitchCase {
 
 export type Stmt =
   | { k: "expr"; e: Expr; pos: number; end?: number; file?: string }
-  | { k: "decl"; names: string[]; init: Expr | null; type: string | null; pos: number }
+  | { k: "decl"; names: string[]; init: Expr | null; type: string | null; getter?: Stmt[] | null; pos: number }
   | { k: "assign"; target: Expr; op: string; value: Expr; pos: number }
   | { k: "if"; conds: Cond[]; then: Stmt[]; else: Stmt[] | null; pos: number }
   | { k: "guard"; conds: Cond[]; else: Stmt[]; pos: number }
@@ -670,16 +670,27 @@ class Parser {
             this.expect(")");
           } else names = [this.ident()];
           let type: string | null = null;
-          if (this.eat(":")) type = this.typeText((t) => t.value === "=" || t.value === ";" || t.value === ",");
-          const init = this.eat("=") ? this.expr() : null;
-          const first: Stmt = { k: "decl", names, init, type, pos: tok.pos };
+          if (this.eat(":")) type = this.typeText((t) => t.value === "=" || t.value === ";" || t.value === "," || t.value === "{");
+          let init = this.eat("=") ? this.expr() : null;
+          let getter: Stmt[] | null = null;
+          if (this.isPunct("{") && (!this.tok.nl || init === null)) {
+            if (init === null) getter = this.accessorBlock();
+            else this.skipBalanced("{", "}");
+          }
+          const first: Stmt = { k: "decl", names, init, type, getter, pos: tok.pos };
           if (!this.isPunct(",")) return first;
           const body: Stmt[] = [first];
           while (this.eat(",")) {
             const name = this.ident();
             let more: string | null = null;
-            if (this.eat(":")) more = this.typeText((t) => t.value === "=" || t.value === ";" || t.value === ",");
-            body.push({ k: "decl", names: [name], init: this.eat("=") ? this.expr() : null, type: more, pos: this.tok.pos });
+            if (this.eat(":")) more = this.typeText((t) => t.value === "=" || t.value === ";" || t.value === "," || t.value === "{");
+            let moreInit = this.eat("=") ? this.expr() : null;
+            let moreGetter: Stmt[] | null = null;
+            if (this.isPunct("{") && (!this.tok.nl || moreInit === null)) {
+              if (moreInit === null) moreGetter = this.accessorBlock();
+              else this.skipBalanced("{", "}");
+            }
+            body.push({ k: "decl", names: [name], init: moreInit, type: more, getter: moreGetter, pos: this.tok.pos });
           }
           return { k: "seq", body, pos: tok.pos };
         }

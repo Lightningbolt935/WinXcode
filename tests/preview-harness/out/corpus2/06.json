@@ -5,24 +5,8 @@
   "license": "MIT",
   "fileCount": 7,
   "level": "FAILED",
-  "parseOk": false,
-  "parseErrors": [
-    {
-      "file": "CalculatorBrain.swift",
-      "message": "Expected a name",
-      "line": 179
-    },
-    {
-      "file": "CalculatorBrain.swift",
-      "message": "Expected a name",
-      "line": 181
-    },
-    {
-      "file": "CalculatorBrain.swift",
-      "message": "Expected a name",
-      "line": 207
-    }
-  ],
+  "parseOk": true,
+  "parseErrors": [],
   "renderOk": true,
   "targets": [
     "corpus2/06_calculator/Calculator_SwiftUIApp.swift:app:Calculator_SwiftUIApp",
@@ -38,7 +22,7 @@
   "unsupportedNodes": [
     "ContentView: Unknown name '*'"
   ],
-  "diagnosticCount": 6,
+  "diagnosticCount": 3,
   "degradedCount": 0,
   "ignoredCount": 0,
   "stats": {

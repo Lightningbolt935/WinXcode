@@ -79,6 +79,13 @@ class Env {
     });
   }
 
+  defineGetter(name: string, get: () => V) {
+    this.vars.set(name, {
+      get,
+      set: () => {},
+    });
+  }
+
   alias(name: string, slot: Slot) {
     this.vars.set(name, slot);
   }
@@ -869,6 +876,18 @@ export class Runtime {
   private exec(s: Stmt, env: Env, out: ViewNode[]): Signal | Implicit | undefined {
     switch (s.k) {
       case "decl": {
+        if (s.getter && s.names.length === 1) {
+          const getter = s.getter;
+          env.defineGetter(s.names[0], () => {
+            try {
+              const val = this.runBody(getter, new Env(env, env.self));
+              return val !== null ? val : placeholderFor(s.type);
+            } catch {
+              return placeholderFor(s.type);
+            }
+          });
+          return undefined;
+        }
         let v: V = s.init ? copyValue(this.evalExpr(s.init, env)) : placeholderFor(s.type);
         v = coerce(v, s.type);
         if (s.names.length === 1) env.define(s.names[0], v);
