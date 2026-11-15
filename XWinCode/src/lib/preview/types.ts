@@ -94,6 +94,7 @@ export type Mod =
   | { m: "pickerStyle"; value: string }
   | { m: "textFieldStyle"; value: string }
   | { m: "onTap"; event: string }
+  | { m: "dragGesture"; event: string }
   | { m: "animation"; curve: AnimCurve; value?: string }
   | { m: "transition"; kind: string; edge?: string };
 
@@ -116,7 +117,7 @@ export interface ViewNode {
 
 export interface PreviewEvent {
   id: string;
-  kind: "tap" | "set" | "increment" | "decrement";
+  kind: "tap" | "set" | "increment" | "decrement" | "dragChange" | "dragEnd";
   value?: unknown;
 }
 

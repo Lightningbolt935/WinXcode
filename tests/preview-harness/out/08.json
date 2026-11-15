@@ -2,7 +2,7 @@
   "id": "08",
   "name": "Game",
   "fileCount": 1,
-  "level": "DEGRADED",
+  "level": "CLEAN",
   "parseOk": true,
   "parseErrors": [],
   "renderOk": true,
@@ -11,13 +11,11 @@
     "view:ContentView"
   ],
   "selectedTarget": "preview:0",
-  "notes": [
-    "@behavior:gesture"
-  ],
+  "notes": [],
   "unsupportedNodes": [],
-  "diagnosticCount": 1,
+  "diagnosticCount": 0,
   "degradedCount": 0,
-  "behaviorCount": 1,
+  "behaviorCount": 0,
   "ignoredCount": 0,
   "stats": {
     "views": 15,
@@ -780,6 +778,12 @@
                     "name": "clear"
                   }
                 },
+                "mods": [
+                  {
+                    "m": "dragGesture",
+                    "event": "r.0.2.2.drag0"
+                  }
+                ],
                 "src": [
                   {
                     "f": "corpus/08_game/ContentView.swift",

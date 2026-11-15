@@ -12,14 +12,13 @@
   ],
   "selectedTarget": "preview:0",
   "notes": [
-    "@behavior:gesture",
     "@degraded:toolbar",
     "@degraded:alert"
   ],
   "unsupportedNodes": [],
-  "diagnosticCount": 3,
+  "diagnosticCount": 2,
   "degradedCount": 2,
-  "behaviorCount": 1,
+  "behaviorCount": 0,
   "ignoredCount": 0,
   "stats": {
     "views": 23,
@@ -654,6 +653,10 @@
                 "color": {
                   "name": "white"
                 }
+              },
+              {
+                "m": "dragGesture",
+                "event": "r.0.1.drag1"
               }
             ],
             "src": [

@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-15T13:25:12.638Z",
+  "timestamp": "2026-11-15T15:58:57.176Z",
   "results": [
     {
       "id": "01",
@@ -127,14 +127,13 @@
       "renderOk": true,
       "targetCount": 2,
       "notes": [
-        "@behavior:gesture",
         "@degraded:toolbar",
         "@degraded:alert"
       ],
       "unsupportedNodes": [],
-      "diagnosticCount": 3,
+      "diagnosticCount": 2,
       "degradedCount": 2,
-      "behaviorCount": 1,
+      "behaviorCount": 0,
       "ignoredCount": 0,
       "viewNodeCount": 16,
       "treeDepth": 5,
@@ -173,18 +172,16 @@
     {
       "id": "08",
       "name": "Game",
-      "level": "DEGRADED",
+      "level": "CLEAN",
       "parseOk": true,
       "parseErrorCount": 0,
       "renderOk": true,
       "targetCount": 2,
-      "notes": [
-        "@behavior:gesture"
-      ],
+      "notes": [],
       "unsupportedNodes": [],
-      "diagnosticCount": 1,
+      "diagnosticCount": 0,
       "degradedCount": 0,
-      "behaviorCount": 1,
+      "behaviorCount": 0,
       "ignoredCount": 0,
       "viewNodeCount": 15,
       "treeDepth": 6,
@@ -231,16 +228,15 @@
         "@ignored:accessibilityLabel",
         "@degraded:minimumScaleFactor",
         "@ignored:accessibilityHidden",
-        "@behavior:gesture",
         "@ignored:accessibilityValue",
         "@ignored:accessibilityHint",
         "@ignored:accessibilityAdjustableAction",
         "@ignored:accessibilityElement"
       ],
       "unsupportedNodes": [],
-      "diagnosticCount": 8,
+      "diagnosticCount": 7,
       "degradedCount": 1,
-      "behaviorCount": 1,
+      "behaviorCount": 0,
       "ignoredCount": 6,
       "viewNodeCount": 72,
       "treeDepth": 9,

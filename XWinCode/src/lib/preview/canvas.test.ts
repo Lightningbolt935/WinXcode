@@ -116,4 +116,104 @@ describe("Canvas & Path Runtime", () => {
     expect(result.tree?.type).toBe("Text");
     expect(result.tree?.props.text).toBe("5.0");
   });
+
+  it("dispatches DragGesture events and accumulates points into stroke", () => {
+    const src = `
+      import SwiftUI
+
+      struct Stroke {
+        var points: [CGPoint]
+      }
+
+      struct DragTestView: View {
+        @State private var strokes: [Stroke] = []
+        @State private var currentStroke: Stroke? = nil
+
+        var body: some View {
+          VStack {
+            Text("Strokes: \\(strokes.count), Current: \\(currentStroke?.points.count ?? 0)")
+            Canvas { context, size in
+              for stroke in strokes {
+                var p = Path()
+                if let first = stroke.points.first {
+                  p.move(to: first)
+                  for pt in stroke.points {
+                    p.addLine(to: pt)
+                  }
+                }
+                context.stroke(p, with: .color(.black))
+              }
+            }
+            .gesture(
+              DragGesture(minimumDistance: 0)
+                .onChanged { value in
+                  if currentStroke == nil {
+                    currentStroke = Stroke(points: [value.location])
+                  } else {
+                    currentStroke?.points.append(value.location)
+                  }
+                }
+                .onEnded { _ in
+                  if let stroke = currentStroke {
+                    strokes.append(stroke)
+                    currentStroke = nil
+                  }
+                }
+            )
+          }
+        }
+      }
+    `;
+
+    const rt = new Runtime();
+    rt.setFiles([{ path: "DragTest.swift", src }]);
+    const targets = rt.targets("DragTest.swift");
+    expect(targets.length).toBeGreaterThan(0);
+
+    let res = rt.render("DragTest.swift", targets[0].key);
+    expect(res.errors).toEqual([]);
+
+    // Find the dragGesture mod
+    function findDragMod(node: any): any {
+      const m = (node.mods ?? []).find((mod: any) => mod.m === "dragGesture");
+      if (m) return m;
+      for (const kid of node.children ?? []) {
+        const found = findDragMod(kid);
+        if (found) return found;
+      }
+      return null;
+    }
+
+    const dragMod = findDragMod(res.tree);
+    expect(dragMod).not.toBeNull();
+    const eventId = dragMod.event;
+    expect(eventId).toBeTruthy();
+
+    // 1. Initial state
+    const textNode1 = res.tree?.children?.[0];
+    expect(textNode1?.props?.text).toBe("Strokes: 0, Current: 0");
+
+    // 2. Drag starts at (10, 20)
+    rt.dispatch({ id: eventId, kind: "dragChange", value: { x: 10, y: 20 } });
+    res = rt.render("DragTest.swift", targets[0].key);
+    expect(res.tree?.children?.[0]?.props?.text).toBe("Strokes: 0, Current: 1");
+
+    // 3. Drag moves to (30, 40)
+    rt.dispatch({ id: eventId, kind: "dragChange", value: { x: 30, y: 40 } });
+    res = rt.render("DragTest.swift", targets[0].key);
+    expect(res.tree?.children?.[0]?.props?.text).toBe("Strokes: 0, Current: 2");
+
+    // 4. Drag ends at (50, 60)
+    rt.dispatch({ id: eventId, kind: "dragEnd", value: { x: 50, y: 60 } });
+    res = rt.render("DragTest.swift", targets[0].key);
+    expect(res.tree?.children?.[0]?.props?.text).toBe("Strokes: 1, Current: 0");
+
+    // 5. Canvas now renders the completed stroke path
+    const canvasNode = res.tree?.children?.[1];
+    expect(canvasNode?.type).toBe("Canvas");
+    const commands = (canvasNode?.props?.commands as any[]) ?? [];
+    expect(commands.length).toBe(1);
+    expect(commands[0].type).toBe("stroke");
+    expect(commands[0].d).toContain("M 10 20 L 10 20 L 30 40");
+  });
 });

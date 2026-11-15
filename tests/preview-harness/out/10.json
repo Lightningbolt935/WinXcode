@@ -19,16 +19,15 @@
     "@ignored:accessibilityLabel",
     "@degraded:minimumScaleFactor",
     "@ignored:accessibilityHidden",
-    "@behavior:gesture",
     "@ignored:accessibilityValue",
     "@ignored:accessibilityHint",
     "@ignored:accessibilityAdjustableAction",
     "@ignored:accessibilityElement"
   ],
   "unsupportedNodes": [],
-  "diagnosticCount": 8,
+  "diagnosticCount": 7,
   "degradedCount": 1,
-  "behaviorCount": 1,
+  "behaviorCount": 0,
   "ignoredCount": 6,
   "stats": {
     "views": 72,
@@ -675,6 +674,12 @@
                                     "b": 3198
                                   }
                                 ]
+                              }
+                            ],
+                            "mods": [
+                              {
+                                "m": "dragGesture",
+                                "event": "r.0.0.1.0.2.0.drag0"
                               }
                             ],
                             "src": [

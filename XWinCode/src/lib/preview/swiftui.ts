@@ -23,7 +23,8 @@ import { Dbl, describe, isNum, isT, jsonOf, nodesOf, num, type EvArg, type V } f
 export type Handler =
   | { kind: "tap"; run: () => void }
   | { kind: "set"; run: (value: unknown) => void }
-  | { kind: "step"; inc: () => void; dec: () => void };
+  | { kind: "step"; inc: () => void; dec: () => void }
+  | { kind: "drag"; change: (value: V) => void; end: (value: V) => void };
 
 export interface Ctx {
   call(fn: V, args: V[]): V;
@@ -1048,6 +1049,25 @@ export function applyMod(nodes: ViewNode[], name: string, args: EvArg[], trailin
   const first = arg(args, null);
   const labeled = (label: string) => args.find((a) => a.label === label)?.value;
   const push = (mod: Mod) => nodes.map((n) => ({ ...n, mods: [...(n.mods ?? []), mod] }));
+  if (name === "gesture" || name === "simultaneousGesture" || name === "highPriorityGesture") {
+    if (isT(first ?? null, "gesture") && (first as { kind: string }).kind === "drag") {
+      const g = first as { onChanged?: V; onEnded?: V };
+      const onChangedFn = g.onChanged;
+      const onEndedFn = g.onEnded;
+      return nodes.map((n) => {
+        const mod = attach({ m: "dragGesture" as const, event: "" }, {
+          kind: "drag",
+          change: (val: V) => {
+            if (onChangedFn) ctx.call(onChangedFn, [val]);
+          },
+          end: (val: V) => {
+            if (onEndedFn) ctx.call(onEndedFn, [val]);
+          },
+        });
+        return { ...n, mods: [...(n.mods ?? []), mod] };
+      });
+    }
+  }
   if (IGNORED.has(name)) {
     ctx.note(`@ignored:${name}`);
     return nodes;

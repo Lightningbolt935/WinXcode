@@ -208,6 +208,7 @@ const BUILTIN_TYPES = new Set([
   "Timer",
   "UserDefaults",
   "UIScreen",
+  "DragGesture",
   "UIDevice",
   "ProcessInfo",
   "LocalizedStringKey",
@@ -476,8 +477,26 @@ export class Runtime {
     try {
       if (h.kind === "tap") h.run();
       else if (h.kind === "set") h.run(ev.value);
-      else if (ev.kind === "increment") h.inc();
-      else if (ev.kind === "decrement") h.dec();
+      else if (h.kind === "step") {
+        if (ev.kind === "increment") h.inc();
+        else if (ev.kind === "decrement") h.dec();
+      } else if (h.kind === "drag") {
+        const raw = ev.value as { x?: number; y?: number; startX?: number; startY?: number } | undefined;
+        const x = raw?.x ?? 0;
+        const y = raw?.y ?? 0;
+        const startX = raw?.startX ?? x;
+        const startY = raw?.startY ?? y;
+        const loc: V = { t: "tuple", items: [new Dbl(x), new Dbl(y)], labels: ["x", "y"] };
+        const startLoc: V = { t: "tuple", items: [new Dbl(startX), new Dbl(startY)], labels: ["x", "y"] };
+        const trans: V = { t: "tuple", items: [new Dbl(x - startX), new Dbl(y - startY)], labels: ["width", "height"] };
+        const val: V = {
+          t: "tuple",
+          items: [loc, startLoc, trans],
+          labels: ["location", "startLocation", "translation"],
+        };
+        if (ev.kind === "dragChange") h.change(val);
+        else if (ev.kind === "dragEnd") h.end(val);
+      }
     } catch (e) {
       this.notes.add(e instanceof Error ? e.message : String(e));
     }
@@ -506,6 +525,13 @@ export class Runtime {
         const mh = handlerOf(m);
         if (mh) {
           m.event = `${id}.tap${j}`;
+          this.handlers.set(m.event, mh);
+        }
+      }
+      if (m.m === "dragGesture") {
+        const mh = handlerOf(m);
+        if (mh) {
+          m.event = `${id}.drag${j}`;
           this.handlers.set(m.event, mh);
         }
       }
@@ -1581,6 +1607,17 @@ export class Runtime {
     if (name === "init") return null;
     if (isT(base, "opaque")) return this.opaque(`${base.name}.${name}`);
     if (isT(base, "type")) return this.staticCall(base.name, name, args, trailing, env);
+    if (isT(base, "gesture")) {
+      if (name === "onChanged") {
+        const fn = trailing[0] ?? arg(args, "perform") ?? arg(args, null);
+        return { ...base, onChanged: fn };
+      }
+      if (name === "onEnded") {
+        const fn = trailing[0] ?? arg(args, "perform") ?? arg(args, null);
+        return { ...base, onEnded: fn };
+      }
+      if (name === "updating") return base;
+    }
     if (isT(base, "dispatch_queue")) {
       const fn = trailing[0] ?? arg(args, "execute") ?? arg(args, null);
       if (name === "asyncAfter") {
@@ -2155,6 +2192,10 @@ export class Runtime {
         return views(this.build(trailing[0], [{ t: "tuple", items: [{ t: "date", ms: Date.now() }], labels: ["date"] }]));
       case "Animation":
         return null;
+      case "DragGesture": {
+        const minDist = num(arg(args, "minimumDistance") ?? arg(args, null) ?? 0);
+        return { t: "gesture", kind: "drag", minDistance: minDist };
+      }
     }
     void trailing;
     void env;

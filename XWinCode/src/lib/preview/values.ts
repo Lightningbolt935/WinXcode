@@ -41,6 +41,7 @@ export type V =
   | { t: "dispatch_time"; ms: number }
   | { t: "keypath"; path: string[] }
   | { t: "opaque"; name: string }
+  | { t: "gesture"; kind: string; onChanged?: V; onEnded?: V; minDistance?: number; [key: string]: unknown }
   | PathValue
   | GraphicsContextValue;
 

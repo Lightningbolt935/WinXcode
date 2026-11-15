@@ -256,7 +256,7 @@ function inheritedCss(mods: Mod[] | undefined, env: RenderEnv): CSSProperties {
   return css;
 }
 
-const WRAPPERS = new Set(["padding", "frame", "background", "overlay", "clip", "cornerRadius", "border", "shadow", "opacity", "offset", "rotation", "scale", "hidden", "onTap", "ignoresSafeArea"]);
+const WRAPPERS = new Set(["padding", "frame", "background", "overlay", "clip", "cornerRadius", "border", "shadow", "opacity", "offset", "rotation", "scale", "hidden", "onTap", "dragGesture", "ignoresSafeArea"]);
 
 export const Node = memo(function PreviewNode({ node, env, axis }: { node: ViewNode; env: RenderEnv; axis: "x" | "y" | "z" | "none" }) {
   const inner = useMemo(() => envAfter(env, node.mods), [env, node.mods]);
@@ -412,6 +412,68 @@ function Wrap({ mod, env, ex, children }: { mod: Mod; env: RenderEnv; ex: Expand
     case "onTap":
       return (
         <div style={{ ...base, cursor: "pointer" }} onClick={(e) => (e.stopPropagation(), env.dispatch({ id: mod.event, kind: "tap" }))}>
+          {children}
+        </div>
+      );
+    case "dragGesture":
+      return (
+        <div
+          style={{ ...base, touchAction: "none" }}
+          onPointerDown={(e) => {
+            e.stopPropagation();
+            const target = e.currentTarget;
+            target.setPointerCapture(e.pointerId);
+            const rect = target.getBoundingClientRect();
+            const startX = e.clientX - rect.left;
+            const startY = e.clientY - rect.top;
+            target.dataset.startX = String(startX);
+            target.dataset.startY = String(startY);
+            target.dataset.dragging = "true";
+            env.dispatch({
+              id: mod.event,
+              kind: "dragChange",
+              value: { x: startX, y: startY, startX, startY },
+            });
+          }}
+          onPointerMove={(e) => {
+            const target = e.currentTarget;
+            if (target.dataset.dragging !== "true") return;
+            e.stopPropagation();
+            const rect = target.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const startX = Number(target.dataset.startX ?? x);
+            const startY = Number(target.dataset.startY ?? y);
+            env.dispatch({
+              id: mod.event,
+              kind: "dragChange",
+              value: { x, y, startX, startY },
+            });
+          }}
+          onPointerUp={(e) => {
+            const target = e.currentTarget;
+            if (target.dataset.dragging !== "true") return;
+            e.stopPropagation();
+            target.dataset.dragging = "false";
+            try { target.releasePointerCapture(e.pointerId); } catch {}
+            const rect = target.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const startX = Number(target.dataset.startX ?? x);
+            const startY = Number(target.dataset.startY ?? y);
+            env.dispatch({
+              id: mod.event,
+              kind: "dragEnd",
+              value: { x, y, startX, startY },
+            });
+          }}
+          onPointerCancel={(e) => {
+            const target = e.currentTarget;
+            if (target.dataset.dragging !== "true") return;
+            target.dataset.dragging = "false";
+            try { target.releasePointerCapture(e.pointerId); } catch {}
+          }}
+        >
           {children}
         </div>
       );
