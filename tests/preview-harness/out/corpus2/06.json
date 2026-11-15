@@ -4,7 +4,7 @@
   "source": "Swiftify (Calculator-SwiftUI)",
   "license": "MIT",
   "fileCount": 7,
-  "level": "FAILED",
+  "level": "DEGRADED",
   "parseOk": true,
   "parseErrors": [],
   "renderOk": true,
@@ -19,33 +19,3022 @@
     ".previewDevice()",
     ".previewInterfaceOrientation()"
   ],
-  "unsupportedNodes": [
-    "ContentView: Unknown name '*'"
-  ],
-  "diagnosticCount": 3,
+  "unsupportedNodes": [],
+  "diagnosticCount": 2,
   "degradedCount": 0,
   "behaviorCount": 0,
   "ignoredCount": 0,
   "stats": {
-    "views": 1,
-    "depth": 0,
+    "views": 99,
+    "depth": 7,
     "heavy": 0
   },
-  "treeDepth": 1,
-  "viewNodeCount": 1,
+  "treeDepth": 8,
+  "viewNodeCount": 99,
   "tree": {
     "id": "r",
-    "type": "Unsupported",
+    "type": "VStack",
     "props": {
-      "name": "ContentView: Unknown name '*'"
+      "alignment": "center"
     },
+    "children": [
+      {
+        "id": "r.0",
+        "type": "VStack",
+        "props": {
+          "alignment": "center"
+        },
+        "children": [
+          {
+            "id": "r.0.0",
+            "type": "HStack",
+            "props": {
+              "alignment": "center"
+            },
+            "children": [
+              {
+                "id": "r.0.0.0",
+                "type": "Text",
+                "props": {
+                  "text": " "
+                },
+                "mods": [
+                  {
+                    "m": "frame",
+                    "alignment": "trailing"
+                  },
+                  {
+                    "m": "font",
+                    "font": {
+                      "size": 20,
+                      "weight": "regular"
+                    }
+                  },
+                  {
+                    "m": "align",
+                    "value": "trailing"
+                  },
+                  {
+                    "m": "foreground",
+                    "color": {
+                      "rgba": [
+                        0,
+                        0,
+                        1,
+                        1
+                      ]
+                    }
+                  }
+                ],
+                "src": [
+                  {
+                    "f": "corpus2/06_calculator/ContentView.swift",
+                    "a": 1106,
+                    "b": 1425
+                  }
+                ]
+              },
+              {
+                "id": "r.0.0.1",
+                "type": "Spacer",
+                "props": {},
+                "mods": [
+                  {
+                    "m": "frame"
+                  }
+                ],
+                "src": [
+                  {
+                    "f": "corpus2/06_calculator/ContentView.swift",
+                    "a": 1469,
+                    "b": 1500
+                  }
+                ]
+              },
+              {
+                "id": "r.0.0.2",
+                "type": "Text",
+                "props": {
+                  "text": " "
+                },
+                "mods": [
+                  {
+                    "m": "frame",
+                    "alignment": "trailing"
+                  },
+                  {
+                    "m": "font",
+                    "font": {
+                      "size": 30,
+                      "weight": "regular"
+                    }
+                  },
+                  {
+                    "m": "align",
+                    "value": "trailing"
+                  },
+                  {
+                    "m": "foreground",
+                    "color": {
+                      "rgba": [
+                        1,
+                        1,
+                        1,
+                        1
+                      ]
+                    }
+                  }
+                ],
+                "src": [
+                  {
+                    "f": "corpus2/06_calculator/ContentView.swift",
+                    "a": 1544,
+                    "b": 1849
+                  }
+                ]
+              }
+            ],
+            "mods": [
+              {
+                "m": "frame"
+              }
+            ],
+            "src": [
+              {
+                "f": "corpus2/06_calculator/ContentView.swift",
+                "a": 1074,
+                "b": 1930
+              }
+            ]
+          },
+          {
+            "id": "r.0.1",
+            "type": "Spacer",
+            "props": {},
+            "mods": [
+              {
+                "m": "frame"
+              }
+            ],
+            "src": [
+              {
+                "f": "corpus2/06_calculator/ContentView.swift",
+                "a": 1966,
+                "b": 1998
+              }
+            ]
+          },
+          {
+            "id": "r.0.2",
+            "type": "Text",
+            "props": {
+              "text": "0"
+            },
+            "mods": [
+              {
+                "m": "frame",
+                "alignment": "trailing"
+              },
+              {
+                "m": "font",
+                "font": {
+                  "size": 40,
+                  "weight": "regular"
+                }
+              },
+              {
+                "m": "align",
+                "value": "trailing"
+              },
+              {
+                "m": "foreground",
+                "color": {
+                  "rgba": [
+                    1,
+                    1,
+                    1,
+                    1
+                  ]
+                }
+              }
+            ],
+            "src": [
+              {
+                "f": "corpus2/06_calculator/ContentView.swift",
+                "a": 2034,
+                "b": 2312
+              }
+            ]
+          },
+          {
+            "id": "r.0.3",
+            "type": "Spacer",
+            "props": {},
+            "mods": [
+              {
+                "m": "frame"
+              }
+            ],
+            "src": [
+              {
+                "f": "corpus2/06_calculator/ContentView.swift",
+                "a": 2348,
+                "b": 2380
+              }
+            ]
+          },
+          {
+            "id": "r.0.4",
+            "type": "VStack",
+            "props": {
+              "alignment": "center"
+            },
+            "children": [
+              {
+                "id": "r.0.4.0",
+                "type": "Group",
+                "props": {},
+                "children": [
+                  {
+                    "id": "r.0.4.0.0",
+                    "type": "HStack",
+                    "props": {
+                      "alignment": "center"
+                    },
+                    "children": [
+                      {
+                        "id": "r.0.4.0.0.0",
+                        "type": "Button",
+                        "props": {},
+                        "label": [
+                          {
+                            "id": "r.0.4.0.0.0.l0",
+                            "type": "Text",
+                            "props": {
+                              "text": "C"
+                            },
+                            "mods": [
+                              {
+                                "m": "lineLimit",
+                                "value": 1
+                              },
+                              {
+                                "m": "font",
+                                "font": {
+                                  "size": 30,
+                                  "weight": "regular"
+                                }
+                              },
+                              {
+                                "m": "frame",
+                                "alignment": "center"
+                              }
+                            ],
+                            "src": [
+                              {
+                                "f": "corpus2/06_calculator/ContentView.swift",
+                                "a": 2646,
+                                "b": 2815
+                              }
+                            ]
+                          }
+                        ],
+                        "mods": [
+                          {
+                            "m": "aspect",
+                            "mode": "fill"
+                          },
+                          {
+                            "m": "font",
+                            "font": {
+                              "size": 30,
+                              "weight": "regular"
+                            }
+                          },
+                          {
+                            "m": "tint",
+                            "color": {
+                              "rgba": [
+                                0,
+                                0,
+                                0,
+                                1
+                              ]
+                            }
+                          },
+                          {
+                            "m": "background",
+                            "color": {
+                              "rgba": [
+                                1,
+                                1,
+                                0,
+                                1
+                              ]
+                            }
+                          }
+                        ],
+                        "src": [
+                          {
+                            "f": "corpus2/06_calculator/ContentView.swift",
+                            "a": 2521,
+                            "b": 3143
+                          }
+                        ],
+                        "event": "r.0.4.0.0.0"
+                      },
+                      {
+                        "id": "r.0.4.0.0.1",
+                        "type": "Spacer",
+                        "props": {},
+                        "mods": [
+                          {
+                            "m": "frame"
+                          }
+                        ],
+                        "src": [
+                          {
+                            "f": "corpus2/06_calculator/ContentView.swift",
+                            "a": 3203,
+                            "b": 3234
+                          }
+                        ]
+                      },
+                      {
+                        "id": "r.0.4.0.0.2",
+                        "type": "Button",
+                        "props": {},
+                        "label": [
+                          {
+                            "id": "r.0.4.0.0.2.l0",
+                            "type": "Text",
+                            "props": {
+                              "text": "CE"
+                            },
+                            "mods": [
+                              {
+                                "m": "lineLimit",
+                                "value": 1
+                              },
+                              {
+                                "m": "font",
+                                "font": {
+                                  "size": 30,
+                                  "weight": "regular"
+                                }
+                              },
+                              {
+                                "m": "frame",
+                                "alignment": "center"
+                              }
+                            ],
+                            "src": [
+                              {
+                                "f": "corpus2/06_calculator/ContentView.swift",
+                                "a": 3418,
+                                "b": 3586
+                              }
+                            ]
+                          }
+                        ],
+                        "mods": [
+                          {
+                            "m": "aspect",
+                            "mode": "fill"
+                          },
+                          {
+                            "m": "font",
+                            "font": {
+                              "size": 30,
+                              "weight": "regular"
+                            }
+                          },
+                          {
+                            "m": "tint",
+                            "color": {
+                              "rgba": [
+                                0,
+                                0,
+                                0,
+                                1
+                              ]
+                            }
+                          },
+                          {
+                            "m": "background",
+                            "color": {
+                              "rgba": [
+                                1,
+                                1,
+                                0,
+                                1
+                              ]
+                            }
+                          }
+                        ],
+                        "src": [
+                          {
+                            "f": "corpus2/06_calculator/ContentView.swift",
+                            "a": 3294,
+                            "b": 3914
+                          }
+                        ],
+                        "event": "r.0.4.0.0.2"
+                      },
+                      {
+                        "id": "r.0.4.0.0.3",
+                        "type": "Spacer",
+                        "props": {},
+                        "mods": [
+                          {
+                            "m": "frame"
+                          }
+                        ],
+                        "src": [
+                          {
+                            "f": "corpus2/06_calculator/ContentView.swift",
+                            "a": 3974,
+                            "b": 4005
+                          }
+                        ]
+                      },
+                      {
+                        "id": "r.0.4.0.0.4",
+                        "type": "Button",
+                        "props": {},
+                        "label": [
+                          {
+                            "id": "r.0.4.0.0.4.l0",
+                            "type": "Text",
+                            "props": {
+                              "text": "→M"
+                            },
+                            "mods": [
+                              {
+                                "m": "lineLimit",
+                                "value": 1
+                              },
+                              {
+                                "m": "font",
+                                "font": {
+                                  "size": 30,
+                                  "weight": "regular"
+                                }
+                              },
+                              {
+                                "m": "frame",
+                                "alignment": "center"
+                              }
+                            ],
+                            "src": [
+                              {
+                                "f": "corpus2/06_calculator/ContentView.swift",
+                                "a": 4198,
+                                "b": 4368
+                              }
+                            ]
+                          }
+                        ],
+                        "mods": [
+                          {
+                            "m": "aspect",
+                            "mode": "fill"
+                          },
+                          {
+                            "m": "font",
+                            "font": {
+                              "size": 30,
+                              "weight": "regular"
+                            }
+                          },
+                          {
+                            "m": "tint",
+                            "color": {
+                              "rgba": [
+                                1,
+                                1,
+                                1,
+                                1
+                              ]
+                            }
+                          },
+                          {
+                            "m": "background",
+                            "color": {
+                              "rgba": [
+                                0,
+                                0.47843137,
+                                1,
+                                1
+                              ]
+                            }
+                          }
+                        ],
+                        "src": [
+                          {
+                            "f": "corpus2/06_calculator/ContentView.swift",
+                            "a": 4065,
+                            "b": 4682
+                          }
+                        ],
+                        "event": "r.0.4.0.0.4"
+                      },
+                      {
+                        "id": "r.0.4.0.0.5",
+                        "type": "Spacer",
+                        "props": {},
+                        "mods": [
+                          {
+                            "m": "frame"
+                          }
+                        ],
+                        "src": [
+                          {
+                            "f": "corpus2/06_calculator/ContentView.swift",
+                            "a": 4742,
+                            "b": 4773
+                          }
+                        ]
+                      },
+                      {
+                        "id": "r.0.4.0.0.6",
+                        "type": "Button",
+                        "props": {},
+                        "label": [
+                          {
+                            "id": "r.0.4.0.0.6.l0",
+                            "type": "Text",
+                            "props": {
+                              "text": "M"
+                            },
+                            "mods": [
+                              {
+                                "m": "lineLimit",
+                                "value": 1
+                              },
+                              {
+                                "m": "font",
+                                "font": {
+                                  "size": 30,
+                                  "weight": "regular"
+                                }
+                              },
+                              {
+                                "m": "frame",
+                                "alignment": "center"
+                              }
+                            ],
+                            "src": [
+                              {
+                                "f": "corpus2/06_calculator/ContentView.swift",
+                                "a": 4963,
+                                "b": 5130
+                              }
+                            ]
+                          }
+                        ],
+                        "mods": [
+                          {
+                            "m": "aspect",
+                            "mode": "fill"
+                          },
+                          {
+                            "m": "font",
+                            "font": {
+                              "size": 30,
+                              "weight": "regular"
+                            }
+                          },
+                          {
+                            "m": "tint",
+                            "color": {
+                              "rgba": [
+                                1,
+                                1,
+                                1,
+                                1
+                              ]
+                            }
+                          },
+                          {
+                            "m": "background",
+                            "color": {
+                              "rgba": [
+                                0,
+                                0.47843137,
+                                1,
+                                1
+                              ]
+                            }
+                          }
+                        ],
+                        "src": [
+                          {
+                            "f": "corpus2/06_calculator/ContentView.swift",
+                            "a": 4833,
+                            "b": 5444
+                          }
+                        ],
+                        "event": "r.0.4.0.0.6"
+                      }
+                    ],
+                    "mods": [
+                      {
+                        "m": "frame"
+                      },
+                      {
+                        "m": "tag",
+                        "value": 2
+                      }
+                    ],
+                    "src": [
+                      {
+                        "f": "corpus2/06_calculator/ContentView.swift",
+                        "a": 2481,
+                        "b": 5576
+                      }
+                    ]
+                  },
+                  {
+                    "id": "r.0.4.0.1",
+                    "type": "Spacer",
+                    "props": {},
+                    "mods": [
+                      {
+                        "m": "frame"
+                      }
+                    ],
+                    "src": [
+                      {
+                        "f": "corpus2/06_calculator/ContentView.swift",
+                        "a": 5628,
+                        "b": 5660
+                      }
+                    ]
+                  },
+                  {
+                    "id": "r.0.4.0.2",
+                    "type": "HStack",
+                    "props": {
+                      "alignment": "center"
+                    },
+                    "children": [
+                      {
+                        "id": "r.0.4.0.2.0",
+                        "type": "Group",
+                        "props": {},
+                        "children": [
+                          {
+                            "id": "r.0.4.0.2.0.0",
+                            "type": "Button",
+                            "props": {},
+                            "label": [
+                              {
+                                "id": "r.0.4.0.2.0.0.l0",
+                                "type": "Text",
+                                "props": {
+                                  "text": "√"
+                                },
+                                "mods": [
+                                  {
+                                    "m": "lineLimit",
+                                    "value": 1
+                                  },
+                                  {
+                                    "m": "font",
+                                    "font": {
+                                      "size": 30,
+                                      "weight": "regular"
+                                    }
+                                  },
+                                  {
+                                    "m": "frame",
+                                    "alignment": "center"
+                                  }
+                                ],
+                                "src": [
+                                  {
+                                    "f": "corpus2/06_calculator/ContentView+ButtonBuilders.swift",
+                                    "a": 444,
+                                    "b": 520
+                                  }
+                                ]
+                              }
+                            ],
+                            "mods": [
+                              {
+                                "m": "aspect",
+                                "mode": "fill"
+                              },
+                              {
+                                "m": "font",
+                                "font": {
+                                  "size": 30,
+                                  "weight": "regular"
+                                }
+                              },
+                              {
+                                "m": "tint",
+                                "color": {
+                                  "rgba": [
+                                    0,
+                                    0,
+                                    0,
+                                    1
+                                  ]
+                                }
+                              },
+                              {
+                                "m": "background",
+                                "color": {
+                                  "rgba": [
+                                    0.8392157,
+                                    0.8392157,
+                                    0.8392157,
+                                    1
+                                  ]
+                                }
+                              }
+                            ],
+                            "src": [
+                              {
+                                "f": "corpus2/06_calculator/ContentView+ButtonBuilders.swift",
+                                "a": 241,
+                                "b": 625
+                              },
+                              {
+                                "f": "corpus2/06_calculator/ContentView.swift",
+                                "a": 7853,
+                                "b": 8078
+                              }
+                            ],
+                            "event": "r.0.4.0.2.0.0"
+                          },
+                          {
+                            "id": "r.0.4.0.2.0.1",
+                            "type": "Spacer",
+                            "props": {},
+                            "mods": [
+                              {
+                                "m": "frame"
+                              }
+                            ],
+                            "src": [
+                              {
+                                "f": "corpus2/06_calculator/ContentView.swift",
+                                "a": 8146,
+                                "b": 8177
+                              }
+                            ]
+                          },
+                          {
+                            "id": "r.0.4.0.2.0.2",
+                            "type": "Button",
+                            "props": {},
+                            "label": [
+                              {
+                                "id": "r.0.4.0.2.0.2.l0",
+                                "type": "Text",
+                                "props": {
+                                  "text": "✅"
+                                },
+                                "mods": [
+                                  {
+                                    "m": "lineLimit",
+                                    "value": 1
+                                  },
+                                  {
+                                    "m": "font",
+                                    "font": {
+                                      "size": 30,
+                                      "weight": "regular"
+                                    }
+                                  },
+                                  {
+                                    "m": "frame",
+                                    "alignment": "center"
+                                  }
+                                ],
+                                "src": [
+                                  {
+                                    "f": "corpus2/06_calculator/ContentView+ButtonBuilders.swift",
+                                    "a": 444,
+                                    "b": 520
+                                  }
+                                ]
+                              }
+                            ],
+                            "mods": [
+                              {
+                                "m": "aspect",
+                                "mode": "fill"
+                              },
+                              {
+                                "m": "font",
+                                "font": {
+                                  "size": 30,
+                                  "weight": "regular"
+                                }
+                              },
+                              {
+                                "m": "tint",
+                                "color": {
+                                  "rgba": [
+                                    0,
+                                    0,
+                                    0,
+                                    1
+                                  ]
+                                }
+                              },
+                              {
+                                "m": "background",
+                                "color": {
+                                  "rgba": [
+                                    0.8392157,
+                                    0.8392157,
+                                    0.8392157,
+                                    1
+                                  ]
+                                }
+                              }
+                            ],
+                            "src": [
+                              {
+                                "f": "corpus2/06_calculator/ContentView+ButtonBuilders.swift",
+                                "a": 241,
+                                "b": 625
+                              },
+                              {
+                                "f": "corpus2/06_calculator/ContentView.swift",
+                                "a": 8245,
+                                "b": 8470
+                              }
+                            ],
+                            "event": "r.0.4.0.2.0.2"
+                          },
+                          {
+                            "id": "r.0.4.0.2.0.3",
+                            "type": "Spacer",
+                            "props": {},
+                            "mods": [
+                              {
+                                "m": "frame"
+                              }
+                            ],
+                            "src": [
+                              {
+                                "f": "corpus2/06_calculator/ContentView.swift",
+                                "a": 8538,
+                                "b": 8569
+                              }
+                            ]
+                          }
+                        ],
+                        "src": [
+                          {
+                            "f": "corpus2/06_calculator/ContentView.swift",
+                            "a": 5752,
+                            "b": 8600
+                          }
+                        ]
+                      },
+                      {
+                        "id": "r.0.4.0.2.1",
+                        "type": "Group",
+                        "props": {},
+                        "children": [
+                          {
+                            "id": "r.0.4.0.2.1.0",
+                            "type": "Button",
+                            "props": {},
+                            "label": [
+                              {
+                                "id": "r.0.4.0.2.1.0.l0",
+                                "type": "Text",
+                                "props": {
+                                  "text": "rand"
+                                },
+                                "mods": [
+                                  {
+                                    "m": "lineLimit",
+                                    "value": 1
+                                  },
+                                  {
+                                    "m": "font",
+                                    "font": {
+                                      "size": 30,
+                                      "weight": "regular"
+                                    }
+                                  },
+                                  {
+                                    "m": "frame",
+                                    "alignment": "center"
+                                  }
+                                ],
+                                "src": [
+                                  {
+                                    "f": "corpus2/06_calculator/ContentView+ButtonBuilders.swift",
+                                    "a": 444,
+                                    "b": 520
+                                  }
+                                ]
+                              }
+                            ],
+                            "mods": [
+                              {
+                                "m": "aspect",
+                                "mode": "fill"
+                              },
+                              {
+                                "m": "font",
+                                "font": {
+                                  "size": 30,
+                                  "weight": "regular"
+                                }
+                              },
+                              {
+                                "m": "tint",
+                                "color": {
+                                  "rgba": [
+                                    0,
+                                    0,
+                                    0,
+                                    1
+                                  ]
+                                }
+                              },
+                              {
+                                "m": "background",
+                                "color": {
+                                  "rgba": [
+                                    0.8392157,
+                                    0.8392157,
+                                    0.8392157,
+                                    1
+                                  ]
+                                }
+                              }
+                            ],
+                            "src": [
+                              {
+                                "f": "corpus2/06_calculator/ContentView+ButtonBuilders.swift",
+                                "a": 241,
+                                "b": 625
+                              },
+                              {
+                                "f": "corpus2/06_calculator/ContentView.swift",
+                                "a": 8701,
+                                "b": 8929
+                              }
+                            ],
+                            "event": "r.0.4.0.2.1.0"
+                          },
+                          {
+                            "id": "r.0.4.0.2.1.1",
+                            "type": "Spacer",
+                            "props": {},
+                            "mods": [
+                              {
+                                "m": "frame"
+                              }
+                            ],
+                            "src": [
+                              {
+                                "f": "corpus2/06_calculator/ContentView.swift",
+                                "a": 8997,
+                                "b": 9028
+                              }
+                            ]
+                          },
+                          {
+                            "id": "r.0.4.0.2.1.2",
+                            "type": "Button",
+                            "props": {},
+                            "label": [
+                              {
+                                "id": "r.0.4.0.2.1.2.l0",
+                                "type": "Text",
+                                "props": {
+                                  "text": "÷"
+                                },
+                                "mods": [
+                                  {
+                                    "m": "lineLimit",
+                                    "value": 1
+                                  },
+                                  {
+                                    "m": "font",
+                                    "font": {
+                                      "size": 30,
+                                      "weight": "regular"
+                                    }
+                                  },
+                                  {
+                                    "m": "frame",
+                                    "alignment": "center"
+                                  }
+                                ],
+                                "src": [
+                                  {
+                                    "f": "corpus2/06_calculator/ContentView+ButtonBuilders.swift",
+                                    "a": 444,
+                                    "b": 520
+                                  }
+                                ]
+                              }
+                            ],
+                            "mods": [
+                              {
+                                "m": "aspect",
+                                "mode": "fill"
+                              },
+                              {
+                                "m": "font",
+                                "font": {
+                                  "size": 30,
+                                  "weight": "regular"
+                                }
+                              },
+                              {
+                                "m": "tint",
+                                "color": {
+                                  "rgba": [
+                                    1,
+                                    1,
+                                    1,
+                                    1
+                                  ]
+                                }
+                              },
+                              {
+                                "m": "background",
+                                "color": {
+                                  "rgba": [
+                                    0.95686275,
+                                    0.57254905,
+                                    0.2509804,
+                                    1
+                                  ]
+                                }
+                              }
+                            ],
+                            "src": [
+                              {
+                                "f": "corpus2/06_calculator/ContentView+ButtonBuilders.swift",
+                                "a": 241,
+                                "b": 625
+                              },
+                              {
+                                "f": "corpus2/06_calculator/ContentView.swift",
+                                "a": 9096,
+                                "b": 9323
+                              }
+                            ],
+                            "event": "r.0.4.0.2.1.2"
+                          }
+                        ],
+                        "src": [
+                          {
+                            "f": "corpus2/06_calculator/ContentView.swift",
+                            "a": 8660,
+                            "b": 9354
+                          }
+                        ]
+                      }
+                    ],
+                    "mods": [
+                      {
+                        "m": "frame"
+                      }
+                    ],
+                    "src": [
+                      {
+                        "f": "corpus2/06_calculator/ContentView.swift",
+                        "a": 5712,
+                        "b": 9453
+                      }
+                    ]
+                  },
+                  {
+                    "id": "r.0.4.0.3",
+                    "type": "Spacer",
+                    "props": {},
+                    "mods": [
+                      {
+                        "m": "frame"
+                      }
+                    ],
+                    "src": [
+                      {
+                        "f": "corpus2/06_calculator/ContentView.swift",
+                        "a": 9505,
+                        "b": 9537
+                      }
+                    ]
+                  },
+                  {
+                    "id": "r.0.4.0.4",
+                    "type": "HStack",
+                    "props": {
+                      "alignment": "center"
+                    },
+                    "children": [
+                      {
+                        "id": "r.0.4.0.4.0",
+                        "type": "Group",
+                        "props": {},
+                        "children": [
+                          {
+                            "id": "r.0.4.0.4.0.0",
+                            "type": "Button",
+                            "props": {},
+                            "label": [
+                              {
+                                "id": "r.0.4.0.4.0.0.l0",
+                                "type": "Text",
+                                "props": {
+                                  "text": "7"
+                                },
+                                "mods": [
+                                  {
+                                    "m": "lineLimit",
+                                    "value": 1
+                                  },
+                                  {
+                                    "m": "font",
+                                    "font": {
+                                      "size": 30,
+                                      "weight": "regular"
+                                    }
+                                  },
+                                  {
+                                    "m": "frame",
+                                    "alignment": "center"
+                                  }
+                                ],
+                                "src": [
+                                  {
+                                    "f": "corpus2/06_calculator/ContentView+ButtonBuilders.swift",
+                                    "a": 894,
+                                    "b": 967
+                                  }
+                                ]
+                              }
+                            ],
+                            "mods": [
+                              {
+                                "m": "aspect",
+                                "mode": "fill"
+                              },
+                              {
+                                "m": "font",
+                                "font": {
+                                  "size": 30,
+                                  "weight": "regular"
+                                }
+                              },
+                              {
+                                "m": "tint",
+                                "color": {
+                                  "rgba": [
+                                    0,
+                                    0,
+                                    0,
+                                    1
+                                  ]
+                                }
+                              },
+                              {
+                                "m": "background",
+                                "color": {
+                                  "rgba": [
+                                    0.8784314,
+                                    0.8784314,
+                                    0.8784314,
+                                    1
+                                  ]
+                                }
+                              }
+                            ],
+                            "src": [
+                              {
+                                "f": "corpus2/06_calculator/ContentView+ButtonBuilders.swift",
+                                "a": 710,
+                                "b": 1213
+                              },
+                              {
+                                "f": "corpus2/06_calculator/ContentView.swift",
+                                "a": 10889,
+                                "b": 10912
+                              }
+                            ],
+                            "event": "r.0.4.0.4.0.0"
+                          },
+                          {
+                            "id": "r.0.4.0.4.0.1",
+                            "type": "Spacer",
+                            "props": {},
+                            "mods": [
+                              {
+                                "m": "frame"
+                              }
+                            ],
+                            "src": [
+                              {
+                                "f": "corpus2/06_calculator/ContentView.swift",
+                                "a": 10980,
+                                "b": 11011
+                              }
+                            ]
+                          },
+                          {
+                            "id": "r.0.4.0.4.0.2",
+                            "type": "Button",
+                            "props": {},
+                            "label": [
+                              {
+                                "id": "r.0.4.0.4.0.2.l0",
+                                "type": "Text",
+                                "props": {
+                                  "text": "8"
+                                },
+                                "mods": [
+                                  {
+                                    "m": "lineLimit",
+                                    "value": 1
+                                  },
+                                  {
+                                    "m": "font",
+                                    "font": {
+                                      "size": 30,
+                                      "weight": "regular"
+                                    }
+                                  },
+                                  {
+                                    "m": "frame",
+                                    "alignment": "center"
+                                  }
+                                ],
+                                "src": [
+                                  {
+                                    "f": "corpus2/06_calculator/ContentView+ButtonBuilders.swift",
+                                    "a": 894,
+                                    "b": 967
+                                  }
+                                ]
+                              }
+                            ],
+                            "mods": [
+                              {
+                                "m": "aspect",
+                                "mode": "fill"
+                              },
+                              {
+                                "m": "font",
+                                "font": {
+                                  "size": 30,
+                                  "weight": "regular"
+                                }
+                              },
+                              {
+                                "m": "tint",
+                                "color": {
+                                  "rgba": [
+                                    0,
+                                    0,
+                                    0,
+                                    1
+                                  ]
+                                }
+                              },
+                              {
+                                "m": "background",
+                                "color": {
+                                  "rgba": [
+                                    0.8784314,
+                                    0.8784314,
+                                    0.8784314,
+                                    1
+                                  ]
+                                }
+                              }
+                            ],
+                            "src": [
+                              {
+                                "f": "corpus2/06_calculator/ContentView+ButtonBuilders.swift",
+                                "a": 710,
+                                "b": 1213
+                              },
+                              {
+                                "f": "corpus2/06_calculator/ContentView.swift",
+                                "a": 11079,
+                                "b": 11102
+                              }
+                            ],
+                            "event": "r.0.4.0.4.0.2"
+                          },
+                          {
+                            "id": "r.0.4.0.4.0.3",
+                            "type": "Spacer",
+                            "props": {},
+                            "mods": [
+                              {
+                                "m": "frame"
+                              }
+                            ],
+                            "src": [
+                              {
+                                "f": "corpus2/06_calculator/ContentView.swift",
+                                "a": 11170,
+                                "b": 11201
+                              }
+                            ]
+                          }
+                        ],
+                        "src": [
+                          {
+                            "f": "corpus2/06_calculator/ContentView.swift",
+                            "a": 9629,
+                            "b": 11232
+                          }
+                        ]
+                      },
+                      {
+                        "id": "r.0.4.0.4.1",
+                        "type": "Group",
+                        "props": {},
+                        "children": [
+                          {
+                            "id": "r.0.4.0.4.1.0",
+                            "type": "Button",
+                            "props": {},
+                            "label": [
+                              {
+                                "id": "r.0.4.0.4.1.0.l0",
+                                "type": "Text",
+                                "props": {
+                                  "text": "9"
+                                },
+                                "mods": [
+                                  {
+                                    "m": "lineLimit",
+                                    "value": 1
+                                  },
+                                  {
+                                    "m": "font",
+                                    "font": {
+                                      "size": 30,
+                                      "weight": "regular"
+                                    }
+                                  },
+                                  {
+                                    "m": "frame",
+                                    "alignment": "center"
+                                  }
+                                ],
+                                "src": [
+                                  {
+                                    "f": "corpus2/06_calculator/ContentView+ButtonBuilders.swift",
+                                    "a": 894,
+                                    "b": 967
+                                  }
+                                ]
+                              }
+                            ],
+                            "mods": [
+                              {
+                                "m": "aspect",
+                                "mode": "fill"
+                              },
+                              {
+                                "m": "font",
+                                "font": {
+                                  "size": 30,
+                                  "weight": "regular"
+                                }
+                              },
+                              {
+                                "m": "tint",
+                                "color": {
+                                  "rgba": [
+                                    0,
+                                    0,
+                                    0,
+                                    1
+                                  ]
+                                }
+                              },
+                              {
+                                "m": "background",
+                                "color": {
+                                  "rgba": [
+                                    0.8784314,
+                                    0.8784314,
+                                    0.8784314,
+                                    1
+                                  ]
+                                }
+                              }
+                            ],
+                            "src": [
+                              {
+                                "f": "corpus2/06_calculator/ContentView+ButtonBuilders.swift",
+                                "a": 710,
+                                "b": 1213
+                              },
+                              {
+                                "f": "corpus2/06_calculator/ContentView.swift",
+                                "a": 11333,
+                                "b": 11356
+                              }
+                            ],
+                            "event": "r.0.4.0.4.1.0"
+                          },
+                          {
+                            "id": "r.0.4.0.4.1.1",
+                            "type": "Spacer",
+                            "props": {},
+                            "mods": [
+                              {
+                                "m": "frame"
+                              }
+                            ],
+                            "src": [
+                              {
+                                "f": "corpus2/06_calculator/ContentView.swift",
+                                "a": 11424,
+                                "b": 11455
+                              }
+                            ]
+                          },
+                          {
+                            "id": "r.0.4.0.4.1.2",
+                            "type": "Button",
+                            "props": {},
+                            "label": [
+                              {
+                                "id": "r.0.4.0.4.1.2.l0",
+                                "type": "Text",
+                                "props": {
+                                  "text": "×"
+                                },
+                                "mods": [
+                                  {
+                                    "m": "lineLimit",
+                                    "value": 1
+                                  },
+                                  {
+                                    "m": "font",
+                                    "font": {
+                                      "size": 30,
+                                      "weight": "regular"
+                                    }
+                                  },
+                                  {
+                                    "m": "frame",
+                                    "alignment": "center"
+                                  }
+                                ],
+                                "src": [
+                                  {
+                                    "f": "corpus2/06_calculator/ContentView+ButtonBuilders.swift",
+                                    "a": 444,
+                                    "b": 520
+                                  }
+                                ]
+                              }
+                            ],
+                            "mods": [
+                              {
+                                "m": "aspect",
+                                "mode": "fill"
+                              },
+                              {
+                                "m": "font",
+                                "font": {
+                                  "size": 30,
+                                  "weight": "regular"
+                                }
+                              },
+                              {
+                                "m": "tint",
+                                "color": {
+                                  "rgba": [
+                                    1,
+                                    1,
+                                    1,
+                                    1
+                                  ]
+                                }
+                              },
+                              {
+                                "m": "background",
+                                "color": {
+                                  "rgba": [
+                                    0.95686275,
+                                    0.57254905,
+                                    0.2509804,
+                                    1
+                                  ]
+                                }
+                              }
+                            ],
+                            "src": [
+                              {
+                                "f": "corpus2/06_calculator/ContentView+ButtonBuilders.swift",
+                                "a": 241,
+                                "b": 625
+                              },
+                              {
+                                "f": "corpus2/06_calculator/ContentView.swift",
+                                "a": 11523,
+                                "b": 11750
+                              }
+                            ],
+                            "event": "r.0.4.0.4.1.2"
+                          }
+                        ],
+                        "src": [
+                          {
+                            "f": "corpus2/06_calculator/ContentView.swift",
+                            "a": 11292,
+                            "b": 11781
+                          }
+                        ]
+                      }
+                    ],
+                    "mods": [
+                      {
+                        "m": "frame"
+                      }
+                    ],
+                    "src": [
+                      {
+                        "f": "corpus2/06_calculator/ContentView.swift",
+                        "a": 9589,
+                        "b": 11880
+                      }
+                    ]
+                  },
+                  {
+                    "id": "r.0.4.0.5",
+                    "type": "Spacer",
+                    "props": {},
+                    "mods": [
+                      {
+                        "m": "frame"
+                      }
+                    ],
+                    "src": [
+                      {
+                        "f": "corpus2/06_calculator/ContentView.swift",
+                        "a": 11932,
+                        "b": 11964
+                      }
+                    ]
+                  },
+                  {
+                    "id": "r.0.4.0.6",
+                    "type": "HStack",
+                    "props": {
+                      "alignment": "center"
+                    },
+                    "children": [
+                      {
+                        "id": "r.0.4.0.6.0",
+                        "type": "Group",
+                        "props": {},
+                        "children": [
+                          {
+                            "id": "r.0.4.0.6.0.0",
+                            "type": "Button",
+                            "props": {},
+                            "label": [
+                              {
+                                "id": "r.0.4.0.6.0.0.l0",
+                                "type": "Text",
+                                "props": {
+                                  "text": "4"
+                                },
+                                "mods": [
+                                  {
+                                    "m": "lineLimit",
+                                    "value": 1
+                                  },
+                                  {
+                                    "m": "font",
+                                    "font": {
+                                      "size": 30,
+                                      "weight": "regular"
+                                    }
+                                  },
+                                  {
+                                    "m": "frame",
+                                    "alignment": "center"
+                                  }
+                                ],
+                                "src": [
+                                  {
+                                    "f": "corpus2/06_calculator/ContentView+ButtonBuilders.swift",
+                                    "a": 894,
+                                    "b": 967
+                                  }
+                                ]
+                              }
+                            ],
+                            "mods": [
+                              {
+                                "m": "aspect",
+                                "mode": "fill"
+                              },
+                              {
+                                "m": "font",
+                                "font": {
+                                  "size": 30,
+                                  "weight": "regular"
+                                }
+                              },
+                              {
+                                "m": "tint",
+                                "color": {
+                                  "rgba": [
+                                    0,
+                                    0,
+                                    0,
+                                    1
+                                  ]
+                                }
+                              },
+                              {
+                                "m": "background",
+                                "color": {
+                                  "rgba": [
+                                    0.8784314,
+                                    0.8784314,
+                                    0.8784314,
+                                    1
+                                  ]
+                                }
+                              }
+                            ],
+                            "src": [
+                              {
+                                "f": "corpus2/06_calculator/ContentView+ButtonBuilders.swift",
+                                "a": 710,
+                                "b": 1213
+                              },
+                              {
+                                "f": "corpus2/06_calculator/ContentView.swift",
+                                "a": 13317,
+                                "b": 13340
+                              }
+                            ],
+                            "event": "r.0.4.0.6.0.0"
+                          },
+                          {
+                            "id": "r.0.4.0.6.0.1",
+                            "type": "Spacer",
+                            "props": {},
+                            "mods": [
+                              {
+                                "m": "frame"
+                              }
+                            ],
+                            "src": [
+                              {
+                                "f": "corpus2/06_calculator/ContentView.swift",
+                                "a": 13408,
+                                "b": 13439
+                              }
+                            ]
+                          },
+                          {
+                            "id": "r.0.4.0.6.0.2",
+                            "type": "Button",
+                            "props": {},
+                            "label": [
+                              {
+                                "id": "r.0.4.0.6.0.2.l0",
+                                "type": "Text",
+                                "props": {
+                                  "text": "5"
+                                },
+                                "mods": [
+                                  {
+                                    "m": "lineLimit",
+                                    "value": 1
+                                  },
+                                  {
+                                    "m": "font",
+                                    "font": {
+                                      "size": 30,
+                                      "weight": "regular"
+                                    }
+                                  },
+                                  {
+                                    "m": "frame",
+                                    "alignment": "center"
+                                  }
+                                ],
+                                "src": [
+                                  {
+                                    "f": "corpus2/06_calculator/ContentView+ButtonBuilders.swift",
+                                    "a": 894,
+                                    "b": 967
+                                  }
+                                ]
+                              }
+                            ],
+                            "mods": [
+                              {
+                                "m": "aspect",
+                                "mode": "fill"
+                              },
+                              {
+                                "m": "font",
+                                "font": {
+                                  "size": 30,
+                                  "weight": "regular"
+                                }
+                              },
+                              {
+                                "m": "tint",
+                                "color": {
+                                  "rgba": [
+                                    0,
+                                    0,
+                                    0,
+                                    1
+                                  ]
+                                }
+                              },
+                              {
+                                "m": "background",
+                                "color": {
+                                  "rgba": [
+                                    0.8784314,
+                                    0.8784314,
+                                    0.8784314,
+                                    1
+                                  ]
+                                }
+                              }
+                            ],
+                            "src": [
+                              {
+                                "f": "corpus2/06_calculator/ContentView+ButtonBuilders.swift",
+                                "a": 710,
+                                "b": 1213
+                              },
+                              {
+                                "f": "corpus2/06_calculator/ContentView.swift",
+                                "a": 13507,
+                                "b": 13530
+                              }
+                            ],
+                            "event": "r.0.4.0.6.0.2"
+                          },
+                          {
+                            "id": "r.0.4.0.6.0.3",
+                            "type": "Spacer",
+                            "props": {},
+                            "mods": [
+                              {
+                                "m": "frame"
+                              }
+                            ],
+                            "src": [
+                              {
+                                "f": "corpus2/06_calculator/ContentView.swift",
+                                "a": 13598,
+                                "b": 13629
+                              }
+                            ]
+                          }
+                        ],
+                        "src": [
+                          {
+                            "f": "corpus2/06_calculator/ContentView.swift",
+                            "a": 12056,
+                            "b": 13660
+                          }
+                        ]
+                      },
+                      {
+                        "id": "r.0.4.0.6.1",
+                        "type": "Group",
+                        "props": {},
+                        "children": [
+                          {
+                            "id": "r.0.4.0.6.1.0",
+                            "type": "Button",
+                            "props": {},
+                            "label": [
+                              {
+                                "id": "r.0.4.0.6.1.0.l0",
+                                "type": "Text",
+                                "props": {
+                                  "text": "6"
+                                },
+                                "mods": [
+                                  {
+                                    "m": "lineLimit",
+                                    "value": 1
+                                  },
+                                  {
+                                    "m": "font",
+                                    "font": {
+                                      "size": 30,
+                                      "weight": "regular"
+                                    }
+                                  },
+                                  {
+                                    "m": "frame",
+                                    "alignment": "center"
+                                  }
+                                ],
+                                "src": [
+                                  {
+                                    "f": "corpus2/06_calculator/ContentView+ButtonBuilders.swift",
+                                    "a": 894,
+                                    "b": 967
+                                  }
+                                ]
+                              }
+                            ],
+                            "mods": [
+                              {
+                                "m": "aspect",
+                                "mode": "fill"
+                              },
+                              {
+                                "m": "font",
+                                "font": {
+                                  "size": 30,
+                                  "weight": "regular"
+                                }
+                              },
+                              {
+                                "m": "tint",
+                                "color": {
+                                  "rgba": [
+                                    0,
+                                    0,
+                                    0,
+                                    1
+                                  ]
+                                }
+                              },
+                              {
+                                "m": "background",
+                                "color": {
+                                  "rgba": [
+                                    0.8784314,
+                                    0.8784314,
+                                    0.8784314,
+                                    1
+                                  ]
+                                }
+                              }
+                            ],
+                            "src": [
+                              {
+                                "f": "corpus2/06_calculator/ContentView+ButtonBuilders.swift",
+                                "a": 710,
+                                "b": 1213
+                              },
+                              {
+                                "f": "corpus2/06_calculator/ContentView.swift",
+                                "a": 13761,
+                                "b": 13784
+                              }
+                            ],
+                            "event": "r.0.4.0.6.1.0"
+                          },
+                          {
+                            "id": "r.0.4.0.6.1.1",
+                            "type": "Spacer",
+                            "props": {},
+                            "mods": [
+                              {
+                                "m": "frame"
+                              }
+                            ],
+                            "src": [
+                              {
+                                "f": "corpus2/06_calculator/ContentView.swift",
+                                "a": 13852,
+                                "b": 13883
+                              }
+                            ]
+                          },
+                          {
+                            "id": "r.0.4.0.6.1.2",
+                            "type": "Button",
+                            "props": {},
+                            "label": [
+                              {
+                                "id": "r.0.4.0.6.1.2.l0",
+                                "type": "Text",
+                                "props": {
+                                  "text": "-"
+                                },
+                                "mods": [
+                                  {
+                                    "m": "lineLimit",
+                                    "value": 1
+                                  },
+                                  {
+                                    "m": "font",
+                                    "font": {
+                                      "size": 30,
+                                      "weight": "regular"
+                                    }
+                                  },
+                                  {
+                                    "m": "frame",
+                                    "alignment": "center"
+                                  }
+                                ],
+                                "src": [
+                                  {
+                                    "f": "corpus2/06_calculator/ContentView+ButtonBuilders.swift",
+                                    "a": 444,
+                                    "b": 520
+                                  }
+                                ]
+                              }
+                            ],
+                            "mods": [
+                              {
+                                "m": "aspect",
+                                "mode": "fill"
+                              },
+                              {
+                                "m": "font",
+                                "font": {
+                                  "size": 30,
+                                  "weight": "regular"
+                                }
+                              },
+                              {
+                                "m": "tint",
+                                "color": {
+                                  "rgba": [
+                                    1,
+                                    1,
+                                    1,
+                                    1
+                                  ]
+                                }
+                              },
+                              {
+                                "m": "background",
+                                "color": {
+                                  "rgba": [
+                                    0.95686275,
+                                    0.57254905,
+                                    0.2509804,
+                                    1
+                                  ]
+                                }
+                              }
+                            ],
+                            "src": [
+                              {
+                                "f": "corpus2/06_calculator/ContentView+ButtonBuilders.swift",
+                                "a": 241,
+                                "b": 625
+                              },
+                              {
+                                "f": "corpus2/06_calculator/ContentView.swift",
+                                "a": 13951,
+                                "b": 14178
+                              }
+                            ],
+                            "event": "r.0.4.0.6.1.2"
+                          }
+                        ],
+                        "src": [
+                          {
+                            "f": "corpus2/06_calculator/ContentView.swift",
+                            "a": 13720,
+                            "b": 14209
+                          }
+                        ]
+                      }
+                    ],
+                    "mods": [
+                      {
+                        "m": "frame"
+                      }
+                    ],
+                    "src": [
+                      {
+                        "f": "corpus2/06_calculator/ContentView.swift",
+                        "a": 12016,
+                        "b": 14308
+                      }
+                    ]
+                  },
+                  {
+                    "id": "r.0.4.0.7",
+                    "type": "Spacer",
+                    "props": {},
+                    "mods": [
+                      {
+                        "m": "frame"
+                      }
+                    ],
+                    "src": [
+                      {
+                        "f": "corpus2/06_calculator/ContentView.swift",
+                        "a": 14360,
+                        "b": 14392
+                      }
+                    ]
+                  },
+                  {
+                    "id": "r.0.4.0.8",
+                    "type": "HStack",
+                    "props": {
+                      "alignment": "center"
+                    },
+                    "children": [
+                      {
+                        "id": "r.0.4.0.8.0",
+                        "type": "Group",
+                        "props": {},
+                        "children": [
+                          {
+                            "id": "r.0.4.0.8.0.0",
+                            "type": "Button",
+                            "props": {},
+                            "label": [
+                              {
+                                "id": "r.0.4.0.8.0.0.l0",
+                                "type": "Text",
+                                "props": {
+                                  "text": "1"
+                                },
+                                "mods": [
+                                  {
+                                    "m": "lineLimit",
+                                    "value": 1
+                                  },
+                                  {
+                                    "m": "font",
+                                    "font": {
+                                      "size": 30,
+                                      "weight": "regular"
+                                    }
+                                  },
+                                  {
+                                    "m": "frame",
+                                    "alignment": "center"
+                                  }
+                                ],
+                                "src": [
+                                  {
+                                    "f": "corpus2/06_calculator/ContentView+ButtonBuilders.swift",
+                                    "a": 894,
+                                    "b": 967
+                                  }
+                                ]
+                              }
+                            ],
+                            "mods": [
+                              {
+                                "m": "aspect",
+                                "mode": "fill"
+                              },
+                              {
+                                "m": "font",
+                                "font": {
+                                  "size": 30,
+                                  "weight": "regular"
+                                }
+                              },
+                              {
+                                "m": "tint",
+                                "color": {
+                                  "rgba": [
+                                    0,
+                                    0,
+                                    0,
+                                    1
+                                  ]
+                                }
+                              },
+                              {
+                                "m": "background",
+                                "color": {
+                                  "rgba": [
+                                    0.8784314,
+                                    0.8784314,
+                                    0.8784314,
+                                    1
+                                  ]
+                                }
+                              }
+                            ],
+                            "src": [
+                              {
+                                "f": "corpus2/06_calculator/ContentView+ButtonBuilders.swift",
+                                "a": 710,
+                                "b": 1213
+                              },
+                              {
+                                "f": "corpus2/06_calculator/ContentView.swift",
+                                "a": 15713,
+                                "b": 15736
+                              }
+                            ],
+                            "event": "r.0.4.0.8.0.0"
+                          },
+                          {
+                            "id": "r.0.4.0.8.0.1",
+                            "type": "Spacer",
+                            "props": {},
+                            "mods": [
+                              {
+                                "m": "frame"
+                              }
+                            ],
+                            "src": [
+                              {
+                                "f": "corpus2/06_calculator/ContentView.swift",
+                                "a": 15804,
+                                "b": 15835
+                              }
+                            ]
+                          },
+                          {
+                            "id": "r.0.4.0.8.0.2",
+                            "type": "Button",
+                            "props": {},
+                            "label": [
+                              {
+                                "id": "r.0.4.0.8.0.2.l0",
+                                "type": "Text",
+                                "props": {
+                                  "text": "2"
+                                },
+                                "mods": [
+                                  {
+                                    "m": "lineLimit",
+                                    "value": 1
+                                  },
+                                  {
+                                    "m": "font",
+                                    "font": {
+                                      "size": 30,
+                                      "weight": "regular"
+                                    }
+                                  },
+                                  {
+                                    "m": "frame",
+                                    "alignment": "center"
+                                  }
+                                ],
+                                "src": [
+                                  {
+                                    "f": "corpus2/06_calculator/ContentView+ButtonBuilders.swift",
+                                    "a": 894,
+                                    "b": 967
+                                  }
+                                ]
+                              }
+                            ],
+                            "mods": [
+                              {
+                                "m": "aspect",
+                                "mode": "fill"
+                              },
+                              {
+                                "m": "font",
+                                "font": {
+                                  "size": 30,
+                                  "weight": "regular"
+                                }
+                              },
+                              {
+                                "m": "tint",
+                                "color": {
+                                  "rgba": [
+                                    0,
+                                    0,
+                                    0,
+                                    1
+                                  ]
+                                }
+                              },
+                              {
+                                "m": "background",
+                                "color": {
+                                  "rgba": [
+                                    0.8784314,
+                                    0.8784314,
+                                    0.8784314,
+                                    1
+                                  ]
+                                }
+                              }
+                            ],
+                            "src": [
+                              {
+                                "f": "corpus2/06_calculator/ContentView+ButtonBuilders.swift",
+                                "a": 710,
+                                "b": 1213
+                              },
+                              {
+                                "f": "corpus2/06_calculator/ContentView.swift",
+                                "a": 15903,
+                                "b": 15926
+                              }
+                            ],
+                            "event": "r.0.4.0.8.0.2"
+                          },
+                          {
+                            "id": "r.0.4.0.8.0.3",
+                            "type": "Spacer",
+                            "props": {},
+                            "mods": [
+                              {
+                                "m": "frame"
+                              }
+                            ],
+                            "src": [
+                              {
+                                "f": "corpus2/06_calculator/ContentView.swift",
+                                "a": 15994,
+                                "b": 16025
+                              }
+                            ]
+                          }
+                        ],
+                        "src": [
+                          {
+                            "f": "corpus2/06_calculator/ContentView.swift",
+                            "a": 14484,
+                            "b": 16056
+                          }
+                        ]
+                      },
+                      {
+                        "id": "r.0.4.0.8.1",
+                        "type": "Group",
+                        "props": {},
+                        "children": [
+                          {
+                            "id": "r.0.4.0.8.1.0",
+                            "type": "Button",
+                            "props": {},
+                            "label": [
+                              {
+                                "id": "r.0.4.0.8.1.0.l0",
+                                "type": "Text",
+                                "props": {
+                                  "text": "3"
+                                },
+                                "mods": [
+                                  {
+                                    "m": "lineLimit",
+                                    "value": 1
+                                  },
+                                  {
+                                    "m": "font",
+                                    "font": {
+                                      "size": 30,
+                                      "weight": "regular"
+                                    }
+                                  },
+                                  {
+                                    "m": "frame",
+                                    "alignment": "center"
+                                  }
+                                ],
+                                "src": [
+                                  {
+                                    "f": "corpus2/06_calculator/ContentView+ButtonBuilders.swift",
+                                    "a": 894,
+                                    "b": 967
+                                  }
+                                ]
+                              }
+                            ],
+                            "mods": [
+                              {
+                                "m": "aspect",
+                                "mode": "fill"
+                              },
+                              {
+                                "m": "font",
+                                "font": {
+                                  "size": 30,
+                                  "weight": "regular"
+                                }
+                              },
+                              {
+                                "m": "tint",
+                                "color": {
+                                  "rgba": [
+                                    0,
+                                    0,
+                                    0,
+                                    1
+                                  ]
+                                }
+                              },
+                              {
+                                "m": "background",
+                                "color": {
+                                  "rgba": [
+                                    0.8784314,
+                                    0.8784314,
+                                    0.8784314,
+                                    1
+                                  ]
+                                }
+                              }
+                            ],
+                            "src": [
+                              {
+                                "f": "corpus2/06_calculator/ContentView+ButtonBuilders.swift",
+                                "a": 710,
+                                "b": 1213
+                              },
+                              {
+                                "f": "corpus2/06_calculator/ContentView.swift",
+                                "a": 16157,
+                                "b": 16180
+                              }
+                            ],
+                            "event": "r.0.4.0.8.1.0"
+                          },
+                          {
+                            "id": "r.0.4.0.8.1.1",
+                            "type": "Spacer",
+                            "props": {},
+                            "mods": [
+                              {
+                                "m": "frame"
+                              }
+                            ],
+                            "src": [
+                              {
+                                "f": "corpus2/06_calculator/ContentView.swift",
+                                "a": 16248,
+                                "b": 16279
+                              }
+                            ]
+                          },
+                          {
+                            "id": "r.0.4.0.8.1.2",
+                            "type": "Button",
+                            "props": {},
+                            "label": [
+                              {
+                                "id": "r.0.4.0.8.1.2.l0",
+                                "type": "Text",
+                                "props": {
+                                  "text": "+"
+                                },
+                                "mods": [
+                                  {
+                                    "m": "lineLimit",
+                                    "value": 1
+                                  },
+                                  {
+                                    "m": "font",
+                                    "font": {
+                                      "size": 30,
+                                      "weight": "regular"
+                                    }
+                                  },
+                                  {
+                                    "m": "frame",
+                                    "alignment": "center"
+                                  }
+                                ],
+                                "src": [
+                                  {
+                                    "f": "corpus2/06_calculator/ContentView+ButtonBuilders.swift",
+                                    "a": 444,
+                                    "b": 520
+                                  }
+                                ]
+                              }
+                            ],
+                            "mods": [
+                              {
+                                "m": "aspect",
+                                "mode": "fill"
+                              },
+                              {
+                                "m": "font",
+                                "font": {
+                                  "size": 30,
+                                  "weight": "regular"
+                                }
+                              },
+                              {
+                                "m": "tint",
+                                "color": {
+                                  "rgba": [
+                                    1,
+                                    1,
+                                    1,
+                                    1
+                                  ]
+                                }
+                              },
+                              {
+                                "m": "background",
+                                "color": {
+                                  "rgba": [
+                                    0.95686275,
+                                    0.57254905,
+                                    0.2509804,
+                                    1
+                                  ]
+                                }
+                              }
+                            ],
+                            "src": [
+                              {
+                                "f": "corpus2/06_calculator/ContentView+ButtonBuilders.swift",
+                                "a": 241,
+                                "b": 625
+                              },
+                              {
+                                "f": "corpus2/06_calculator/ContentView.swift",
+                                "a": 16347,
+                                "b": 16574
+                              }
+                            ],
+                            "event": "r.0.4.0.8.1.2"
+                          }
+                        ],
+                        "src": [
+                          {
+                            "f": "corpus2/06_calculator/ContentView.swift",
+                            "a": 16116,
+                            "b": 16605
+                          }
+                        ]
+                      }
+                    ],
+                    "mods": [
+                      {
+                        "m": "frame"
+                      }
+                    ],
+                    "src": [
+                      {
+                        "f": "corpus2/06_calculator/ContentView.swift",
+                        "a": 14444,
+                        "b": 16704
+                      }
+                    ]
+                  },
+                  {
+                    "id": "r.0.4.0.9",
+                    "type": "Spacer",
+                    "props": {},
+                    "mods": [
+                      {
+                        "m": "frame"
+                      }
+                    ],
+                    "src": [
+                      {
+                        "f": "corpus2/06_calculator/ContentView.swift",
+                        "a": 16756,
+                        "b": 16788
+                      }
+                    ]
+                  }
+                ],
+                "src": [
+                  {
+                    "f": "corpus2/06_calculator/ContentView.swift",
+                    "a": 2448,
+                    "b": 16811
+                  }
+                ]
+              },
+              {
+                "id": "r.0.4.1",
+                "type": "Group",
+                "props": {},
+                "children": [
+                  {
+                    "id": "r.0.4.1.0",
+                    "type": "HStack",
+                    "props": {
+                      "alignment": "center"
+                    },
+                    "children": [
+                      {
+                        "id": "r.0.4.1.0.0",
+                        "type": "Group",
+                        "props": {},
+                        "children": [
+                          {
+                            "id": "r.0.4.1.0.0.0",
+                            "type": "Button",
+                            "props": {},
+                            "label": [
+                              {
+                                "id": "r.0.4.1.0.0.0.l0",
+                                "type": "Text",
+                                "props": {
+                                  "text": "±"
+                                },
+                                "mods": [
+                                  {
+                                    "m": "lineLimit",
+                                    "value": 1
+                                  },
+                                  {
+                                    "m": "font",
+                                    "font": {
+                                      "size": 30,
+                                      "weight": "regular"
+                                    }
+                                  },
+                                  {
+                                    "m": "frame",
+                                    "alignment": "center"
+                                  }
+                                ],
+                                "src": [
+                                  {
+                                    "f": "corpus2/06_calculator/ContentView+ButtonBuilders.swift",
+                                    "a": 444,
+                                    "b": 520
+                                  }
+                                ]
+                              }
+                            ],
+                            "mods": [
+                              {
+                                "m": "aspect",
+                                "mode": "fill"
+                              },
+                              {
+                                "m": "font",
+                                "font": {
+                                  "size": 30,
+                                  "weight": "regular"
+                                }
+                              },
+                              {
+                                "m": "tint",
+                                "color": {
+                                  "rgba": [
+                                    1,
+                                    1,
+                                    1,
+                                    1
+                                  ]
+                                }
+                              },
+                              {
+                                "m": "background",
+                                "color": {
+                                  "rgba": [
+                                    0.95686275,
+                                    0.57254905,
+                                    0.2509804,
+                                    1
+                                  ]
+                                }
+                              }
+                            ],
+                            "src": [
+                              {
+                                "f": "corpus2/06_calculator/ContentView+ButtonBuilders.swift",
+                                "a": 241,
+                                "b": 625
+                              },
+                              {
+                                "f": "corpus2/06_calculator/ContentView.swift",
+                                "a": 18158,
+                                "b": 18385
+                              }
+                            ],
+                            "event": "r.0.4.1.0.0.0"
+                          },
+                          {
+                            "id": "r.0.4.1.0.0.1",
+                            "type": "Spacer",
+                            "props": {},
+                            "mods": [
+                              {
+                                "m": "frame"
+                              }
+                            ],
+                            "src": [
+                              {
+                                "f": "corpus2/06_calculator/ContentView.swift",
+                                "a": 18453,
+                                "b": 18484
+                              }
+                            ]
+                          },
+                          {
+                            "id": "r.0.4.1.0.0.2",
+                            "type": "Button",
+                            "props": {},
+                            "label": [
+                              {
+                                "id": "r.0.4.1.0.0.2.l0",
+                                "type": "Text",
+                                "props": {
+                                  "text": "0"
+                                },
+                                "mods": [
+                                  {
+                                    "m": "lineLimit",
+                                    "value": 1
+                                  },
+                                  {
+                                    "m": "font",
+                                    "font": {
+                                      "size": 30,
+                                      "weight": "regular"
+                                    }
+                                  },
+                                  {
+                                    "m": "frame",
+                                    "alignment": "center"
+                                  }
+                                ],
+                                "src": [
+                                  {
+                                    "f": "corpus2/06_calculator/ContentView+ButtonBuilders.swift",
+                                    "a": 894,
+                                    "b": 967
+                                  }
+                                ]
+                              }
+                            ],
+                            "mods": [
+                              {
+                                "m": "aspect",
+                                "mode": "fill"
+                              },
+                              {
+                                "m": "font",
+                                "font": {
+                                  "size": 30,
+                                  "weight": "regular"
+                                }
+                              },
+                              {
+                                "m": "tint",
+                                "color": {
+                                  "rgba": [
+                                    0,
+                                    0,
+                                    0,
+                                    1
+                                  ]
+                                }
+                              },
+                              {
+                                "m": "background",
+                                "color": {
+                                  "rgba": [
+                                    0.8784314,
+                                    0.8784314,
+                                    0.8784314,
+                                    1
+                                  ]
+                                }
+                              }
+                            ],
+                            "src": [
+                              {
+                                "f": "corpus2/06_calculator/ContentView+ButtonBuilders.swift",
+                                "a": 710,
+                                "b": 1213
+                              },
+                              {
+                                "f": "corpus2/06_calculator/ContentView.swift",
+                                "a": 18552,
+                                "b": 18575
+                              }
+                            ],
+                            "event": "r.0.4.1.0.0.2"
+                          },
+                          {
+                            "id": "r.0.4.1.0.0.3",
+                            "type": "Spacer",
+                            "props": {},
+                            "mods": [
+                              {
+                                "m": "frame"
+                              }
+                            ],
+                            "src": [
+                              {
+                                "f": "corpus2/06_calculator/ContentView.swift",
+                                "a": 18643,
+                                "b": 18674
+                              }
+                            ]
+                          }
+                        ],
+                        "src": [
+                          {
+                            "f": "corpus2/06_calculator/ContentView.swift",
+                            "a": 16928,
+                            "b": 18705
+                          }
+                        ]
+                      },
+                      {
+                        "id": "r.0.4.1.0.1",
+                        "type": "Group",
+                        "props": {},
+                        "children": [
+                          {
+                            "id": "r.0.4.1.0.1.0",
+                            "type": "Button",
+                            "props": {},
+                            "label": [
+                              {
+                                "id": "r.0.4.1.0.1.0.l0",
+                                "type": "Text",
+                                "props": {
+                                  "text": "."
+                                },
+                                "mods": [
+                                  {
+                                    "m": "lineLimit",
+                                    "value": 1
+                                  },
+                                  {
+                                    "m": "font",
+                                    "font": {
+                                      "size": 30,
+                                      "weight": "regular"
+                                    }
+                                  },
+                                  {
+                                    "m": "frame",
+                                    "alignment": "center"
+                                  }
+                                ],
+                                "src": [
+                                  {
+                                    "f": "corpus2/06_calculator/ContentView+ButtonBuilders.swift",
+                                    "a": 894,
+                                    "b": 967
+                                  }
+                                ]
+                              }
+                            ],
+                            "mods": [
+                              {
+                                "m": "aspect",
+                                "mode": "fill"
+                              },
+                              {
+                                "m": "font",
+                                "font": {
+                                  "size": 30,
+                                  "weight": "regular"
+                                }
+                              },
+                              {
+                                "m": "tint",
+                                "color": {
+                                  "rgba": [
+                                    0,
+                                    0,
+                                    0,
+                                    1
+                                  ]
+                                }
+                              },
+                              {
+                                "m": "background",
+                                "color": {
+                                  "rgba": [
+                                    0.8784314,
+                                    0.8784314,
+                                    0.8784314,
+                                    1
+                                  ]
+                                }
+                              }
+                            ],
+                            "src": [
+                              {
+                                "f": "corpus2/06_calculator/ContentView+ButtonBuilders.swift",
+                                "a": 710,
+                                "b": 1213
+                              },
+                              {
+                                "f": "corpus2/06_calculator/ContentView.swift",
+                                "a": 18806,
+                                "b": 18829
+                              }
+                            ],
+                            "event": "r.0.4.1.0.1.0"
+                          },
+                          {
+                            "id": "r.0.4.1.0.1.1",
+                            "type": "Spacer",
+                            "props": {},
+                            "mods": [
+                              {
+                                "m": "frame"
+                              }
+                            ],
+                            "src": [
+                              {
+                                "f": "corpus2/06_calculator/ContentView.swift",
+                                "a": 18897,
+                                "b": 18928
+                              }
+                            ]
+                          },
+                          {
+                            "id": "r.0.4.1.0.1.2",
+                            "type": "Button",
+                            "props": {},
+                            "label": [
+                              {
+                                "id": "r.0.4.1.0.1.2.l0",
+                                "type": "Text",
+                                "props": {
+                                  "text": "="
+                                },
+                                "mods": [
+                                  {
+                                    "m": "lineLimit",
+                                    "value": 1
+                                  },
+                                  {
+                                    "m": "font",
+                                    "font": {
+                                      "size": 30,
+                                      "weight": "regular"
+                                    }
+                                  },
+                                  {
+                                    "m": "frame",
+                                    "alignment": "center"
+                                  }
+                                ],
+                                "src": [
+                                  {
+                                    "f": "corpus2/06_calculator/ContentView+ButtonBuilders.swift",
+                                    "a": 444,
+                                    "b": 520
+                                  }
+                                ]
+                              }
+                            ],
+                            "mods": [
+                              {
+                                "m": "aspect",
+                                "mode": "fill"
+                              },
+                              {
+                                "m": "font",
+                                "font": {
+                                  "size": 30,
+                                  "weight": "regular"
+                                }
+                              },
+                              {
+                                "m": "tint",
+                                "color": {
+                                  "rgba": [
+                                    1,
+                                    1,
+                                    1,
+                                    1
+                                  ]
+                                }
+                              },
+                              {
+                                "m": "background",
+                                "color": {
+                                  "rgba": [
+                                    0.95686275,
+                                    0.57254905,
+                                    0.2509804,
+                                    1
+                                  ]
+                                }
+                              }
+                            ],
+                            "src": [
+                              {
+                                "f": "corpus2/06_calculator/ContentView+ButtonBuilders.swift",
+                                "a": 241,
+                                "b": 625
+                              },
+                              {
+                                "f": "corpus2/06_calculator/ContentView.swift",
+                                "a": 18996,
+                                "b": 19223
+                              }
+                            ],
+                            "event": "r.0.4.1.0.1.2"
+                          }
+                        ],
+                        "src": [
+                          {
+                            "f": "corpus2/06_calculator/ContentView.swift",
+                            "a": 18765,
+                            "b": 19254
+                          }
+                        ]
+                      }
+                    ],
+                    "mods": [
+                      {
+                        "m": "frame"
+                      }
+                    ],
+                    "src": [
+                      {
+                        "f": "corpus2/06_calculator/ContentView.swift",
+                        "a": 16888,
+                        "b": 19353
+                      }
+                    ]
+                  }
+                ],
+                "src": [
+                  {
+                    "f": "corpus2/06_calculator/ContentView.swift",
+                    "a": 16855,
+                    "b": 19376
+                  }
+                ]
+              }
+            ],
+            "mods": [
+              {
+                "m": "frame"
+              }
+            ],
+            "src": [
+              {
+                "f": "corpus2/06_calculator/ContentView.swift",
+                "a": 2416,
+                "b": 19458
+              }
+            ]
+          }
+        ],
+        "mods": [
+          {
+            "m": "frame"
+          }
+        ],
+        "src": [
+          {
+            "f": "corpus2/06_calculator/ContentView.swift",
+            "a": 1046,
+            "b": 19532
+          }
+        ]
+      }
+    ],
     "mods": [
+      {
+        "m": "background",
+        "color": {
+          "rgba": [
+            0.6,
+            0.6,
+            0.6,
+            1
+          ]
+        }
+      },
       {
         "m": "scheme",
         "value": "light"
       }
     ],
     "src": [
+      {
+        "f": "corpus2/06_calculator/ContentView.swift",
+        "a": 1022,
+        "b": 19604
+      },
       {
         "f": "corpus2/06_calculator/ContentView.swift",
         "a": 19712,

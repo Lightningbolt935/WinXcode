@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-15T08:33:49.315Z",
+  "timestamp": "2026-11-15T10:20:04.782Z",
   "results": [
     {
       "id": "01",
@@ -153,7 +153,7 @@
       "source": "Swiftify (Calculator-SwiftUI)",
       "license": "MIT",
       "fileCount": 7,
-      "level": "FAILED",
+      "level": "DEGRADED",
       "parseOk": true,
       "parseErrorCount": 0,
       "renderOk": true,
@@ -162,18 +162,16 @@
         ".previewDevice()",
         ".previewInterfaceOrientation()"
       ],
-      "unsupportedNodes": [
-        "ContentView: Unknown name '*'"
-      ],
-      "diagnosticCount": 3,
+      "unsupportedNodes": [],
+      "diagnosticCount": 2,
       "degradedCount": 0,
       "behaviorCount": 0,
       "ignoredCount": 0,
-      "viewNodeCount": 1,
-      "treeDepth": 1,
+      "viewNodeCount": 99,
+      "treeDepth": 8,
       "stats": {
-        "views": 1,
-        "depth": 0,
+        "views": 99,
+        "depth": 7,
         "heavy": 0
       }
     },

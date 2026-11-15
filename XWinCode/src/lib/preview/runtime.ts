@@ -1197,6 +1197,8 @@ export class Runtime {
     const local = env.get(name);
     if (local) return local.get();
     if (name === "self" || name === "Self" || name === "super") return name === "Self" ? this.selfType(env.self) : this.selfValue(env.self);
+    if (name === "M_E") return new Dbl(Math.E);
+    if (name === "M_PI") return new Dbl(Math.PI);
     const fromSelf = this.selfMember(env.self, name, env);
     if (fromSelf !== undefined) return fromSelf;
     const g = this.globalProps.get(name);
@@ -1882,6 +1884,17 @@ export class Runtime {
   }
 
   private builtinFunction(name: string): V | undefined {
+    if (["+", "-", "*", "/", "%", "==", "!=", "<", ">", "<=", ">="].includes(name)) {
+      return {
+        t: "fn",
+        name,
+        call: (args) => {
+          const a = args[0]?.value ?? null;
+          const b = args[1]?.value ?? null;
+          return this.binop(name, a, b);
+        },
+      };
+    }
     const math1: Record<string, (x: number) => number> = {
       abs: Math.abs,
       sqrt: Math.sqrt,
@@ -1891,11 +1904,19 @@ export class Runtime {
       sin: Math.sin,
       cos: Math.cos,
       tan: Math.tan,
+      asin: Math.asin,
+      acos: Math.acos,
+      atan: Math.atan,
+      sinh: Math.sinh,
+      cosh: Math.cosh,
+      tanh: Math.tanh,
+      asinh: Math.asinh,
+      acosh: Math.acosh,
+      atanh: Math.atanh,
       exp: Math.exp,
       log: Math.log,
       log2: Math.log2,
       log10: Math.log10,
-      atan: Math.atan,
     };
     if (math1[name]) {
       const f = math1[name];

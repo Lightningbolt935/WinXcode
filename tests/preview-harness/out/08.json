@@ -12,11 +12,10 @@
   ],
   "selectedTarget": "preview:0",
   "notes": [
-    "?date",
     "@behavior:gesture"
   ],
   "unsupportedNodes": [],
-  "diagnosticCount": 2,
+  "diagnosticCount": 1,
   "degradedCount": 0,
   "behaviorCount": 1,
   "ignoredCount": 0,

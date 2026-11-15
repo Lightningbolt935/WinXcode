@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-15T08:33:49.222Z",
+  "timestamp": "2026-11-15T10:20:04.672Z",
   "results": [
     {
       "id": "01",
@@ -179,11 +179,10 @@
       "renderOk": true,
       "targetCount": 2,
       "notes": [
-        "?date",
         "@behavior:gesture"
       ],
       "unsupportedNodes": [],
-      "diagnosticCount": 2,
+      "diagnosticCount": 1,
       "degradedCount": 0,
       "behaviorCount": 1,
       "ignoredCount": 0,
