@@ -1,0 +1,72 @@
+name: WinXcode CI
+
+on:
+  push:
+    branches: [ master, main ]
+  pull_request:
+    branches: [ master, main ]
+  workflow_dispatch:
+
+jobs:
+  build-and-test:
+    name: Build & Test on Windows
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+          cache-dependency-path: 'XWinCode/package-lock.json'
+
+      - name: Install Node dependencies
+        working-directory: XWinCode
+        run: npm ci
+
+      - name: TypeScript typecheck
+        working-directory: XWinCode
+        run: npx tsc --noEmit
+
+      - name: Run vitest test suite
+        working-directory: XWinCode
+        run: npx vitest run
+
+      - name: Setup Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: x86_64-pc-windows-msvc
+
+      - name: Cache Cargo dependencies
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/bin/
+            ~/.cargo/registry/index/
+            ~/.cargo/registry/cache/
+            ~/.cargo/git/db/
+            XWinCode/src-tauri/target/
+          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-cargo-
+
+      - name: Run Cargo tests
+        working-directory: XWinCode/src-tauri
+        run: cargo test
+
+      - name: Build Tauri app installer
+        working-directory: XWinCode
+        run: npm run tauri build
+
+      - name: Upload Windows installer artifacts
+        uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: WinXcode-Windows-Installer
+          path: |
+            XWinCode/src-tauri/target/release/bundle/nsis/*.exe
+            XWinCode/src-tauri/target/release/bundle/msi/*.msi
+          if-no-files-found: warn

@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { ArrowRight, FolderOpen, Monitor, Plus, Search, Smartphone, Sparkles, Wrench, X } from "lucide-react";
+import { ArrowRight, FolderOpen, Monitor, Search, Smartphone, Sparkles, Wrench, X } from "lucide-react";
 import logo from "../assets/logo.svg";
 import { keys, t, tn } from "../i18n";
 import { api } from "../lib/ipc";

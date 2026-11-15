@@ -74,3 +74,33 @@ All structural expectations are strictly centralized in:
 - `XWinCode/src-tauri/src/validator/structure.json` (and mirrored in TS at `XWinCode/src/lib/validator/structure.json`)
 
 Modifying `structure.json` immediately updates both the Rust submission validator and the TypeScript pre-flight panel without modifying code logic.
+
+---
+
+## 4. CI Workflow & Local Environment Verification Status
+
+### GitHub Actions Workflow
+The automated workflow is defined at `.github/workflows/ci.yml` running on `windows-latest`:
+1. `npm ci` (Node 20)
+2. `npx tsc --noEmit`
+3. `npx vitest run`
+4. Rust toolchain (`dtolnay/rust-toolchain@stable`)
+5. `cargo test` (`XWinCode/src-tauri`)
+6. `npm run tauri build`
+7. Artifact upload of NSIS (`.exe`) and MSI (`.msi`) installers.
+
+### Local Test Verification (Host Machine)
+- **TypeScript Typecheck (`npx tsc -p XWinCode/tsconfig.json --noEmit`):**
+  - **Result:** PASSED (Exit Code: 0, 0 errors).
+  - Note: Removed unused import `Plus` in `XWinCode/src/components/Welcome.tsx` to satisfy `noUnusedLocals: true`.
+- **Vitest Suites (`npx --prefix XWinCode vitest run`):**
+  - **Result:** PASSED (Exit Code: 0; 8 test suites, 80 tests passing).
+- **Cargo Test & Tauri Build Status on Host:**
+  - **Status: UNVERIFIED locally (Host toolchain constraint).**
+  - **Exact Host Error Output:**
+    ```text
+    cargo: The term 'cargo' is not recognized as a name of a cmdlet, function, script file, or executable program.
+    Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+    ```
+  - **Note:** Cargo/Rust is not provisioned on this Windows host machine PATH. CI will execute on GitHub-hosted `windows-latest` runners with pre-installed Rust. As per acceptance criteria, CI run is marked **UNVERIFIED** until observed on GitHub Actions.
+
