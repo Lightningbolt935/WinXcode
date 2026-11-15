@@ -103,62 +103,101 @@ fn load_structure_config() -> StructureConfig {
 fn strip_comments(code: &str) -> String {
     let mut out = String::with_capacity(code.len());
     let chars: Vec<char> = code.chars().collect();
+    let n = chars.len();
     let mut i = 0;
-    let mut in_block = false;
-    let mut in_string = false;
 
-    while i < chars.len() {
-        if !in_block && !in_string {
-            if chars[i] == '/' && i + 1 < chars.len() && chars[i + 1] == '*' {
-                in_block = true;
-                out.push(' ');
-                out.push(' ');
-                i += 2;
-                continue;
-            } else if chars[i] == '/' && i + 1 < chars.len() && chars[i + 1] == '/' {
-                while i < chars.len() && chars[i] != '\n' {
-                    out.push(' ');
-                    i += 1;
+    while i < n {
+        // Multiline string literal """
+        if chars[i] == '"' && i + 2 < n && chars[i + 1] == '"' && chars[i + 2] == '"' {
+            out.push_str("\"\"\"");
+            i += 3;
+            while i < n {
+                if chars[i] == '\\' && i + 1 < n {
+                    out.push(chars[i]);
+                    out.push(chars[i + 1]);
+                    i += 2;
+                    continue;
                 }
-                continue;
-            } else if chars[i] == '"' {
-                in_string = true;
-                out.push('"');
-                i += 1;
-                continue;
-            }
-        } else if in_block {
-            if chars[i] == '*' && i + 1 < chars.len() && chars[i + 1] == '/' {
-                in_block = false;
-                out.push(' ');
-                out.push(' ');
-                i += 2;
-                continue;
-            }
-            if chars[i] == '\n' {
-                out.push('\n');
-            } else {
-                out.push(' ');
-            }
-            i += 1;
-            continue;
-        } else if in_string {
-            if chars[i] == '\\' && i + 1 < chars.len() {
+                if chars[i] == '"' && i + 2 < n && chars[i + 1] == '"' && chars[i + 2] == '"' {
+                    out.push_str("\"\"\"");
+                    i += 3;
+                    break;
+                }
                 out.push(chars[i]);
-                out.push(chars[i + 1]);
-                i += 2;
-                continue;
+                i += 1;
             }
-            if chars[i] == '"' {
-                in_string = false;
-            }
-            out.push(chars[i]);
-            i += 1;
             continue;
         }
+
+        // Single-line string literal "
+        if chars[i] == '"' {
+            out.push('"');
+            i += 1;
+            while i < n {
+                if chars[i] == '\\' && i + 1 < n {
+                    out.push(chars[i]);
+                    out.push(chars[i + 1]);
+                    i += 2;
+                    continue;
+                }
+                if chars[i] == '"' {
+                    out.push('"');
+                    i += 1;
+                    break;
+                }
+                if chars[i] == '\n' {
+                    break;
+                }
+                out.push(chars[i]);
+                i += 1;
+            }
+            continue;
+        }
+
+        // Line comment //
+        if chars[i] == '/' && i + 1 < n && chars[i + 1] == '/' {
+            while i < n && chars[i] != '\n' {
+                out.push(' ');
+                i += 1;
+            }
+            continue;
+        }
+
+        // Block comment /* (supports nested block comments)
+        if chars[i] == '/' && i + 1 < n && chars[i + 1] == '*' {
+            let mut depth = 1;
+            out.push(' ');
+            out.push(' ');
+            i += 2;
+            while i < n && depth > 0 {
+                if chars[i] == '/' && i + 1 < n && chars[i + 1] == '*' {
+                    depth += 1;
+                    out.push(' ');
+                    out.push(' ');
+                    i += 2;
+                    continue;
+                }
+                if chars[i] == '*' && i + 1 < n && chars[i + 1] == '/' {
+                    depth -= 1;
+                    out.push(' ');
+                    out.push(' ');
+                    i += 2;
+                    continue;
+                }
+                if chars[i] == '\n' {
+                    out.push('\n');
+                } else {
+                    out.push(' ');
+                }
+                i += 1;
+            }
+            continue;
+        }
+
         out.push(chars[i]);
         i += 1;
     }
+
     out
 }
 

@@ -38,56 +38,92 @@ export interface ProjectFile {
 export function stripComments(code: string): string {
   let out = "";
   let i = 0;
-  let inBlockComment = false;
-  let inString = false;
-  let stringChar = "";
+  const n = code.length;
 
-  while (i < code.length) {
-    if (!inBlockComment && !inString) {
-      if (code[i] === "/" && code[i + 1] === "*") {
-        inBlockComment = true;
-        out += "  ";
-        i += 2;
-        continue;
-      } else if (code[i] === "/" && code[i + 1] === "/") {
-        while (i < code.length && code[i] !== "\n") {
-          out += " ";
-          i++;
+  while (i < n) {
+    // Check for multiline string literal """
+    if (code[i] === '"' && code[i + 1] === '"' && code[i + 2] === '"') {
+      out += '"""';
+      i += 3;
+      while (i < n) {
+        if (code[i] === '\\' && i + 1 < n) {
+          out += code[i] + code[i + 1];
+          i += 2;
+          continue;
         }
-        continue;
-      } else if (code[i] === '"') {
-        inString = true;
-        stringChar = '"';
-        out += '"';
+        if (code[i] === '"' && code[i + 1] === '"' && code[i + 2] === '"') {
+          out += '"""';
+          i += 3;
+          break;
+        }
+        out += code[i];
         i++;
-        continue;
       }
-    } else if (inBlockComment) {
-      if (code[i] === "*" && code[i + 1] === "/") {
-        inBlockComment = false;
-        out += "  ";
-        i += 2;
-        continue;
-      }
-      out += code[i] === "\n" ? "\n" : " ";
-      i++;
-      continue;
-    } else if (inString) {
-      if (code[i] === "\\" && i + 1 < code.length) {
-        out += code[i] + code[i + 1];
-        i += 2;
-        continue;
-      }
-      if (code[i] === stringChar) {
-        inString = false;
-      }
-      out += code[i];
-      i++;
       continue;
     }
+
+    // Check for single-line string literal "
+    if (code[i] === '"') {
+      out += '"';
+      i++;
+      while (i < n) {
+        if (code[i] === '\\' && i + 1 < n) {
+          out += code[i] + code[i + 1];
+          i += 2;
+          continue;
+        }
+        if (code[i] === '"') {
+          out += '"';
+          i++;
+          break;
+        }
+        if (code[i] === '\n') {
+          // Unclosed string before newline
+          break;
+        }
+        out += code[i];
+        i++;
+      }
+      continue;
+    }
+
+    // Check for line comment //
+    if (code[i] === '/' && code[i + 1] === '/') {
+      while (i < n && code[i] !== '\n') {
+        out += ' ';
+        i++;
+      }
+      continue;
+    }
+
+    // Check for block comment /* (supports nested block comments)
+    if (code[i] === '/' && code[i + 1] === '*') {
+      let depth = 1;
+      out += '  ';
+      i += 2;
+      while (i < n && depth > 0) {
+        if (code[i] === '/' && code[i + 1] === '*') {
+          depth++;
+          out += '  ';
+          i += 2;
+          continue;
+        }
+        if (code[i] === '*' && code[i + 1] === '/') {
+          depth--;
+          out += '  ';
+          i += 2;
+          continue;
+        }
+        out += code[i] === '\n' ? '\n' : ' ';
+        i++;
+      }
+      continue;
+    }
+
     out += code[i];
     i++;
   }
+
   return out;
 }
 

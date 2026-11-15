@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { validatePackage, ProjectFile } from "../XWinCode/src/lib/validator/validator";
+import { validatePackage, stripComments, ProjectFile } from "../XWinCode/src/lib/validator/validator";
 import * as fs from "fs";
 import * as path from "path";
 
@@ -280,5 +280,91 @@ describe("Swift Student Challenge Submission Validator", () => {
 
     // Cleanup
     fs.rmSync(testStageDir, { recursive: true, force: true });
+  });
+
+  describe("String-literal aware comment stripping scanner", () => {
+    it("handles trailing line comments after URLs in strings", () => {
+      const input = 'let u = "https://example.com"  // trailing comment';
+      const stripped = stripComments(input);
+      expect(stripped).toContain('"https://example.com"');
+      expect(stripped).not.toContain("trailing comment");
+    });
+
+    it("handles URL(string: ...) after a string containing //", () => {
+      const input = 'let s = "// not a comment"; URL(string: "http://x")';
+      const stripped = stripComments(input);
+      expect(stripped).toContain('"// not a comment"');
+      expect(stripped).toContain('URL(string: "http://x")');
+    });
+
+    it("handles escaped quotes inside string literals", () => {
+      const input = 'let escaped = "Hello \\" // still inside string \\" World" // comment';
+      const stripped = stripComments(input);
+      expect(stripped).toContain('Hello \\" // still inside string \\" World');
+      expect(stripped).not.toContain("comment");
+    });
+
+    it("handles multiline string literals containing comment delimiters", () => {
+      const input = `let multiline = """
+// this is not a comment
+/* neither is this */
+"""
+// actual comment`;
+      const stripped = stripComments(input);
+      expect(stripped).toContain('// this is not a comment');
+      expect(stripped).toContain('/* neither is this */');
+      expect(stripped).not.toContain('actual comment');
+    });
+
+    it("handles nested block comments properly", () => {
+      const input = '/* outer /* inner block */ still comment */ let valid = 1';
+      const stripped = stripComments(input);
+      expect(stripped).not.toContain('outer');
+      expect(stripped).not.toContain('inner');
+      expect(stripped).not.toContain('still comment');
+      expect(stripped).toContain('let valid = 1');
+    });
+
+    it("correctly identifies real violations after strings containing // in validatePackage", () => {
+      const validFiles = loadFixture("fixtures/valid_submission.swiftpm");
+      const code = `
+        import SwiftUI
+        struct ContentView: View {
+          let slash = "// path separator"
+          func test() {
+            let u = URL(string: "https://api.prohibited.com")
+            let req = URLRequest(url: u!)
+          }
+          var body: some View { Text("Hi") }
+        }
+      `;
+      const files = validFiles.map((f) => (f.path === "ContentView.swift" ? { ...f, content: code } : f));
+      const report = validatePackage(files);
+      expect(report.summary.passed).toBe(false);
+      const netFails = report.checks.filter((c) => c.category === "network" && c.status === "fail");
+      expect(netFails.some((c) => c.name.includes("Remote HTTP URL"))).toBe(true);
+    });
+
+    it("does not flag prohibited calls inside nested block comments", () => {
+      const validFiles = loadFixture("fixtures/valid_submission.swiftpm");
+      const code = `
+        import SwiftUI
+        /*
+          Legacy code:
+          /* nested comment */
+          let u = URL(string: "https://api.prohibited.com")
+          let req = URLRequest(url: u!)
+          let session = URLSession.shared
+        */
+        struct ContentView: View {
+          var body: some View { Text("Hi") }
+        }
+      `;
+      const files = validFiles.map((f) => (f.path === "ContentView.swift" ? { ...f, content: code } : f));
+      const report = validatePackage(files);
+      const netFails = report.checks.filter((c) => c.category === "network" && c.status === "fail");
+      expect(netFails).toHaveLength(0);
+      expect(report.summary.passed).toBe(true);
+    });
   });
 });
