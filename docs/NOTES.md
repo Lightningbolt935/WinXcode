@@ -104,3 +104,25 @@ The automated workflow is defined at `.github/workflows/ci.yml` running on `wind
     ```
   - **Note:** Cargo/Rust is not provisioned on this Windows host machine PATH. CI will execute on GitHub-hosted `windows-latest` runners with pre-installed Rust. As per acceptance criteria, CI run is marked **UNVERIFIED** until observed on GitHub Actions.
 
+---
+
+## 5. Corpus 1 App 03 (Todo) Modifier Verification
+
+### Investigation of `03 Todo` Diagnostics
+In Phase 3b's conversational markdown report, App 03 was mistakenly typed as `CLEAN (0 diagnostics)`. 
+A complete forensic check of the actual test harness output confirms:
+- **`tests/preview-harness/out/03.json`:**
+  - `level`: `"DEGRADED"`
+  - `notes`: `["@degraded:swipeActions", "@degraded:toolbar"]`
+  - `diagnosticCount`: `2`
+  - `degradedCount`: `2`
+- **`docs/BASELINE.md` (lines 180-184):**
+  - Explicitly records `03 Todo | DEGRADED | 2 | 2 | 0 | @degraded:swipeActions, @degraded:toolbar`.
+- **Implementation in `XWinCode/src/lib/preview/swiftui.ts`:**
+  - Line 929: `"toolbar"` is categorized under `DEGRADED`.
+  - Line 950: `"swipeActions"` is categorized under `DEGRADED`.
+  - Lines 1080-1082: When either modifier is encountered, `ctx.note("@degraded:" + name)` is called and recorded in `notes`.
+- **Automated Regression Test:**
+  - Added test in `tests/preview-harness/corpus.test.ts` asserting that App 03 strictly emits `@degraded:swipeActions` and `@degraded:toolbar` with 2 diagnostics, ensuring no modifier can be silently skipped.
+
+

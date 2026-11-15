@@ -242,6 +242,15 @@ describe("Preview Harness — Corpus 1 (Student-style apps)", () => {
     writeFileSync(join(OUT_DIR, "summary.json"), JSON.stringify(summary, null, 2));
     expect(HARNESS_RESULTS.length).toBe(CORPUS.length);
   });
+
+  it("verifies App 03 Todo emits degraded swipeActions and toolbar without silent drops", () => {
+    const res03 = HARNESS_RESULTS.find((r) => r.id === "03");
+    expect(res03).toBeDefined();
+    expect(res03?.level).toBe("DEGRADED");
+    expect(res03?.notes).toContain("@degraded:swipeActions");
+    expect(res03?.notes).toContain("@degraded:toolbar");
+    expect(res03?.diagnosticCount).toBe(2);
+  });
 });
 
 // ---------------------------------------------------------------------------
