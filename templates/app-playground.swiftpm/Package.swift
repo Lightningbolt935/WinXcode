@@ -1,6 +1,6 @@
 // swift-tools-version: 5.9
 
-// UNVERIFIED: App Playground manifest based on Apple developer documentation.
+// UNVERIFIED: App Playground manifest based on Apple developer documentation for Swift Student Challenge (Xcode 16+ / Swift Playgrounds 4.5+).
 // Verify on a physical Mac running Xcode / Swift Playgrounds before submitting.
 
 import PackageDescription
@@ -9,7 +9,7 @@ import AppleProductTypes
 let package = Package(
     name: "MyPlaygroundApp",
     platforms: [
-        .iOS("16.0")
+        .iOS("17.0")
     ],
     products: [
         .iOSApplication(

@@ -1,6 +1,6 @@
 # Mac Verification Checklist for WinXcode Template
 
-Follow these 10 steps on a Mac running macOS 14+ (Sonoma/Sequoia) with Xcode 15+ or Swift Playgrounds 4.4+:
+Follow these 10 steps on a Mac running macOS 14+ (Sonoma) or macOS 15+ (Sequoia) with Xcode 16+ (https://developer.apple.com/xcode/) or Swift Playgrounds 4.5+ (https://developer.apple.com/swift-playgrounds/):
 
 1. Copy `templates/app-playground.swiftpm` to your Mac desktop.
 2. Double-click `app-playground.swiftpm` to open it in **Swift Playgrounds**. Confirm it opens without manifest syntax errors.
