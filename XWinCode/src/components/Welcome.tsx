@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { ArrowRight, FolderOpen, Monitor, Plus, Search, Smartphone, Wrench, X } from "lucide-react";
+import { ArrowRight, FolderOpen, Monitor, Plus, Search, Smartphone, Sparkles, Wrench, X } from "lucide-react";
 import logo from "../assets/logo.svg";
 import { keys, t, tn } from "../i18n";
 import { api } from "../lib/ipc";
@@ -45,6 +45,9 @@ function ToolStatus() {
 
   return (
     <div className="tool-statuses">
+      <div style={{ fontSize: 11, color: "var(--muted-foreground, #888)", marginBottom: 4, display: "flex", alignItems: "center", gap: 6 }}>
+        <span>Optional Native Toolchains:</span>
+      </div>
       {line("windows", <Monitor size={14} />, t("welcome.windowsApps"))}
       {line("ios", <Smartphone size={14} />, t("welcome.iphoneApps"))}
     </div>
@@ -114,9 +117,26 @@ export function Welcome() {
           <p className="tagline">{t("welcome.tagline")}</p>
           <span className="version-chip">{t("welcome.version", { version })}</span>
           <div className="welcome-actions">
-            <Action icon={<Plus size={17} />} title={t("welcome.newProject")} desc={t("welcome.newProjectDesc")} kbd="Ctrl+Shift+N" onClick={() => openSheet("newProject")} />
-            <Action icon={<FolderOpen size={17} />} title={t("welcome.open")} desc={t("welcome.openDesc")} kbd="Ctrl+O" onClick={() => void openProjectDialog()} />
-            <Action icon={<Wrench size={17} />} title={t("welcome.tools")} desc={t("welcome.toolsDesc")} onClick={() => openSheet("settings", "tools")} />
+            <Action
+              icon={<Sparkles size={18} style={{ color: "#fbbf24" }} />}
+              title="Start a Swift Student Challenge project"
+              desc="Create an App Playground (.swiftpm) with Live Preview, Submission Check & Export. Works out of the box — no WSL or Mac needed."
+              kbd="Ctrl+Shift+N"
+              onClick={() => openSheet("newProject")}
+            />
+            <Action
+              icon={<FolderOpen size={17} />}
+              title={t("welcome.open")}
+              desc={t("welcome.openDesc")}
+              kbd="Ctrl+O"
+              onClick={() => void openProjectDialog()}
+            />
+            <Action
+              icon={<Wrench size={17} />}
+              title="Optional: Native Build Toolchains"
+              desc="Set up WSL, xtool, and USB tools (only needed to compile binaries or deploy to physical iPhones)."
+              onClick={() => openSheet("settings", "tools")}
+            />
           </div>
           <ToolStatus />
         </section>

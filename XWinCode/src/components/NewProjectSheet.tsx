@@ -18,15 +18,15 @@ interface Template {
 }
 
 const TEMPLATES: Template[] = [
-  { id: "iosApp", platform: "ios", title: "np.tpl.app.title", desc: "np.tpl.app.desc", icon: <Smartphone size={28} strokeWidth={1.7} /> },
   {
     id: "appPlayground",
     platform: "ios",
     title: "Swift Student Challenge",
-    desc: "App Playground (.swiftpm) for Swift Playgrounds & iPadOS",
+    desc: "App Playground (.swiftpm) for Swift Playgrounds & iPadOS. Live Preview, Submission Check & Export work immediately — no WSL or Mac required.",
     icon: <Sparkles size={28} strokeWidth={1.7} />,
     notice: "Template format not yet verified on a Mac. Open it in Xcode or Swift Playgrounds before submitting.",
   },
+  { id: "iosApp", platform: "ios", title: "np.tpl.app.title", desc: "Native iOS app. Requires optional WSL & xtool toolchain to build binaries.", icon: <Smartphone size={28} strokeWidth={1.7} /> },
   { id: "executable", platform: "windows", title: "np.tpl.cli.title", desc: "np.tpl.cli.desc", icon: <SquareTerminal size={28} strokeWidth={1.7} /> },
   { id: "library", platform: "multi", title: "np.tpl.lib.title", desc: "np.tpl.lib.desc", icon: <Library size={28} strokeWidth={1.7} /> },
 ];

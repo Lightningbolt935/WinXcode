@@ -588,6 +588,9 @@ function Tools() {
           <RefreshCw size={12} className={loading ? "spin" : ""} /> {loading ? t("welcome.checking") : t("set.tools.recheck")}
         </button>
       </div>
+      <div style={{ marginBottom: 12, padding: "10px 12px", borderRadius: 8, background: "rgba(59, 130, 246, 0.1)", border: "1px solid rgba(59, 130, 246, 0.25)", color: "#93c5fd", fontSize: 12 }}>
+        <strong>Note for Swift Student Challenge:</strong> Live Preview, SwiftUI Canvas, Submission Check, and ZIP Export work out of the box without any native toolchains. WSL, xtool, and iOS SDKs are only required if you want to compile native binaries or deploy directly to a connected iPhone.
+      </div>
       {!toolchain && (
         <div className="set-loading">
           <span className="spinner" /> {t("set.tools.scanning")}
