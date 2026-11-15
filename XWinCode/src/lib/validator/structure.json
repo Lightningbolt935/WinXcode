@@ -1,6 +1,6 @@
 {
   "unverified": true,
-  "statusNotice": "UNVERIFIED: Format based on Apple developer documentation and public Swift Student Challenge submissions. Pending verification on a physical Mac running Xcode / Swift Playgrounds.",
+  "statusNotice": "No obvious problems found based on static pre-flight checks. Note that Apple's review may catch things this check cannot detect; always test your project in Swift Playgrounds or Xcode on macOS if possible.",
   "maxZipSizeBytes": 524288000,
   "warnZipSizeBytes": 104857600,
   "manifest": {
@@ -23,7 +23,7 @@
     "Assets.xcassets/AccentColor.colorset/Contents.json"
   ],
   "disclaimers": {
-    "uiDisclaimer": "This check catches common problems but can't guarantee your project runs in Xcode or Swift Playground. Test on a real Mac if you can.",
-    "unverifiedNotice": "Template format not yet verified on a Mac. Open it in Xcode or Swift Playgrounds before submitting."
+    "uiDisclaimer": "No obvious problems found. Apple's review may catch requirements or runtime issues this pre-flight check cannot detect. Test on a real Mac if you can.",
+    "unverifiedNotice": "Template format not yet verified on a physical Mac. Open and verify in Xcode or Swift Playgrounds before submitting."
   }
 }

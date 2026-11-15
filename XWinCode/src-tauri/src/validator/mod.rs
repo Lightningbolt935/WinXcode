@@ -94,10 +94,72 @@ fn load_structure_config() -> StructureConfig {
             "Assets.xcassets/AccentColor.colorset/Contents.json".into(),
         ],
         disclaimers: Disclaimers {
-            ui_disclaimer: "This check catches common problems but can't guarantee your project runs in Xcode or Swift Playground. Test on a real Mac if you can.".into(),
-            unverified_notice: "Template format not yet verified on a Mac. Open it in Xcode or Swift Playgrounds before submitting.".into(),
+            ui_disclaimer: "No obvious problems found based on static pre-flight checks. Note that Apple's review may catch things this check cannot detect; always test your project in Swift Playgrounds or Xcode on macOS if possible.".into(),
+            unverified_notice: "Template format not yet verified on a physical Mac. Open and verify in Xcode or Swift Playgrounds before submitting.".into(),
         },
     })
+}
+
+fn strip_comments(code: &str) -> String {
+    let mut out = String::with_capacity(code.len());
+    let chars: Vec<char> = code.chars().collect();
+    let mut i = 0;
+    let mut in_block = false;
+    let mut in_string = false;
+
+    while i < chars.len() {
+        if !in_block && !in_string {
+            if chars[i] == '/' && i + 1 < chars.len() && chars[i + 1] == '*' {
+                in_block = true;
+                out.push(' ');
+                out.push(' ');
+                i += 2;
+                continue;
+            } else if chars[i] == '/' && i + 1 < chars.len() && chars[i + 1] == '/' {
+                while i < chars.len() && chars[i] != '\n' {
+                    out.push(' ');
+                    i += 1;
+                }
+                continue;
+            } else if chars[i] == '"' {
+                in_string = true;
+                out.push('"');
+                i += 1;
+                continue;
+            }
+        } else if in_block {
+            if chars[i] == '*' && i + 1 < chars.len() && chars[i + 1] == '/' {
+                in_block = false;
+                out.push(' ');
+                out.push(' ');
+                i += 2;
+                continue;
+            }
+            if chars[i] == '\n' {
+                out.push('\n');
+            } else {
+                out.push(' ');
+            }
+            i += 1;
+            continue;
+        } else if in_string {
+            if chars[i] == '\\' && i + 1 < chars.len() {
+                out.push(chars[i]);
+                out.push(chars[i + 1]);
+                i += 2;
+                continue;
+            }
+            if chars[i] == '"' {
+                in_string = false;
+            }
+            out.push(chars[i]);
+            i += 1;
+            continue;
+        }
+        out.push(chars[i]);
+        i += 1;
+    }
+    out
 }
 
 #[tauri::command]
@@ -308,22 +370,34 @@ pub fn validate_submission(project_path: String) -> Result<ValidationReport, Str
     let img_re = regex::Regex::new(r#"Image\("([^"]+)"\)"#).unwrap();
 
     for (rel_path, abs_path) in &swift_files {
-        if let Ok(src) = fs::read_to_string(abs_path) {
+        if let Ok(raw_src) = fs::read_to_string(abs_path) {
+            let src = strip_comments(&raw_src);
             for (idx, line) in src.lines().enumerate() {
                 let line_num = idx + 1;
                 let trimmed = line.trim();
-                if trimmed.starts_with("//") || trimmed.starts_with("/*") {
+                if trimmed.is_empty() {
                     continue;
                 }
 
                 // Network
-                if line.contains("URLSession") {
+                if line.contains("URLSession") || line.contains("URLSessionConfiguration") || line.contains("URLRequest") || line.contains("NWPathMonitor") || line.contains("NWConnection") || line.contains("WebSocketTask") {
+                    let api_name = if line.contains("URLRequest") {
+                        "URLRequest"
+                    } else if line.contains("NWPathMonitor") {
+                        "NWPathMonitor"
+                    } else if line.contains("NWConnection") {
+                        "NWConnection"
+                    } else if line.contains("WebSocketTask") {
+                        "WebSocketTask"
+                    } else {
+                        "URLSession"
+                    };
                     checks.push(CheckItem {
-                        id: format!("net-urlsession-{}-{}", rel_path, line_num),
+                        id: format!("net-api-{}-{}", rel_path, line_num),
                         category: "network".into(),
-                        name: "Network API (URLSession)".into(),
+                        name: format!("Network API ({})", api_name),
                         status: "fail".into(),
-                        message: "Submissions are judged offline. Prohibited network connectivity API detected.".into(),
+                        message: format!("Submissions are judged offline. Prohibited network connectivity API detected ({}).", api_name),
                         file: Some(rel_path.clone()),
                         line: Some(line_num),
                     });
@@ -449,9 +523,9 @@ pub fn validate_submission(project_path: String) -> Result<ValidationReport, Str
         checks.push(CheckItem {
             id: "attributions-missing".into(),
             category: "attributions".into(),
-            name: "ATTRIBUTIONS.md Document".into(),
+            name: "Third-Party Media Attribution".into(),
             status: "warn".into(),
-            message: "Non-code assets detected but ATTRIBUTIONS.md is missing. Attribution required for third-party media.".into(),
+            message: "Non-code media assets detected without ATTRIBUTIONS.md or Credits.swift. Apple rule: 'You may include third-party open source code and public domain or Creative Commons-licensed images, sounds, or other media, provided you credit the source and explain why it was used.' (https://developer.apple.com/swift-student-challenge/terms-and-conditions/). If all assets are 100% original, this warning can be safely ignored.".into(),
             file: Some("ATTRIBUTIONS.md".into()),
             line: None,
         });
@@ -459,9 +533,9 @@ pub fn validate_submission(project_path: String) -> Result<ValidationReport, Str
         checks.push(CheckItem {
             id: "attributions-ok".into(),
             category: "attributions".into(),
-            name: "ATTRIBUTIONS.md Document".into(),
+            name: "Third-Party Media Attribution".into(),
             status: "pass".into(),
-            message: if has_attrib { "ATTRIBUTIONS.md is present.".into() } else { "No non-code media assets requiring attribution detected.".into() },
+            message: if has_attrib { "ATTRIBUTIONS.md / Credits.swift is present.".into() } else { "No non-code media assets requiring attribution detected.".into() },
             file: if has_attrib { Some("ATTRIBUTIONS.md".into()) } else { None },
             line: None,
         });

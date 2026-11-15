@@ -31,7 +31,10 @@
 5. **No Sign-In / Authentication Gate:** Apps must not require sign-in, account creation, or login credentials.
 6. **No Judge Tracking / Analytics:** Apps must not include analytics, telemetry, or tracking code designed to log or monitor judges' activity.
 7. **3-Minute Interactive Experience:** Designed to be evaluated and experienced within roughly three minutes.
-8. **Third-Party Code & Attributions:** Permitted with attribution; student must credit open-source libraries or public domain media and explain why they were used (typically in an `ATTRIBUTIONS.md` or submission notes).
+8. **Third-Party Code & Attributions (Official Apple Rule Text):**
+   > *"You may include third-party open source code and public domain or Creative Commons-licensed images, sounds, or other media, provided you credit the source and explain why it was used."*
+   > — Source: [Apple Swift Student Challenge Terms and Conditions](https://developer.apple.com/swift-student-challenge/terms-and-conditions/) & [Eligibility](https://developer.apple.com/swift-student-challenge/eligibility/)
+   Credit is required for third-party code and media; the validator emits a `WARN` (not a hard `FAIL`) when non-code assets exist without an attribution document.
 
 ---
 

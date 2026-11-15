@@ -106,4 +106,101 @@ describe("Swift Student Challenge Submission Validator", () => {
     expect(stat.size).toBeGreaterThan(500);
     fs.unlinkSync(outZip);
   });
+
+  it("Ignores false positives: URLs in comments, strings that look like URLs, and SDK names in comments", () => {
+    const validFiles = loadFixture("fixtures/valid_submission.swiftpm");
+    // Add false positive candidates into ContentView.swift
+    const noisyContentView = `
+      import SwiftUI
+
+      // Documentation: https://developer.apple.com/swift-student-challenge/
+      /*
+       Legacy notes:
+       let oldEndpoint = "https://api.example.com/data"
+       import FirebaseAuth
+       import AuthenticationServices
+       let tracker = ATTrackingManager()
+      */
+      struct ContentView: View {
+        // Here is a string that looks like a URL but is purely local data/namespace
+        let xmlSchema = "http://www.w3.org/2000/svg"
+        let webNotice = "Visit http://mycoolgame.org for the web version"
+
+        var body: some View {
+          VStack {
+            Text("Noisy Content")
+            Text(xmlSchema)
+            Text(webNotice)
+          }
+        }
+      }
+    `;
+
+    const testFiles = validFiles.map((f) => (f.path === "ContentView.swift" ? { ...f, content: noisyContentView } : f));
+    const report = validatePackage(testFiles);
+
+    expect(report.summary.passed).toBe(true);
+    expect(report.summary.canExport).toBe(true);
+    expect(report.summary.failCount).toBe(0);
+    const fails = report.checks.filter((c) => c.status === "fail");
+    expect(fails).toEqual([]);
+  });
+
+  it("Detects false negatives: network calls wrapped in helper functions", () => {
+    const validFiles = loadFixture("fixtures/valid_submission.swiftpm");
+    const helperNetworkContentView = `
+      import SwiftUI
+
+      struct DataFetcher {
+        func fetchRemotePayload(endpoint: String) {
+          guard let url = URL(string: "https://api.myapp.com/v1") else { return }
+          let request = URLRequest(url: url)
+          let session = URLSession.shared
+          session.dataTask(with: request).resume()
+        }
+      }
+
+      struct ContentView: View {
+        var body: some View {
+          Text("Helper Network Test")
+        }
+      }
+    `;
+
+    const testFiles = validFiles.map((f) => (f.path === "ContentView.swift" ? { ...f, content: helperNetworkContentView } : f));
+    const report = validatePackage(testFiles);
+
+    expect(report.summary.passed).toBe(false);
+    expect(report.summary.canExport).toBe(false);
+    expect(report.summary.failCount).toBeGreaterThanOrEqual(1);
+
+    const netFails = report.checks.filter((c) => c.category === "network" && c.status === "fail");
+    expect(netFails.some((c) => c.name.includes("Network API") && c.file === "ContentView.swift")).toBe(true);
+    expect(netFails.some((c) => c.name.includes("Remote HTTP URL") && c.file === "ContentView.swift")).toBe(true);
+  });
+
+  it("Attribution rule: WARNs without failing when non-code assets exist without ATTRIBUTIONS.md", () => {
+    const validFiles = loadFixture("fixtures/valid_submission.swiftpm");
+    // Add custom media file and remove ATTRIBUTIONS.md
+    const filesWithMedia = validFiles
+      .filter((f) => f.path !== "ATTRIBUTIONS.md")
+      .concat({
+        path: "Assets.xcassets/CustomHero.imageset/hero.png",
+        content: "fake-png-binary-data",
+        sizeBytes: 1024,
+      });
+
+    const report = validatePackage(filesWithMedia);
+
+    // Warning should exist, but it must NOT fail the submission
+    expect(report.summary.passed).toBe(true);
+    expect(report.summary.canExport).toBe(true);
+    expect(report.summary.failCount).toBe(0);
+    expect(report.summary.warnCount).toBeGreaterThanOrEqual(1);
+
+    const attribWarn = report.checks.find((c) => c.id === "attributions-missing");
+    expect(attribWarn).toBeDefined();
+    expect(attribWarn?.status).toBe("warn");
+    expect(attribWarn?.message).toContain("https://developer.apple.com/swift-student-challenge/terms-and-conditions/");
+  });
 });

@@ -79,17 +79,28 @@ export function SubmissionCheckPanel({ onClose }: SubmissionCheckPanelProps) {
 
         {/* Notices */}
         <div className="px-6 pt-4 space-y-2.5">
-          {/* In-UI Disclaimer */}
+          {/* In-UI Disclaimer & Status */}
           <div className="flex items-start gap-2.5 p-3 rounded-lg border border-blue-500/30 bg-blue-500/10 text-blue-200 text-xs">
             <AlertCircle size={16} className="text-blue-400 shrink-0 mt-0.5" />
-            <span>{structureConfig.disclaimers.uiDisclaimer}</span>
+            <div>
+              <div className="font-semibold text-blue-100">Pre-Flight Static Check</div>
+              <div className="mt-0.5 text-blue-200/90">{structureConfig.disclaimers.uiDisclaimer}</div>
+            </div>
+          </div>
+
+          {/* Validator Scope & Limitations (docs/VALIDATOR_LIMITS.md) */}
+          <div className="flex items-start gap-2.5 p-3 rounded-lg border border-muted bg-muted/30 text-muted-foreground text-xs">
+            <FileCode size={16} className="text-muted-foreground shrink-0 mt-0.5" />
+            <div>
+              <span className="font-semibold text-foreground">Validator Scope & Limitations:</span> Static check for package structure, 500 MB limit, offline operation, auth/tracking SDKs, and assets. Does not run `swiftc` or Clang; cannot guarantee error-free compilation in Xcode or evaluate subjective Apple judging criteria (creativity, 3-minute experience). See <code>docs/VALIDATOR_LIMITS.md</code>.
+            </div>
           </div>
 
           {/* Unverified Template Notice */}
           <div className="flex items-start gap-2.5 p-3 rounded-lg border border-amber-500/30 bg-amber-500/10 text-amber-200 text-xs">
             <AlertTriangle size={16} className="text-amber-400 shrink-0 mt-0.5" />
             <span>
-              <strong>UNVERIFIED FORMAT:</strong> {structureConfig.disclaimers.unverifiedNotice}
+              <strong>UNVERIFIED TEMPLATE:</strong> {structureConfig.disclaimers.unverifiedNotice}
             </span>
           </div>
         </div>
@@ -101,8 +112,8 @@ export function SubmissionCheckPanel({ onClose }: SubmissionCheckPanelProps) {
               <div className="flex items-center gap-2">
                 <span className="font-semibold">Status:</span>
                 {report.summary.passed ? (
-                  <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
-                    <CheckCircle2 size={13} /> READY TO EXPORT
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30" title="Apple's review may catch requirements or runtime issues this pre-flight check cannot detect.">
+                    <CheckCircle2 size={13} /> NO OBVIOUS PROBLEMS FOUND
                   </span>
                 ) : (
                   <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-rose-500/15 text-rose-400 border border-rose-500/30">

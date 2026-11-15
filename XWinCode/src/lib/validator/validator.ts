@@ -35,6 +35,62 @@ export interface ProjectFile {
   sizeBytes?: number;
 }
 
+export function stripComments(code: string): string {
+  let out = "";
+  let i = 0;
+  let inBlockComment = false;
+  let inString = false;
+  let stringChar = "";
+
+  while (i < code.length) {
+    if (!inBlockComment && !inString) {
+      if (code[i] === "/" && code[i + 1] === "*") {
+        inBlockComment = true;
+        out += "  ";
+        i += 2;
+        continue;
+      } else if (code[i] === "/" && code[i + 1] === "/") {
+        while (i < code.length && code[i] !== "\n") {
+          out += " ";
+          i++;
+        }
+        continue;
+      } else if (code[i] === '"') {
+        inString = true;
+        stringChar = '"';
+        out += '"';
+        i++;
+        continue;
+      }
+    } else if (inBlockComment) {
+      if (code[i] === "*" && code[i + 1] === "/") {
+        inBlockComment = false;
+        out += "  ";
+        i += 2;
+        continue;
+      }
+      out += code[i] === "\n" ? "\n" : " ";
+      i++;
+      continue;
+    } else if (inString) {
+      if (code[i] === "\\" && i + 1 < code.length) {
+        out += code[i] + code[i + 1];
+        i += 2;
+        continue;
+      }
+      if (code[i] === stringChar) {
+        inString = false;
+      }
+      out += code[i];
+      i++;
+      continue;
+    }
+    out += code[i];
+    i++;
+  }
+  return out;
+}
+
 export function validatePackage(files: ProjectFile[]): ValidationReport {
   const checks: CheckItem[] = [];
   const fileMap = new Map<string, ProjectFile>();
@@ -204,21 +260,24 @@ export function validatePackage(files: ProjectFile[]): ValidationReport {
   // 3, 4, 5. Scan Swift source files
   const swiftFiles = Array.from(fileMap.values()).filter((f) => f.path.endsWith(".swift") && f.path !== "Package.swift");
   for (const sf of swiftFiles) {
-    const lines = sf.content.split("\n");
+    const stripped = stripComments(sf.content);
+    const lines = stripped.split("\n");
     for (let i = 0; i < lines.length; i++) {
       const line = lines[i];
       const lineNum = i + 1;
       const trimmed = line.trim();
-      if (trimmed.startsWith("//") || trimmed.startsWith("/*")) continue;
+      if (!trimmed) continue;
 
-      // Rule 3: Network Use
-      if (/\bURLSession\b/.test(line)) {
+      // Rule 3: Network Use (Direct or through helper functions)
+      if (/\b(URLSession|URLSessionConfiguration|URLRequest|NWPathMonitor|NWConnection|WebSocketTask)\b/.test(line)) {
+        const match = line.match(/\b(URLSession|URLSessionConfiguration|URLRequest|NWPathMonitor|NWConnection|WebSocketTask)\b/);
+        const apiName = match ? match[1] : "URLSession";
         checks.push({
-          id: `net-urlsession-${sf.path}-${lineNum}`,
+          id: `net-api-${sf.path}-${lineNum}`,
           category: "network",
-          name: "Network API (URLSession)",
+          name: `Network API (${apiName})`,
           status: "fail",
-          message: "Submissions are judged offline. Prohibited network connectivity API detected.",
+          message: `Submissions are judged offline. Prohibited network connectivity API detected (${apiName}).`,
           file: sf.path,
           line: lineNum,
         });
@@ -229,7 +288,7 @@ export function validatePackage(files: ProjectFile[]): ValidationReport {
           category: "network",
           name: "Remote HTTP URL",
           status: "fail",
-          message: "Submissions must not depend on remote servers. Hardcoded HTTP/HTTPS URL detected.",
+          message: "Submissions must not depend on remote servers. Hardcoded HTTP/HTTPS URL detected in URL(string:).",
           file: sf.path,
           line: lineNum,
         });
@@ -341,18 +400,18 @@ export function validatePackage(files: ProjectFile[]): ValidationReport {
     checks.push({
       id: "attributions-missing",
       category: "attributions",
-      name: "ATTRIBUTIONS.md Document",
+      name: "Third-Party Media Attribution",
       status: "warn",
-      message: "Non-code assets detected but ATTRIBUTIONS.md is missing. Apple requires attribution for third-party or public domain media.",
+      message: "Non-code media assets detected without ATTRIBUTIONS.md or Credits.swift. Apple rule: 'You may include third-party open source code and public domain or Creative Commons-licensed images, sounds, or other media, provided you credit the source and explain why it was used.' (https://developer.apple.com/swift-student-challenge/terms-and-conditions/). If all assets are 100% original, this warning can be safely ignored.",
       file: "ATTRIBUTIONS.md",
     });
   } else {
     checks.push({
       id: "attributions-ok",
       category: "attributions",
-      name: "ATTRIBUTIONS.md Document",
+      name: "Third-Party Media Attribution",
       status: "pass",
-      message: hasAttributions ? "ATTRIBUTIONS.md is present." : "No non-code third-party assets detected requiring attribution.",
+      message: hasAttributions ? "ATTRIBUTIONS.md / Credits.swift is present." : "No non-code media assets requiring attribution detected.",
       file: hasAttributions ? "ATTRIBUTIONS.md" : undefined,
     });
   }
