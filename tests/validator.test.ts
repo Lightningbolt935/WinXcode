@@ -78,4 +78,32 @@ describe("Swift Student Challenge Submission Validator", () => {
     const assetFails = report.checks.filter((c) => c.category === "assets" && c.status === "fail");
     expect(assetFails.some((c) => c.name.includes("NonExistentHeroImage") && c.file === "ContentView.swift")).toBe(true);
   });
+
+  it("Export refuses when project has validation failures", () => {
+    const files = loadFixture("fixtures/failing_network.swiftpm");
+    const report = validatePackage(files);
+    expect(report.summary.canExport).toBe(false);
+    expect(() => {
+      if (!report.summary.canExport) {
+        throw new Error(`Export refused: ${report.summary.failCount} critical failure(s).`);
+      }
+    }).toThrow(/Export refused/);
+  });
+
+  it("Export succeeds and creates valid zip when project passes all checks", () => {
+    const files = loadFixture("fixtures/valid_submission.swiftpm");
+    const report = validatePackage(files);
+    expect(report.summary.canExport).toBe(true);
+
+    const fixturePath = path.resolve(__dirname, "fixtures/valid_submission.swiftpm");
+    const outZip = path.resolve(__dirname, "fixtures/test_export.zip");
+    if (fs.existsSync(outZip)) fs.unlinkSync(outZip);
+
+    const { execSync } = require("child_process");
+    execSync(`tar -a -c -f "${outZip}" -C "${path.dirname(fixturePath)}" "${path.basename(fixturePath)}"`);
+    expect(fs.existsSync(outZip)).toBe(true);
+    const stat = fs.statSync(outZip);
+    expect(stat.size).toBeGreaterThan(500);
+    fs.unlinkSync(outZip);
+  });
 });
