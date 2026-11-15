@@ -608,7 +608,12 @@ fn copy_clean_dir(src: &Path, dst: &Path) -> Result<(), String> {
         let entry = entry.map_err(|e| e.to_string())?;
         let rel = entry.path().strip_prefix(src).map_err(|e| e.to_string())?;
         let rel_str = rel.to_string_lossy();
-        if rel_str.starts_with(".build") || rel_str.starts_with(".git") || rel_str.starts_with(".DS_Store") || rel_str.contains(".xcuserdata") {
+        if rel_str.starts_with(".build")
+            || rel_str.starts_with(".git")
+            || rel_str.starts_with(".DS_Store")
+            || rel_str.contains("xcuserdata")
+            || rel_str.contains("xcuserdatad")
+        {
             continue;
         }
         let target = dst.join(rel);
@@ -672,9 +677,15 @@ pub fn export_submission_zip(project_path: String, output_zip_path: String) -> R
             "--exclude", "*.xcuserdata",
             "--exclude", "*/*.xcuserdata",
             "--exclude", "*/*.xcuserdata/*",
+            "--exclude", "xcuserdata",
+            "--exclude", "*/xcuserdata",
+            "--exclude", "*/xcuserdata/*",
             "--exclude", "*.xcuserdatad",
             "--exclude", "*/*.xcuserdatad",
             "--exclude", "*/*.xcuserdatad/*",
+            "--exclude", "xcuserdatad",
+            "--exclude", "*/xcuserdatad",
+            "--exclude", "*/xcuserdatad/*",
             "--exclude", "*/.*",
             "-C",
         ])
