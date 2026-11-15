@@ -139,6 +139,16 @@ export function Welcome() {
             />
           </div>
           <ToolStatus />
+          <div style={{ fontSize: 10.5, color: "var(--muted-foreground, #888)", marginTop: 14, lineHeight: 1.4, textAlign: "center", maxWidth: 360 }}>
+            Not affiliated with or endorsed by Apple Inc. No Apple software is bundled or distributed. See{" "}
+            <button
+              onClick={() => openSheet("settings", "about")}
+              style={{ background: "none", border: "none", padding: 0, color: "var(--primary, #3b82f6)", textDecoration: "underline", cursor: "pointer", fontSize: "inherit" }}
+            >
+              Legal &amp; License Notice
+            </button>
+            .
+          </div>
         </section>
 
         <section className="welcome-recents" onKeyDown={onKeyDown}>

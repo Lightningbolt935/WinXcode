@@ -5,8 +5,9 @@
 <h1 align="center">XWinCode</h1>
 
 <p align="center">
-  <b>Xcode, for Windows.</b><br />
-  Write, build and run Swift on Windows. Build, sign and install real iPhone apps. No Mac required.
+  <b>Swift & SwiftUI IDE for Windows.</b><br />
+  Write SwiftUI with live preview, validate for Swift Student Challenge, and export App Playgrounds without a Mac.<br />
+  <sub>Compatible with Xcode and Swift Playgrounds project formats. Not affiliated with or endorsed by Apple Inc.</sub>
 </p>
 
 <p align="center">
@@ -234,12 +235,16 @@ Found a security issue? Please report it privately, as described in [SECURITY.md
 
 ## License
 
-XWinCode is free software, released under the [GNU General Public License, version 3](LICENSE) or any later version (GPL-3.0-or-later). You can use, study, change and share it, as long as every version you distribute stays under the same license and comes with its source code.
+XWinCode is free software, released under the [GNU General Public License, version 3](LICENSE) or any later version (GPL-3.0-or-later). You can use, study, change and share it, as long as every version you distribute stays under the same license and comes with its source code. See [LICENSE_NOTICE.md](../docs/LICENSE_NOTICE.md) for full licensing and third-party details.
 
-## Apple software
+## Apple software & licensing notice
 
-XWinCode does not contain or distribute any Apple software: the iOS SDK is extracted from the `Xcode.xip` that you download yourself with your own Apple ID. The Xcode and Apple SDKs license agreement only allows their use on Apple-branded computers. Make that call knowingly.
+XWinCode does not contain, bundle, or distribute any Apple software. Live preview, Canvas rendering, and Swift Student Challenge submission validation run independently without macOS or Apple SDKs.
+
+If you choose to use the optional native build toolchain to extract an iOS SDK from `Xcode.xip`, note Apple's official license restriction:
+> *"You may only install and use the Apple SDKs on Apple-branded computers running macOS."*
+> — [Apple Legal Software License Agreements (SLA)](https://www.apple.com/legal/sla/)
 
 ---
 
-<sub>XWinCode is not affiliated with or endorsed by Apple. Xcode, iPhone, iOS and Swift are trademarks of Apple Inc.</sub>
+<sub>XWinCode is an independent open-source project and is not affiliated with, sponsored by, or endorsed by Apple Inc. Xcode, iPhone, iOS, iPadOS, macOS, and Swift are trademarks of Apple Inc. References to Xcode and Swift Playgrounds are solely to indicate file format compatibility.</sub>
