@@ -563,6 +563,28 @@ pub fn validate_submission(project_path: String) -> Result<ValidationReport, Str
     })
 }
 
+fn copy_clean_dir(src: &Path, dst: &Path) -> Result<(), String> {
+    fs::create_dir_all(dst).map_err(|e| e.to_string())?;
+    for entry in walkdir::WalkDir::new(src).min_depth(1) {
+        let entry = entry.map_err(|e| e.to_string())?;
+        let rel = entry.path().strip_prefix(src).map_err(|e| e.to_string())?;
+        let rel_str = rel.to_string_lossy();
+        if rel_str.starts_with(".build") || rel_str.starts_with(".git") || rel_str.starts_with(".DS_Store") || rel_str.contains(".xcuserdata") {
+            continue;
+        }
+        let target = dst.join(rel);
+        if entry.file_type().is_dir() {
+            fs::create_dir_all(&target).map_err(|e| e.to_string())?;
+        } else {
+            if let Some(p) = target.parent() {
+                let _ = fs::create_dir_all(p);
+            }
+            fs::copy(entry.path(), &target).map_err(|e| e.to_string())?;
+        }
+    }
+    Ok(())
+}
+
 #[tauri::command]
 pub fn export_submission_zip(project_path: String, output_zip_path: String) -> Result<ExportResult, String> {
     let report = validate_submission(project_path.clone())?;
@@ -580,18 +602,51 @@ pub fn export_submission_zip(project_path: String, output_zip_path: String) -> R
         let _ = fs::create_dir_all(parent);
     }
 
-    // Call standard bsdtar on Windows to package the archive
     let parent_dir = root.parent().unwrap_or(root);
-    let folder_name = root.file_name().ok_or("Invalid project directory name")?;
+    let original_name = root.file_name().and_then(|n| n.to_str()).unwrap_or("App");
+
+    // Apple requires the top-level directory in the submission archive to be named [AppName].swiftpm
+    let (archive_parent, archive_target, temp_dir_cleanup) = if original_name.ends_with(".swiftpm") || original_name.ends_with(".xcodeproj") {
+        (parent_dir.to_path_buf(), original_name.to_string(), None)
+    } else {
+        let ts = std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).map(|d| d.as_millis()).unwrap_or(0);
+        let temp_dir = std::env::temp_dir().join(format!("winxcode_export_{}", ts));
+        let staged_target = format!("{}.swiftpm", original_name);
+        let staged_path = temp_dir.join(&staged_target);
+        let _ = fs::create_dir_all(&temp_dir);
+        copy_clean_dir(root, &staged_path)?;
+        (temp_dir.clone(), staged_target, Some(temp_dir))
+    };
 
     let status = Command::new("tar")
         .args(["-a", "-c", "-f"])
         .arg(out)
-        .arg("-C")
-        .arg(parent_dir)
-        .arg(folder_name)
+        .args([
+            "--exclude", ".build",
+            "--exclude", "*/.build",
+            "--exclude", "*/.build/*",
+            "--exclude", ".git",
+            "--exclude", "*/.git",
+            "--exclude", "*/.git/*",
+            "--exclude", ".DS_Store",
+            "--exclude", "*/.DS_Store",
+            "--exclude", "*.xcuserdata",
+            "--exclude", "*/*.xcuserdata",
+            "--exclude", "*/*.xcuserdata/*",
+            "--exclude", "*.xcuserdatad",
+            "--exclude", "*/*.xcuserdatad",
+            "--exclude", "*/*.xcuserdatad/*",
+            "--exclude", "*/.*",
+            "-C",
+        ])
+        .arg(&archive_parent)
+        .arg(&archive_target)
         .status()
         .map_err(|e| format!("Failed to execute archive command: {}", e))?;
+
+    if let Some(temp_dir) = temp_dir_cleanup {
+        let _ = fs::remove_dir_all(temp_dir);
+    }
 
     if !status.success() {
         return Err("Archive packaging command failed.".to_string());

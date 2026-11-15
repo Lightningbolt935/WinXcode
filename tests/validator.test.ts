@@ -203,4 +203,82 @@ describe("Swift Student Challenge Submission Validator", () => {
     expect(attribWarn?.status).toBe("warn");
     expect(attribWarn?.message).toContain("https://developer.apple.com/swift-student-challenge/terms-and-conditions/");
   });
+
+  it("Export hardening: archives into [Name].swiftpm root, excludes build/git/junk, and unzips cleanly", () => {
+    const { execSync } = require("child_process");
+    const testStageDir = path.resolve(__dirname, "fixtures/test_stage_export");
+    if (fs.existsSync(testStageDir)) fs.rmSync(testStageDir, { recursive: true, force: true });
+
+    const appDir = path.join(testStageDir, "ExportedStudentApp.swiftpm");
+    fs.mkdirSync(path.join(appDir, "Assets.xcassets/AppIcon.appiconset"), { recursive: true });
+    fs.mkdirSync(path.join(appDir, "Assets.xcassets/AccentColor.colorset"), { recursive: true });
+    fs.mkdirSync(path.join(appDir, ".build/debug"), { recursive: true });
+    fs.mkdirSync(path.join(appDir, ".git/objects"), { recursive: true });
+    fs.mkdirSync(path.join(appDir, "User.xcuserdatad"), { recursive: true });
+
+    // Valid required files
+    fs.writeFileSync(path.join(appDir, "Package.swift"), "// swift-tools-version: 5.9\nimport PackageDescription\nimport AppleProductTypes\nlet package = Package(name: \"App\", products: [.iOSApplication(name: \"App\", targets: [\"AppModule\"])], targets: [.executableTarget(name: \"AppModule\", path: \".\")])");
+    fs.writeFileSync(path.join(appDir, "App.swift"), "@main struct MyApp: App { var body: some Scene { WindowGroup {} } }");
+    fs.writeFileSync(path.join(appDir, "ContentView.swift"), "struct ContentView: View { var body: some View { Text(\"Hi\") } }");
+    fs.writeFileSync(path.join(appDir, "Assets.xcassets/Contents.json"), "{}");
+    fs.writeFileSync(path.join(appDir, "Assets.xcassets/AppIcon.appiconset/Contents.json"), "{}");
+    fs.writeFileSync(path.join(appDir, "Assets.xcassets/AccentColor.colorset/Contents.json"), "{}");
+
+    // Dirty junk files that MUST be excluded
+    fs.writeFileSync(path.join(appDir, ".DS_Store"), "ds-binary");
+    fs.writeFileSync(path.join(appDir, ".build/debug/output.o"), "build-binary");
+    fs.writeFileSync(path.join(appDir, ".git/HEAD"), "ref: refs/heads/main");
+    fs.writeFileSync(path.join(appDir, "User.xcuserdatad/UserInterfaceState.xcuserstate"), "user-state");
+    fs.writeFileSync(path.join(appDir, ".hidden_env"), "secret");
+
+    const outZip = path.join(testStageDir, "ExportedStudentApp-Submission.zip");
+    if (fs.existsSync(outZip)) fs.unlinkSync(outZip);
+
+    // Run the hardened export command matching Rust's export_submission_zip
+    const cmd = `tar -a -c -f "${outZip}" --exclude ".build" --exclude "*/.build" --exclude "*/.build/*" --exclude ".git" --exclude "*/.git" --exclude "*/.git/*" --exclude ".DS_Store" --exclude "*/.DS_Store" --exclude "*.xcuserdata" --exclude "*/*.xcuserdata" --exclude "*/*.xcuserdata/*" --exclude "*.xcuserdatad" --exclude "*/*.xcuserdatad" --exclude "*/*.xcuserdatad/*" --exclude "*/.*" -C "${testStageDir}" "ExportedStudentApp.swiftpm"`;
+    execSync(cmd);
+    expect(fs.existsSync(outZip)).toBe(true);
+
+    // Unzip into clean destination
+    const extractDir = path.join(testStageDir, "extracted");
+    fs.mkdirSync(extractDir, { recursive: true });
+    execSync(`tar -x -f "${outZip}" -C "${extractDir}"`);
+
+    // Verify top-level structure: must be ExportedStudentApp.swiftpm/
+    const extractedEntries = fs.readdirSync(extractDir);
+    expect(extractedEntries).toEqual(["ExportedStudentApp.swiftpm"]);
+
+    // Walk extracted directory and verify contents
+    const extractedAppDir = path.join(extractDir, "ExportedStudentApp.swiftpm");
+    const extractedFiles: string[] = [];
+    function walkDir(dir: string, rel: string) {
+      for (const ent of fs.readdirSync(dir, { withFileTypes: true })) {
+        const full = path.join(dir, ent.name);
+        const relPath = rel ? `${rel}/${ent.name}` : ent.name;
+        if (ent.isDirectory()) {
+          walkDir(full, relPath);
+        } else {
+          extractedFiles.push(relPath);
+        }
+      }
+    }
+    walkDir(extractedAppDir, "");
+
+    // Assert expected files are present
+    expect(extractedFiles).toContain("Package.swift");
+    expect(extractedFiles).toContain("App.swift");
+    expect(extractedFiles).toContain("ContentView.swift");
+    expect(extractedFiles).toContain("Assets.xcassets/Contents.json");
+
+    // Assert excluded files are NOT present
+    expect(extractedFiles.some((f) => f.includes(".build"))).toBe(false);
+    expect(extractedFiles.some((f) => f.includes(".git"))).toBe(false);
+    expect(extractedFiles.some((f) => f.includes(".DS_Store"))).toBe(false);
+    expect(extractedFiles.some((f) => f.includes(".xcuserdata"))).toBe(false);
+    expect(extractedFiles.some((f) => f.includes(".xcuserdatad"))).toBe(false);
+    expect(extractedFiles.some((f) => f.includes(".hidden"))).toBe(false);
+
+    // Cleanup
+    fs.rmSync(testStageDir, { recursive: true, force: true });
+  });
 });

@@ -423,7 +423,12 @@ fn remember(app: &AppHandle, info: &ProjectInfo) {
 pub fn create_project(app: AppHandle, options: NewProjectOptions) -> Result<ProjectInfo, String> {
     validate_name(&options.name)?;
     validate_org(&options.organization_id)?;
-    let root = PathBuf::from(&options.location).join(&options.name);
+    let folder_name = if options.template == "appPlayground" && !options.name.ends_with(".swiftpm") {
+        format!("{}.swiftpm", options.name)
+    } else {
+        options.name.clone()
+    };
+    let root = PathBuf::from(&options.location).join(&folder_name);
     if root.exists() {
         return Err(t!("err.folderExists", path = root.display()));
     }
