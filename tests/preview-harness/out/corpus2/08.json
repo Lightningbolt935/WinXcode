@@ -4,7 +4,7 @@
   "source": "Peter Friese (MakeItSo)",
   "license": "Apache-2.0",
   "fileCount": 3,
-  "level": "DEGRADED",
+  "level": "EMPTY",
   "parseOk": true,
   "parseErrors": [],
   "renderOk": true,
@@ -23,6 +23,7 @@
   "unsupportedNodes": [],
   "diagnosticCount": 1,
   "degradedCount": 1,
+  "behaviorCount": 0,
   "ignoredCount": 0,
   "stats": {
     "views": 2,

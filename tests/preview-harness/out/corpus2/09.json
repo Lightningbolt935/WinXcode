@@ -4,7 +4,7 @@
   "source": "Alexey Naumov (clean-architecture-swiftui)",
   "license": "MIT",
   "fileCount": 3,
-  "level": "DEGRADED",
+  "level": "EMPTY",
   "parseOk": true,
   "parseErrors": [],
   "renderOk": true,
@@ -14,13 +14,14 @@
   ],
   "selectedTarget": "corpus2/09_countries/CountriesListView.swift:view:CountriesList",
   "notes": [
-    "@ignored:onReceive",
+    "@behavior:onReceive",
     "@ignored:flipsForRightToLeftLayoutDirection"
   ],
   "unsupportedNodes": [],
   "diagnosticCount": 2,
   "degradedCount": 0,
-  "ignoredCount": 2,
+  "behaviorCount": 1,
+  "ignoredCount": 1,
   "stats": {
     "views": 1,
     "depth": 0,

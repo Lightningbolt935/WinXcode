@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-15T07:46:33.925Z",
+  "timestamp": "2026-11-15T08:02:35.533Z",
   "results": [
     {
       "id": "01",
@@ -13,13 +13,14 @@
       "renderOk": true,
       "selectedTarget": "corpus2/01_food_truck/ContentView.swift:provider:ContentView_Previews",
       "notes": [
-        "@ignored:onChange",
-        "@ignored:environmentObject"
+        "@behavior:onChange",
+        "@behavior:environmentObject"
       ],
       "unsupportedNodes": [],
       "diagnosticCount": 2,
       "degradedCount": 0,
-      "ignoredCount": 2,
+      "behaviorCount": 2,
+      "ignoredCount": 0,
       "viewNodeCount": 21,
       "treeDepth": 6,
       "stats": {
@@ -40,12 +41,13 @@
       "renderOk": true,
       "selectedTarget": "corpus2/02_simple_news/ContentView.swift:provider:ContentView_Previews",
       "notes": [
-        "@ignored:task"
+        "@behavior:task"
       ],
       "unsupportedNodes": [],
       "diagnosticCount": 1,
       "degradedCount": 0,
-      "ignoredCount": 1,
+      "behaviorCount": 1,
+      "ignoredCount": 0,
       "viewNodeCount": 5,
       "treeDepth": 4,
       "stats": {
@@ -66,13 +68,14 @@
       "renderOk": true,
       "selectedTarget": "corpus2/03_simple_notes/ContentView.swift:provider:ContentView_Previews",
       "notes": [
-        "@ignored:onAppear",
-        "@ignored:onChange"
+        "@behavior:onAppear",
+        "@behavior:onChange"
       ],
       "unsupportedNodes": [],
       "diagnosticCount": 2,
       "degradedCount": 0,
-      "ignoredCount": 2,
+      "behaviorCount": 2,
+      "ignoredCount": 0,
       "viewNodeCount": 16,
       "treeDepth": 5,
       "stats": {
@@ -99,12 +102,13 @@
         "@degraded:listRowSeparator",
         "@degraded:toolbar",
         "@degraded:alert",
-        "@ignored:environment"
+        "@behavior:environment"
       ],
       "unsupportedNodes": [],
       "diagnosticCount": 7,
       "degradedCount": 3,
-      "ignoredCount": 2,
+      "behaviorCount": 1,
+      "ignoredCount": 1,
       "viewNodeCount": 9,
       "treeDepth": 5,
       "stats": {
@@ -119,7 +123,7 @@
       "source": "Paul Hudson (twostraws/simple-swiftui)",
       "license": "MIT",
       "fileCount": 8,
-      "level": "DEGRADED",
+      "level": "EMPTY",
       "parseOk": true,
       "parseErrorCount": 0,
       "renderOk": true,
@@ -128,12 +132,13 @@
         "~FileManager",
         ".onDelete()",
         "@degraded:toolbar",
-        "@ignored:environment"
+        "@behavior:environment"
       ],
       "unsupportedNodes": [],
       "diagnosticCount": 4,
       "degradedCount": 1,
-      "ignoredCount": 1,
+      "behaviorCount": 1,
+      "ignoredCount": 0,
       "viewNodeCount": 1,
       "treeDepth": 1,
       "stats": {
@@ -162,6 +167,7 @@
       ],
       "diagnosticCount": 3,
       "degradedCount": 0,
+      "behaviorCount": 0,
       "ignoredCount": 0,
       "viewNodeCount": 1,
       "treeDepth": 1,
@@ -183,13 +189,14 @@
       "renderOk": true,
       "selectedTarget": "corpus2/07_capy_timer/ContentView.swift:view:ContentView",
       "notes": [
-        "@ignored:onAppear",
+        "@behavior:onAppear",
         "@degraded:sheet"
       ],
       "unsupportedNodes": [],
       "diagnosticCount": 2,
       "degradedCount": 1,
-      "ignoredCount": 1,
+      "behaviorCount": 1,
+      "ignoredCount": 0,
       "viewNodeCount": 44,
       "treeDepth": 7,
       "stats": {
@@ -204,7 +211,7 @@
       "source": "Peter Friese (MakeItSo)",
       "license": "Apache-2.0",
       "fileCount": 3,
-      "level": "DEGRADED",
+      "level": "EMPTY",
       "parseOk": true,
       "parseErrorCount": 0,
       "renderOk": true,
@@ -215,6 +222,7 @@
       "unsupportedNodes": [],
       "diagnosticCount": 1,
       "degradedCount": 1,
+      "behaviorCount": 0,
       "ignoredCount": 0,
       "viewNodeCount": 2,
       "treeDepth": 2,
@@ -230,19 +238,20 @@
       "source": "Alexey Naumov (clean-architecture-swiftui)",
       "license": "MIT",
       "fileCount": 3,
-      "level": "DEGRADED",
+      "level": "EMPTY",
       "parseOk": true,
       "parseErrorCount": 0,
       "renderOk": true,
       "selectedTarget": "corpus2/09_countries/CountriesListView.swift:view:CountriesList",
       "notes": [
-        "@ignored:onReceive",
+        "@behavior:onReceive",
         "@ignored:flipsForRightToLeftLayoutDirection"
       ],
       "unsupportedNodes": [],
       "diagnosticCount": 2,
       "degradedCount": 0,
-      "ignoredCount": 2,
+      "behaviorCount": 1,
+      "ignoredCount": 1,
       "viewNodeCount": 1,
       "treeDepth": 1,
       "stats": {
@@ -267,12 +276,13 @@
         "@ignored:help",
         "?onChange",
         "@degraded:sheet",
-        "@ignored:environmentObject"
+        "@behavior:environmentObject"
       ],
       "unsupportedNodes": [],
       "diagnosticCount": 5,
       "degradedCount": 2,
-      "ignoredCount": 2,
+      "behaviorCount": 1,
+      "ignoredCount": 1,
       "viewNodeCount": 6,
       "treeDepth": 4,
       "stats": {

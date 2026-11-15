@@ -13,14 +13,15 @@
   "selectedTarget": "preview:0",
   "notes": [
     "Canvas",
-    "@ignored:gesture"
+    "@behavior:gesture"
   ],
   "unsupportedNodes": [
     "Canvas"
   ],
   "diagnosticCount": 3,
   "degradedCount": 0,
-  "ignoredCount": 1,
+  "behaviorCount": 1,
+  "ignoredCount": 0,
   "stats": {
     "views": 15,
     "depth": 5,

@@ -21,12 +21,13 @@
   ],
   "selectedTarget": "corpus2/02_simple_news/ContentView.swift:provider:ContentView_Previews",
   "notes": [
-    "@ignored:task"
+    "@behavior:task"
   ],
   "unsupportedNodes": [],
   "diagnosticCount": 1,
   "degradedCount": 0,
-  "ignoredCount": 1,
+  "behaviorCount": 1,
+  "ignoredCount": 0,
   "stats": {
     "views": 5,
     "depth": 3,

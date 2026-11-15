@@ -18,6 +18,7 @@
   "unsupportedNodes": [],
   "diagnosticCount": 2,
   "degradedCount": 2,
+  "behaviorCount": 0,
   "ignoredCount": 0,
   "stats": {
     "views": 17,

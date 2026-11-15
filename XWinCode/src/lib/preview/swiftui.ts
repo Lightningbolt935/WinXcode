@@ -776,7 +776,7 @@ export function sequence(v: V): V[] {
   return [];
 }
 
-// Group (a): Safe no-ops (accessibility, identity, tags, lifecycle, keyboard hints, gesture handlers, data injection)
+// Tier 1: Truly no visual/runtime effect on static preview (accessibility, metadata, system hints)
 export const IGNORED = new Set([
   // Accessibility (18)
   "accessibilityLabel",
@@ -817,37 +817,9 @@ export const IGNORED = new Set([
   "focusable",
   "textSelection",
 
-  // Lifecycle & Event Callbacks (7)
-  "onAppear",
-  "onDisappear",
-  "task",
-  "onChange",
-  "onReceive",
-  "onGeometryChange",
-  "onScrollGeometryChange",
-
-  // Data & State Injection (3)
-  "environment",
-  "environmentObject",
-  "modelContainer",
-
-  // Gestures & Interaction Listeners (14)
-  "onLongPressGesture",
-  "gesture",
-  "simultaneousGesture",
-  "highPriorityGesture",
-  "draggable",
-  "dropDestination",
-  "onDrag",
-  "onDrop",
-  "onHover",
+  // System, Scroll & Performance Hints without static visual disruption (16)
   "allowsHitTesting",
   "contentShape",
-  "defersSystemGestures",
-  "onContinuousHover",
-  "onKeyPress",
-
-  // System, Scroll & Performance Hints without static visual disruption (12)
   "flipsForRightToLeftLayoutDirection",
   "preferredColorSchemeIfAvailable",
   "springLoadingBehavior",
@@ -860,6 +832,37 @@ export const IGNORED = new Set([
   "drawingGroup",
   "geometryGroup",
   "sensoryFeedback",
+  "onGeometryChange",
+  "onScrollGeometryChange",
+]);
+
+// Tier 2: Modifiers that change runtime behavior, state, or data
+export const BEHAVIOR_SKIPPED = new Set([
+  // Lifecycle & Asynchronous Tasks (5)
+  "task",
+  "onAppear",
+  "onDisappear",
+  "onChange",
+  "onReceive",
+
+  // Environment & Data Injection (3)
+  "environment",
+  "environmentObject",
+  "modelContainer",
+
+  // Gestures & User Interactions (12)
+  "gesture",
+  "onLongPressGesture",
+  "simultaneousGesture",
+  "highPriorityGesture",
+  "draggable",
+  "dropDestination",
+  "onDrag",
+  "onDrop",
+  "onHover",
+  "onContinuousHover",
+  "onKeyPress",
+  "defersSystemGestures",
 ]);
 
 // Group (b): Visual effects that are silently dropped (layout, styling, overlays, animations)
@@ -1007,6 +1010,10 @@ export function applyMod(nodes: ViewNode[], name: string, args: EvArg[], trailin
   const push = (mod: Mod) => nodes.map((n) => ({ ...n, mods: [...(n.mods ?? []), mod] }));
   if (IGNORED.has(name)) {
     ctx.note(`@ignored:${name}`);
+    return nodes;
+  }
+  if (BEHAVIOR_SKIPPED.has(name)) {
+    ctx.note(`@behavior:${name}`);
     return nodes;
   }
   if (DEGRADED.has(name)) {

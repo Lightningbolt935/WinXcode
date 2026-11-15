@@ -13,7 +13,7 @@
   "selectedTarget": "preview:0",
   "notes": [
     "Canvas",
-    "@ignored:gesture",
+    "@behavior:gesture",
     "@degraded:toolbar",
     "@degraded:alert"
   ],
@@ -22,7 +22,8 @@
   ],
   "diagnosticCount": 5,
   "degradedCount": 2,
-  "ignoredCount": 1,
+  "behaviorCount": 1,
+  "ignoredCount": 0,
   "stats": {
     "views": 23,
     "depth": 4,

@@ -24,6 +24,7 @@
   ],
   "diagnosticCount": 3,
   "degradedCount": 0,
+  "behaviorCount": 0,
   "ignoredCount": 0,
   "stats": {
     "views": 1,

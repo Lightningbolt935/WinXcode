@@ -19,7 +19,7 @@
     "@ignored:accessibilityLabel",
     "@degraded:minimumScaleFactor",
     "@ignored:accessibilityHidden",
-    "@ignored:gesture",
+    "@behavior:gesture",
     "@ignored:accessibilityValue",
     "@ignored:accessibilityHint",
     "@ignored:accessibilityAdjustableAction",
@@ -28,7 +28,8 @@
   "unsupportedNodes": [],
   "diagnosticCount": 8,
   "degradedCount": 1,
-  "ignoredCount": 7,
+  "behaviorCount": 1,
+  "ignoredCount": 6,
   "stats": {
     "views": 72,
     "depth": 8,

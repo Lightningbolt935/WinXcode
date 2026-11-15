@@ -31,7 +31,7 @@ interface HarnessResult {
   source?: string;
   license?: string;
   fileCount: number;
-  level: "CLEAN" | "DEGRADED" | "FAILED";
+  level: "CLEAN" | "DEGRADED" | "EMPTY" | "FAILED";
   parseOk: boolean;
   parseErrors: { file: string; message: string; line: number }[];
   renderOk: boolean;
@@ -42,6 +42,7 @@ interface HarnessResult {
   unsupportedNodes: string[];
   diagnosticCount: number;
   degradedCount: number;
+  behaviorCount: number;
   ignoredCount: number;
   stats: RenderResult["stats"] | null;
   treeDepth: number;
@@ -165,15 +166,19 @@ describe("Preview Harness — Corpus 1 (Student-style apps)", () => {
         renderError = "No preview targets found";
       }
 
+      const viewNodeCount = countNodes(renderResult?.tree ?? null);
       const unsupportedNodes = collectUnsupported(renderResult?.tree ?? null);
       const notes = renderResult ? [...renderResult.notes] : [];
       const degradedCount = notes.filter(n => n.startsWith("@degraded:")).length;
+      const behaviorCount = notes.filter(n => n.startsWith("@behavior:")).length;
       const ignoredCount = notes.filter(n => n.startsWith("@ignored:")).length;
       const parseOk = parseErrors.length === 0;
       const diagnosticCount = parseErrors.length + (renderOk ? 0 : 1) + unsupportedNodes.length + notes.length;
-      let level: "CLEAN" | "DEGRADED" | "FAILED" = "CLEAN";
+      let level: "CLEAN" | "DEGRADED" | "EMPTY" | "FAILED" = "CLEAN";
       if (!parseOk || !renderOk || unsupportedNodes.length > 0) {
         level = "FAILED";
+      } else if (viewNodeCount <= 3) {
+        level = "EMPTY";
       } else if (diagnosticCount > 0) {
         level = "DEGRADED";
       }
@@ -193,10 +198,11 @@ describe("Preview Harness — Corpus 1 (Student-style apps)", () => {
         unsupportedNodes,
         diagnosticCount,
         degradedCount,
+        behaviorCount,
         ignoredCount,
         stats: renderResult?.stats ?? null,
         treeDepth: treeDepth(renderResult?.tree ?? null),
-        viewNodeCount: countNodes(renderResult?.tree ?? null),
+        viewNodeCount,
       };
       HARNESS_RESULTS.push(hResult);
 
@@ -226,6 +232,7 @@ describe("Preview Harness — Corpus 1 (Student-style apps)", () => {
         unsupportedNodes: r.unsupportedNodes,
         diagnosticCount: r.diagnosticCount,
         degradedCount: r.degradedCount,
+        behaviorCount: r.behaviorCount,
         ignoredCount: r.ignoredCount,
         viewNodeCount: r.viewNodeCount,
         treeDepth: r.treeDepth,
@@ -316,15 +323,19 @@ describe("Preview Harness — Corpus 2 (External open-source apps)", () => {
         renderError = "No preview targets found in any files";
       }
 
+      const viewNodeCount = countNodes(renderResult?.tree ?? null);
       const unsupportedNodes = collectUnsupported(renderResult?.tree ?? null);
       const notes = renderResult ? [...renderResult.notes] : [];
       const degradedCount = notes.filter(n => n.startsWith("@degraded:")).length;
+      const behaviorCount = notes.filter(n => n.startsWith("@behavior:")).length;
       const ignoredCount = notes.filter(n => n.startsWith("@ignored:")).length;
       const parseOk = allParseErrors.length === 0;
       const diagnosticCount = allParseErrors.length + (renderOk ? 0 : 1) + unsupportedNodes.length + notes.length;
-      let level: "CLEAN" | "DEGRADED" | "FAILED" = "CLEAN";
+      let level: "CLEAN" | "DEGRADED" | "EMPTY" | "FAILED" = "CLEAN";
       if (!parseOk || !renderOk || unsupportedNodes.length > 0) {
         level = "FAILED";
+      } else if (viewNodeCount <= 3) {
+        level = "EMPTY";
       } else if (diagnosticCount > 0) {
         level = "DEGRADED";
       }
@@ -346,10 +357,11 @@ describe("Preview Harness — Corpus 2 (External open-source apps)", () => {
         unsupportedNodes,
         diagnosticCount,
         degradedCount,
+        behaviorCount,
         ignoredCount,
         stats: renderResult?.stats ?? null,
         treeDepth: treeDepth(renderResult?.tree ?? null),
-        viewNodeCount: countNodes(renderResult?.tree ?? null),
+        viewNodeCount,
       };
       CORPUS2_RESULTS.push(hResult);
 
@@ -380,6 +392,7 @@ describe("Preview Harness — Corpus 2 (External open-source apps)", () => {
         unsupportedNodes: r.unsupportedNodes,
         diagnosticCount: r.diagnosticCount,
         degradedCount: r.degradedCount,
+        behaviorCount: r.behaviorCount,
         ignoredCount: r.ignoredCount,
         viewNodeCount: r.viewNodeCount,
         treeDepth: r.treeDepth,

@@ -42,6 +42,7 @@ const passthrough = extractSet(swiftuiSrc, "PASSTHROUGH");
 const unsupported = extractSet(swiftuiSrc, "UNSUPPORTED");
 const viewNames = extractSet(swiftuiSrc, "VIEW_NAMES");
 const ignored = extractExportedSet(swiftuiSrc, "IGNORED");
+const behavior = extractExportedSet(swiftuiSrc, "BEHAVIOR_SKIPPED");
 const degraded = extractExportedSet(swiftuiSrc, "DEGRADED");
 
 // 2. Extract supported modifiers from applyMod switch cases
@@ -90,6 +91,7 @@ const categorizedViews = {
 const allSupportedViews = Array.from(new Set([...viewNames, ...shapes, ...passthrough])).sort();
 modifiers.sort();
 ignored.sort();
+behavior.sort();
 degraded.sort();
 unsupported.sort();
 
@@ -99,18 +101,18 @@ This document is the authoritative coverage specification for the WinXcode headl
 
 **Last updated**: ${new Date().toISOString().split("T")[0]}  
 **Engine version**: Tauri 2 + React 19 + WinXcode Parser/Runtime 2.0  
-**Test Suite**: 34 unit & corpus harness tests passing
+**Test Suite**: 41 unit & corpus harness tests passing
 
 ---
 
 ## 1. Executive Summary
 
-| Construct Category | Total Supported | Degraded (Visual Dropped) | Ignored (Safe No-Op) | Explicitly Unsupported |
-|:-------------------|:----------------|:--------------------------|:---------------------|:-----------------------|
-| **Views & Containers** | **${allSupportedViews.length}** | — | 0 | **${unsupported.length}** (visible callout) |
-| **View Modifiers** | **${modifiers.length}** | **${degraded.length}** (amber banner) | **${ignored.length}** (safe no-op) | Fall-through emits diagnostic |
-| **Property Wrappers** | **${propertyWrappers.length}** | — | 0 | 0 |
-| **Runtime Shims** | **2** (\`DispatchQueue.asyncAfter\`, \`@AppStorage\`) | — | — | — |
+| Construct Category | Total Supported | Degraded (Visual Dropped) | Behavior Skipped (Runtime) | Ignored (Safe No-Op) | Explicitly Unsupported |
+|:-------------------|:----------------|:--------------------------|:---------------------------|:---------------------|:-----------------------|
+| **Views & Containers** | **${allSupportedViews.length}** | — | — | 0 | **${unsupported.length}** (visible callout) |
+| **View Modifiers** | **${modifiers.length}** | **${degraded.length}** (amber banner) | **${behavior.length}** (purple banner) | **${ignored.length}** (safe no-op) | Fall-through emits diagnostic |
+| **Property Wrappers** | **${propertyWrappers.length}** | — | — | 0 | 0 |
+| **Runtime Shims** | **2** (\`DispatchQueue.asyncAfter\`, \`@AppStorage\`) | — | — | — | — |
 
 ---
 
@@ -160,9 +162,22 @@ ${degraded.map(m => `.${m}()`).join(", ")}
 
 ---
 
-## 6. Ignored Modifiers (${ignored.length} — Safe No-Ops)
+## 6. Behavior Skipped Modifiers (${behavior.length} — Runtime Behavior Skipped)
 
-When encountered, these modifiers are acknowledged, classified as **IGNORED**, recorded in diagnostics (\`@ignored:<name>\`), and return the view tree unmodified. They do **not** break layout or crash the preview.
+When encountered, these modifiers affect lifecycle execution, data binding, or interactive gestures that do not execute in static preview mode.
+
+**Honesty guarantee**: Rather than treating them as inert, the engine tags them with \`@behavior:<name>\` and the Canvas displays a purple callout banner:  
+*"Runtime & interactions skipped · Check on iPhone"*.
+
+\`\`\`
+${behavior.map(m => `.${m}()`).join(", ")}
+\`\`\`
+
+---
+
+## 7. Ignored Modifiers (${ignored.length} — Safe No-Ops)
+
+When encountered, these modifiers are acknowledged, classified as **IGNORED**, recorded in diagnostics (\`@ignored:<name>\`), and return the view tree unmodified. They have truly no visual or runtime impact on the preview (pure metadata or accessibility).
 
 \`\`\`
 ${ignored.map(m => `.${m}()`).join(", ")}
@@ -173,7 +188,7 @@ Accessibility modifiers (\`.accessibilityLabel\`, \`.accessibilityHint\`, \`.acc
 
 ---
 
-## 7. Explicitly Unsupported Views (${unsupported.length})
+## 8. Explicitly Unsupported Views (${unsupported.length})
 
 When the preview interpreter encounters any of these constructs, it creates an \`Unsupported\` node and emits a Level 1 **UNSUPPORTED** diagnostic. 
 
@@ -199,7 +214,7 @@ When the preview interpreter encounters any of these constructs, it creates an \
 
 ---
 
-## 8. Shims & Runtime Systems
+## 9. Shims & Runtime Systems
 
 ### 7.1 @AppStorage Persistence
 

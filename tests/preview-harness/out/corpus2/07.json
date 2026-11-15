@@ -22,13 +22,14 @@
   ],
   "selectedTarget": "corpus2/07_capy_timer/ContentView.swift:view:ContentView",
   "notes": [
-    "@ignored:onAppear",
+    "@behavior:onAppear",
     "@degraded:sheet"
   ],
   "unsupportedNodes": [],
   "diagnosticCount": 2,
   "degradedCount": 1,
-  "ignoredCount": 1,
+  "behaviorCount": 1,
+  "ignoredCount": 0,
   "stats": {
     "views": 56,
     "depth": 6,

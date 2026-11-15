@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-15T07:46:33.820Z",
+  "timestamp": "2026-11-15T08:02:35.410Z",
   "results": [
     {
       "id": "01",
@@ -13,6 +13,7 @@
       "unsupportedNodes": [],
       "diagnosticCount": 0,
       "degradedCount": 0,
+      "behaviorCount": 0,
       "ignoredCount": 0,
       "viewNodeCount": 11,
       "treeDepth": 4,
@@ -34,6 +35,7 @@
       "unsupportedNodes": [],
       "diagnosticCount": 0,
       "degradedCount": 0,
+      "behaviorCount": 0,
       "ignoredCount": 0,
       "viewNodeCount": 27,
       "treeDepth": 7,
@@ -58,6 +60,7 @@
       "unsupportedNodes": [],
       "diagnosticCount": 2,
       "degradedCount": 2,
+      "behaviorCount": 0,
       "ignoredCount": 0,
       "viewNodeCount": 17,
       "treeDepth": 6,
@@ -83,6 +86,7 @@
       "unsupportedNodes": [],
       "diagnosticCount": 3,
       "degradedCount": 3,
+      "behaviorCount": 0,
       "ignoredCount": 0,
       "viewNodeCount": 32,
       "treeDepth": 4,
@@ -104,6 +108,7 @@
       "unsupportedNodes": [],
       "diagnosticCount": 0,
       "degradedCount": 0,
+      "behaviorCount": 0,
       "ignoredCount": 0,
       "viewNodeCount": 27,
       "treeDepth": 5,
@@ -123,7 +128,7 @@
       "targetCount": 2,
       "notes": [
         "Canvas",
-        "@ignored:gesture",
+        "@behavior:gesture",
         "@degraded:toolbar",
         "@degraded:alert"
       ],
@@ -132,7 +137,8 @@
       ],
       "diagnosticCount": 5,
       "degradedCount": 2,
-      "ignoredCount": 1,
+      "behaviorCount": 1,
+      "ignoredCount": 0,
       "viewNodeCount": 16,
       "treeDepth": 5,
       "stats": {
@@ -157,6 +163,7 @@
       ],
       "diagnosticCount": 2,
       "degradedCount": 0,
+      "behaviorCount": 0,
       "ignoredCount": 0,
       "viewNodeCount": 37,
       "treeDepth": 5,
@@ -176,14 +183,15 @@
       "targetCount": 2,
       "notes": [
         "Canvas",
-        "@ignored:gesture"
+        "@behavior:gesture"
       ],
       "unsupportedNodes": [
         "Canvas"
       ],
       "diagnosticCount": 3,
       "degradedCount": 0,
-      "ignoredCount": 1,
+      "behaviorCount": 1,
+      "ignoredCount": 0,
       "viewNodeCount": 15,
       "treeDepth": 6,
       "stats": {
@@ -202,12 +210,13 @@
       "targetCount": 5,
       "notes": [
         "@degraded:toolbar",
-        "@ignored:environment"
+        "@behavior:environment"
       ],
       "unsupportedNodes": [],
       "diagnosticCount": 2,
       "degradedCount": 1,
-      "ignoredCount": 1,
+      "behaviorCount": 1,
+      "ignoredCount": 0,
       "viewNodeCount": 42,
       "treeDepth": 5,
       "stats": {
@@ -228,7 +237,7 @@
         "@ignored:accessibilityLabel",
         "@degraded:minimumScaleFactor",
         "@ignored:accessibilityHidden",
-        "@ignored:gesture",
+        "@behavior:gesture",
         "@ignored:accessibilityValue",
         "@ignored:accessibilityHint",
         "@ignored:accessibilityAdjustableAction",
@@ -237,7 +246,8 @@
       "unsupportedNodes": [],
       "diagnosticCount": 8,
       "degradedCount": 1,
-      "ignoredCount": 7,
+      "behaviorCount": 1,
+      "ignoredCount": 6,
       "viewNodeCount": 72,
       "treeDepth": 9,
       "stats": {

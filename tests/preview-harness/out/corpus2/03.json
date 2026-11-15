@@ -15,13 +15,14 @@
   ],
   "selectedTarget": "corpus2/03_simple_notes/ContentView.swift:provider:ContentView_Previews",
   "notes": [
-    "@ignored:onAppear",
-    "@ignored:onChange"
+    "@behavior:onAppear",
+    "@behavior:onChange"
   ],
   "unsupportedNodes": [],
   "diagnosticCount": 2,
   "degradedCount": 0,
-  "ignoredCount": 2,
+  "behaviorCount": 2,
+  "ignoredCount": 0,
   "stats": {
     "views": 16,
     "depth": 4,

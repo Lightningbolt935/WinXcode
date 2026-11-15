@@ -972,8 +972,9 @@ export default function Canvas({ path, onClose }: { path: string; onClose: () =>
   };
   const perf = result ? estimatePerf(device, result.stats) : null;
   const simulated = (result?.notes ?? []).filter((n) => n.startsWith("~")).map((n) => n.slice(1));
-  const unsupported = (result?.notes ?? []).filter((n) => !n.startsWith("~") && !n.startsWith("?") && !n.startsWith("@ignored:") && !n.startsWith("@degraded:"));
+  const unsupported = (result?.notes ?? []).filter((n) => !n.startsWith("~") && !n.startsWith("?") && !n.startsWith("@ignored:") && !n.startsWith("@behavior:") && !n.startsWith("@degraded:"));
   const ignoredMods = Array.from(new Set((result?.notes ?? []).filter((n) => n.startsWith("@ignored:")).map((n) => n.slice("@ignored:".length))));
+  const behaviorMods = Array.from(new Set((result?.notes ?? []).filter((n) => n.startsWith("@behavior:")).map((n) => n.slice("@behavior:".length))));
   const degradedMods = Array.from(new Set((result?.notes ?? []).filter((n) => n.startsWith("@degraded:")).map((n) => n.slice("@degraded:".length))));
 
   const unsupportedTreeNodes = useMemo(() => {
@@ -1168,6 +1169,22 @@ export default function Canvas({ path, onClose }: { path: string; onClose: () =>
           </button>
         </div>
       )}
+      {behaviorMods.length > 0 && (
+        <div className="canvas-callout canvas-behavior-banner">
+          <div className="canvas-callout-badge behavior">BEHAVIOR SKIPPED</div>
+          <div className="canvas-callout-body">
+            <span className="canvas-callout-title">Runtime & interactions skipped:</span>
+            <span className="canvas-callout-items">{behaviorMods.map((m) => `.${m}()`).join(", ")}</span>
+          </div>
+          <button
+            className="canvas-check-iphone-btn"
+            title="Preview live on connected iPhone"
+            onClick={() => void connect()}
+          >
+            Check on iPhone →
+          </button>
+        </div>
+      )}
       {ignoredMods.length > 0 && (
         <div className="canvas-callout canvas-ignored-banner">
           <div className="canvas-callout-badge ignored">IGNORED</div>
@@ -1235,6 +1252,11 @@ export default function Canvas({ path, onClose }: { path: string; onClose: () =>
         {degradedMods.length > 0 && (
           <span className="canvas-note" title={degradedMods.join(", ")}>
             ⚠️ Degraded: {degradedMods.slice(0, 3).join(", ")}{degradedMods.length > 3 ? "..." : ""}
+          </span>
+        )}
+        {behaviorMods.length > 0 && (
+          <span className="canvas-note" title={behaviorMods.join(", ")}>
+            ⚡ Behavior: {behaviorMods.slice(0, 3).join(", ")}{behaviorMods.length > 3 ? "..." : ""}
           </span>
         )}
         {ignoredMods.length > 0 && (

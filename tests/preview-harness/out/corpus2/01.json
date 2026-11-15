@@ -18,13 +18,14 @@
   ],
   "selectedTarget": "corpus2/01_food_truck/ContentView.swift:provider:ContentView_Previews",
   "notes": [
-    "@ignored:onChange",
-    "@ignored:environmentObject"
+    "@behavior:onChange",
+    "@behavior:environmentObject"
   ],
   "unsupportedNodes": [],
   "diagnosticCount": 2,
   "degradedCount": 0,
-  "ignoredCount": 2,
+  "behaviorCount": 2,
+  "ignoredCount": 0,
   "stats": {
     "views": 21,
     "depth": 5,

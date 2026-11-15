@@ -16,12 +16,13 @@
   "selectedTarget": "preview:0",
   "notes": [
     "@degraded:toolbar",
-    "@ignored:environment"
+    "@behavior:environment"
   ],
   "unsupportedNodes": [],
   "diagnosticCount": 2,
   "degradedCount": 1,
-  "ignoredCount": 1,
+  "behaviorCount": 1,
+  "ignoredCount": 0,
   "stats": {
     "views": 42,
     "depth": 4,

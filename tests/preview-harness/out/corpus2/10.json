@@ -18,12 +18,13 @@
     "@ignored:help",
     "?onChange",
     "@degraded:sheet",
-    "@ignored:environmentObject"
+    "@behavior:environmentObject"
   ],
   "unsupportedNodes": [],
   "diagnosticCount": 5,
   "degradedCount": 2,
-  "ignoredCount": 2,
+  "behaviorCount": 1,
+  "ignoredCount": 1,
   "stats": {
     "views": 6,
     "depth": 3,
