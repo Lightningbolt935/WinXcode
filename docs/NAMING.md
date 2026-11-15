@@ -78,14 +78,30 @@ When renaming is authorized:
 
 ---
 
-## 3. Candidate Replacement Names
+## 3. Candidate Replacement Names & Apple Trademark Analysis
 
-| Candidate Name | Pros | Cons / Considerations |
-|---|---|---|
-| **WinSwift** | Ultra-clean, concise, instantly communicates "Swift on Windows" | Generic; needs distinctive icon |
-| **SwiftForge** | Evokes an active workshop/foundry for crafting Swift projects | Independent identity; completely clear of Apple trademarks |
-| **SwiftStudio** | Familiar IDE terminology; prestigious professional feel | "Studio" is widely used by Microsoft / Google / Android |
-| **PlaySwift** | Highlights Swift Student Challenge and App Playgrounds focus | May sound limited to toys/games rather than full IDE |
-| **SwiftCraft** | Friendly, educational, approachable for students | "Craft" association with Minecraft |
+### Apple Trademark Policies & Guidelines
+- **Guidelines for Using Apple Trademarks:** [Apple Legal — Guidelines for Using Apple Trademarks and Copyrights](https://www.apple.com/legal/intellectual-property/guidelinesfor3rdparties.html)
+- **Official Apple Trademark List:** [Apple Trademark List](https://www.apple.com/legal/intellectual-property/trademark/appletmlist.html)
+- **Key Restrictions from Apple Guidelines:**
+  > *"You may not use or register, in whole or in part, Apple, the Apple logo, Mac, iPhone, iPad, Xcode, Swift, or any other Apple trademark... as or as part of a company name, trade name, product name, or service name."*  
+  > *"You may use Apple trademarks in referential phrases on packaging or promotional materials to describe that the third party product is compatible with the referenced Apple product or technology (e.g., 'for use with Swift' or 'compatible with Xcode projects'). The third party product name must be clearly separated and distinctive."*
 
-**Recommended Choice:** **WinSwift** or **SwiftForge** (both entirely eliminate "Xcode" from the product brand while retaining clear developer meaning).
+---
+
+### Candidate Names Analysis
+
+> [!NOTE]
+> Per Phase 3c instructions, no name is selected here. This table evaluates each candidate against Apple's trademark guidelines to inform the final naming decision.
+
+| Candidate Name | Uses Apple's "Xcode" Trademark? | Uses Apple's "Swift" Trademark? | Trademark Compliance Analysis ([Apple Guidelines](https://www.apple.com/legal/intellectual-property/guidelinesfor3rdparties.html)) |
+|---|---|---|---|
+| **WinSwift** | No | **Yes ("Swift")** | Eliminates "Xcode", but incorporates the registered trademark "Swift" directly into the product name. Violates Apple Rule 2 unless used referentially (e.g., *"WinIDE for Swift"*). |
+| **SwiftForge** | No | **Yes ("Swift")** | Eliminates "Xcode", but incorporates the registered trademark "Swift" directly as the leading compound. High trademark collision risk under Apple guidelines. |
+| **SwiftStudio** | No | **Yes ("Swift")** | Eliminates "Xcode", but incorporates the registered trademark "Swift". Additionally, "Studio" is widely used by Microsoft and Google. |
+| **PlaySwift** | No | **Yes ("Swift")** | Eliminates "Xcode", but incorporates "Swift" and closely mimics "Swift Playgrounds". High confusion/dilution risk under Apple guidelines. |
+| **SwiftCraft** | No | **Yes ("Swift")** | Eliminates "Xcode", but incorporates the registered trademark "Swift". Potential secondary association with Minecraft. |
+| **AppForge** *(referential: "for Swift")* | **No** | **No** | **Zero Apple trademark infringement.** The product brand is entirely distinctive ("AppForge"). Can safely use permitted referential nominative phrasing: *"AppForge — Windows IDE for Swift & SwiftUI"*. |
+| **CodeCanvas** *(referential: "for Swift Playgrounds")* | **No** | **No** | **Zero Apple trademark infringement.** Completely independent brand name. Accurately reflects visual canvas preview capability without trademark conflict. |
+| **NorthStar IDE** *(referential: "for Swift Playgrounds")* | **No** | **No** | **Zero Apple trademark infringement.** Distinctive open-source name. Uses referential compatibility statement in tagline. |
+
