@@ -422,6 +422,8 @@ describe("Student Constructs Survey", () => {
     `;
     const res1 = evaluate(src1);
     console.log("10a. Protocol extension tree:", JSON.stringify(res1.tree), "errors:", res1.errors);
+    expect(res1.errors).toEqual([]);
+    expect(res1.tree?.props.text).toBe("Hello default");
 
     // 10b. Protocol as existential type: let p: Greetable
     const src2 = `
@@ -441,6 +443,50 @@ describe("Student Constructs Survey", () => {
     `;
     const res2 = evaluate(src2);
     console.log("10b. Protocol existential type tree:", JSON.stringify(res2.tree), "errors:", res2.errors);
+    expect(res2.errors).toEqual([]);
+    expect(res2.tree?.props.text).toBe("Woof");
+
+    // 10c. Protocol default computed property via extension
+    const src3 = `
+      import SwiftUI
+      protocol IdentifiableNamed {
+        var name: String { get }
+      }
+      extension IdentifiableNamed {
+        var greeting: String { "Hello, \\(name)!" }
+      }
+      struct User: IdentifiableNamed {
+        var name: String
+      }
+      struct TestView: View {
+        let u = User(name: "Alice")
+        var body: some View {
+          Text(u.greeting)
+        }
+      }
+    `;
+    const res3 = evaluate(src3);
+    expect(res3.errors).toEqual([]);
+    expect(res3.tree?.props.text).toBe("Hello, Alice!");
+
+    // 10d. Protocol extension default method called on self
+    const src4 = `
+      import SwiftUI
+      protocol Describable {
+        func describeMe() -> String
+      }
+      extension Describable {
+        func describeMe() -> String { "I am describable" }
+      }
+      struct ItemView: View, Describable {
+        var body: some View {
+          Text(describeMe())
+        }
+      }
+    `;
+    const res4 = evaluate(src4);
+    expect(res4.errors).toEqual([]);
+    expect(res4.tree?.props.text).toBe("I am describable");
   });
 
   it("12. Additional Student Patterns: Generics, Operator Closures, ViewBuilder Containers", () => {

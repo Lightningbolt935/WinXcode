@@ -610,14 +610,55 @@ export class Runtime {
     return `${parent.key}/${name}#${n}`;
   }
 
+  private protoInherits(decl: TypeDecl): string[] {
+    const visited = new Set<string>();
+    const queue: string[] = [];
+    const add = (name: string) => {
+      const clean = name.trim().replace(/^SwiftUI\./, "");
+      if (clean && !visited.has(clean)) {
+        visited.add(clean);
+        queue.push(clean);
+      }
+    };
+    for (const i of decl.inherits) add(i);
+    for (const e of this.exts.get(decl.name) ?? []) {
+      for (const i of e.inherits) add(i);
+    }
+    const result: string[] = [];
+    while (queue.length > 0) {
+      const proto = queue.shift()!;
+      result.push(proto);
+      const protoDecl = this.types.get(proto);
+      if (protoDecl) {
+        for (const i of protoDecl.inherits) add(i);
+      }
+      for (const e of this.exts.get(proto) ?? []) {
+        for (const i of e.inherits) add(i);
+      }
+    }
+    return result;
+  }
+
   private findProp(decl: TypeDecl, name: string, wantStatic?: boolean): Property | undefined {
     const match = (p: Property) => p.name === name && (wantStatic === undefined || p.isStatic === wantStatic);
-    return decl.props.find(match) ?? this.exts.get(decl.name)?.flatMap((e) => e.props).find(match);
+    const direct = decl.props.find(match) ?? this.exts.get(decl.name)?.flatMap((e) => e.props).find(match);
+    if (direct) return direct;
+    for (const proto of this.protoInherits(decl)) {
+      const fromProtoExt = this.exts.get(proto)?.flatMap((e) => e.props).find(match);
+      if (fromProtoExt) return fromProtoExt;
+    }
+    return undefined;
   }
 
   private findMethod(decl: TypeDecl, name: string, wantStatic?: boolean): Method | undefined {
     const match = (m: Method) => m.name === name && (wantStatic === undefined || m.isStatic === wantStatic);
-    return decl.methods.find(match) ?? this.exts.get(decl.name)?.flatMap((e) => e.methods).find(match);
+    const direct = decl.methods.find(match) ?? this.exts.get(decl.name)?.flatMap((e) => e.methods).find(match);
+    if (direct) return direct;
+    for (const proto of this.protoInherits(decl)) {
+      const fromProtoExt = this.exts.get(proto)?.flatMap((e) => e.methods).find(match);
+      if (fromProtoExt) return fromProtoExt;
+    }
+    return undefined;
   }
 
   private conforms(decl: TypeDecl, proto: string): boolean {
