@@ -233,9 +233,11 @@ Issues and pull requests are welcome. Before opening a pull request, run `npx ts
 
 Found a security issue? Please report it privately, as described in [SECURITY.md](SECURITY.md).
 
-## License
+## License & Upstream Attribution
 
-XWinCode is free software, released under the [GNU General Public License, version 3](LICENSE) or any later version (GPL-3.0-or-later). You can use, study, change and share it, as long as every version you distribute stays under the same license and comes with its source code. See [LICENSE_NOTICE.md](../docs/LICENSE_NOTICE.md) for full licensing and third-party details.
+WinXcode is forked from [OnelightCyber/XWinCode](https://github.com/OnelightCyber/XWinCode), Copyright (C) 2024 OnelightCyber and contributors.
+
+WinXcode is free software, released under the [GNU General Public License, version 3](LICENSE) or any later version (GPL-3.0-or-later). You can use, study, change and share it, as long as every version you distribute stays under the same license and comes with its source code. See [LICENSE_NOTICE.md](../docs/LICENSE_NOTICE.md) for full licensing, third-party, and copyright details.
 
 ## Apple software & licensing notice
 

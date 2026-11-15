@@ -4,10 +4,15 @@
 
 ---
 
-## 1. Project License
+## 1. Project License & Upstream Fork Attribution
 
-WinXcode is free and open-source software, licensed under the **GNU General Public License, version 3.0 or later (GPL-3.0-or-later)**.
-You may inspect, run, modify, and redistribute this software under the terms of the GPL-3.0 license. Any distributed binary or derivative work must provide corresponding source code under the same license terms.
+WinXcode is a fork of **[OnelightCyber/XWinCode](https://github.com/OnelightCyber/XWinCode)**:
+- **Upstream Copyright:** Copyright (C) 2024 OnelightCyber and contributors.
+- **License:** GNU General Public License, version 3.0 or later (**GPL-3.0-or-later**).
+- **Upstream Repository:** `https://github.com/OnelightCyber/XWinCode`
+
+WinXcode is free and open-source software, licensed under the terms of the **GNU General Public License, version 3.0 or later (GPL-3.0-or-later)**.
+You may inspect, run, modify, and redistribute this software under the terms of the GPL-3.0 license. Any distributed binary or derivative work must provide corresponding source code under the same license terms. All original copyright notices and license files are preserved.
 
 ---
 

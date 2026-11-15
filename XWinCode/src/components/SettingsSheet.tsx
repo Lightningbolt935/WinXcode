@@ -675,6 +675,7 @@ function Shortcuts() {
 }
 
 const CREDITS: { name: string; what: TKey; url: string }[] = [
+  { name: "XWinCode (Upstream)", what: "credit.upstream", url: "https://github.com/OnelightCyber/XWinCode" },
   { name: "Swift", what: "credit.swift", url: "https://www.swift.org" },
   { name: "xtool", what: "credit.xtool", url: "https://github.com/xtool-org/xtool" },
   { name: "libimobiledevice", what: "credit.imd", url: "https://libimobiledevice.org" },
