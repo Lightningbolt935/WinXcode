@@ -653,7 +653,7 @@ pub fn validate_submission(project_path: String) -> Result<ValidationReport, Str
             pass_count,
             warn_count,
             fail_count,
-            estimated_zip_bytes: est_zip,
+            estimated_zip_bytes: real_zip,
             max_zip_bytes: cfg.max_zip_size_bytes,
             unverified: cfg.unverified,
             status_notice: cfg.status_notice,
