@@ -35,6 +35,11 @@ jobs:
         working-directory: XWinCode
         run: npx vitest run
 
+      - name: Verify BASELINE.md is up-to-date
+        run: |
+          node scripts/generate-baseline.mjs
+          git diff --exit-code docs/BASELINE.md
+
       - name: Setup Rust toolchain
         uses: dtolnay/rust-toolchain@stable
         with:
